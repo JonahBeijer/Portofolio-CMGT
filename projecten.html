@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projecten</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+<!-- ✅ Navbar -->
+<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+    <div class="text-xl font-bold text-indigo-600">Mijn Portfolio</div>
+    <div class="space-x-4">
+        <a href="index.html" class="text-gray-700 hover:text-indigo-500 font-medium">Home</a>
+        <a href="projecten.html" class="text-indigo-600 font-semibold">Projecten</a>
+        <a href="programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium">Programmeertalen</a>
+    </div>
+</nav>
+
+<!-- ✅ Container voor de projectkaarten -->
+<main class="p-8 max-w-7xl mx-auto">
+    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center">Mijn Projecten</h1>
+    <div id="projects" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3"></div>
+</main>
+
+<!-- ✅ Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- ✅ Jouw bestaande script plakken (zoals hierboven) -->
+<script>
+    AOS.init({
+        once: true,
+        duration: 600,
+        offset: 50,
+    });
+
+    const projectsData = [
+        {
+            id: "Gamemanic",
+            title: "Gamemanic",
+            page: "Gamemanic.html",
+            descriptionKey: "projectCardDescGamemanic",
+            image: "img/gamemanic.png",
+            tags: ["HTML", "CSS"]
+        },
+        {
+            id: "AnimeCollection",
+            title: "Anime Collection",
+            page: "AnimeCollection.html",
+            descriptionKey: "projectCardDescAnimeCollection",
+            image: "img/animecollection.png",
+            tags: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"]
+        },
+        {
+            id: "MuziekGallary",
+            title: "Muziek Gallary",
+            page: "MuziekGallary.html",
+            descriptionKey: "projectCardDescMuziekGallary",
+            image: "img/muziekgallary.png",
+            tags: ["HTML", "CSS", "JavaScript", "PHP"]
+        },
+        {
+            id: "Eerste2DGame",
+            title: "Eerste 2D Game",
+            page: "Eerste2DGame.html",
+            descriptionKey: "projectCardDescEerste2DGame",
+            image: "img/2dgame.png",
+            tags: ["JavaScript", "Excalibur.js"]
+        },
+        {
+            id: "SpinShare",
+            title: "SpinShare",
+            page: "SpinShare.html",
+            descriptionKey: "projectCardDescSpinShare",
+            image: "img/spinshare.png",
+            tags: ["HTML", "CSS", "JavaScript", "PHP", "Laravel"]
+        },
+        {
+            id: "MeerkatGaming",
+            title: "Meerkat Gaming",
+            page: "MeerkatGaming.html",
+            descriptionKey: "projectCardDescMeerkatGaming",
+            image: "img/meerkatgaming.png",
+            tags: ["HTML", "JSX", "JavaScript", "React"]
+        },
+    ];
+
+    const translations = {
+        nl: {
+            projectCardDescGamemanic: "Mijn allereerste website, gebouwd met enkel HTML en CSS.",
+            projectCardDescAnimeCollection: "Een anime-verzamelsite met een CRUD-systeem en database.",
+            projectCardDescMuziekGallary: "Een muziekgalerij-website gemaakt met HTML, CSS, JavaScript en PHP.",
+            projectCardDescEerste2DGame: "Mijn eerste 2D game gemaakt met Excalibur.js en JavaScript.",
+            projectCardDescSpinShare: "Een Laravel-platform waar gebruikers hun favoriete albums kunnen delen.",
+            projectCardDescMeerkatGaming: "Een gaming community site gebouwd met React en moderne webtechnologieën.",
+            projectDetailsLink: "Meer informatie"
+        },
+        en: {
+            projectCardDescGamemanic: "My very first website, built with only HTML and CSS.",
+            projectCardDescAnimeCollection: "An anime collection site with CRUD functionality and database.",
+            projectCardDescMuziekGallary: "A music gallery website made with HTML, CSS, JavaScript and PHP.",
+            projectCardDescEerste2DGame: "My first 2D game created with Excalibur.js and JavaScript.",
+            projectCardDescSpinShare: "A Laravel-based platform where users can share their favorite albums.",
+            projectCardDescMeerkatGaming: "A gaming community website built with React and modern technologies.",
+            projectDetailsLink: "More details"
+        }
+    };
+
+
+    const currentLanguage = "nl"; // je zou dit kunnen koppelen aan een taalwissel
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const projectsContainer = document.getElementById("projects");
+        const currentLang = typeof currentLanguage !== 'undefined' ? currentLanguage : 'nl';
+
+        if (projectsContainer) {
+            projectsContainer.innerHTML = '';
+
+            projectsData.forEach((project, index) => {
+                const projectCard = document.createElement("div");
+                projectCard.className = "bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl";
+                projectCard.setAttribute('data-aos', 'fade-up');
+                projectCard.setAttribute('data-aos-delay', (index % 3) * 100);
+
+                const descriptionText = (typeof translations !== 'undefined' && translations[currentLang] && translations[currentLang][project.descriptionKey])
+                    ? translations[currentLang][project.descriptionKey]
+                    : "[Beschrijving niet beschikbaar]";
+                const detailLinkText = (typeof translations !== 'undefined' && translations[currentLang] && translations[currentLang]['projectDetailsLink'])
+                    ? translations[currentLang]['projectDetailsLink']
+                    : "Meer info";
+
+                let tagsHTML = '';
+                if (project.tags && project.tags.length > 0) {
+                    tagsHTML = project.tags.map(tag =>
+                        `<span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-xs font-semibold text-gray-300 mr-2 mb-2">${tag}</span>`
+                    ).join('');
+                }
+
+                projectCard.innerHTML = `
+            <img class="w-full h-48 object-contain bg-white" src="${project.image}" alt="Thumbnail ${project.title}">
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 text-white">${project.title}</h3>
+              <div class="mb-4">${tagsHTML}</div>
+              <p class="text-gray-400 mb-4 text-base">${descriptionText}</p>
+              <a href="${project.page}" class="text-blue-400 hover:underline text-base font-medium">${detailLinkText}</a>
+            </div>
+          `;
+                projectsContainer.appendChild(projectCard);
+            });
+
+            setTimeout(() => { AOS.refresh(); }, 100);
+        } else {
+            console.error("Projects container not found!");
+        }
+    });
+</script>
+</body>
+</html>

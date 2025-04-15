@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Skills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/your_kit_code.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+    <div class="text-xl font-bold text-indigo-600">Mijn Portfolio</div>
+    <div class="space-x-4">
+        <a href="index.html" class="text-gray-700 hover:text-indigo-500 font-medium">Home</a>
+        <a href="projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium">Projecten</a>
+        <a href="programeertalen.html" class="text-indigo-600 font-semibold">Skills</a>
+    </div>
+</nav>
+
+<!-- Content -->
+<main class="py-10 px-6 max-w-6xl mx-auto">
+    <h2 class="text-indigo-700 text-3xl font-bold mb-10 text-center">Mijn Skills</h2>
+
+    <div class="grid md:grid-cols-2 gap-12">
+
+        <!-- Frontend -->
+        <div>
+            <h3 class="text-xl text-indigo-600 font-semibold mb-4 text-center">Frontend Development</h3>
+            <div id="frontend-skills" class="grid grid-cols-2 gap-6"></div>
+        </div>
+
+        <!-- Backend -->
+        <div>
+            <h3 class="text-xl text-indigo-600 font-semibold mb-4 text-center">Backend Development</h3>
+            <div id="backend-skills" class="grid grid-cols-2 gap-6"></div>
+        </div>
+
+    </div>
+</main>
+
+<!-- Script -->
+<script>
+    const frontendSkills = [
+        { name: 'HTML/CSS', icon: 'fa-html5 text-orange-500' },
+        { name: 'JavaScript', icon: 'fa-js text-yellow-500' },
+        { name: 'ReactJS', icon: 'fa-react text-blue-500' },
+        { name: 'TailwindCSS', icon: 'fa-css3-alt text-teal-400' },
+    ];
+
+    const backendSkills = [
+        { name: 'PHP', icon: 'fa-php text-indigo-500' },
+        { name: 'Laravel', icon: 'fa-laravel text-red-600' },
+        { name: 'Node.js', icon: 'fa-node-js text-green-500' },
+        { name: 'MongoDB', icon: 'fa-database text-green-400' },
+        { name: 'SQL', icon: 'fa-database text-blue-400' },
+    ];
+
+    function renderSkills(containerId, skills) {
+        const container = document.getElementById(containerId);
+        skills.forEach(skill => {
+            const div = document.createElement('div');
+            div.className = "bg-white p-5 rounded-lg shadow-md hover:shadow-xl transition transform hover:scale-105 text-center";
+
+            div.innerHTML = `
+        <i class="fab ${skill.icon} text-3xl mb-2"></i>
+        <p class="text-gray-800 font-medium">${skill.name}</p>
+      `;
+            container.appendChild(div);
+        });
+    }
+
+    renderSkills('frontend-skills', frontendSkills);
+    renderSkills('backend-skills', backendSkills);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mijn Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
+
+<!-- ✅ Navbar -->
+<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+    <div class="text-xl font-bold text-indigo-600">Mijn Portfolio</div>
+    <div class="space-x-4">
+        <a href="index.html" class="text-gray-700 hover:text-indigo-500 font-medium">Home</a>
+        <a href="projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium">Projecten</a>
+        <a href="programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium">Programmeertalen</a>
+        <button id="langToggle" class="ml-4 bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600">🇬🇧 English</button>
+    </div>
+</nav>
+
+<!-- ✅ Over mij -->
+<main class="flex items-center justify-center p-6">
+    <div class="max-w-2xl w-full bg-white shadow-2xl rounded-2xl p-8 fade-in mt-10" id="aboutSection">
+
+        <!-- Profielfoto -->
+        <div class="flex justify-center mb-6">
+            <img
+                    src="https://via.placeholder.com/150"
+                    alt="Profielfoto"
+                    class="w-40 h-40 rounded-full object-cover ring-4 ring-indigo-500"
+            />
+        </div>
+
+        <!-- Over Mij Inhoud -->
+        <h1 class="text-4xl font-bold text-center text-indigo-600 mb-4" id="heading">Over Mij</h1>
+        <p class="text-lg leading-relaxed text-gray-700 text-center" id="bio">
+            Hoi! Mijn naam is <strong>[Jouw Naam]</strong> en ik ben een enthousiaste developer met een passie voor webontwikkeling, design en het creëren van gebruiksvriendelijke interfaces.<br />
+            Ik werk graag met tools zoals Tailwind CSS en JavaScript. In mijn vrije tijd houd ik van <em>[bijv. haken, muziek luisteren, schilderen, bakken]</em>.
+        </p>
+    </div>
+</main>
+
+<!-- ✅ Taal Wisselen Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById('aboutSection').classList.add('visible');
+
+        const langToggle = document.getElementById("langToggle");
+        const heading = document.getElementById("heading");
+        const bio = document.getElementById("bio");
+
+        let inDutch = true;
+
+        langToggle.addEventListener("click", () => {
+            if (inDutch) {
+                heading.textContent = "About Me";
+                bio.innerHTML = `Hi! My name is <strong>[Your Name]</strong> and I'm an enthusiastic developer with a passion for web development, design and creating user-friendly interfaces.<br />
+          I enjoy working with tools like Tailwind CSS and JavaScript. In my free time, I love <em>[e.g. crocheting, listening to music, painting, baking]</em>.`;
+                langToggle.textContent = "🇳🇱 Nederlands";
+            } else {
+                heading.textContent = "Over Mij";
+                bio.innerHTML = `Hoi! Mijn naam is <strong>[Jouw Naam]</strong> en ik ben een enthousiaste developer met een passie voor webontwikkeling, design en het creëren van gebruiksvriendelijke interfaces.<br />
+          Ik werk graag met tools zoals Tailwind CSS en JavaScript. In mijn vrije tijd houd ik van <em>[bijv. haken, muziek luisteren, schilderen, bakken]</em>.`;
+                langToggle.textContent = "🇬🇧 English";
+            }
+            inDutch = !inDutch;
+        });
+    });
+</script>
+</body>
+</html>
