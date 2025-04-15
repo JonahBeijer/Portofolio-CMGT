@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mijn Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN toegevoegd voor iconen -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         .fade-in {
             opacity: 0;
@@ -46,11 +48,32 @@
         <!-- Over Mij Inhoud -->
         <h1 class="text-4xl font-bold text-center text-indigo-600 mb-4" id="heading">Over Mij</h1>
         <p class="text-lg leading-relaxed text-gray-700 text-center" id="bio">
-            Hoi! Mijn naam is <strong>[Jouw Naam]</strong> en ik ben een enthousiaste developer met een passie voor webontwikkeling, design en het creëren van gebruiksvriendelijke interfaces.<br />
-            Ik werk graag met tools zoals Tailwind CSS en JavaScript. In mijn vrije tijd houd ik van <em>[bijv. haken, muziek luisteren, schilderen, bakken]</em>.
+            Hoi! Mijn naam is <strong>Jonah Beijer</strong> en ik ben een enthousiaste developer met een passie voor webontwikkeling, design en het creëren van gebruiksvriendelijke interfaces.<br />
+            Ik werk graag met tools zoals Tailwind CSS en JavaScript. In mijn vrije tijd houd ik van <em>haken, muziek luisteren, schilderen en bakken</em>.
         </p>
     </div>
 </main>
+
+<!-- ✅ Footer -->
+<footer class="bg-indigo-600 text-white py-6 mt-10">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <!-- Left Side: Name and Study -->
+        <div class="flex flex-col">
+            <p class="text-lg font-semibold">Jonah Beijer</p>
+            <p class="text-sm">Studie: CMGT</p>
+        </div>
+
+        <!-- Right Side: Social Links with Icons -->
+        <div class="flex space-x-6">
+            <a href="https://github.com/JonahBeijer" class="hover:text-indigo-400" target="_blank">
+                <i class="fab fa-github fa-2x"></i>
+            </a>
+            <a href="mailto:jonahbeijer@gmail.com" class="hover:text-indigo-400">
+                <i class="fas fa-envelope fa-2x"></i>
+            </a>
+        </div>
+    </div>
+</footer>
 
 <!-- ✅ Taal Wisselen Script -->
 <script>
@@ -79,5 +102,6 @@
         });
     });
 </script>
+
 </body>
 </html>

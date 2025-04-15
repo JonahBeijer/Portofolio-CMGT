@@ -3,19 +3,32 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projecten</title>
+    <title>Mijn Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome CDN toegevoegd voor iconen -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans">
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
 
 <!-- ✅ Navbar -->
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
     <div class="text-xl font-bold text-indigo-600">Mijn Portfolio</div>
     <div class="space-x-4">
         <a href="index.html" class="text-gray-700 hover:text-indigo-500 font-medium">Home</a>
-        <a href="projecten.html" class="text-indigo-600 font-semibold">Projecten</a>
+        <a href="projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium">Projecten</a>
         <a href="programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium">Programmeertalen</a>
+        <button id="langToggle" class="ml-4 bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600">🇬🇧 English</button>
     </div>
 </nav>
 
@@ -38,17 +51,17 @@
 
     const projectsData = [
         {
-            id: "Gamemanic",
-            title: "Gamemanic",
-            page: "Gamemanic.html",
-            descriptionKey: "projectCardDescGamemanic",
-            image: "img/gamemanic.png",
+            id: "Gamemaniac",
+            title: "Gamemaniac",
+            page: "Gamemaniac.html",
+            descriptionKey: "projectCardDescGamemaniac",
+            image: "img/gamemaniac.png",
             tags: ["HTML", "CSS"]
         },
         {
             id: "AnimeCollection",
             title: "Anime Collection",
-            page: "AnimeCollection.html",
+            page: "animecollection.html",
             descriptionKey: "projectCardDescAnimeCollection",
             image: "img/animecollection.png",
             tags: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"]
@@ -56,17 +69,17 @@
         {
             id: "MuziekGallary",
             title: "Muziek Gallary",
-            page: "MuziekGallary.html",
+            page: "muziekgallery.html",
             descriptionKey: "projectCardDescMuziekGallary",
-            image: "img/muziekgallary.png",
+            image: "img/muziekgallery.png",
             tags: ["HTML", "CSS", "JavaScript", "PHP"]
         },
         {
             id: "Eerste2DGame",
             title: "Eerste 2D Game",
-            page: "Eerste2DGame.html",
+            page: "game.html",
             descriptionKey: "projectCardDescEerste2DGame",
-            image: "img/2dgame.png",
+            image: "img/game.png",
             tags: ["JavaScript", "Excalibur.js"]
         },
         {
@@ -80,7 +93,7 @@
         {
             id: "MeerkatGaming",
             title: "Meerkat Gaming",
-            page: "MeerkatGaming.html",
+            page: "meerkatgaming.html",
             descriptionKey: "projectCardDescMeerkatGaming",
             image: "img/meerkatgaming.png",
             tags: ["HTML", "JSX", "JavaScript", "React"]
@@ -89,7 +102,7 @@
 
     const translations = {
         nl: {
-            projectCardDescGamemanic: "Mijn allereerste website, gebouwd met enkel HTML en CSS.",
+            projectCardDescGamemaniac: "Mijn allereerste website, gebouwd met enkel HTML en CSS.",
             projectCardDescAnimeCollection: "Een anime-verzamelsite met een CRUD-systeem en database.",
             projectCardDescMuziekGallary: "Een muziekgalerij-website gemaakt met HTML, CSS, JavaScript en PHP.",
             projectCardDescEerste2DGame: "Mijn eerste 2D game gemaakt met Excalibur.js en JavaScript.",
@@ -98,7 +111,7 @@
             projectDetailsLink: "Meer informatie"
         },
         en: {
-            projectCardDescGamemanic: "My very first website, built with only HTML and CSS.",
+            projectCardDescGamemaniac: "My very first website, built with only HTML and CSS.",
             projectCardDescAnimeCollection: "An anime collection site with CRUD functionality and database.",
             projectCardDescMuziekGallary: "A music gallery website made with HTML, CSS, JavaScript and PHP.",
             projectCardDescEerste2DGame: "My first 2D game created with Excalibur.js and JavaScript.",
