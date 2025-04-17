@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Game - Project Details</title>
+    <title data-translate="gamePageTitle">Game - Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
@@ -22,34 +22,48 @@
 
 <!-- ✅ Navbar -->
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
-    <div class="text-xl font-bold text-indigo-600">Mijn Portfolio</div>
-    <div class="space-x-4">
-        <a href="index.html" class="text-gray-700 hover:text-indigo-500 font-medium">Home</a>
-        <a href="projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium">Projecten</a>
-        <a href="programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium">Programmeertalen</a>
-        <button id="langToggle" class="ml-4 bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600">🇬🇧 English</button>
+    <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
+
+    <div class="flex items-center space-x-6">
+        <a href="index.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navHome">Home</a>
+        <a href="projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navProjects">Projecten</a>
+        <a href="programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navLanguages">Programmeertalen</a>
+
+        <!-- Taalwissel toggle -->
+        <div class="flex items-center gap-2">
+            <span class="text-sm font-medium text-gray-700">🇳🇱</span>
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="langToggle" class="sr-only peer" ${currentLanguage === 'en' ? 'checked' : ''}>
+                <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
+                <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
+            </label>
+            <span class="text-sm font-medium text-gray-700">🇬🇧</span>
+        </div>
     </div>
 </nav>
 
 <!-- ✅ Detailpagina voor project "Game" -->
 <main class="p-8 max-w-7xl mx-auto">
-    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center">Game - Project Details</h1>
+    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="gamePageTitle">Game - Project Details</h1>
 
     <div class="bg-white p-8 rounded-lg shadow-lg">
         <div class="flex flex-col lg:flex-row">
             <div class="lg:w-1/2 mb-8 lg:mb-0">
-                <img src="img/game.png" alt="Game Screenshot" class="w-full h-auto object-cover rounded-lg shadow-md">
+                <video controls class="w-full h-auto object-cover rounded-lg shadow-md">
+                    <source src="img/game.mp4" type="video/mp4">
+                    <span data-translate="videoNotSupported">Je browser ondersteunt de video tag niet.</span>
+                </video>
             </div>
             <div class="lg:w-1/2 lg:pl-8">
-                <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Over het project</h2>
-                <p class="text-gray-700 mb-4">
-                    Dit is een zelfgemaakt spel met behulp van de Adafruit Circuit Playground. In deze game nemen twee spelers het tegen elkaar op in een racespel waarbij snelheid en precisie centraal staan. Het spel maakt gebruik van LED’s, knoppen en geluidseffecten.
+                <h2 class="text-2xl font-semibold text-indigo-600 mb-4" data-translate="aboutTitle">Over het project</h2>
+                <p class="text-gray-700 mb-4" data-translate="gameAboutText">
+                    Dit is een spel dat ik heb ontwikkeld met behulp van <strong>Excalibur.js</strong>, een 2D game-engine voor JavaScript. In het spel nemen twee spelers het tegen elkaar op in een racespel waarin snelheid en timing cruciaal zijn. Ik heb gewerkt met physics, collision detection en sprite-animaties om de game soepel te laten verlopen.
                 </p>
-                <h3 class="text-xl font-medium text-indigo-500 mb-4">Technologieën</h3>
+                <h3 class="text-xl font-medium text-indigo-500 mb-4" data-translate="techTitle">Technologieën</h3>
                 <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">C++</span>
-                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Adafruit Circuit Playground</span>
-                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Arduino IDE</span>
+                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">JavaScript</span>
+                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Excalibur.js</span>
+                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">HTML5 Canvas</span>
                 </div>
 
                 <div class="flex space-x-6 items-center">
@@ -61,17 +75,23 @@
         </div>
 
         <div class="mt-8">
-            <a href="projecten.html" class="text-blue-500 hover:underline">Terug naar projecten</a>
+            <a href="projecten.html" class="text-blue-500 hover:underline" data-translate="backLink">Terug naar projecten</a>
         </div>
     </div>
 </main>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init({
-        once: true,
-        duration: 600,
-        offset: 50,
+<script type="module">
+    import { currentLanguage, setLanguage } from './language.js';
+
+    // Initialize language
+    document.addEventListener("DOMContentLoaded", () => {
+        setLanguage(currentLanguage);
+    });
+
+    // Handle language toggle
+    document.getElementById("langToggle").addEventListener("click", () => {
+        const newLang = currentLanguage === 'nl' ? 'en' : 'nl';
+        setLanguage(newLang);
     });
 </script>
 
