@@ -33,7 +33,13 @@
         <div class="flex items-center gap-2">
             <span class="text-sm font-medium text-gray-700">🇳🇱</span>
             <label class="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" id="langToggle" class="sr-only peer" ${currentLanguage === 'en' ? 'checked' : ''}>
+                <input type="checkbox" id="langToggle" class="sr-only peer">
+
+                <script>
+                    const currentLanguage = 'en'; // of haal het uit localStorage, etc.
+                    const checkbox = document.getElementById('langToggle');
+                    checkbox.checked = currentLanguage === 'en';
+                </script>
                 <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
                 <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
             </label>
@@ -80,6 +86,28 @@
         </div>
     </div>
 </main>
+<footer class="bg-indigo-600 text-white py-6 mt-10">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <!-- Left Side: Name and Study -->
+        <div class="flex flex-col">
+            <p class="text-lg font-semibold" id="name">Jonah Beijer</p>
+            <p class="text-sm" id="study">Studie: CMGT</p>
+        </div>
+
+        <!-- Right Side: Social Links with Icons -->
+        <div class="flex space-x-6">
+            <a href="https://github.com/JonahBeijer" class="hover:text-indigo-400" target="_blank">
+                <i class="fab fa-github fa-2x"></i>
+            </a>
+            <a href="mailto:jonahbeijer@gmail.com" class="hover:text-indigo-400">
+                <i class="fas fa-envelope fa-2x"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jonah-beijer/" class="hover:text-indigo-400" target="_blank">
+                <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+        </div>
+    </div>
+</footer>
 
 <!-- ✅ AOS Script -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
