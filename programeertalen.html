@@ -23,12 +23,29 @@
 
 <!-- ✅ Navbar -->
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
-    <div class="text-xl font-bold text-indigo-600">Mijn Portfolio</div>
-    <div class="space-x-4">
-        <a href="index.html" class="text-gray-700 hover:text-indigo-500 font-medium">Home</a>
-        <a href="projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium">Projecten</a>
-        <a href="programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium">Programmeertalen</a>
-        <button id="langToggle" class="ml-4 bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600">🇬🇧 English</button>
+    <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
+
+    <div class="flex items-center space-x-6">
+        <a href="index.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navHome">Home</a>
+        <a href="projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navProjects">Projecten</a>
+        <a href="programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navLanguages">Programmeertalen</a>
+
+        <!-- Taalwissel toggle -->
+        <div class="flex items-center gap-2">
+            <span class="text-sm font-medium text-gray-700">🇳🇱</span>
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="langToggle" class="sr-only peer">
+
+                <script>
+                    const currentLanguage = 'en'; // of haal het uit localStorage, etc.
+                    const checkbox = document.getElementById('langToggle');
+                    checkbox.checked = currentLanguage === 'en';
+                </script>
+                <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
+                <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
+            </label>
+            <span class="text-sm font-medium text-gray-700">🇬🇧</span>
+        </div>
     </div>
 </nav>
 

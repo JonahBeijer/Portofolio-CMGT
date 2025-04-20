@@ -1,4 +1,3 @@
-// translations.js
 export const translations = {
     nl: {
         langButton: "🇬🇧 English",
@@ -10,7 +9,7 @@ export const translations = {
         techTitle: "Technologieën",
         backLink: "Terug naar projecten",
 
-        heading: "Over Mij",
+        heading: "Wie ben ik?",
         bio: `Hoi! Mijn naam is <strong>Jonah Beijer</strong> en ik ben een enthousiaste developer met een passie voor webontwikkeling, design en het creëren van gebruiksvriendelijke interfaces.<br />
         Ik werk graag met tools zoals Tailwind CSS en JavaScript. In mijn vrije tijd houd ik van <em>haken, muziek luisteren, schilderen en bakken</em>.`,
 
@@ -45,6 +44,20 @@ export const translations = {
         gameAboutText: `Dit is een spel dat ik heb ontwikkeld met behulp van <strong>Excalibur.js</strong>, een 2D game-engine voor JavaScript. In het spel nemen twee spelers het tegen elkaar op in een racespel waarin snelheid en timing cruciaal zijn. Ik heb gewerkt met physics, collision detection en sprite-animaties om de game soepel te laten verlopen.`,
         spinShareTitle: "SpinShare - Projectdetails",
         spinShareAbout: "SpinShare is een sociale muziekapplicatie waarbij gebruikers hun favoriete albums kunnen delen, beoordelen en ontdekken. Het project is volledig gebouwd met Laravel en bevat gebruikersauthenticatie, albumbeheer, een admin-paneel en filter- en zoekfuncties.",
+        traitsTitle: "Eigenschappen",
+        trait1: "Vriendelijk",
+        trait2: "Leergierig",
+        trait3: "Loyaal",
+        visionTitle: "Toekomstvisie",
+        vision1: "AI-integratie in webapps",
+        vision2: "Progressive Web Apps",
+        vision3: "3D web development",
+        hobbiesTitle: "Hobby's",
+        hobby1: "Anime kijken",
+        hobby2: "Gamen",
+        hobby3: "Raves",
+        educationTitle: "Opleiding",
+        educationText: "Hogeschool Rotterdam<br>CMGT"
     },
 
     en: {
@@ -57,7 +70,7 @@ export const translations = {
         techTitle: "Technologies",
         backLink: "Back to projects",
 
-        heading: "About Me",
+        heading: "Who am i?",
         bio: `Hi! My name is <strong>Jonah Beijer</strong> and I am an enthusiastic developer with a passion for web development, design, and creating user-friendly interfaces.<br />
         I enjoy working with tools like Tailwind CSS and JavaScript. In my free time, I love <em>crocheting, listening to music, painting, and baking</em>.`,
 
@@ -92,6 +105,20 @@ export const translations = {
         gameAboutText: `This is a game I developed using <strong>Excalibur.js</strong>, a 2D game engine for JavaScript. In the game, two players compete in a racing game where speed and timing are crucial. I worked with physics, collision detection, and sprite animations to ensure smooth gameplay.`,
         spinShareTitle: "SpinShare - Project Details",
         spinShareAbout: "SpinShare is a social music application where users can share, rate, and discover their favorite albums. The project is fully built with Laravel and includes user authentication, album management, an admin panel, and filter and search functionalities.",
+        traitsTitle: "Traits",
+        trait1: "Friendly",
+        trait2: "Curious",
+        trait3: "Loyal",
+        visionTitle: "Future Vision",
+        vision1: "AI integration in web apps",
+        vision2: "Progressive Web Apps",
+        vision3: "3D web development",
+        hobbiesTitle: "Hobbies",
+        hobby1: "Watching anime",
+        hobby2: "Gaming",
+        hobby3: "Attending raves",
+        educationTitle: "Education",
+        educationText: "Rotterdam University<br>CMGT"
     }
 };
 
@@ -112,7 +139,8 @@ export function setLanguage(lang) {
         bio: t.bio,
         gameAboutText: t.gameAboutText,
         spinShareAbout: t.spinShareAbout,
-        gamemaniacAbout: t.gamemaniacAbout
+        gamemaniacAbout: t.gamemaniacAbout,
+        educationText: t.educationText
     };
 
     Object.entries(innerHTMLMap).forEach(([id, content]) => {
@@ -132,7 +160,21 @@ export function setLanguage(lang) {
         spinShareTitle: t.spinShareTitle,
         projectsTitle: t.projectsTitle,
         backLink: t.backLink,
-        backToProjects: t.backLink
+        backToProjects: t.backLink,
+        traitsTitle: t.traitsTitle,
+        trait1: t.trait1,
+        trait2: t.trait2,
+        trait3: t.trait3,
+        visionTitle: t.visionTitle,
+        vision1: t.vision1,
+        vision2: t.vision2,
+        vision3: t.vision3,
+        hobbiesTitle: t.hobbiesTitle,
+        hobby1: t.hobby1,
+        hobby2: t.hobby2,
+        hobby3: t.hobby3,
+        educationTitle: t.educationTitle
+
     };
 
     Object.entries(textContentMap).forEach(([id, content]) => {

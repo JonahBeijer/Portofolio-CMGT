@@ -3,15 +3,51 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mijn Portfolio</title>
+    <title>Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome CDN toegevoegd voor iconen -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+        .mindmap-container {
+            display: grid;
+            place-items: center;
+            min-height: 70vh;
+            position: relative;
+        }
+        .central-node {
+            position: relative;
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+        .satellite-node {
+            position: absolute;
+            width: 200px;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.5s ease;
+        }
+        .node-connection {
+            position: relative;
+        }
+        .node-connection::after {
+            content: '';
+            position: absolute;
+            background: #818cf8;
+            width: 2px;
+            height: 100px;
+            transform-origin: bottom;
+            opacity: 0.3;
+        }
+        @keyframes nodeAppear {
+            from { opacity: 0; transform: scale(0.5) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-node {
+            animation: nodeAppear 0.6s ease forwards;
+        }
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: all 0.6s ease-out;
         }
         .fade-in.visible {
             opacity: 1;
@@ -19,8 +55,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
-
+<body class="bg-gray-100 font-sans min-h-screen">
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
 
@@ -48,24 +83,85 @@
     </div>
 </nav>
 
-<!-- ✅ Over mij -->
-<main class="flex items-center justify-center p-6">
-    <div class="max-w-2xl w-full bg-white shadow-2xl rounded-2xl p-8 fade-in mt-10" id="aboutSection">
+<div class="mindmap-container py-20">
+    <!-- Centrale node -->
+    <div class="central-node bg-white shadow-2xl rounded-2xl p-8 w-96 fade-in" id="aboutSection">
         <!-- Profielfoto -->
         <div class="flex justify-center mb-6">
-            <img src="https://via.placeholder.com/150" alt="Profielfoto" class="w-40 h-40 rounded-full object-cover ring-4 ring-indigo-500" />
+            <img src="IMG_4026.JPEG" alt="Profielfoto" class="w-40 h-40 rounded-full object-cover ring-4 ring-indigo-500" />
         </div>
 
         <!-- Over Mij Inhoud -->
-        <h1 class="text-4xl font-bold text-center text-indigo-600 mb-4" id="heading">Over Mij</h1>
+        <h1 class="text-4xl font-bold text-center text-indigo-600 mb-4" id="heading">Wie ben ik?</h1>
         <p class="text-lg leading-relaxed text-gray-700 text-center" id="bio">
             Hoi! Mijn naam is <strong>Jonah Beijer</strong> en ik ben een enthousiaste developer met een passie voor webontwikkeling, design en het creëren van gebruiksvriendelijke interfaces.<br />
             Ik werk graag met tools zoals Tailwind CSS en JavaScript. In mijn vrije tijd houd ik van <em>haken, muziek luisteren, schilderen en bakken</em>.
         </p>
     </div>
-</main>
 
-<!-- ✅ Footer -->
+    <!-- Satelliet nodes -->
+    <div class="satellite-node" style="top: 10%; left: 10%">
+        <div class="node-connection">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+
+                <h3 class="text-indigo-600 font-bold mb-2">
+                    <i class="fas fa-user text-sm mr-2"></i>
+                    <span data-translate="traitsTitle">Eigenschappen</span>
+                </h3>
+                <ul class="space-y-2 text-sm">
+                    <li id="trait1">Vriendelijk</li>
+                    <li id="trait2">Leergierig</li>
+                    <li id="trait3">Loyaal</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="satellite-node" style="top: 10%; right: 10%">
+        <div class="node-connection">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-indigo-600 font-bold mb-2">
+                    <i class="fas fa-rocket text-sm mr-2"></i>
+                    <span data-translate="visionTitle">Toekomstvisie</span>
+                </h3>
+                <ul class="space-y-2 text-sm">
+                    <li id="vision1">AI-integratie in webapps</li>
+                    <li id="vision2">Progressive Web Apps</li>
+                    <li id="vision3">3D web development</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="satellite-node" style="bottom: 10%; left: 20%">
+        <div class="node-connection">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-indigo-600 font-bold mb-2">
+                    <i class="fas fa-heart text-sm mr-2"></i>
+                    <span data-translate="hobbiesTitle">Hobby's</span>
+                </h3>
+                <ul class="space-y-2 text-sm">
+                    <li id="hobby1">Anime kijken</li>
+                    <li id="hobby2">Gamen</li>
+                    <li id="hobby3">Raves</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="satellite-node" style="bottom: 10%; right: 20%">
+        <div class="node-connection">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-indigo-600 font-bold mb-2">
+                    <i class="fas fa-graduation-cap text-sm mr-2"></i>
+                    <span data-translate="educationTitle">Opleiding</span>
+                </h3>
+                <p class="text-sm" id="educationText">Hogeschool Rotterdam<br>CMGT</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer class="bg-indigo-600 text-white py-6 mt-10">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
         <!-- Left Side: Name and Study -->
@@ -89,17 +185,38 @@
     </div>
 </footer>
 
+<script type="module">
+    import { translations, currentLanguage, setLanguage } from './language.js';
 
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize language
+        const langToggle = document.getElementById('langToggle');
+        langToggle.checked = currentLanguage === 'en';
 
+        // Add event listener for language toggle
+        langToggle.addEventListener('change', (e) => {
+            const newLang = e.target.checked ? 'en' : 'nl';
+            setLanguage(newLang);
+        });
 
+        // Animation code
+        const fadeSection = document.getElementById('aboutSection');
+        fadeSection.classList.add('visible');
 
+        const satellites = document.querySelectorAll('.satellite-node');
+        satellites.forEach((node, index) => {
+            setTimeout(() => {
+                node.classList.add('animate-node');
+                node.style.opacity = '1';
+            }, index * 200 + 300);
+        });
+    });
 
-<script type="module" src="language.js"></script>
-<script>
-window.addEventListener('DOMContentLoaded', () => {
-const fadeSection = document.getElementById('aboutSection');
-fadeSection.classList.add('visible');
-});
+    // Add custom event listener for language changes
+    document.addEventListener('languageChanged', (e) => {
+        // Update any language-specific animations or layout here
+        console.log('Language changed to:', e.detail);
+    });
 </script>
 </body>
 </html>
