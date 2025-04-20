@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-translate="gamemanicTitle">Gamemaniac - Project Details</title>
+    <title data-translate="spinShareTitle">SpinShare - Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         .fade-in {
@@ -25,13 +27,13 @@
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
 
     <div class="flex items-center space-x-6">
-        <a href="index.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navHome">Home</a>
+        <a href="../index.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navHome">Home</a>
         <a href="projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navProjects">Projecten</a>
         <a href="programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navLanguages">Programmeertalen</a>
 
         <!-- Taalwissel toggle -->
         <div class="flex items-center gap-2">
-            <span class="text-sm font-medium text-gray-700">🇳🇱</span>
+            <span class="text-sm font-medium text-gray-700">NL</span>
             <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="langToggle" class="sr-only peer">
 
@@ -43,36 +45,38 @@
                 <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
                 <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
             </label>
-            <span class="text-sm font-medium text-gray-700">🇬🇧</span>
+            <span class="text-sm font-medium text-gray-700">EN</span>
         </div>
     </div>
 </nav>
 
-<!-- ✅ Detailpagina voor project "Gamemanic" -->
+<!-- ✅ Detailpagina voor project "SpinShare" -->
 <main class="p-8 max-w-7xl mx-auto">
-    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="gamemaniacTitle">Gamemaniac - Project Details</h1>
+    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="spinShareTitle">SpinShare - Project Details</h1>
 
     <div class="bg-white p-8 rounded-lg shadow-lg">
         <div class="flex flex-col lg:flex-row">
             <div class="lg:w-1/2 mb-8 lg:mb-0">
-                <img src="img/gamemaniac.png" alt="Gamemanic Screenshot" class="w-full h-auto object-cover rounded-lg shadow-md">
+                <img src="../img/spinshare.png" alt="SpinShare Screenshot" class="w-full h-auto object-cover rounded-lg shadow-md">
             </div>
             <div class="lg:w-1/2 lg:pl-8">
                 <h2 class="text-2xl font-semibold text-indigo-600 mb-4" data-translate="aboutTitle">Over het project</h2>
-                <p class="text-gray-700 mb-4" data-translate="gamemaniacAbout">
+                <p class="text-gray-700 mb-4" data-translate="spinShareAbout">
+                    SpinShare is een sociale muziekapplicatie waarbij gebruikers hun favoriete albums kunnen delen, beoordelen en ontdekken. Het project is volledig gebouwd met Laravel en bevat gebruikersauthenticatie, albumbeheer, een admin-paneel en filter- en zoekfuncties.
                 </p>
                 <h3 class="text-xl font-medium text-indigo-500 mb-4" data-translate="techTitle">Technologieën</h3>
                 <div class="flex flex-wrap gap-2 mb-6">
                     <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">HTML</span>
-                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">CSS</span>
+                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Tailwind CSS</span>
+                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Javascript</span>
+                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">PHP</span>
+                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Laravel</span>
+                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">SQLite</span>
                 </div>
 
                 <div class="flex space-x-6 items-center">
-                    <a href="https://github.com/JonahBeijer/herkansing-gamemaniac" target="_blank" class="text-gray-700 hover:text-indigo-600" title="Bekijk op GitHub">
+                    <a href="https://github.com/JonahBeijer/prg5-eindopdracht" target="_blank" class="text-gray-700 hover:text-indigo-600" title="Bekijk op GitHub">
                         <i class="fab fa-github fa-2x"></i>
-                    </a>
-                    <a href="https://jonahbeijer.github.io/herkansing-gamemaniac/" target="_blank" class="text-gray-700 hover:text-indigo-600" title="Bekijk de website">
-                        <i class="fas fa-globe fa-2x"></i>
                     </a>
                 </div>
             </div>
@@ -106,10 +110,9 @@
     </div>
 </footer>
 
-<!-- ✅ Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="module">
-    import { currentLanguage, setLanguage } from './language.js';
+    import { currentLanguage, setLanguage } from '../js/language.js';
 
     // Initialize animations
     AOS.init({
@@ -132,4 +135,3 @@
 
 </body>
 </html>
-

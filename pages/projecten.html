@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-translate="portfolioTitle">Mijn Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         .fade-in {
@@ -16,6 +18,57 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        @keyframes dropFall {
+            0% {
+                opacity: 0;
+                transform: translateY(-200px) scale(0.8);
+            }
+            70% {
+                opacity: 1;
+                transform: translateY(20px) scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .project-card {
+            opacity: 0;
+            animation: dropFall 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transform-style: preserve-3d;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+            transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            will-change: transform;
+
+        }
+
+        .project-card:hover {
+            transform:
+                    perspective(1000px)
+                    translateZ(30px)
+                    scale(1.02)
+                    rotateZ(0.5deg);
+            box-shadow:
+                    0 25px 40px rgba(0,0,0,0.15),
+                    0 0 50px rgba(79, 70, 229, 0.1);
+        }
+
+        .project-card:hover *:not(img) {
+            transform: translateZ(15px);
+            transition: transform 0.3s ease-out;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05) translateZ(10px);
+        }
+
+        /* Voeg diepte toe aan de tags */
+        .project-card:hover .tech-tag {
+            transform: translateZ(15px);
+        }
+
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
@@ -25,13 +78,13 @@
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
 
     <div class="flex items-center space-x-6">
-        <a href="index.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navHome">Home</a>
+        <a href="../index.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navHome">Home</a>
         <a href="projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navProjects">Projecten</a>
         <a href="programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navLanguages">Programmeertalen</a>
 
         <!-- Taalwissel toggle -->
         <div class="flex items-center gap-2">
-            <span class="text-sm font-medium text-gray-700">🇳🇱</span>
+            <span class="text-sm font-medium text-gray-700">NL</span>
             <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="langToggle" class="sr-only peer">
 
@@ -43,7 +96,7 @@
                 <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
                 <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
             </label>
-            <span class="text-sm font-medium text-gray-700">🇬🇧</span>
+            <span class="text-sm font-medium text-gray-700">EN</span>
         </div>
     </div>
 </nav>
@@ -79,11 +132,10 @@
 </footer>
 
 <!-- ✅ AOS Animation Library -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <!-- ✅ Combined Module Script -->
 <script type="module">
-    import { currentLanguage, translations, setLanguage } from './language.js';
+    import { currentLanguage, translations, setLanguage } from '../js/language.js';
 
     // Project data with translation keys
     const projectsData = [
@@ -92,7 +144,7 @@
             title: "Gamemaniac",
             page: "Gamemaniac.html",
             descriptionKey: "projectCardDescGamemaniac",
-            image: "img/gamemaniac.png",
+            image: "../img/gamemaniac.png",
             tags: ["HTML", "CSS"]
         },
         {
@@ -100,7 +152,7 @@
             title: "Anime Collection",
             page: "animecollection.html",
             descriptionKey: "projectCardDescAnimeCollection",
-            image: "img/animecollection.png",
+            image: "../img/animecollection.png",
             tags: ["HTML", "CSS", "PHP", "MySQL"]
         },
         {
@@ -108,7 +160,7 @@
             title: "Muziek Gallary",
             page: "muziekgallery.html",
             descriptionKey: "projectCardDescMuziekGallary",
-            image: "img/muziekgallery.png",
+            image: "../img/muziekgallery.png",
             tags: ["HTML", "CSS", "JavaScript", "PHP"]
         },
         {
@@ -116,7 +168,7 @@
             title: "2D Game",
             page: "game.html",
             descriptionKey: "projectCardDescEerste2DGame",
-            image: "img/game.png",
+            image: "../img/game.png",
             tags: ["HTML", "CSS" , "JavaScript", "Excalibur"]
         },
         {
@@ -124,7 +176,7 @@
             title: "SpinShare",
             page: "SpinShare.html",
             descriptionKey: "projectCardDescSpinShare",
-            image: "img/spinshare.png",
+            image: "../img/spinshare.png",
             tags: ["HTML", "CSS", "JavaScript", "PHP", "Laravel" , "SQLite"]
         },
         {
@@ -132,45 +184,105 @@
             title: "Meerkat Gaming",
             page: "meerkatgaming.html",
             descriptionKey: "projectCardDescMeerkatGaming",
-            image: "img/meerkatgaming.png",
+            image: "../img/meerkatgaming.png",
             tags: ["HTML" , "CSS" , "JSX", "JavaScript", "React" , "Vite" , "MongoDB"]
         },
     ];
 
-    // Render projects with translations
-    function renderProjects(lang) {
-        const projectsContainer = document.getElementById("projects");
-        const t = translations[lang];
 
-        projectsContainer.innerHTML = '';
 
-        projectsData.forEach((project, index) => {
-            const tagsHTML = project.tags.map(tag =>
-                `<span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-xs font-semibold text-gray-300 mr-2 mb-2">${tag}</span>`
-            ).join('');
+// Pas de renderProjects functie aan:
+function renderProjects(lang) {
+const projectsContainer = document.getElementById("projects");
+const t = translations[lang];
 
-            const projectCard = document.createElement("div");
-            projectCard.className = "bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl";
-            projectCard.setAttribute('data-aos', 'fade-up');
-            projectCard.setAttribute('data-aos-delay', (index % 3) * 100);
+projectsContainer.innerHTML = '';
 
-            projectCard.innerHTML = `
-                <img class="w-full h-48 object-contain bg-white" src="${project.image}" alt="${project.title}">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2 text-white">${project.title}</h3>
-                    <div class="mb-4">${tagsHTML}</div>
-                    <p class="text-gray-400 mb-4 text-base">${t[project.descriptionKey]}</p>
-                    <a href="${project.page}" class="text-blue-400 hover:underline text-base font-medium" data-translate="projectDetailsLink">
-                        ${translations[lang].projectDetailsLink}
-                    </a>
-                </div>
+projectsData.forEach((project, index) => {
+const tagsHTML = project.tags.map(tag =>
+`<span class="inline-block bg-indigo-600 rounded-full px-3 py-1 text-xs font-semibold text-white mr-2 mb-2 transition-colors hover:bg-indigo-700">${tag}</span>`
+).join('');
+
+const projectCard = document.createElement("div");
+projectCard.className = "project-card bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:shadow-xl";
+
+// Animation delay voor cascade effect
+projectCard.style.animationDelay = `${index * 0.15}s`;
+
+    projectCard.innerHTML = `
+    <div class="relative overflow-hidden group">
+        <img class="w-full h-48 object-contain bg-white transform transition duration-300"
+             src="${project.image}"
+             alt="${project.title}">
+    </div>
+    <div class="p-6 space-y-4">
+        <h3 class="text-xl font-semibold text-white transform transition-transform">${project.title}</h3>
+        <div class="flex flex-wrap gap-2">
+            ${tagsHTML}
+        </div>
+        <p class="text-gray-400 text-base leading-relaxed transform transition-transform">
+            ${t[project.descriptionKey]}
+        </p>
+        <a href="${project.page}"
+           class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors
+                  transform transition-transform hover:translate-x-2">
+            ${translations[lang].projectDetailsLink} →
+        </a>
+    </div>
+
+`;
+
+projectsContainer.appendChild(projectCard);
+});
+}
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderProjects(currentLanguage);
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            let isHovered = false;
+            const speed = 15; // Lagere waarde = meer beweging
+
+            card.addEventListener('mouseenter', () => {
+                isHovered = true;
+                card.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            });
+
+            card.addEventListener('mousemove', (e) => {
+                if(!isHovered) return;
+
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Bereken rotatie gebaseerd op muispositie
+                const rotateY = (x - rect.width/2) / speed;
+                const rotateX = -(y - rect.height/2) / speed;
+
+                // Update CSS variables
+                card.style.setProperty('--rotate-x', `${rotateX}deg`);
+                card.style.setProperty('--rotate-y', `${rotateY}deg`);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                isHovered = false;
+                card.style.transform = `
+                perspective(1000px)
+                translateZ(0)
+                scale(1)
+                rotateZ(0)
+                rotateX(0)
+                rotateY(0)
             `;
+                card.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
 
-            projectsContainer.appendChild(projectCard);
+                // Reset alle child transforms
+                card.querySelectorAll('*').forEach(el => {
+                    el.style.transform = 'none';
+                });
+            });
         });
-
-        AOS.refresh();
-    }
+    });
 
     // Initialize animations and projects
     document.addEventListener('DOMContentLoaded', () => {
@@ -189,6 +301,8 @@
     document.addEventListener('languageChanged', (e) => {
         renderProjects(e.detail);
     });
+
+
 </script>
 </body>
 </html>

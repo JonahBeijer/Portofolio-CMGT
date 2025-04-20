@@ -5,8 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .animate-spin {
+            animation: spin 1s linear ;
+        }
         .mindmap-container {
             display: grid;
             place-items: center;
@@ -53,20 +64,63 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .satellite-node {
+            position: absolute;
+            width: 200px;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.5s ease;
+            z-index: 1;  /* Belangrijke z-index voor parent */
+        }
+
+        .satellite-photo {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            left: 50%;
+            padding-bottom: 20px;
+            transform: translateX(-50%) translateY(40px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 2 ;  /* Lagere z-index dan de card */
+        }
+
+        .node-connection {
+            position: relative;
+            z-index: 3;  /* Hogere z-index dan de foto */
+            transition: transform 0.3s ease;
+        }
+
+        .satellite-node:hover .satellite-photo {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-70px);
+        }
+
+
+
+        .satellite-node:hover .node-connection {
+            transform: translateY(-10px);
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans min-h-screen">
+<div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
+    <img src="img/pokeball.png"
+         alt="Loading..."
+         class="w-20 h-20 animate-spin">
+</div>
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
 
     <div class="flex items-center space-x-6">
         <a href="index.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navHome">Home</a>
-        <a href="projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navProjects">Projecten</a>
-        <a href="programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navLanguages">Programmeertalen</a>
+        <a href="pages/projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navProjects">Projecten</a>
+        <a href="pages/programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navLanguages">Programmeertalen</a>
 
         <!-- Taalwissel toggle -->
         <div class="flex items-center gap-2">
-            <span class="text-sm font-medium text-gray-700">🇳🇱</span>
+            <span class="text-sm font-medium text-gray-700">NL</span>
             <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="langToggle" class="sr-only peer">
 
@@ -78,7 +132,7 @@
                 <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
                 <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
             </label>
-            <span class="text-sm font-medium text-gray-700">🇬🇧</span>
+            <span class="text-sm font-medium text-gray-700">EN</span>
         </div>
     </div>
 </nav>
@@ -88,7 +142,7 @@
     <div class="central-node bg-white shadow-2xl rounded-2xl p-8 w-96 fade-in" id="aboutSection">
         <!-- Profielfoto -->
         <div class="flex justify-center mb-6">
-            <img src="IMG_4026.JPEG" alt="Profielfoto" class="w-40 h-40 rounded-full object-cover ring-4 ring-indigo-500" />
+            <img src="img/IMG_4026.JPEG" alt="Profielfoto" class="w-40 h-40 rounded-full object-cover ring-4 ring-indigo-500" />
         </div>
 
         <!-- Over Mij Inhoud -->
@@ -100,10 +154,11 @@
     </div>
 
     <!-- Satelliet nodes -->
-    <div class="satellite-node" style="top: 10%; left: 10%">
+    <div class="satellite-node" style="top: 20%; left: 10%">
+        <a href="https://pokemondb.net/pokedex/deoxys"><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/deoxys-normal.gif" alt="Deoxys" class="satellite-photo"></a>
+
         <div class="node-connection">
             <div class="bg-white p-6 rounded-xl shadow-lg">
-
                 <h3 class="text-indigo-600 font-bold mb-2">
                     <i class="fas fa-user text-sm mr-2"></i>
                     <span data-translate="traitsTitle">Eigenschappen</span>
@@ -118,6 +173,7 @@
     </div>
 
     <div class="satellite-node" style="top: 10%; right: 10%">
+        <a href="https://pokemondb.net/pokedex/rayquaza"><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/rayquaza.gif" alt="Rayquaza" class="satellite-photo" ></a>
         <div class="node-connection">
             <div class="bg-white p-6 rounded-xl shadow-lg">
                 <h3 class="text-indigo-600 font-bold mb-2">
@@ -134,6 +190,7 @@
     </div>
 
     <div class="satellite-node" style="bottom: 10%; left: 20%">
+        <a href="https://pokemondb.net/pokedex/lugia"><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/lugia.gif" alt="Lugia" class="satellite-photo" ></a>
         <div class="node-connection">
             <div class="bg-white p-6 rounded-xl shadow-lg">
                 <h3 class="text-indigo-600 font-bold mb-2">
@@ -150,6 +207,7 @@
     </div>
 
     <div class="satellite-node" style="bottom: 10%; right: 20%">
+        <a href="https://pokemondb.net/pokedex/ho-oh"><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/ho-oh.gif" alt="Ho-oh" class="satellite-photo"></a>
         <div class="node-connection">
             <div class="bg-white p-6 rounded-xl shadow-lg">
                 <h3 class="text-indigo-600 font-bold mb-2">
@@ -186,7 +244,7 @@
 </footer>
 
 <script type="module">
-    import { translations, currentLanguage, setLanguage } from './language.js';
+    import {translations, currentLanguage, setLanguage} from './js/language.js';
 
     document.addEventListener('DOMContentLoaded', () => {
         // Initialize language
@@ -216,6 +274,16 @@
     document.addEventListener('languageChanged', (e) => {
         // Update any language-specific animations or layout here
         console.log('Language changed to:', e.detail);
+    });
+
+
+        // Verberg loader wanneer pagina geladen is
+        window.addEventListener('load', function() {
+        const loader = document.getElementById('loader');
+        loader.classList.add('opacity-0');
+        setTimeout(() => {
+        loader.style.display = 'none';
+    }, 1000); // Match de duur van de CSS transition
     });
 </script>
 </body>
