@@ -14,3 +14,31 @@ body {
 a, button, .clickable {
     cursor: url("../cursor/HANDSCURSOR 2.cur"), pointer;
 }
+
+.nav-link {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.nav-link .char {
+    display: inline-block;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #4b5563; /* gray-700 */
+}
+
+.nav-link:hover .char {
+    color: #4f46e5 !important; /* indigo-500 */
+    animation: wave 0.5s ease forwards;
+}
+
+@keyframes wave {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* Verwijder conflicting hover styles */
+.nav-link:hover {
+    color: inherit !important;
+}

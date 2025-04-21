@@ -97,6 +97,28 @@
             transform: translateX(-50%) translateY(-70px);
         }
 
+        .central-photo {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 1;
+        }
+
+        .central-node {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .central-node:hover {
+            transform: translateY(-10px);
+        }
+
+
+        .central-node:hover .central-photo {
+            opacity: 1;
+            transform: translateY(-20px);
+        }
 
 
         .satellite-node:hover .node-connection {
@@ -114,9 +136,15 @@
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
 
     <div class="flex items-center space-x-6">
-        <a href="index.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navHome">Home</a>
-        <a href="pages/projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navProjects">Projecten</a>
-        <a href="pages/programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navLanguages">Programmeertalen</a>
+        <a href="index.html"
+           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           data-translate="navHome">Home</a>
+        <a href="pages/projecten.html"
+           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           data-translate="navProjects">Projecten</a>
+        <a href="pages/programeertalen.html"
+           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           data-translate="navLanguages">Programmeertalen</a>
 
         <!-- Taalwissel toggle -->
         <div class="flex items-center gap-2">
@@ -152,6 +180,12 @@
             Hoi, ik ben <strong> Jonah Beijer </strong>
             Ik ben 20 jaar en een enthousiaste developer met een passie voor het bouwen van webapplicaties en apps. Ik ben altijd leergierig en sta open om mezelf verder te ontwikkelen, of dat nu betekent dat ik nieuwe technieken leer of bijspijker waar nodig. Ik kijk er enorm naar uit om tijdens mijn stage nieuwe ervaringen op te doen, mijn vaardigheden te verbeteren en te ontdekken wat het werkveld allemaal te bieden heeft.</em>.
         </p>
+        <a href="https://pokemondb.net/pokedex/mewtwo"><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/mewtwo.gif" alt="Mewtwo" class="central-photo" style="top: -60px; left: 50%; transform: translateX(-50%);"></a>
+
+        <a href="https://pokemondb.net/pokedex/tyranitar"><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/tyranitar.gif" alt="Tyranitar" class="central-photo" style="top: -40px; left: 10%;"></a>
+
+        <a href="https://pokemondb.net/pokedex/giratina"><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/giratina-altered.gif" alt="Giratina" class="central-photo" style="top: -40px; right: 10%;"></a>
+
     </div>
 
     <!-- Satelliet nodes -->
@@ -280,10 +314,20 @@
     });
 
     // Add custom event listener for language changes
-    document.addEventListener('languageChanged', (e) => {
-        // Update any language-specific animations or layout here
-        console.log('Language changed to:', e.detail);
+    // Set initial language
+    document.addEventListener("DOMContentLoaded", () => {
+        setLanguage(currentLanguage);
+
+        // Animatie initialisatie
+        document.querySelectorAll('.nav-link').forEach(link => {
+            const text = link.textContent.trim();
+            link.innerHTML = text.split('').map((char, index) =>
+                `<span class="char" style="transition-delay: ${index * 30}ms">${char}</span>`
+            ).join('');
+        });
     });
+
+
 
 
         // Verberg loader wanneer pagina geladen is

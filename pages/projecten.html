@@ -78,9 +78,16 @@
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
 
     <div class="flex items-center space-x-6">
-        <a href="../index.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navHome">Home</a>
-        <a href="projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navProjects">Projecten</a>
-        <a href="programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navLanguages">Programmeertalen</a>
+        <a href="../index.html"
+           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           data-translate="navHome">Home</a>
+        <a href="projecten.html"
+           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           data-translate="navProjects">Projecten</a>
+        <a href="programeertalen.html"
+           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           data-translate="navLanguages">Programmeertalen</a>
+
 
         <!-- Taalwissel toggle -->
         <div class="flex items-center gap-2">
@@ -319,6 +326,7 @@ projectsContainer.appendChild(projectCard);
     document.addEventListener('languageChanged', (e) => {
         renderProjects(e.detail);
     });
+
 
 
 </script>

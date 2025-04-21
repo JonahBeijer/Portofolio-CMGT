@@ -5,98 +5,200 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-translate="musicGalleryTitle">Muziek Gallery - Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="../css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: #4F46E5;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .fade-in.visible {
+        .chat-preview {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        #videoModal {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #videoModal.show {
             opacity: 1;
-            transform: translateY(0);
+            visibility: visible;
+        }
+
+        video {
+            aspect-ratio: 16/9;
         }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
 
-<!-- ✅ Navbar -->
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
-
     <div class="flex items-center space-x-6">
-        <a href="../index.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navHome">Home</a>
-        <a href="projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navProjects">Projecten</a>
-        <a href="programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navLanguages">Programmeertalen</a>
+        <a href="../index.html"
+           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           data-translate="navHome">Home</a>
+        <a href="projecten.html"
+           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           data-translate="navProjects">Projecten</a>
+        <a href="programeertalen.html"
+           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           data-translate="navLanguages">Programmeertalen</a>
 
-        <!-- Taalwissel toggle -->
         <div class="flex items-center gap-2">
-            <span class="text-sm font-medium text-gray-700">NL</span>
+            <span class="text-sm font-medium text-gray-700" data-translate="nlLabel">NL</span>
             <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="langToggle" class="sr-only peer">
-
                 <script>
-                    const currentLanguage = 'en'; // of haal het uit localStorage, etc.
+                    const currentLanguage = 'en';
                     const checkbox = document.getElementById('langToggle');
                     checkbox.checked = currentLanguage === 'en';
                 </script>
                 <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
                 <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
             </label>
-            <span class="text-sm font-medium text-gray-700">EN</span>
+            <span class="text-sm font-medium text-gray-700" data-translate="enLabel">EN</span>
         </div>
     </div>
 </nav>
 
-<!-- ✅ Detailpagina voor project "Muziek Gallery" -->
 <main class="p-8 max-w-7xl mx-auto">
     <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="musicGalleryTitle">Muziek Gallery - Project Details</h1>
 
     <div class="bg-white p-8 rounded-lg shadow-lg">
-        <div class="flex flex-col lg:flex-row">
-            <div class="lg:w-1/2 mb-8 lg:mb-0">
-                <img src="../img/muziekgallery.png" alt="Muziek Gallery Screenshot" class="w-full h-auto object-cover rounded-lg shadow-md">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <div class="lg:w-1/2">
+                <div class="chat-preview">
+                    <img src="../img/muziekgallery.png" alt="Muziek Gallery Screenshot" class="w-full h-auto object-cover" data-translate="musicGalleryImageAlt" data-translate-type="alt">
+                </div>
+                <div class="pt-4 flex gap-4 items-center">
+                    <a href="https://github.com/JonahBeijer/muziekgallery"
+                       target="_blank"
+                       class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                        <i class="fab fa-github"></i>
+                        <span data-translate="viewCode">Bekijk code</span>
+                    </a>
+                    <button onclick="openVideoModal()"
+                            class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+                        <i class="fas fa-circle-play"></i>
+                        <span>Demo</span>
+                    </button>
+
+                    <!-- Video Modal -->
+
+                    <div id="videoModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 transition-opacity duration-300">
+                        <div class="relative w-full h-full flex items-center justify-center p-4">
+                            <!-- Close Button BUITEN de video container -->
+                            <button onclick="closeVideoModal()"
+                                    class="absolute top-8 right-8 p-3 text-white hover:bg-white/20 rounded-full transition-all duration-200 z-50 group">
+                                <svg class="w-12 h-12 group-hover:scale-125 transition-transform"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     viewBox="0 0 24 24">
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="3"
+                                          d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
+
+                            <!-- Video Container -->
+                            <div class="relative w-full max-w-4xl bg-black rounded-xl overflow-hidden shadow-2xl">
+                                <video controls class="w-full" id="demoVideo">
+                                    <source src="../img/muziekgallery.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="lg:w-1/2 lg:pl-8">
-                <h2 class="text-2xl font-semibold text-indigo-600 mb-4" data-translate="aboutTitle">Over het project</h2>
-                <p class="text-gray-700 mb-4" data-translate="musicGalleryAbout">
-                    Muziek Gallery is een interactieve webapplicatie waar gebruikers muziek kunnen ontdekken en bekijken in een galerij-achtige omgeving. Het project combineert frontend en backend technologieën en maakt gebruik van PHP en JavaScript.
-                </p>
-                <h3 class="text-xl font-medium text-indigo-500 mb-4" data-translate="techTitle">Technologieën</h3>
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">HTML</span>
-                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">CSS</span>
-                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">JavaScript</span>
-                    <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">PHP</span>
+
+            <div class="lg:w-1/2 space-y-6">
+                <div>
+                    <h2 class="text-2xl font-semibold text-indigo-600 mb-4" data-translate="aboutTitle">Over het project</h2>
+                    <p class="text-gray-700 mb-4" data-translate="musicGalleryAbout">
+                        Een interactieve muziekgalerij met de volgende kenmerken:
+                    <ul class="list-disc pl-5 mt-2">
+                        <li data-translate="musicFeature1">Audio player integratie</li>
+                        <li data-translate="musicFeature2">Dynamische content loading</li>
+                        <li data-translate="musicFeature3">Responsive grid layout</li>
+                    </ul>
+                    </p>
                 </div>
 
-                <div class="flex space-x-6 items-center">
-                    <a href="https://github.com/JonahBeijer/animecollection" target="_blank" class="text-gray-700 hover:text-indigo-600" title="Bekijk op GitHub">
-                        <i class="fab fa-github fa-2x"></i>
-                    </a>
-                    <a href="https://jonahbeijer.github.io/animecollection/" target="_blank" class="text-gray-700 hover:text-indigo-600" title="Bekijk de website">
-                        <i class="fas fa-globe fa-2x"></i>
-                    </a>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-indigo-500" data-translate="featuresTitle">Kernfunctionaliteiten</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-start gap-3">
+                            <div class="feature-icon">
+                                <i class="fas fa-music text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold" data-translate="audioTitle">Audio Player</h4>
+                                <p class="text-sm text-gray-600" data-translate="audioDesc">Inline audio playback</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="feature-icon">
+                                <i class="fas fa-th text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold" data-translate="gridTitle">Grid System</h4>
+                                <p class="text-sm text-gray-600" data-translate="gridDesc">Responsive card layout</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-medium text-indigo-500 mb-3" data-translate="techTitle">Technologie Stack</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="htmlTag">HTML</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="cssTag">CSS</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="jsTag">JavaScript</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="phpTag">PHP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-gray-200">
+            <h3 class="text-xl font-semibold text-indigo-600 mb-4" data-translate="techHighlightsTitle">Technische hoogtepunten</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-medium mb-2" data-translate="performanceTitle2">⚡ Prestaties</h4>
+                    <p class="text-sm text-gray-600" data-translate="performanceDesc2">Snelle laadtijden door caching</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-medium mb-2" data-translate="dynamicTitle">🎛 Dynamisch</h4>
+                    <p class="text-sm text-gray-600" data-translate="dynamicDesc">Real-time content updates</p>
                 </div>
             </div>
         </div>
 
         <div class="mt-8">
-            <a href="projecten.html" class="text-blue-500 hover:underline" data-translate="backLink">Terug naar projecten</a>
+            <a href="projecten.html" class="text-blue-500 hover:underline" data-translate="backLink">← Terug naar projecten</a>
         </div>
     </div>
 </main>
+
 <footer class="bg-indigo-600 text-white py-6 mt-10">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <!-- Left Side: Name and Study -->
         <div class="flex flex-col">
-            <p class="text-lg font-semibold" id="name">Jonah Beijer</p>
-            <p class="text-sm" id="study">Studie: CMGT</p>
+            <p class="text-lg font-semibold" data-translate="name">Jonah Beijer</p>
+            <p class="text-sm" data-translate="studyText">Studie: CMGT</p>
         </div>
-
-        <!-- Right Side: Social Links with Icons -->
         <div class="flex space-x-6">
             <a href="https://github.com/JonahBeijer" class="hover:text-indigo-400" target="_blank">
                 <i class="fab fa-github fa-2x"></i>
@@ -111,29 +213,65 @@
     </div>
 </footer>
 
-<!-- ✅ AOS Script -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="module">
-    import { currentLanguage, setLanguage } from '../js/language.js';
 
-    // Initialize animations
+    window.openVideoModal = function() {
+        const modal = document.getElementById('videoModal');
+        const video = document.getElementById('demoVideo');
+        modal.classList.remove('hidden');
+        modal.classList.add('show');
+        video.play();
+    }
+
+    window.closeVideoModal = function() {
+        const modal = document.getElementById('videoModal');
+        const video = document.getElementById('demoVideo');
+        modal.classList.remove('show');
+        modal.classList.add('hidden');
+        video.pause();
+    }
+
+    // Voeg deze event listener toe
+    document.addEventListener('click', function(e) {
+        if(e.target.closest('#videoModal')) {
+            const modalContent = document.querySelector('#videoModal > div');
+            if(!modalContent.contains(e.target)) {
+                closeVideoModal();
+            }
+        }
+    });
+
+    import {currentLanguage, setLanguage} from '../js/language.js';
+
     AOS.init({
         once: true,
         duration: 600,
         offset: 50,
     });
 
-    // Set initial language
     document.addEventListener("DOMContentLoaded", () => {
         setLanguage(currentLanguage);
+
+        // Animatie initialisatie
+        document.querySelectorAll('.nav-link').forEach(link => {
+            const text = link.textContent.trim();
+            link.innerHTML = text.split('').map((char, index) =>
+                `<span class="char" style="transition-delay: ${index * 30}ms">${char}</span>`
+            ).join('');
+        });
     });
 
-    // Handle language toggle
+
     document.getElementById("langToggle").addEventListener("click", () => {
         const newLang = currentLanguage === 'nl' ? 'en' : 'nl';
         setLanguage(newLang);
     });
-</script>
 
+
+
+
+
+</script>
 </body>
 </html>
