@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-translate="gamemanicTitle">Gamemaniac - Project Details</title>
+    <title data-translate="gamePageTitle">Game - Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../img/oog.png" type="image/png" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./img/oog.png" type="image/png" />
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
@@ -30,22 +30,19 @@
 
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
-
     <div class="flex items-center space-x-6">
-        <a href="../index.html"
+        <a href="./index.html"
            class="nav-link text-gray-700  font-medium"
            data-translate="navHome">Home</a>
         <a href="projecten.html"
-           class="nav-link text-gray-700  font-medium"
+           class="nav-link text-gray-700 font-medium"
            data-translate="navProjects">Projecten</a>
         <a href="programeertalen.html"
            class="nav-link text-gray-700  font-medium"
            data-translate="navLanguages">Programmeertalen</a>
 
-
-        <!-- Taalwissel toggle -->
         <div class="flex items-center gap-2">
-            <span class="text-sm font-medium text-gray-700">NL</span>
+            <span class="text-sm font-medium text-gray-700" data-translate="nlLabel">NL</span>
             <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="langToggle" class="sr-only peer">
                 <script>
@@ -56,47 +53,44 @@
                 <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
                 <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
             </label>
-            <span class="text-sm font-medium text-gray-700">EN</span>
+            <span class="text-sm font-medium text-gray-700" data-translate="enLabel">EN</span>
         </div>
     </div>
 </nav>
 
 <main class="p-8 max-w-7xl mx-auto">
-    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="gamemaniacTitle">Gamemaniac - Project Details</h1>
+    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="gamePageTitle">Game - Project Details</h1>
 
     <div class="bg-white p-8 rounded-lg shadow-lg">
         <div class="flex flex-col lg:flex-row gap-8">
             <div class="lg:w-1/2">
                 <div class="chat-preview">
-                    <img src="../img/gamemaniac.png" alt="Gamemanic Screenshot" class="w-full h-auto object-cover">
+                    <div class="chat-preview">
+                        <img src="./img/game.png" alt="Game Screenshot" class="w-full h-auto object-cover">
+                    </div>
                 </div>
                 <div class="pt-4 flex gap-4 items-center">
-                    <a href="https://github.com/JonahBeijer/herkansing-gamemaniac"
+                    <a href="https://github.com/JonahBeijer/startproject-prg4"
                        target="_blank"
                        class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
                         <i class="fab fa-github"></i>
                         <span data-translate="viewCode">Bekijk code</span>
                     </a>
-                    <a href="https://jonahbeijer.github.io/herkansing-gamemaniac/"
+                    <a href="https://jonahbeijer.github.io/startproject-prg4/"
                        class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
-                        <i class="fas fa-globe"></i>
+                        <i class="fas fa-gamepad"></i>
                         <span data-translate="liveDemo">Live Demo</span>
                     </a>
                 </div>
             </div>
 
-
             <div class="lg:w-1/2 space-y-6">
-
                 <div>
                     <h2 class="text-2xl font-semibold text-indigo-600 mb-4" data-translate="aboutTitle">Over het project</h2>
-                    <p class="text-gray-700 mb-4" data-translate="gamemaniacAbout">
-                        Een responsive game review website ontwikkeld met pure HTML en CSS. Belangrijke kenmerken:
-                    <ul class="list-disc pl-5 mt-2">
-                        <li data-translate="feature1">Mobile-first ontwerp</li>
-                        <li data-translate="feature2">CSS Grid en Flexbox lay-out</li>
-                        <li data-translate="feature3">Semantische HTML structuur</li>
-                    </ul>
+                    <p class="text-gray-700 mb-4" data-translate="gameAboutText">
+                        <span data-translate="gameEngineText">Dit is een spel dat ik heb ontwikkeld met behulp van</span>
+                        <strong>Excalibur.js</strong>,
+                        <span data-translate="gameDescriptionText">een 2D game-engine voor JavaScript. In het spel nemen twee spelers het tegen elkaar op in een racespel waarin snelheid en timing cruciaal zijn. Ik heb gewerkt met physics, collision detection en sprite-animaties om de game soepel te laten verlopen.</span>
                     </p>
                 </div>
 
@@ -105,21 +99,21 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="flex items-start gap-3">
                             <div class="feature-icon">
-                                <i class="fas fa-mobile-alt text-white"></i>
+                                <i class="fas fa-running text-white"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold" data-translate="responsiveTitle">Responsive Design</h4>
-                                <p class="text-sm text-gray-600" data-translate="responsiveDesc">Optimaal voor alle schermgroottes</p>
+                                <h4 class="font-semibold" data-translate="physicsTitle">Physics Engine</h4>
+                                <p class="text-sm text-gray-600" data-translate="physicsDesc">Realistische bewegingen en botsingen</p>
                             </div>
                         </div>
 
                         <div class="flex items-start gap-3">
                             <div class="feature-icon">
-                                <i class="fas fa-paint-brush text-white"></i>
+                                <i class="fas fa-users text-white"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold" data-translate="designTitle">Modern Design</h4>
-                                <p class="text-sm text-gray-600" data-translate="designDesc">CSS Animaties en transitions</p>
+                                <h4 class="font-semibold" data-translate="multiplayerTitle">Multiplayer</h4>
+                                <p class="text-sm text-gray-600" data-translate="multiplayerDesc">Twee spelers lokaal</p>
                             </div>
                         </div>
                     </div>
@@ -128,12 +122,11 @@
                 <div>
                     <h3 class="text-xl font-medium text-indigo-500 mb-3" data-translate="techTitle">Technologie Stack</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">HTML</span>
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">CSS</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="htmlTag">HTML</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="jsTag">JavaScript</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="excaliburTag">Excalibur</span>
                     </div>
                 </div>
-
-
             </div>
         </div>
 
@@ -141,12 +134,12 @@
             <h3 class="text-xl font-semibold text-indigo-600 mb-4" data-translate="techHighlightsTitle">Technische hoogtepunten</h3>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-gray-50 p-4 rounded-lg">
-                    <h4 class="font-medium mb-2" data-translate="semanticTitle">📱 Responsive Layout</h4>
-                    <p class="text-sm text-gray-600" data-translate="semanticDesc">Werkt op alle apparaten en browsers</p>
+                    <h4 class="font-medium mb-2" data-translate="collisionTitle">🎮 Collision System</h4>
+                    <p class="text-sm text-gray-600" data-translate="collisionDesc">Geavanceerde botsingsdetectie</p>
                 </div>
                 <div class="bg-gray-50 p-4 rounded-lg">
-                    <h4 class="font-medium mb-2" data-translate="performanceTitle">⚡ Performant</h4>
-                    <p class="text-sm text-gray-600" data-translate="performanceDesc">100/100 Lighthouse score</p>
+                    <h4 class="font-medium mb-2" data-translate="animationTitle">🖌️ Animations</h4>
+                    <p class="text-sm text-gray-600" data-translate="animationDesc">Vloeiende sprite animaties</p>
                 </div>
             </div>
         </div>
@@ -160,10 +153,9 @@
 <footer class="bg-indigo-600 text-white py-6 mt-10">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
         <div class="flex flex-col">
-            <p class="text-lg font-semibold" id="name">Jonah Beijer</p>
-            <p class="text-sm" id="study">Studie: CMGT</p>
+            <p class="text-lg font-semibold" data-translate="name">Jonah Beijer</p>
+            <p class="text-sm" data-translate="studyText">Studie: CMGT</p>
         </div>
-
         <div class="flex space-x-6">
             <a href="https://github.com/JonahBeijer" class="hover:text-indigo-400" target="_blank">
                 <i class="fab fa-github fa-2x"></i>
@@ -180,7 +172,7 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="module">
-    import { currentLanguage, setLanguage, updateNavAnimations } from '../js/language.js';
+    import { currentLanguage, setLanguage, updateNavAnimations } from './js/language.js';
 
     document.addEventListener('DOMContentLoaded', () => {
         // Initializeer animaties
@@ -197,6 +189,7 @@
     document.addEventListener('languageChanged', () => {
         setTimeout(updateNavAnimations, 50);
     });
+
     AOS.init({
         once: true,
         duration: 600,
@@ -206,6 +199,7 @@
     document.addEventListener("DOMContentLoaded", () => {
         setLanguage(currentLanguage);
 
+        // Animatie initialisatie
 
     });
 

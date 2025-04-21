@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-translate="gamePageTitle">Game - Project Details</title>
+    <title data-translate="animeCollectionTitle">Anime Collection - Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../img/oog.png" type="image/png" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./img/oog.png" type="image/png" />
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
@@ -24,6 +24,21 @@
             overflow: hidden;
             box-shadow: 0 10px 15px rgba(0,0,0,0.1);
         }
+
+        #videoModal {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #videoModal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        video {
+            aspect-ratio: 16/9;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
@@ -32,13 +47,13 @@
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
     <div class="flex items-center space-x-6">
         <a href="../index.html"
-           class="nav-link text-gray-700  font-medium"
+           class="nav-link text-gray-700 font-medium"
            data-translate="navHome">Home</a>
         <a href="projecten.html"
-           class="nav-link text-gray-700 font-medium"
+           class="nav-link text-gray-700  font-medium"
            data-translate="navProjects">Projecten</a>
         <a href="programeertalen.html"
-           class="nav-link text-gray-700  font-medium"
+           class="nav-link text-gray-700 font-medium"
            data-translate="navLanguages">Programmeertalen</a>
 
         <div class="flex items-center gap-2">
@@ -59,38 +74,59 @@
 </nav>
 
 <main class="p-8 max-w-7xl mx-auto">
-    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="gamePageTitle">Game - Project Details</h1>
+    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="animeCollectionTitle">Anime Collection - Project Details</h1>
 
     <div class="bg-white p-8 rounded-lg shadow-lg">
         <div class="flex flex-col lg:flex-row gap-8">
             <div class="lg:w-1/2">
                 <div class="chat-preview">
-                    <div class="chat-preview">
-                        <img src="../img/game.png" alt="Game Screenshot" class="w-full h-auto object-cover">
-                    </div>
+                    <img src="../img/animecollection.png" alt="Anime Collection Screenshot" class="w-full h-auto object-cover" data-translate="animeCollectionImageAlt" data-translate-type="alt">
                 </div>
                 <div class="pt-4 flex gap-4 items-center">
-                    <a href="https://github.com/JonahBeijer/startproject-prg4"
-                       target="_blank"
-                       class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
-                        <i class="fab fa-github"></i>
-                        <span data-translate="viewCode">Bekijk code</span>
-                    </a>
-                    <a href="https://jonahbeijer.github.io/startproject-prg4/"
-                       class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
-                        <i class="fas fa-gamepad"></i>
-                        <span data-translate="liveDemo">Live Demo</span>
-                    </a>
+                    <button onclick="openVideoModal()"
+                            class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+                        <i class="fas fa-circle-play"></i>
+                        <span>Demo</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="videoModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 transition-opacity duration-300">
+                <div class="relative w-full h-full flex items-center justify-center p-4">
+                    <!-- Close Button BUITEN de video container -->
+                    <button onclick="closeVideoModal()"
+                            class="absolute top-8 right-8 p-3 text-white hover:bg-white/20 rounded-full transition-all duration-200 z-50 group">
+                        <svg class="w-12 h-12 group-hover:scale-125 transition-transform"
+                             fill="none"
+                             stroke="currentColor"
+                             viewBox="0 0 24 24">
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="3"
+                                  d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+
+                    <!-- Video Container -->
+                    <div class="relative w-full max-w-4xl bg-black rounded-xl overflow-hidden shadow-2xl">
+                        <video controls class="w-full" id="demoVideo">
+                            <source src="../img/animecollection.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                 </div>
             </div>
 
             <div class="lg:w-1/2 space-y-6">
                 <div>
                     <h2 class="text-2xl font-semibold text-indigo-600 mb-4" data-translate="aboutTitle">Over het project</h2>
-                    <p class="text-gray-700 mb-4" data-translate="gameAboutText">
-                        <span data-translate="gameEngineText">Dit is een spel dat ik heb ontwikkeld met behulp van</span>
-                        <strong>Excalibur.js</strong>,
-                        <span data-translate="gameDescriptionText">een 2D game-engine voor JavaScript. In het spel nemen twee spelers het tegen elkaar op in een racespel waarin snelheid en timing cruciaal zijn. Ik heb gewerkt met physics, collision detection en sprite-animaties om de game soepel te laten verlopen.</span>
+                    <p class="text-gray-700 mb-4" data-translate="animeCollectionAbout">
+                        Een dynamische website waar gebruikers hun favoriete anime-series kunnen beheren. Belangrijke kenmerken:
+                    <ul class="list-disc pl-5 mt-2">
+                        <li data-translate="animeFeature1">CRUD-functionaliteit</li>
+                        <li data-translate="animeFeature2">Database-integratie</li>
+                        <li data-translate="animeFeature3">User authentication</li>
+                    </ul>
                     </p>
                 </div>
 
@@ -99,21 +135,21 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="flex items-start gap-3">
                             <div class="feature-icon">
-                                <i class="fas fa-running text-white"></i>
+                                <i class="fas fa-database text-white"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold" data-translate="physicsTitle">Physics Engine</h4>
-                                <p class="text-sm text-gray-600" data-translate="physicsDesc">Realistische bewegingen en botsingen</p>
+                                <h4 class="font-semibold" data-translate="dbTitle">Database Management</h4>
+                                <p class="text-sm text-gray-600" data-translate="dbDesc">MySQL voor dataopslag</p>
                             </div>
                         </div>
 
                         <div class="flex items-start gap-3">
                             <div class="feature-icon">
-                                <i class="fas fa-users text-white"></i>
+                                <i class="fas fa-shield-alt text-white"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold" data-translate="multiplayerTitle">Multiplayer</h4>
-                                <p class="text-sm text-gray-600" data-translate="multiplayerDesc">Twee spelers lokaal</p>
+                                <h4 class="font-semibold" data-translate="securityTitle">Beveiliging</h4>
+                                <p class="text-sm text-gray-600" data-translate="securityDesc">Gehashte wachtwoorden</p>
                             </div>
                         </div>
                     </div>
@@ -123,8 +159,9 @@
                     <h3 class="text-xl font-medium text-indigo-500 mb-3" data-translate="techTitle">Technologie Stack</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="htmlTag">HTML</span>
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="jsTag">JavaScript</span>
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="excaliburTag">Excalibur</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="cssTag">CSS</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="phpTag">PHP</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="mysqlTag">MySQL</span>
                     </div>
                 </div>
             </div>
@@ -134,12 +171,12 @@
             <h3 class="text-xl font-semibold text-indigo-600 mb-4" data-translate="techHighlightsTitle">Technische hoogtepunten</h3>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-gray-50 p-4 rounded-lg">
-                    <h4 class="font-medium mb-2" data-translate="collisionTitle">🎮 Collision System</h4>
-                    <p class="text-sm text-gray-600" data-translate="collisionDesc">Geavanceerde botsingsdetectie</p>
+                    <h4 class="font-medium mb-2" data-translate="crudTitle">🔧 CRUD Operations</h4>
+                    <p class="text-sm text-gray-600" data-translate="crudDesc">Volledige data management mogelijkheden</p>
                 </div>
                 <div class="bg-gray-50 p-4 rounded-lg">
-                    <h4 class="font-medium mb-2" data-translate="animationTitle">🖌️ Animations</h4>
-                    <p class="text-sm text-gray-600" data-translate="animationDesc">Vloeiende sprite animaties</p>
+                    <h4 class="font-medium mb-2" data-translate="apiTitle">🚀 API Ready</h4>
+                    <p class="text-sm text-gray-600" data-translate="apiDesc">RESTful endpoints voor integratie</p>
                 </div>
             </div>
         </div>
@@ -172,7 +209,35 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="module">
-    import { currentLanguage, setLanguage, updateNavAnimations } from '../js/language.js';
+
+
+    window.openVideoModal = function() {
+        const modal = document.getElementById('videoModal');
+        const video = document.getElementById('demoVideo');
+        modal.classList.remove('hidden');
+        modal.classList.add('show');
+        video.play();
+    }
+
+    window.closeVideoModal = function() {
+        const modal = document.getElementById('videoModal');
+        const video = document.getElementById('demoVideo');
+        modal.classList.remove('show');
+        modal.classList.add('hidden');
+        video.pause();
+    }
+
+    // Voeg deze event listener toe
+    document.addEventListener('click', function(e) {
+        if(e.target.closest('#videoModal')) {
+            const modalContent = document.querySelector('#videoModal > div');
+            if(!modalContent.contains(e.target)) {
+                closeVideoModal();
+            }
+        }
+    });
+
+    import { currentLanguage, setLanguage, updateNavAnimations } from 'language.js';
 
     document.addEventListener('DOMContentLoaded', () => {
         // Initializeer animaties
@@ -199,7 +264,6 @@
     document.addEventListener("DOMContentLoaded", () => {
         setLanguage(currentLanguage);
 
-        // Animatie initialisatie
 
     });
 
