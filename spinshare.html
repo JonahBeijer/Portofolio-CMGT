@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-translate="spinShareTitle">SpinShare - Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../img/oog.png" type="image/png" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./img/oog.png" type="image/png" />
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
@@ -46,7 +46,7 @@
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
     <div class="flex items-center space-x-6">
-        <a href="../index.html"
+        <a href="./index.html"
            class="nav-link text-gray-700  font-medium"
            data-translate="navHome">Home</a>
         <a href="projecten.html"
@@ -80,7 +80,7 @@
         <div class="flex flex-col lg:flex-row gap-8">
             <div class="lg:w-1/2">
                 <div class="chat-preview">
-                    <img src="../img/spinshare.png" alt="SpinShare Screenshot" class="w-full h-auto object-cover" data-translate="spinShareImageAlt" data-translate-type="alt">
+                    <img src="./img/spinshare.png" alt="SpinShare Screenshot" class="w-full h-auto object-cover" data-translate="spinShareImageAlt" data-translate-type="alt">
                 </div>
                 <div class="pt-4 flex gap-4 items-center">
                     <a href="https://github.com/JonahBeijer/prg5-eindopdracht"
@@ -116,7 +116,7 @@
                     <!-- Video Container -->
                     <div class="relative w-full max-w-4xl bg-black rounded-xl overflow-hidden shadow-2xl">
                         <video controls class="w-full" id="demoVideo">
-                            <source src="../img/spinshare.mp4" type="video/mp4">
+                            <source src="./img/spinshare.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -242,7 +242,7 @@
         }
     });
 
-    import { currentLanguage, setLanguage, updateNavAnimations } from '../js/language.js';
+    import { currentLanguage, setLanguage, updateNavAnimations } from './language.js';
 
     document.addEventListener('DOMContentLoaded', () => {
         // Initializeer animaties

@@ -46,7 +46,7 @@
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
     <div class="flex items-center space-x-6">
-        <a href="../index.html"
+        <a href="./index.html"
            class="nav-link text-gray-700 font-medium"
            data-translate="navHome">Home</a>
         <a href="projecten.html"
@@ -80,7 +80,7 @@
         <div class="flex flex-col lg:flex-row gap-8">
             <div class="lg:w-1/2">
                 <div class="chat-preview">
-                    <img src="../img/animecollection.png" alt="Anime Collection Screenshot" class="w-full h-auto object-cover" data-translate="animeCollectionImageAlt" data-translate-type="alt">
+                    <img src="./img/animecollection.png" alt="Anime Collection Screenshot" class="w-full h-auto object-cover" data-translate="animeCollectionImageAlt" data-translate-type="alt">
                 </div>
                 <div class="pt-4 flex gap-4 items-center">
                     <button onclick="openVideoModal()"
@@ -110,7 +110,7 @@
                     <!-- Video Container -->
                     <div class="relative w-full max-w-4xl bg-black rounded-xl overflow-hidden shadow-2xl">
                         <video controls class="w-full" id="demoVideo">
-                            <source src="../img/animecollection.mp4" type="video/mp4">
+                            <source src="./img/animecollection.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -237,7 +237,7 @@
         }
     });
 
-    import { currentLanguage, setLanguage, updateNavAnimations } from 'language.js';
+    import { currentLanguage, setLanguage, updateNavAnimations } from './language.js';
 
     document.addEventListener('DOMContentLoaded', () => {
         // Initializeer animaties
