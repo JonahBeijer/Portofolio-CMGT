@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-translate="gamemanicTitle">Gamemaniac - Project Details</title>
+    <title data-translate="portfolioTitle">Mijn Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -17,7 +17,7 @@
             align-items: center;
             justify-content: center;
         }
-        .chat-preview {
+        .map-preview {
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 15px rgba(0,0,0,0.1);
@@ -39,11 +39,6 @@
             <span class="text-sm font-medium text-gray-700">NL</span>
             <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="langToggle" class="sr-only peer">
-                <script>
-                    const currentLanguage = 'en';
-                    const checkbox = document.getElementById('langToggle');
-                    checkbox.checked = currentLanguage === 'en';
-                </script>
                 <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
                 <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
             </label>
@@ -53,91 +48,86 @@
 </nav>
 
 <main class="p-8 max-w-7xl mx-auto">
-    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="gamemaniacTitle">Gamemaniac - Project Details</h1>
+    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="vintageAppTitle">Vintage Store Finder</h1>
 
     <div class="bg-white p-8 rounded-lg shadow-lg">
         <div class="flex flex-col lg:flex-row gap-8">
             <div class="lg:w-1/2">
-                <div class="chat-preview">
-                    <img src="../img/gamemaniac.png" alt="Gamemanic Screenshot" class="w-full h-auto object-cover">
+                <div class="map-preview">
+                    <img src="../img/vintageapp.PNG" alt="App preview" class="w-[300px] h-auto object-cover mr-10" data-translate="vintageAppImageAlt" data-translate-type="alt">
                 </div>
+            </div>
+
+            <div class="lg:w-1/2 space-y-6">
+                <div>
+                    <h2 class="text-2xl font-semibold text-indigo-600 mb-4" data-translate="aboutTitle">Over het project</h2>
+                    <p class="text-gray-700 mb-4" data-translate="vintageAbout">
+                        Een mobiele app ontwikkeld met React Native en Expo die vintage liefhebbers helpt bij het vinden van unieke tweedehands winkels. De app toont real-time openingsuren, locaties en laat gebruikers hun favoriete winkels opslaan.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-indigo-500" data-translate="featuresTitle">Belangrijkste functies</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-start gap-3">
+                            <div class="feature-icon">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold" data-translate="liveLocationsTitle">Live Locaties</h4>
+                                <p class="text-sm text-gray-600" data-translate="liveLocationsDesc">Toont alle vintage winkels in de buurt op een interactieve kaart</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold" data-translate="favoritesTitle">Favorieten</h4>
+                                <p class="text-sm text-gray-600" data-translate="favoritesDesc">Opslaan van favoriete winkels met offline toegang</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-medium text-indigo-500 mb-3" data-translate="techTitle">Technologieën</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Expo</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">React Native</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Firebase</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Google Maps API</span>
+                    </div>
+                </div>
+
                 <div class="pt-4 flex gap-4 items-center">
-                    <a href="https://github.com/JonahBeijer/herkansing-gamemaniac"
+                    <a href="https://github.com/JonahBeijer/vintage-store-finder"
                        target="_blank"
                        class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
                         <i class="fab fa-github"></i>
                         <span data-translate="viewCode">Bekijk code</span>
                     </a>
-                    <a href="https://jonahbeijer.github.io/herkansing-gamemaniac/"
+                    <a href="#"
                        class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
-                        <i class="fas fa-globe"></i>
-                        <span data-translate="liveDemo">Live Demo</span>
+                        <i class="fas fa-mobile-alt"></i>
+                        <span data-translate="demoApp">Demo app</span>
                     </a>
                 </div>
             </div>
-
-
-            <div class="lg:w-1/2 space-y-6">
-
-                <div>
-                    <h2 class="text-2xl font-semibold text-indigo-600 mb-4" data-translate="aboutTitle">Over het project</h2>
-                    <p class="text-gray-700 mb-4" data-translate="gamemaniacAbout">
-                        Een responsive game review website ontwikkeld met pure HTML en CSS. Belangrijke kenmerken:
-                    <ul class="list-disc pl-5 mt-2">
-                        <li data-translate="feature1">Mobile-first ontwerp</li>
-                        <li data-translate="feature2">CSS Grid en Flexbox lay-out</li>
-                        <li data-translate="feature3">Semantische HTML structuur</li>
-                    </ul>
-                    </p>
-                </div>
-
-                <div class="space-y-4">
-                    <h3 class="text-xl font-medium text-indigo-500" data-translate="featuresTitle">Kernfunctionaliteiten</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-start gap-3">
-                            <div class="feature-icon">
-                                <i class="fas fa-mobile-alt text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold" data-translate="responsiveTitle">Responsive Design</h4>
-                                <p class="text-sm text-gray-600" data-translate="responsiveDesc">Optimaal voor alle schermgroottes</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-3">
-                            <div class="feature-icon">
-                                <i class="fas fa-paint-brush text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold" data-translate="designTitle">Modern Design</h4>
-                                <p class="text-sm text-gray-600" data-translate="designDesc">CSS Animaties en transitions</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-medium text-indigo-500 mb-3" data-translate="techTitle">Technologie Stack</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">HTML</span>
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">CSS</span>
-                    </div>
-                </div>
-
-
-            </div>
         </div>
 
+        <!-- Technische highlights -->
         <div class="mt-8 pt-8 border-t border-gray-200">
-            <h3 class="text-xl font-semibold text-indigo-600 mb-4" data-translate="techHighlightsTitle">Technische hoogtepunten</h3>
+            <h3 class="text-xl font-semibold text-indigo-600 mb-4" data-translate="techHighlightsTitle">Technische highlights</h3>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-gray-50 p-4 rounded-lg">
-                    <h4 class="font-medium mb-2" data-translate="semanticTitle">📱 Responsive Layout</h4>
-                    <p class="text-sm text-gray-600" data-translate="semanticDesc">Werkt op alle apparaten en browsers</p>
+                    <h4 class="font-medium mb-2" data-translate="realtimeUpdatesTitle">📌 Real-time updates</h4>
+                    <p class="text-sm text-gray-600" data-translate="realtimeUpdatesDesc">Firebase Firestore voor live synchronisatie van winkelgegevens en openingsuren</p>
                 </div>
                 <div class="bg-gray-50 p-4 rounded-lg">
-                    <h4 class="font-medium mb-2" data-translate="performanceTitle">⚡ Performant</h4>
-                    <p class="text-sm text-gray-600" data-translate="performanceDesc">100/100 Lighthouse score</p>
+                    <h4 class="font-medium mb-2" data-translate="notificationsTitle">🔔 Notificaties</h4>
+                    <p class="text-sm text-gray-600" data-translate="notificationsDesc">Push notificaties voor favoriete winkels die binnenkort sluiten</p>
                 </div>
             </div>
         </div>
@@ -152,9 +142,8 @@
     <div class="max-w-7xl mx-auto flex justify-between items-center">
         <div class="flex flex-col">
             <p class="text-lg font-semibold" id="name">Jonah Beijer</p>
-            <p class="text-sm" id="study">Studie: CMGT</p>
+            <p class="text-sm" id="study" data-translate="studyText">Studie: CMGT</p>
         </div>
-
         <div class="flex space-x-6">
             <a href="https://github.com/JonahBeijer" class="hover:text-indigo-400" target="_blank">
                 <i class="fab fa-github fa-2x"></i>
@@ -173,18 +162,15 @@
 <script type="module">
     import { currentLanguage, setLanguage } from '../js/language.js';
 
-    AOS.init({
-        once: true,
-        duration: 600,
-        offset: 50,
-    });
+    AOS.init({ once: true, duration: 600, offset: 50 });
 
     document.addEventListener("DOMContentLoaded", () => {
         setLanguage(currentLanguage);
+        document.getElementById('langToggle').checked = currentLanguage === 'en';
     });
 
-    document.getElementById("langToggle").addEventListener("click", () => {
-        const newLang = currentLanguage === 'nl' ? 'en' : 'nl';
+    document.getElementById("langToggle").addEventListener("change", (e) => {
+        const newLang = e.target.checked ? 'en' : 'nl';
         setLanguage(newLang);
     });
 </script>

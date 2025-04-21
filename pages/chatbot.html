@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-translate="gamemanicTitle">Gamemaniac - Project Details</title>
+    <title data-translate="portfolioTitle">Mijn Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -39,8 +39,9 @@
             <span class="text-sm font-medium text-gray-700">NL</span>
             <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="langToggle" class="sr-only peer">
+
                 <script>
-                    const currentLanguage = 'en';
+                    const currentLanguage = 'en'; // of haal het uit localStorage, etc.
                     const checkbox = document.getElementById('langToggle');
                     checkbox.checked = currentLanguage === 'en';
                 </script>
@@ -53,40 +54,25 @@
 </nav>
 
 <main class="p-8 max-w-7xl mx-auto">
-    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="gamemaniacTitle">Gamemaniac - Project Details</h1>
+    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="llmChatbotTitle">AI News Analyzer</h1>
 
     <div class="bg-white p-8 rounded-lg shadow-lg">
         <div class="flex flex-col lg:flex-row gap-8">
             <div class="lg:w-1/2">
                 <div class="chat-preview">
-                    <img src="../img/gamemaniac.png" alt="Gamemanic Screenshot" class="w-full h-auto object-cover">
-                </div>
-                <div class="pt-4 flex gap-4 items-center">
-                    <a href="https://github.com/JonahBeijer/herkansing-gamemaniac"
-                       target="_blank"
-                       class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
-                        <i class="fab fa-github"></i>
-                        <span data-translate="viewCode">Bekijk code</span>
-                    </a>
-                    <a href="https://jonahbeijer.github.io/herkansing-gamemaniac/"
-                       class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
-                        <i class="fas fa-globe"></i>
-                        <span data-translate="liveDemo">Live Demo</span>
-                    </a>
+                    <img src="../img/chatbot.png" alt="Chatbot interface" class="w-full h-auto object-contain" data-translate="chatbotImageAlt" data-translate-type="alt">
                 </div>
             </div>
 
-
             <div class="lg:w-1/2 space-y-6">
-
                 <div>
                     <h2 class="text-2xl font-semibold text-indigo-600 mb-4" data-translate="aboutTitle">Over het project</h2>
-                    <p class="text-gray-700 mb-4" data-translate="gamemaniacAbout">
-                        Een responsive game review website ontwikkeld met pure HTML en CSS. Belangrijke kenmerken:
+                    <p class="text-gray-700 mb-4" data-translate="llmAbout">
+                        Een geavanceerde chatbot ontwikkeld met Azure OpenAI, geïntegreerd met een nieuws-API en vector databases. De AI kan:
                     <ul class="list-disc pl-5 mt-2">
-                        <li data-translate="feature1">Mobile-first ontwerp</li>
-                        <li data-translate="feature2">CSS Grid en Flexbox lay-out</li>
-                        <li data-translate="feature3">Semantische HTML structuur</li>
+                        <li data-translate="feature1">Real-time nieuws analyseren</li>
+                        <li data-translate="feature2">Verbanden leggen tussen verschillende bronnen</li>
+                        <li data-translate="feature3">Contextuele antwoorden genereren</li>
                     </ul>
                     </p>
                 </div>
@@ -96,21 +82,21 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="flex items-start gap-3">
                             <div class="feature-icon">
-                                <i class="fas fa-mobile-alt text-white"></i>
+                                <i class="fas fa-brain text-white"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold" data-translate="responsiveTitle">Responsive Design</h4>
-                                <p class="text-sm text-gray-600" data-translate="responsiveDesc">Optimaal voor alle schermgroottes</p>
+                                <h4 class="font-semibold" data-translate="nlpTitle">NLP Verwerking</h4>
+                                <p class="text-sm text-gray-600" data-translate="nlpDesc">Geavanceerde tekstanalyse met Azure OpenAI</p>
                             </div>
                         </div>
 
                         <div class="flex items-start gap-3">
                             <div class="feature-icon">
-                                <i class="fas fa-paint-brush text-white"></i>
+                                <i class="fas fa-database text-white"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold" data-translate="designTitle">Modern Design</h4>
-                                <p class="text-sm text-gray-600" data-translate="designDesc">CSS Animaties en transitions</p>
+                                <h4 class="font-semibold" data-translate="vectorTitle">Vector Database</h4>
+                                <p class="text-sm text-gray-600" data-translate="vectorDesc">Semantische zoekfuncties met FAISS indexering</p>
                             </div>
                         </div>
                     </div>
@@ -119,12 +105,26 @@
                 <div>
                     <h3 class="text-xl font-medium text-indigo-500 mb-3" data-translate="techTitle">Technologie Stack</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">HTML</span>
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">CSS</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Azure OpenAI</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Python</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">FAISS</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">NewsAPI</span>
                     </div>
                 </div>
 
-
+                <div class="pt-4 flex gap-4 items-center">
+                    <a href="https://github.com/JonahBeijer/llm-news-analyzer"
+                       target="_blank"
+                       class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                        <i class="fab fa-github"></i>
+                        <span data-translate="viewCode">Bekijk code</span>
+                    </a>
+                    <a href="#"
+                       class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+                        <i class="fas fa-comment"></i>
+                        <span data-translate="liveDemo">Live Demo</span>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -132,12 +132,12 @@
             <h3 class="text-xl font-semibold text-indigo-600 mb-4" data-translate="techHighlightsTitle">Technische hoogtepunten</h3>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-gray-50 p-4 rounded-lg">
-                    <h4 class="font-medium mb-2" data-translate="semanticTitle">📱 Responsive Layout</h4>
-                    <p class="text-sm text-gray-600" data-translate="semanticDesc">Werkt op alle apparaten en browsers</p>
+                    <h4 class="font-medium mb-2" data-translate="apiIntegrationTitle">🔗 API Integratie</h4>
+                    <p class="text-sm text-gray-600" data-translate="apiIntegrationDesc">Real-time nieuwsdata ophalen van 15+ bronnen</p>
                 </div>
                 <div class="bg-gray-50 p-4 rounded-lg">
-                    <h4 class="font-medium mb-2" data-translate="performanceTitle">⚡ Performant</h4>
-                    <p class="text-sm text-gray-600" data-translate="performanceDesc">100/100 Lighthouse score</p>
+                    <h4 class="font-medium mb-2" data-translate="contextualTitle">🎯 Contextueel Begrip</h4>
+                    <p class="text-sm text-gray-600" data-translate="contextualDesc">Semantische matching met 95% nauwkeurigheid</p>
                 </div>
             </div>
         </div>
@@ -150,11 +150,13 @@
 
 <footer class="bg-indigo-600 text-white py-6 mt-10">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <!-- Left Side: Name and Study -->
         <div class="flex flex-col">
             <p class="text-lg font-semibold" id="name">Jonah Beijer</p>
             <p class="text-sm" id="study">Studie: CMGT</p>
         </div>
 
+        <!-- Right Side: Social Links with Icons -->
         <div class="flex space-x-6">
             <a href="https://github.com/JonahBeijer" class="hover:text-indigo-400" target="_blank">
                 <i class="fab fa-github fa-2x"></i>
@@ -168,25 +170,28 @@
         </div>
     </div>
 </footer>
-
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="module">
     import { currentLanguage, setLanguage } from '../js/language.js';
 
+    // Initialize animations
     AOS.init({
         once: true,
         duration: 600,
         offset: 50,
     });
 
+    // Set initial language
     document.addEventListener("DOMContentLoaded", () => {
         setLanguage(currentLanguage);
     });
 
+    // Handle language toggle
     document.getElementById("langToggle").addEventListener("click", () => {
         const newLang = currentLanguage === 'nl' ? 'en' : 'nl';
         setLanguage(newLang);
     });
+
 </script>
 </body>
 </html>
