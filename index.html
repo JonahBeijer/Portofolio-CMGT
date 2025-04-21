@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
+    <title data-translate="portfolioTitle">Mijn Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="./img/oog.png" type="image/png" />
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
@@ -137,13 +138,13 @@
 
     <div class="flex items-center space-x-6">
         <a href="index.html"
-           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           class="nav-link text-gray-700  font-medium"
            data-translate="navHome">Home</a>
         <a href="pages/projecten.html"
-           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           class="nav-link text-gray-700  font-medium"
            data-translate="navProjects">Projecten</a>
         <a href="pages/programeertalen.html"
-           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           class="nav-link text-gray-700 font-medium"
            data-translate="navLanguages">Programmeertalen</a>
 
         <!-- Taalwissel toggle -->
@@ -287,7 +288,23 @@
 </footer>
 
 <script type="module">
-    import {translations, currentLanguage, setLanguage} from './js/language.js';
+    import { currentLanguage, setLanguage, updateNavAnimations } from './js/language.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initializeer animaties
+        updateNavAnimations();
+
+        // Taalwissel handler
+        document.getElementById('langToggle').addEventListener('change', (e) => {
+            const newLang = e.target.checked ? 'en' : 'nl';
+            setLanguage(newLang);
+        });
+    });
+
+    // Herinitialiseer animaties bij elke taalverandering
+    document.addEventListener('languageChanged', () => {
+        setTimeout(updateNavAnimations, 50);
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
         // Initialize language
@@ -318,13 +335,7 @@
     document.addEventListener("DOMContentLoaded", () => {
         setLanguage(currentLanguage);
 
-        // Animatie initialisatie
-        document.querySelectorAll('.nav-link').forEach(link => {
-            const text = link.textContent.trim();
-            link.innerHTML = text.split('').map((char, index) =>
-                `<span class="char" style="transition-delay: ${index * 30}ms">${char}</span>`
-            ).join('');
-        });
+
     });
 
 

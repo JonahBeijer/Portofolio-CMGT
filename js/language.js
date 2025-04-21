@@ -374,6 +374,7 @@ I’m 20 years old and an enthusiastic developer with a strong passion for build
 export let currentLanguage = localStorage.getItem("language") || "nl";
 
 export function setLanguage(lang) {
+    updateNavAnimations();
     const t = translations[lang];
     document.documentElement.lang = lang;
     document.getElementById('langToggle').checked = lang === 'en';
@@ -443,6 +444,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+
+
+
+export function updateNavAnimations() {
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const text = link.textContent.trim();
+        link.innerHTML = text.split('').map((char, index) =>
+            `<span class="char" style="--delay: ${index * 30}ms">${char}</span>`
+        ).join('');
+    });
+}
 
 // Language switcher
 document.getElementById("langToggle")?.addEventListener("change", (e) => {

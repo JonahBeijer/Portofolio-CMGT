@@ -6,6 +6,8 @@
     <title data-translate="gamePageTitle">Game - Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../img/oog.png" type="image/png" />
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         .feature-icon {
@@ -30,13 +32,13 @@
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
     <div class="flex items-center space-x-6">
         <a href="../index.html"
-           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           class="nav-link text-gray-700  font-medium"
            data-translate="navHome">Home</a>
         <a href="projecten.html"
-           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           class="nav-link text-gray-700 font-medium"
            data-translate="navProjects">Projecten</a>
         <a href="programeertalen.html"
-           class="nav-link text-gray-700 hover:text-indigo-500 font-medium"
+           class="nav-link text-gray-700  font-medium"
            data-translate="navLanguages">Programmeertalen</a>
 
         <div class="flex items-center gap-2">
@@ -63,10 +65,9 @@
         <div class="flex flex-col lg:flex-row gap-8">
             <div class="lg:w-1/2">
                 <div class="chat-preview">
-                    <video controls class="w-full h-auto object-cover">
-                        <source src="../img/game.mp4" type="video/mp4">
-                        <span data-translate="videoNotSupported">Je browser ondersteunt de video tag niet.</span>
-                    </video>
+                    <div class="chat-preview">
+                        <img src="../img/game.png" alt="Game Screenshot" class="w-full h-auto object-cover">
+                    </div>
                 </div>
                 <div class="pt-4 flex gap-4 items-center">
                     <a href="https://github.com/JonahBeijer/startproject-prg4"
@@ -171,7 +172,23 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="module">
-    import { currentLanguage, setLanguage } from '../js/language.js';
+    import { currentLanguage, setLanguage, updateNavAnimations } from '../js/language.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initializeer animaties
+        updateNavAnimations();
+
+        // Taalwissel handler
+        document.getElementById('langToggle').addEventListener('change', (e) => {
+            const newLang = e.target.checked ? 'en' : 'nl';
+            setLanguage(newLang);
+        });
+    });
+
+    // Herinitialiseer animaties bij elke taalverandering
+    document.addEventListener('languageChanged', () => {
+        setTimeout(updateNavAnimations, 50);
+    });
 
     AOS.init({
         once: true,
@@ -183,12 +200,7 @@
         setLanguage(currentLanguage);
 
         // Animatie initialisatie
-        document.querySelectorAll('.nav-link').forEach(link => {
-            const text = link.textContent.trim();
-            link.innerHTML = text.split('').map((char, index) =>
-                `<span class="char" style="transition-delay: ${index * 30}ms">${char}</span>`
-            ).join('');
-        });
+
     });
 
 
