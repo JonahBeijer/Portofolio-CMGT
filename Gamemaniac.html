@@ -180,7 +180,7 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="module">
-    import { currentLanguage, setLanguage, updateNavAnimations } from 'language.js';
+    import { currentLanguage, setLanguage, updateNavAnimations } from './language.js';
 
     document.addEventListener('DOMContentLoaded', () => {
         // Initializeer animaties
@@ -214,6 +214,8 @@
         const newLang = currentLanguage === 'nl' ? 'en' : 'nl';
         setLanguage(newLang);
     });
+
+
 </script>
 </body>
 </html>

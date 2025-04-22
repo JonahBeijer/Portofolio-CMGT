@@ -178,7 +178,24 @@ export const translations = {
         jsxTag: "JSX",
         meerkatImageAlt: "Meerkat Gaming schermafbeelding",
         projectCardDescVintageApp: "stront",
-        projectCardDescChatbot: "homo"
+        projectCardDescChatbot: "homo",
+        resBeijerTitle: "ResBeijer - Projectdetails",
+        resBeijerAbout: "Een afsprakenreserveringssysteem voor een elektrotechniekbedrijf met:",
+        resFeature1: "Afspraakbeheer",
+        resFeature2: "Unieke reserveringscodes",
+        resFeature3: "Admin dashboard",
+        bookingTitle: "Afspraken",
+        bookingDesc: "Online reserveringssysteem",
+        adminTitle: "Admin Paneel",
+        adminDesc: "Afspraken beheren en afvinken",
+        codeTitle: "🔑 Unieke Codes",
+        codeDesc: "Automatische reserveringscode generatie",
+        statusTitle: "📊 Status Tracking",
+        statusDesc: "Real-time afspraakstatus updates",
+        resBeijerImageAlt: "ResBeijer schermafbeelding",
+        projectCardDescResBeijer: "Reserveringssysteem voor elektrotechniek bedrijf met admin paneel",
+        recent: "Recentere werk",
+        older: "Vroegere projecten",
 
 
 
@@ -364,9 +381,24 @@ I’m 20 years old and an enthusiastic developer with a strong passion for build
         jsxTag: "JSX",
         meerkatImageAlt: "Meerkat Gaming screenshot",
         projectCardDescVintageApp: "shit",
-        projectCardDescChatbot: "gay"
-
-
+        projectCardDescChatbot: "gay",
+        resBeijerTitle: "ResBeijer - Project Details",
+        resBeijerAbout: "An appointment reservation system for an electrical engineering company with:",
+        resFeature1: "Appointment management",
+        resFeature2: "Unique reservation codes",
+        resFeature3: "Admin dashboard",
+        bookingTitle: "Appointments",
+        bookingDesc: "Online reservation system",
+        adminTitle: "Admin Panel",
+        adminDesc: "Manage and check off appointments",
+        codeTitle: "🔑 Unique Codes",
+        codeDesc: "Automatic reservation code generation",
+        statusTitle: "📊 Status Tracking",
+        statusDesc: "Real-time appointment status updates",
+        resBeijerImageAlt: "ResBeijer screenshot",
+        projectCardDescResBeijer: "Reservation system for electrical engineering company with admin panel",
+        recent: "Recent work",
+        older: "Older projects",
 
     }
 };
