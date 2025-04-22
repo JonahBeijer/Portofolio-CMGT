@@ -113,6 +113,19 @@
 
 <!-- ✅ Project Cards Container -->
 <main class="p-8 max-w-7xl mx-auto">
+    <div class="fixed left-4 top-1/2 -translate-y-1/2 opacity-100 z-20">
+        <div class="flex flex-col items-center space-y-2">
+            <i class="fas fa-arrow-down text-3xl text-indigo-600"></i>
+            <span class="text-indigo-600 font-semibold uppercase text-sm" data-translate="recent">Recentere werk</span>
+        </div>
+    </div>
+
+    <div class="fixed right-4 top-1/2 -translate-y-1/2 opacity-100  z-20">
+        <div class="flex flex-col items-center space-y-2">
+            <i class="fas fa-arrow-up text-3xl text-indigo-600"></i>
+            <span class="text-indigo-600 font-semibold uppercase text-sm" data-translate="older">Vroegere projecten </span>
+        </div>
+    </div>
     <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="projectsTitle">Mijn Projecten</h1>
     <div id="projects" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3"></div>
 </main>
