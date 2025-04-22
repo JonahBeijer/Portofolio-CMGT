@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-translate="resBeijerTitle">ResBeijer - Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: #4F46E5;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chat-preview {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
+
+<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+    <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
+    <div class="flex items-center space-x-6">
+        <a href="./index.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navHome">Home</a>
+        <a href="projecten.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navProjects">Projecten</a>
+        <a href="programeertalen.html" class="text-gray-700 hover:text-indigo-500 font-medium" data-translate="navLanguages">Programmeertalen</a>
+        <div class="flex items-center gap-2">
+            <span class="text-sm font-medium text-gray-700" data-translate="nlLabel">NL</span>
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="langToggle" class="sr-only peer">
+                <script>
+                    const currentLanguage = 'en';
+                    const checkbox = document.getElementById('langToggle');
+                    checkbox.checked = currentLanguage === 'en';
+                </script>
+                <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
+                <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
+            </label>
+            <span class="text-sm font-medium text-gray-700" data-translate="enLabel">EN</span>
+        </div>
+    </div>
+</nav>
+
+<main class="p-8 max-w-7xl mx-auto">
+    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="resBeijerTitle">ResBeijer - Project Details</h1>
+
+    <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <div class="lg:w-1/2">
+                <div class="chat-preview">
+                    <img src="./img/resbeijer.png" alt="ResBeijer Screenshot" class="w-full h-auto object-cover" data-translate="resBeijerImageAlt" data-translate-type="alt">
+                </div>
+                <div class="pt-4 flex gap-4 items-center">
+                    <a href="https://github.com/mauricevf/CLE-Project2"
+                       target="_blank"
+                       class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                        <i class="fab fa-github"></i>
+                        <span data-translate="viewCode">Bekijk code</span>
+                    </a>
+                    <a href="https://project.hosted.hr.nl/2023_2024/ressys_t8/index.php"
+                       class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+                        <i class="fas fa-globe"></i>
+                        <span data-translate="liveDemo">Live Demo</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2 space-y-6">
+                <div>
+                    <h2 class="text-2xl font-semibold text-indigo-600 mb-4" data-translate="aboutTitle">Over het project</h2>
+                    <p class="text-gray-700 mb-4" data-translate="resBeijerAbout">
+                        Een afsprakenreserveringssysteem voor een elektrotechniekbedrijf met:
+                    <ul class="list-disc pl-5 mt-2">
+                        <li data-translate="resFeature1">Afspraakbeheer</li>
+                        <li data-translate="resFeature2">Unieke reserveringscodes</li>
+                        <li data-translate="resFeature3">Admin dashboard</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-indigo-500" data-translate="featuresTitle">Kernfunctionaliteiten</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-start gap-3">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-check text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold" data-translate="bookingTitle">Afspraken</h4>
+                                <p class="text-sm text-gray-600" data-translate="bookingDesc">Online reserveringssysteem</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-shield text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold" data-translate="adminTitle">Admin Paneel</h4>
+                                <p class="text-sm text-gray-600" data-translate="adminDesc">Afspraken beheren en afvinken</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-medium text-indigo-500 mb-3" data-translate="techTitle">Technologie Stack</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="phpTag">PHP</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="mysqlTag">MySQL</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="jsTag">JavaScript</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="htmlTag">HTML</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="cssTag">CSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-gray-200">
+            <h3 class="text-xl font-semibold text-indigo-600 mb-4" data-translate="techHighlightsTitle">Technische hoogtepunten</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-medium mb-2" data-translate="codeTitle">🔑 Unieke Codes</h4>
+                    <p class="text-sm text-gray-600" data-translate="codeDesc">Automatische reserveringscode generatie</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-medium mb-2" data-translate="statusTitle">📊 Status Tracking</h4>
+                    <p class="text-sm text-gray-600" data-translate="statusDesc">Real-time afspraakstatus updates</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <a href="projecten.html" class="text-blue-500 hover:underline" data-translate="backLink">← Terug naar projecten</a>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-indigo-600 text-white py-6 mt-10">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex flex-col">
+            <p class="text-lg font-semibold" data-translate="name">Jonah Beijer</p>
+            <p class="text-sm" data-translate="studyText">Studie: CMGT</p>
+        </div>
+        <div class="flex space-x-6">
+            <a href="https://github.com/JonahBeijer" class="hover:text-indigo-400" target="_blank">
+                <i class="fab fa-github fa-2x"></i>
+            </a>
+            <a href="mailto:jonahbeijer@gmail.com" class="hover:text-indigo-400">
+                <i class="fas fa-envelope fa-2x"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jonah-beijer/" class="hover:text-indigo-400" target="_blank">
+                <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script type="module">
+    import { currentLanguage, setLanguage, updateNavAnimations } from './language.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initializeer animaties
+        updateNavAnimations();
+
+        // Taalwissel handler
+        document.getElementById('langToggle').addEventListener('change', (e) => {
+            const newLang = e.target.checked ? 'en' : 'nl';
+            setLanguage(newLang);
+        });
+    });
+
+    // Herinitialiseer animaties bij elke taalverandering
+    document.addEventListener('languageChanged', () => {
+        setTimeout(updateNavAnimations, 50);
+    });
+
+    AOS.init({
+        once: true,
+        duration: 600,
+        offset: 50,
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        setLanguage(currentLanguage);
+
+
+    });
+
+
+    document.getElementById("langToggle").addEventListener("click", () => {
+        const newLang = currentLanguage === 'nl' ? 'en' : 'nl';
+        setLanguage(newLang);
+    });
+</script>
+</body>
+</html>
