@@ -522,3 +522,5 @@ document.getElementById("langToggle")?.addEventListener("change", (e) => {
     setLanguage(currentLanguage);
 });
 
+
+

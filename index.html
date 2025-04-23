@@ -295,35 +295,65 @@
          alt="Loading..."
          class="w-20 h-20 animate-spin">
 </div>
-<nav class="bg-white shadow-md py-4 px-4 md:px-6 flex flex-col md:flex-row justify-between items-center">
+<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center relative z-[1000]">
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
 
-    <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6">
-        <a href="index.html"
-           class="nav-link text-gray-700  font-medium"
-           data-translate="navHome">Home</a>
-        <a href="projecten.html"
-           class="nav-link text-gray-700  font-medium"
-           data-translate="navProjects">Projecten</a>
-        <a href="programeertalen.html"
-           class="nav-link text-gray-700 font-medium"
-           data-translate="navLanguages">Programmeertalen</a>
+    <!-- Hamburger menu knop -->
+    <button id="mobileMenuButton" class="md:hidden focus:outline-none transition-transform duration-300 hover:scale-110">
+        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
 
-        <!-- Taalwissel toggle -->
-        <div class="flex items-center gap-2 order-2 md:order-none">
+    <!-- Desktop menu -->
+    <div class="hidden md:flex items-center space-x-6">
+        <a href="./index.html" class="nav-link text-gray-700 font-medium relative" data-translate="navHome">Home</a>
+        <a href="projecten.html" class="nav-link text-gray-700 font-medium relative" data-translate="navProjects">Projecten</a>
+        <a href="programeertalen.html" class="nav-link text-gray-700 font-medium relative" data-translate="navLanguages">Programmeertalen</a>
+
+        <!-- Taalwisselaar -->
+        <div class="flex items-center gap-2">
             <span class="text-sm font-medium text-gray-700">NL</span>
             <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="langToggle" class="sr-only peer">
-
-                <script>
-                    const currentLanguage = 'en'; // of haal het uit localStorage, etc.
-                    const checkbox = document.getElementById('langToggle');
-                    checkbox.checked = currentLanguage === 'en';
-                </script>
                 <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
                 <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
             </label>
             <span class="text-sm font-medium text-gray-700">EN</span>
+        </div>
+    </div>
+
+    <!-- Mobiel menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-white hidden md:hidden z-[1000]">
+        <div class="container mx-auto px-4 py-8 flex flex-col items-center h-full">
+            <!-- Sluitknop -->
+            <div class="w-full flex justify-end mb-8">
+                <button id="closeMenuButton" class="text-indigo-600 hover:text-indigo-800 transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Menu items -->
+            <nav class="flex flex-col items-center space-y-6 w-full">
+                <a href="./index.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navHome">Home</a>
+                <a href="projecten.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navProjects">Projecten</a>
+                <a href="programeertalen.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navLanguages">Programmeertalen</a>
+
+                <!-- Taalwisselaar mobiel -->
+                <div class="mt-8 pt-8 border-t border-gray-200 w-full max-w-xs text-center">
+                    <div class="flex items-center justify-center gap-4">
+                        <span class="text-sm font-medium text-gray-700">NL</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="mobileLangToggle" class="sr-only peer">
+                            <div class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-indigo-600 transition-colors duration-300"></div>
+                            <div class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-6 shadow-md"></div>
+                        </label>
+                        <span class="text-sm font-medium text-gray-700">EN</span>
+                    </div>
+                </div>
+            </nav>
         </div>
     </div>
 </nav>
@@ -491,24 +521,63 @@
     });
 
 
+    document.addEventListener('DOMContentLoaded', () => {
+        // Menu functionaliteit
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const closeMenuButton = document.getElementById('closeMenuButton');
 
-
-    // Update de achtergrond bij resizen
-    let vantaEffect = VANTA.CLOUDS({
-        el: ".mindmap-container",
-        mouseControls: false,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        skyColor: 0x53ed,
-    })
-
-    window.addEventListener('resize', () => {
-        if(vantaEffect) {
-            vantaEffect.resize();
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+            mobileMenuButton.classList.toggle('active');
         }
-    });
+
+        [mobileMenuButton, mobileMenuOverlay, closeMenuButton].forEach(element => {
+            element.addEventListener('click', toggleMobileMenu);
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                mobileMenu.classList.remove('active');
+                mobileMenu.classList.add('hidden');
+                mobileMenuOverlay.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        });
+
+        // Taalwisselaar
+        document.getElementById('langToggle').addEventListener('change', (e) => {
+            const newLang = e.target.checked ? 'en' : 'nl';
+            setLanguage(newLang);
+        });
+
+        document.getElementById('mobileLangToggle').addEventListener('change', (e) => {
+            document.getElementById('langToggle').checked = e.target.checked;
+            document.getElementById('langToggle').dispatchEvent(new Event('change'));
+        });
+
+        // Update de achtergrond bij resizen
+        let vantaEffect = VANTA.CLOUDS({
+            el: ".mindmap-container",
+            mouseControls: false,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            skyColor: 0x53ed,
+        })
+
+        window.addEventListener('resize', () => {
+            if (vantaEffect) {
+                vantaEffect.resize();
+            }
+        });
+
+    })
 </script>
 </body>
 <footer class="bg-white text-indigo-600 py-6 px-4">

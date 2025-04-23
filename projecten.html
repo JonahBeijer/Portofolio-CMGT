@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+        /* Animatie stijlen */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -22,18 +23,9 @@
         }
 
         @keyframes dropFall {
-            0% {
-                opacity: 0;
-                transform: translateY(-200px) scale(0.8);
-            }
-            70% {
-                opacity: 1;
-                transform: translateY(20px) scale(1.05);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            0% { opacity: 0; transform: translateY(-200px) scale(0.8); }
+            70% { opacity: 1; transform: translateY(20px) scale(1.05); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .project-card {
@@ -43,70 +35,36 @@
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
             transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
             will-change: transform;
-
         }
 
         .project-card:hover {
-            transform:
-                    perspective(1000px)
-                    translateZ(30px)
-                    scale(1.02)
-                    rotateZ(0.5deg);
-            box-shadow:
-                    0 25px 40px rgba(0,0,0,0.15),
-                    0 0 50px rgba(79, 70, 229, 0.1);
+            transform: perspective(1000px) translateZ(30px) scale(1.02) rotateZ(0.5deg);
+            box-shadow: 0 25px 40px rgba(0,0,0,0.15), 0 0 50px rgba(79, 70, 229, 0.1);
         }
 
-        .project-card:hover *:not(img) {
-            transform: translateZ(15px);
-            transition: transform 0.3s ease-out;
-        }
-
-        .project-card:hover img {
-            transform: scale(1.05) translateZ(10px);
-        }
-
-        /* Voeg diepte toe aan de tags */
-        .project-card:hover .tech-tag {
-            transform: translateZ(15px);
-        }
-
-        /* Voeg transition toe voor soepel animeren */
-        #mobile-menu {
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            transform-origin: top;
-        }
-
-        /* Voeg deze toe aan je bestaande media queries */
-        @media (max-width: 768px) {
-            .nav-link {
-                padding: 12px 0;
-            }
-
-            #mobile-menu {
-                z-index: 50;
-                top: 100%;
-                left: 0;
-                right: 0;
-            }
-        }
 
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
 
-<!-- ✅ Navbar -->
-<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
-    <!-- Logo -->
+<!-- Navigatiebalk -->
+<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center relative z-[1000]">
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
 
-    <!-- Desktop Menu (hidden op mobiel) -->
-    <div class="hidden md:flex items-center space-x-6">
-        <a href="./index.html" class="nav-link text-gray-700 font-medium" data-translate="navHome">Home</a>
-        <a href="projecten.html" class="nav-link text-gray-700 font-medium" data-translate="navProjects">Projecten</a>
-        <a href="programeertalen.html" class="nav-link text-gray-700 font-medium" data-translate="navLanguages">Programmeertalen</a>
+    <!-- Hamburger menu knop -->
+    <button id="mobileMenuButton" class="md:hidden focus:outline-none transition-transform duration-300 hover:scale-110">
+        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
 
-        <!-- Taalwissel toggle -->
+    <!-- Desktop menu -->
+    <div class="hidden md:flex items-center space-x-6">
+        <a href="./index.html" class="nav-link text-gray-700 font-medium relative" data-translate="navHome">Home</a>
+        <a href="projecten.html" class="nav-link text-gray-700 font-medium relative" data-translate="navProjects">Projecten</a>
+        <a href="programeertalen.html" class="nav-link text-gray-700 font-medium relative" data-translate="navLanguages">Programmeertalen</a>
+
+        <!-- Taalwisselaar -->
         <div class="flex items-center gap-2">
             <span class="text-sm font-medium text-gray-700">NL</span>
             <label class="relative inline-flex items-center cursor-pointer">
@@ -118,40 +76,49 @@
         </div>
     </div>
 
-    <!-- Hamburger Icon (alleen zichtbaar op mobiel) -->
-    <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-    </button>
-</nav>
+    <!-- Mobiel menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-white hidden md:hidden z-[1000]">
+        <div class="container mx-auto px-4 py-8 flex flex-col items-center h-full">
+            <!-- Sluitknop -->
+            <div class="w-full flex justify-end mb-8">
+                <button id="closeMenuButton" class="text-indigo-600 hover:text-indigo-800 transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
 
-<!-- Mobile Menu (hidden by default) -->
-<div id="mobile-menu" class="md:hidden absolute w-full bg-white shadow-lg hidden">
-    <div class="px-4 py-2 space-y-4">
-        <a href="./index.html" class="block nav-link text-gray-700 font-medium" data-translate="navHome">Home</a>
-        <a href="projecten.html" class="block nav-link text-gray-700 font-medium" data-translate="navProjects">Projecten</a>
-        <a href="programeertalen.html" class="block nav-link text-gray-700 font-medium" data-translate="navLanguages">Programmeertalen</a>
+            <!-- Menu items -->
+            <nav class="flex flex-col items-center space-y-6 w-full">
+                <a href="./index.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navHome">Home</a>
+                <a href="projecten.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navProjects">Projecten</a>
+                <a href="programeertalen.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navLanguages">Programmeertalen</a>
 
-        <!-- Taalwissel toggle mobiel -->
-        <div class="flex items-center gap-2 pt-4 border-t border-gray-100">
-            <span class="text-sm font-medium text-gray-700">NL</span>
-            <label class="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" id="langToggleMobile" class="sr-only peer">
-                <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
-                <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
-            </label>
-            <span class="text-sm font-medium text-gray-700">EN</span>
+                <!-- Taalwisselaar mobiel -->
+                <div class="mt-8 pt-8 border-t border-gray-200 w-full max-w-xs text-center">
+                    <div class="flex items-center justify-center gap-4">
+                        <span class="text-sm font-medium text-gray-700">NL</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="mobileLangToggle" class="sr-only peer">
+                            <div class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-indigo-600 transition-colors duration-300"></div>
+                            <div class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-6 shadow-md"></div>
+                        </label>
+                        <span class="text-sm font-medium text-gray-700">EN</span>
+                    </div>
+                </div>
+            </nav>
         </div>
     </div>
-</div>
+</nav>
 
+<!-- Overlay voor mobiel menu -->
+<div id="mobileMenuOverlay" class="fixed inset-0 bg-black/50 z-[999] hidden"></div>
 
-<div id="vanta-bg" class="pb-20 "></div>
+<!-- Achtergrond animatie -->
+<div id="vanta-bg" class="pb-20"></div>
 
-<!-- ✅ Project Cards Container -->
+<!-- Hoofdcontent -->
 <main class="p-8 max-w-7xl mx-auto">
-
     <div class="fixed left-4 top-1/2 -translate-y-1/2 opacity-100 z-20">
         <div class="flex flex-col items-center space-y-2">
             <i class="fas fa-arrow-down text-3xl text-indigo-600"></i>
@@ -159,25 +126,24 @@
         </div>
     </div>
 
-    <div class="fixed right-4 top-1/2 -translate-y-1/2 opacity-100  z-20">
+    <div class="fixed right-4 top-1/2 -translate-y-1/2 opacity-100 z-20">
         <div class="flex flex-col items-center space-y-2">
             <i class="fas fa-arrow-up text-3xl text-indigo-600"></i>
-            <span class="text-indigo-600 font-semibold uppercase text-sm" data-translate="older">Vroegere projecten </span>
+            <span class="text-indigo-600 font-semibold uppercase text-sm" data-translate="older">Vroegere projecten</span>
         </div>
     </div>
+
     <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="projectsTitle">Mijn Projecten</h1>
     <div id="projects" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3"></div>
 </main>
 
+<!-- Footer -->
 <footer class="bg-white text-indigo-600 py-6 mt-10">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <!-- Left Side: Name and Study -->
         <div class="flex flex-col">
             <p class="text-lg font-semibold" id="name">Jonah Beijer</p>
             <p class="text-sm" id="study">Studie: CMGT</p>
         </div>
-
-        <!-- Right Side: Social Links with Icons -->
         <div class="flex space-x-6">
             <a href="https://github.com/JonahBeijer" class="hover:text-indigo-400" target="_blank">
                 <i class="fab fa-github fa-2x"></i>
@@ -192,29 +158,11 @@
     </div>
 </footer>
 
-
-<!-- ✅ AOS Animation Library -->
-
-<!-- ✅ Combined Module Script -->
+<!-- Scripts -->
 <script type="module">
-    // Absolute pad voor GitHub Pages
-    import { currentLanguage, setLanguage, translations, updateNavAnimations  } from './language.js';
-    document.addEventListener('DOMContentLoaded', () => {
-        // Initializeer animaties
-        updateNavAnimations();
+    import { currentLanguage, setLanguage, translations, updateNavAnimations } from './language.js';
 
-        // Taalwissel handler
-        document.getElementById('langToggle').addEventListener('change', (e) => {
-            const newLang = e.target.checked ? 'en' : 'nl';
-            setLanguage(newLang);
-        });
-    });
-
-    // Herinitialiseer animaties bij elke taalverandering
-    document.addEventListener('languageChanged', () => {
-        setTimeout(updateNavAnimations, 50);
-    });
-    // Project data with translation keys
+    // Project data
     const projectsData = [
         {
             id: "Gamemaniac",
@@ -290,164 +238,107 @@
             image: "./img/chatbot.png",
             tags: ["HTML" , "CSS" , "JavaScript"]
         },
+
     ];
 
+    // Render projecten
+    function renderProjects(lang) {
+        const projectsContainer = document.getElementById("projects");
+        const t = translations[lang];
+        projectsContainer.innerHTML = '';
 
-
-// Pas de renderProjects functie aan:
-function renderProjects(lang) {
-const projectsContainer = document.getElementById("projects");
-const t = translations[lang];
-
-projectsContainer.innerHTML = '';
-
-projectsData.forEach((project, index) => {
-const tagsHTML = project.tags.map(tag =>
-`<span class="inline-block bg-indigo-600 rounded-full px-3 py-1 text-xs font-semibold text-white mr-2 mb-2 transition-colors hover:bg-indigo-700">${tag}</span>`
-).join('');
-
-const projectCard = document.createElement("div");
-projectCard.className = "project-card bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:shadow-xl";
-
-// Animation delay voor cascade effect
-projectCard.style.animationDelay = `${index * 0.15}s`;
-
-    projectCard.innerHTML = `
-    <div class="relative overflow-hidden group">
-        <img class="w-full h-48 object-contain bg-white transform transition duration-300"
-             src="${project.image}"
-             alt="${project.title}">
-    </div>
-    <div class="p-6 space-y-4">
-        <h3 class="text-xl font-semibold text-white transform transition-transform">${project.title}</h3>
-        <div class="flex flex-wrap gap-2">
-            ${tagsHTML}
-        </div>
-        <p class="text-gray-400 text-base leading-relaxed transform transition-transform">
-            ${t[project.descriptionKey]}
-        </p>
-        <a href="${project.page}"
-           class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors
-                  transform transition-transform hover:translate-x-2">
-            ${translations[lang].projectDetailsLink} →
-        </a>
-    </div>
-
-`;
-
-projectsContainer.appendChild(projectCard);
-});
-}
-
-    document.addEventListener('DOMContentLoaded', () => {
-        renderProjects(currentLanguage);
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            const text = link.textContent.trim();
-            link.innerHTML = text.split('').map((char, index) =>
-                `<span class="char" style="transition-delay: ${index * 30}ms">${char}</span>`
+        projectsData.forEach((project, index) => {
+            const tagsHTML = project.tags.map(tag =>
+                `<span class="inline-block bg-indigo-600 rounded-full px-3 py-1 text-xs font-semibold text-white mr-2 mb-2 transition-colors hover:bg-indigo-700">${tag}</span>`
             ).join('');
-        });
 
-        document.querySelectorAll('.project-card').forEach(card => {
-            let isHovered = false;
-            const speed = 15; // Lagere waarde = meer beweging
+            const projectCard = document.createElement("div");
+            projectCard.className = "project-card bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:shadow-xl";
+            projectCard.style.animationDelay = `${index * 0.15}s`;
 
-            card.addEventListener('mouseenter', () => {
-                isHovered = true;
-                card.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            });
-
-            card.addEventListener('mousemove', (e) => {
-                if(!isHovered) return;
-
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                // Bereken rotatie gebaseerd op muispositie
-                const rotateY = (x - rect.width/2) / speed;
-                const rotateX = -(y - rect.height/2) / speed;
-
-                // Update CSS variables
-                card.style.setProperty('--rotate-x', `${rotateX}deg`);
-                card.style.setProperty('--rotate-y', `${rotateY}deg`);
-            });
-
-            card.addEventListener('mouseleave', () => {
-                isHovered = false;
-                card.style.transform = `
-                perspective(1000px)
-                translateZ(0)
-                scale(1)
-                rotateZ(0)
-                rotateX(0)
-                rotateY(0)
+            projectCard.innerHTML = `
+                <div class="relative overflow-hidden group">
+                    <img class="w-full h-48 object-contain bg-white transform transition duration-300"
+                         src="${project.image}"
+                         alt="${project.title}">
+                </div>
+                <div class="p-6 space-y-4">
+                    <h3 class="text-xl font-semibold text-white">${project.title}</h3>
+                    <div class="flex flex-wrap gap-2">${tagsHTML}</div>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        ${t[project.descriptionKey]}
+                    </p>
+                    <a href="${project.page}" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
+                        ${translations[lang].projectDetailsLink} →
+                    </a>
+                </div>
             `;
-                card.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
 
-                // Reset alle child transforms
-                card.querySelectorAll('*').forEach(el => {
-                    el.style.transform = 'none';
-                });
-            });
+            projectsContainer.appendChild(projectCard);
         });
-    });
+    }
 
-    // Initialize animations and projects
+    // Initialisatie
     document.addEventListener('DOMContentLoaded', () => {
-        AOS.init({ once: true, duration: 600, offset: 50 });
+        // Menu functionaliteit
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const closeMenuButton = document.getElementById('closeMenuButton');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+            mobileMenuButton.classList.toggle('active');
+        }
+
+        [mobileMenuButton, mobileMenuOverlay, closeMenuButton].forEach(element => {
+            element.addEventListener('click', toggleMobileMenu);
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                mobileMenu.classList.remove('active');
+                mobileMenu.classList.add('hidden');
+                mobileMenuOverlay.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        });
+
+        // Taalwisselaar
+        document.getElementById('langToggle').addEventListener('change', (e) => {
+            const newLang = e.target.checked ? 'en' : 'nl';
+            setLanguage(newLang);
+        });
+
+        document.getElementById('mobileLangToggle').addEventListener('change', (e) => {
+            document.getElementById('langToggle').checked = e.target.checked;
+            document.getElementById('langToggle').dispatchEvent(new Event('change'));
+        });
+
+        // Vanta.js initialisatie
+        VANTA.CLOUDS({
+            el: "body",
+            mouseControls: false,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            skyColor: 0x53ed,
+        });
+
+        // Render projecten
         renderProjects(currentLanguage);
+        updateNavAnimations();
     });
 
-    // Language toggle handler
-    document.getElementById('langToggle').addEventListener('click', () => {
-        const newLang = currentLanguage === 'nl' ? 'en' : 'nl';
-        setLanguage(newLang);
-        renderProjects(newLang);
-    });
-
-    // Update projects when language changes
+    // Taalwijziging handler
     document.addEventListener('languageChanged', (e) => {
         renderProjects(e.detail);
+        setTimeout(updateNavAnimations, 50);
     });
-
-    VANTA.CLOUDS({
-        el: "body",
-        mouseControls: false,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        skyColor: 0x53ed,
-    })
-
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-
-    // Sluit menu bij klik buiten menu
-    document.addEventListener('click', (e) => {
-        if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
-            mobileMenu.classList.add('hidden');
-        }
-    });
-
-    // Sync taal toggle
-    const langToggleDesktop = document.getElementById('langToggle');
-    const langToggleMobile = document.getElementById('langToggleMobile');
-
-    langToggleDesktop.addEventListener('change', () => {
-        langToggleMobile.checked = langToggleDesktop.checked;
-    });
-
-    langToggleMobile.addEventListener('change', () => {
-        langToggleDesktop.checked = langToggleMobile.checked;
-    });
-
 </script>
 </body>
 </html>
