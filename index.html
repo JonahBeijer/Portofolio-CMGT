@@ -179,6 +179,25 @@
                 font-size: 1rem;
             }
         }
+
+
+
+        /* Extra grote schermen (4K en groter) */
+        @media (min-width: 1920px) {
+            .central-node {
+                width: 50rem !important;
+                padding: 4rem !important;
+            }
+
+            .satellite-node {
+                width: 280px;
+                transform: scale(0.8);
+            }
+
+            .node-connection::after {
+                height: 160px;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans min-h-screen">
