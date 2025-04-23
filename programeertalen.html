@@ -20,17 +20,6 @@
             }
 
 
-
-
-            #vanta-bg {
-                min-height: 100vh;
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 0;
-            }
-
             .skill-icon {
                 font-size: 3rem !important; /* 48px */
                 margin-bottom: 1.5rem !important;
@@ -129,8 +118,7 @@
 
 
 <main class="py-10 px-6 max-w-[2400px] mx-auto">
-    <div id="vanta-bg" class="pb-20"></div>
-    <h2 class="text-indigo-700 text-3xl font-bold mb-10 text-center">Skills</h2>
+    <h2 class="text-white text-3xl font-bold mb-10 text-center">Skills</h2>
 
 
 
@@ -139,10 +127,10 @@
         <!-- Frontend -->
         <div>
             <div class="mb-6">
-                <h3 class="text-xl text-indigo-600 font-semibold mb-4 text-center">Frontend</h3>
+                <h3 class="text-2xl text-white font-semibold mb-4 text-center">Frontend</h3>
                 <div id="frontend-core" class="grid grid-cols-2 gap-4 mb-6"></div>
 
-                <h4 class="text-md text-indigo-500 font-medium mb-3 text-center">Frameworks & Libraries</h4>
+                <h4 class="text-xl text-white font-medium mb-3 text-center">Frameworks & Libraries</h4>
                 <div id="frontend-frameworks" class="grid grid-cols-2 gap-4"></div>
             </div>
         </div>
@@ -150,17 +138,17 @@
         <!-- Backend -->
         <div>
             <div class="mb-6">
-                <h3 class="text-xl text-indigo-600 font-semibold mb-4 text-center">Backend</h3>
+                <h3 class="text-2xl text-white font-semibold mb-4 text-center">Backend</h3>
                 <div id="backend-core" class="grid grid-cols gap-4 mb-6"></div>
 
-                <h4 class="text-md text-indigo-500 font-medium mb-3 text-center">Frameworks</h4>
+                <h4 class="text-xl text-white font-medium mb-3 text-center">Frameworks</h4>
                 <div id="backend-frameworks" class="grid grid-cols gap-4"></div>
             </div>
         </div>
 
         <!-- Databases & Tools -->
         <div>
-            <h3 class="text-xl text-indigo-600 font-semibold mb-4 text-center">Databases & Tools</h3>
+            <h3 class="text-2xl text-white font-semibold mb-4 text-center">Databases & Tools</h3>
             <div id="databases-tools" class="grid grid-cols-2 gap-4"></div>
         </div>
 
@@ -254,25 +242,25 @@
 
     const skills = {
         frontendCore: [
-            { name: 'HTML/CSS', icon: 'fa-brands fa-html5 text-orange-500 ' },
-            { name: 'JavaScript', icon: 'fa-brands fa-js text-yellow-500' }
+            { name: 'HTML/CSS', icon: 'fa-brands fa-html5 text-orange-500 text-2xl ' },
+            { name: 'JavaScript', icon: 'fa-brands fa-js text-yellow-500 text-2xl' }
         ],
         frontendFrameworks: [
-            { name: 'React + JSX', icon: 'fa-brands fa-react text-blue-500' },
-            { name: 'TailwindCSS', icon: 'fa-brands fa-css3-alt text-teal-400' },
-            { name: 'Excalibur', icon: 'fas fa-gamepad text-purple-500' }
+            { name: 'React + JSX', icon: 'fa-brands fa-react text-blue-500 text-2xl ' },
+            { name: 'TailwindCSS', icon: 'fa-brands fa-css3-alt text-teal-400 text-2xl' },
+            { name: 'Excalibur', icon: 'fas fa-gamepad text-purple-500 text-2xl' }
         ],
         backendCore: [
-            { name: 'PHP', icon: 'fab fa-php text-indigo-500' }
+            { name: 'PHP', icon: 'fab fa-php text-indigo-500 text-2xl' }
         ],
         backendFrameworks: [
-            { name: 'Laravel', icon: 'fab fa-laravel text-red-600' }
+            { name: 'Laravel', icon: 'fab fa-laravel text-red-600 text-2xl' }
         ],
         databasesTools: [
-            { name: 'MySQL/SQLite', icon: 'fas fa-database text-blue-400' },
-            { name: 'MongoDB', icon: 'fas fa-database text-green-400' },
-            { name: 'Vite', icon: 'fas fa-toolbox text-gray-500' },
-            {name: 'Expo', icon: 'fas fa-solid fa-chevron-up'}
+            { name: 'MySQL/SQLite', icon: 'fas fa-database text-blue-400 text-2xl' },
+            { name: 'MongoDB', icon: 'fas fa-database text-green-400 text-2xl' },
+            { name: 'Vite', icon: 'fas fa-toolbox text-gray-500 text-2xl' },
+            {name: 'Expo', icon: 'fas fa-solid fa-chevron-up text-2xl'}
         ]
     };
 
