@@ -16,8 +16,33 @@
 
         @media (min-width: 2560px) {
             main {
-                max-width: 2400px; /* of 90rem */
-                padding: 4rem 0;
+                min-height: calc(100vh - 200px);
+            }
+
+            footer {
+                height: 200px;
+                display: flex;
+                align-items: center;
+            }
+
+
+            #vanta-bg {
+                min-height: 100vh;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 0;
+            }
+
+            .skill-icon {
+                font-size: 3rem !important; /* 48px */
+                margin-bottom: 1.5rem !important;
+            }
+
+            /* Vergroot de icon text */
+            .skill-text {
+                font-size: 1.25rem !important; /* 20px */
             }
 
             h2 {
@@ -50,17 +75,12 @@
                 font-size: 1rem; /* 16px */
             }
 
-            footer {
-                padding: 3rem 0;
-            }
+
 
             .fa-2x {
                 font-size: 2.5rem;
             }
 
-            #vanta-bg {
-                transform: scale(1.2);
-            }
         }
     </style>
 </head>
@@ -136,8 +156,8 @@
 
     </div>
 </main>
-<footer class="bg-white text-indigo-600 py-6 mt-10">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
+<footer class="bg-white text-indigo-600 py-6 mt-auto">
+    <div class="max-w-7xl mx-auto flex justify-between items-center h-full">
         <!-- Left Side: Name and Study -->
         <div class="flex flex-col">
             <p class="text-lg font-semibold" id="name">Jonah Beijer</p>
@@ -208,7 +228,7 @@
 
     const skills = {
         frontendCore: [
-            { name: 'HTML/CSS', icon: 'fa-brands fa-html5 text-orange-500' },
+            { name: 'HTML/CSS', icon: 'fa-brands fa-html5 text-orange-500 ' },
             { name: 'JavaScript', icon: 'fa-brands fa-js text-yellow-500' }
         ],
         frontendFrameworks: [
