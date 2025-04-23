@@ -27,6 +27,68 @@
             box-shadow: 0 10px 15px rgba(0,0,0,0.1);
         }
 
+        main {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+        }
+
+        @media (min-width: 1440px) {
+            main {
+                padding: 6rem 4rem;
+            }
+
+            .project-container {
+                max-width: 90%;
+                margin: 0 auto;
+            }
+
+            .chat-preview {
+                max-height: 600px;
+            }
+
+            h1.text-3xl {
+                font-size: 3.5rem;
+                margin-bottom: 4rem;
+            }
+
+            .feature-icon {
+                width: 65px;
+                height: 65px;
+            }
+
+            .tech-stack span {
+                font-size: 1.1rem;
+                padding: 0.75rem 1.5rem;
+            }
+        }
+
+        @media (min-width: 2560px) {
+            body {
+                font-size: 1.2rem;
+                line-height: 1.8;
+            }
+
+            h1 { font-size: 4.6rem; }
+            h2 { font-size: 3.9rem; }
+            h3 { font-size: 3.2rem; }
+            h4 { font-size: 2.6rem; }
+
+            p, li { font-size: 1.4rem; }
+
+            .project-container {
+                max-width: 80%;
+                margin: 0 auto;
+            }
+
+            .chat-preview {
+                max-height: 800px;
+            }
+
+            main {
+                padding: 8rem 6rem;
+            }
+        }
+
         #videoModal {
             opacity: 0;
             visibility: hidden;
@@ -45,40 +107,70 @@
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
 
-<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center relative z-[1000]">
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
-    <div class="flex items-center space-x-6">
-        <a href="./index.html"
-           class="nav-link text-gray-700  font-medium"
-           data-translate="navHome">Home</a>
-        <a href="projecten.html"
-           class="nav-link text-gray-700  font-medium"
-           data-translate="navProjects">Projecten</a>
-        <a href="programeertalen.html"
-           class="nav-link text-gray-700 font-medium"
-           data-translate="navLanguages">Programmeertalen</a>
+
+    <!-- Hamburger menu knop -->
+    <button id="mobileMenuButton" class="md:hidden focus:outline-none transition-transform duration-300 hover:scale-110">
+        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
+
+    <!-- Desktop menu -->
+    <div class="hidden md:flex items-center space-x-6">
+        <a href="./index.html" class="nav-link text-gray-700 font-medium relative" data-translate="navHome">Home</a>
+        <a href="projecten.html" class="nav-link text-gray-700 font-medium relative" data-translate="navProjects">Projecten</a>
+        <a href="programeertalen.html" class="nav-link text-gray-700 font-medium relative" data-translate="navLanguages">Programmeertalen</a>
 
         <div class="flex items-center gap-2">
-            <span class="text-sm font-medium text-gray-700" data-translate="nlLabel">NL</span>
+            <span class="text-sm font-medium text-gray-700">NL</span>
             <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="langToggle" class="sr-only peer">
-                <script>
-                    const currentLanguage = 'en';
-                    const checkbox = document.getElementById('langToggle');
-                    checkbox.checked = currentLanguage === 'en';
-                </script>
                 <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
                 <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
             </label>
-            <span class="text-sm font-medium text-gray-700" data-translate="enLabel">EN</span>
+            <span class="text-sm font-medium text-gray-700">EN</span>
+        </div>
+    </div>
+
+    <!-- Mobiel menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-white hidden md:hidden z-[1000]">
+        <div class="container mx-auto px-4 py-8 flex flex-col items-center h-full">
+            <div class="w-full flex justify-end mb-8">
+                <button id="closeMenuButton" class="text-indigo-600 hover:text-indigo-800 transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="flex flex-col items-center space-y-6 w-full">
+                <a href="./index.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navHome">Home</a>
+                <a href="projecten.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navProjects">Projecten</a>
+                <a href="programeertalen.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navLanguages">Programmeertalen</a>
+
+                <div class="mt-8 pt-8 border-t border-gray-200 w-full max-w-xs text-center">
+                    <div class="flex items-center justify-center gap-4">
+                        <span class="text-sm font-medium text-gray-700">NL</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="mobileLangToggle" class="sr-only peer">
+                            <div class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-indigo-600 transition-colors duration-300"></div>
+                            <div class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-6 shadow-md"></div>
+                        </label>
+                        <span class="text-sm font-medium text-gray-700">EN</span>
+                    </div>
+                </div>
+            </nav>
         </div>
     </div>
 </nav>
+<div id="mobileMenuOverlay" class="fixed inset-0 bg-black/50 z-[999] hidden"></div>
 
-<main class="p-8 max-w-7xl mx-auto">
-    <h1 class="text-3xl font-bold text-indigo-700 mb-8 text-center" data-translate="musicGalleryTitle">Muziek Gallery - Project Details</h1>
+<main class="p-8 w-full mx-auto project-container">
+    <h1 class="text-3xl font-bold text-white mb-8 text-center lg:text-4xl xl:text-5xl" data-translate="musicGalleryTitle">Muziek Gallery - Project Details</h1>
 
-    <div class="bg-white p-8 rounded-lg shadow-lg">
+    <div class="bg-white p-8 rounded-lg shadow-lg min-h-[70vh]">
         <div class="flex flex-col lg:flex-row gap-8">
             <div class="lg:w-1/2">
                 <div class="chat-preview">
@@ -122,7 +214,7 @@
                 </div>
             </div>
 
-            <div class="lg:w-1/2 space-y-6">
+            <div class="lg:w-1/2 xl:w-45% flex flex-col justify-between space-y-8">
                 <div>
                     <h2 class="text-2xl font-semibold text-indigo-600 mb-4" data-translate="aboutTitle">Over het project</h2>
                     <p class="text-gray-700 mb-4" data-translate="musicGalleryAbout">
@@ -161,12 +253,12 @@
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-medium text-indigo-500 mb-3" data-translate="techTitle">Technologie Stack</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="htmlTag">HTML</span>
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="cssTag">CSS</span>
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="jsTag">JavaScript</span>
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="phpTag">PHP</span>
+                    <h3 class="text-xl font-medium text-indigo-500 mb-3 xl:text-2xl" data-translate="techTitle">Technologie Stack</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base" data-translate="htmlTag">HTML</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base" data-translate="cssTag">CSS</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base" data-translate="jsTag">JavaScript</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base" data-translate="phpTag">PHP</span>
                     </div>
                 </div>
             </div>
@@ -217,87 +309,90 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="module">
-
-    window.openVideoModal = function() {
-        const modal = document.getElementById('videoModal');
-        const video = document.getElementById('demoVideo');
-        modal.classList.remove('hidden');
-        modal.classList.add('show');
-        video.play();
-    }
-
-    window.closeVideoModal = function() {
-        const modal = document.getElementById('videoModal');
-        const video = document.getElementById('demoVideo');
-        modal.classList.remove('show');
-        modal.classList.add('hidden');
-        video.pause();
-    }
-
-    // Voeg deze event listener toe
-    document.addEventListener('click', function(e) {
-        if(e.target.closest('#videoModal')) {
-            const modalContent = document.querySelector('#videoModal > div');
-            if(!modalContent.contains(e.target)) {
-                closeVideoModal();
-            }
-        }
-    });
-
     import { currentLanguage, setLanguage, updateNavAnimations } from './language.js';
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Initializeer animaties
-        updateNavAnimations();
+        // Mobile menu functionaliteit
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const closeMenuButton = document.getElementById('closeMenuButton');
 
-        // Taalwissel handler
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+            mobileMenuButton.classList.toggle('active');
+        }
+
+        [mobileMenuButton, mobileMenuOverlay, closeMenuButton].forEach(element => {
+            element.addEventListener('click', toggleMobileMenu);
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                mobileMenu.classList.remove('active');
+                mobileMenu.classList.add('hidden');
+                mobileMenuOverlay.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        });
+
+        // Taalwisselaar sync
         document.getElementById('langToggle').addEventListener('change', (e) => {
             const newLang = e.target.checked ? 'en' : 'nl';
             setLanguage(newLang);
+            document.getElementById('mobileLangToggle').checked = e.target.checked;
+        });
+
+        document.getElementById('mobileLangToggle').addEventListener('change', (e) => {
+            const newLang = e.target.checked ? 'en' : 'nl';
+            setLanguage(newLang);
+            document.getElementById('langToggle').checked = e.target.checked;
+        });
+
+        // Video modal
+        window.openVideoModal = () => {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('demoVideo');
+            modal.classList.remove('hidden');
+            video.play();
+        }
+
+        window.closeVideoModal = () => {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('demoVideo');
+            modal.classList.add('hidden');
+            video.pause();
+        }
+
+        // AOS initialisatie
+        AOS.init({
+            once: true,
+            duration: 600,
+            offset: 50,
+        });
+
+        // Vanta.js achtergrond
+        VANTA.CLOUDS({
+            el: "body",
+            mouseControls: false,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            skyColor: 0x53ed,
         });
     });
 
-    // Herinitialiseer animaties bij elke taalverandering
-    document.addEventListener('languageChanged', () => {
-        setTimeout(updateNavAnimations, 50);
+    // Click outside modal
+    document.addEventListener('click', (e) => {
+        const modal = document.getElementById('videoModal');
+        if (e.target === modal) {
+            closeVideoModal();
+        }
     });
-
-    AOS.init({
-        once: true,
-        duration: 600,
-        offset: 50,
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-        setLanguage(currentLanguage);
-
-        // Animatie initialisatie
-        document.querySelectorAll('.nav-link').forEach(link => {
-            const text = link.textContent.trim();
-            link.innerHTML = text.split('').map((char, index) =>
-                `<span class="char" style="transition-delay: ${index * 30}ms">${char}</span>`
-            ).join('');
-        });
-    });
-
-
-    document.getElementById("langToggle").addEventListener("click", () => {
-        const newLang = currentLanguage === 'nl' ? 'en' : 'nl';
-        setLanguage(newLang);
-    });
-
-
-    VANTA.CLOUDS({
-        el: "body",
-        mouseControls: false,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        skyColor: 0x53ed,
-    })
-
-
 </script>
 </body>
 </html>
