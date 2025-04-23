@@ -196,6 +196,19 @@ export const translations = {
         projectCardDescResBeijer: "Reserveringssysteem voor elektrotechniek bedrijf met admin paneel",
         recent: "Recentere werk",
         older: "Vroegere projecten",
+        experienceTitle: "Ervaring & Leerpunten",
+        experienceIntro: "Tijdens mijn opleiding CMGT heb ik veel waardevolle ervaring opgedaan, zowel op technisch gebied als in het samenwerken met echte opdrachtgevers. Eén van de belangrijkste dingen die ik heb geleerd, is hoe je werkt volgens professionele standaarden zoals het OTAP-model (Ontwikkeling, Test, Acceptatie en Productie), de OWASP-richtlijnen voor veiligheid, en de WCAG-criteria om websites toegankelijk te maken voor iedereen, ook voor mensen met een beperking.",
+        experienceSub1: "Praktijkervaring met Opdrachtgevers",
+        experienceText1: "Wat deze ervaringen extra bijzonder maakte, was dat we niet alleen theoretisch aan de slag gingen, maar ook praktijkervaring opdeden met echte opdrachtgevers. Zo werkte ik aan een project waarbij mijn vader de klant was. Dit gaf me een hele andere kijk op het contact met een opdrachtgever: je moet helder communiceren, verwachtingen afstemmen en professioneel blijven, ook als het om iemand gaat die je persoonlijk kent.",
+        experienceSub2: "Samenwerking & Teamwork",
+        experienceText2: "Daarnaast hebben we als groep een project gedaan voor Open Hiring, waarbij we een website ontwikkelden. Wat dit project speciaal maakte, was dat we begeleiding kregen van IO Digital. Zij hielpen ons bij het vormgeven van de website, gaven advies over hoe je professioneel te werk gaat en voorzagen ons regelmatig van waardevolle feedback.",
+        insightsTitle: "Belangrijkste inzichten:",
+        insight1: "Techniek en ontwerp zijn maar een deel van het werk",
+        insight2: "Samenwerking en communicatie zijn cruciaal",
+        insight3: "Altijd denken vanuit de eindgebruiker",
+        insight4: "Open staan voor feedback en verbetering",
+        experienceConclusion: "Deze praktijkervaringen hebben me niet alleen technisch sterker gemaakt, maar ook als teamlid en als toekomstig professional. Het heeft me geleerd dat verantwoordelijkheid nemen, luisteren naar feedback en aandacht voor toegankelijkheid essentieel zijn voor succesvolle projecten."
+
 
 
 
@@ -399,6 +412,18 @@ I’m 20 years old and an enthusiastic developer with a strong passion for build
         projectCardDescResBeijer: "Reservation system for electrical engineering company with admin panel",
         recent: "Recent work",
         older: "Older projects",
+        experienceTitle: "Experience & Learnings",
+        experienceIntro: "During my CMGT studies, I gained valuable experience both in technical areas and in collaborating with real clients. One of the most important things I learned is how to work according to professional standards like the OTAP model (Development, Test, Acceptance, Production), OWASP security guidelines, and WCAG criteria to make websites accessible for everyone, including people with disabilities.",
+        experienceSub1: "Practical Experience with Clients",
+        experienceText1: "What made these experiences particularly special was that we didn't just work theoretically, but also gained practical experience with real clients. For example, I worked on a project where my father was the client. This gave me a completely different perspective on client communication: you need to communicate clearly, align expectations, and remain professional, even when dealing with someone you know personally.",
+        experienceSub2: "Collaboration & Teamwork",
+        experienceText2: "Additionally, we worked on a group project for Open Hiring where we developed a website. What made this project special was the guidance we received from IO Digital. They helped us design the website, advised us on professional workflows, and provided regular valuable feedback.",
+        insightsTitle: "Key Insights:",
+        insight1: "Technology and design are only part of the work",
+        insight2: "Collaboration and communication are crucial",
+        insight3: "Always think from the end-user's perspective",
+        insight4: "Be open to feedback and improvement",
+        experienceConclusion: "These practical experiences have not only strengthened me technically but also as a team member and future professional. They've taught me that taking responsibility, listening to feedback, and focusing on accessibility are essential for successful projects."
 
     }
 };
