@@ -127,6 +127,50 @@
         .satellite-node:hover .node-connection {
             transform: translateY(-10px);
         }
+
+        @media (max-width: 768px) {
+            .mindmap-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+            }
+
+            .satellite-node {
+                position: relative;
+                width: 100%;
+                max-width: 400px;
+                margin: 1rem 0;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+            }
+
+            .node-connection::after {
+                display: none;
+            }
+
+            .satellite-photo {
+                transform: translateX(-50%) translateY(-20px) !important;
+            }
+        }
+
+
+        @media (max-width: 640px) {
+            .central-node {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans min-h-screen">
@@ -135,10 +179,10 @@
          alt="Loading..."
          class="w-20 h-20 animate-spin">
 </div>
-<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+<nav class="bg-white shadow-md py-4 px-4 md:px-6 flex flex-col md:flex-row justify-between items-center">
     <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
 
-    <div class="flex items-center space-x-6">
+    <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6">
         <a href="index.html"
            class="nav-link text-gray-700  font-medium"
            data-translate="navHome">Home</a>
@@ -150,7 +194,7 @@
            data-translate="navLanguages">Programmeertalen</a>
 
         <!-- Taalwissel toggle -->
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 order-2 md:order-none">
             <span class="text-sm font-medium text-gray-700">NL</span>
             <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="langToggle" class="sr-only peer">
@@ -171,8 +215,7 @@
 <div class="mindmap-container py-20">
     <!-- Centrale node -->
     <div id="vanta-bg" class="pb-20"></div>
-    <div class="central-node bg-white shadow-2xl rounded-2xl p-8 w-[30rem] fade-in" id="aboutSection">
-        <!-- Profielfoto -->
+    <div class="central-node bg-white shadow-2xl rounded-2xl p-4 md:p-8 w-full md:w-[30rem] mx-4 fade-in" id="aboutSection">        <!-- Profielfoto -->
         <div class="flex justify-center mb-6">
             <img src="img/IMG_4026.JPEG" alt="Profielfoto" class="w-40 h-40 rounded-full object-cover ring-4 ring-indigo-500" />
         </div>
@@ -266,8 +309,8 @@
     </div>
 </div>
 
-<footer class="bg-white text-indigo-600 py-6 ">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
+<footer class="bg-white text-indigo-600 py-6 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <!-- Left Side: Name and Study -->
         <div class="flex flex-col">
             <p class="text-lg font-semibold" id="name">Jonah Beijer</p>
@@ -352,7 +395,11 @@
     }, 1000); // Match de duur van de CSS transition
     });
 
-    VANTA.CLOUDS({
+
+
+
+    // Update de achtergrond bij resizen
+    let vantaEffect = VANTA.CLOUDS({
         el: ".mindmap-container",
         mouseControls: false,
         touchControls: true,
@@ -361,6 +408,12 @@
         minWidth: 200.00,
         skyColor: 0x53ed,
     })
+
+    window.addEventListener('resize', () => {
+        if(vantaEffect) {
+            vantaEffect.resize();
+        }
+    });
 </script>
 </body>
 </html>
