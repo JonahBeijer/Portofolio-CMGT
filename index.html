@@ -182,23 +182,97 @@
 
 
 
-        /* Extra grote schermen (4K en groter) */
-        @media (min-width: 1920px) {
-            .central-node {
-                width: 50rem !important;
-                padding: 4rem !important;
+            /* Extra grote schermen (4K en groter) */
+            @media (min-width: 1920px) {
+                .central-node {
+                    width: 50rem !important;
+                    padding: 4rem !important;
+                }
+
+                .satellite-node {
+                    width: 480px;
+                    transform: scale(0.8);
+                }
+
+                .node-connection::after {
+                    height: 160px;
+                }
+            }
+
+        @media (min-height: 800px) {
+            .mindmap-container {
+                min-height: 120vh;
             }
 
             .satellite-node {
-                width: 480px;
-                transform: scale(0.8);
+                transform: scale(0.7) translateY(10%);
             }
 
             .node-connection::after {
-                height: 160px;
+                height: 140px;
             }
         }
-    </style>
+
+        /* 2K+ schermen */
+        @media (min-width: 1920px) and (min-height: 1080px) {
+            .mindmap-container {
+                min-height: 140vh;
+                padding: 4rem 0;
+            }
+
+            .central-node {
+                transform: scale(1.1);
+                margin: 4rem 0;
+            }
+
+            .satellite-node {
+                transform: scale(0.9);
+                width: 320px;
+            }
+
+            .node-connection::after {
+                height: 180px;
+            }
+        }
+
+        /* Extreme hoogtes (bv. 1440p) */
+        @media (min-height: 1440px) {
+            .mindmap-container {
+                min-height: 150vh;
+            }
+
+            .satellite-node {
+                transform: scale(0.8) translateY(15%);
+            }
+        }
+
+
+        @media (min-width: 2560px) {
+            .mindmap-container {
+                min-height: 180vh;
+                padding-top: 8rem;
+            }
+
+            .central-node {
+                width: 60rem !important;
+                padding: 5rem !important;
+            }
+
+            .satellite-node {
+                width: 400px;
+                transform: scale(1);
+            }
+
+            .satellite-photo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .node-connection::after {
+                height: 220px;
+            }
+        }
+        </style>
 </head>
 <body class="bg-gray-100 font-sans min-h-screen">
 <div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
