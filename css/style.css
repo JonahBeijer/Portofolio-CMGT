@@ -118,7 +118,7 @@ a, button, .clickable {
 /* Z-index beheer */
 canvas.threejs { z-index: 0 !important; position: relative; }
 main { position: relative; z-index: 1; }
-#vanta-bg { position: relative; z-index: 0 !important; }
+#vanta-bg { position: relative; z-index: -1 !important; }
 
 /* style.css */
 .bg-customblue {

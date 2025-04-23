@@ -285,11 +285,18 @@
         }
 
         #vanta-bg {
-            height: 100% !important;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
         }
         </style>
 </head>
 <body class="bg-gray-100 font-sans min-h-screen">
+<div id="vanta-bg" class="pb-20"></div>
+
 <div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
     <img src="img/pokeball.png"
          alt="Loading..."
@@ -357,10 +364,11 @@
         </div>
     </div>
 </nav>
+<div id="mobileMenuOverlay" class="fixed inset-0 bg-black/50 z-[999] hidden"></div>
+
 
 <div class="mindmap-container py-20">
     <!-- Centrale node -->
-    <div id="vanta-bg" class="pb-20"></div>
     <div class="central-node bg-white shadow-2xl rounded-2xl p-4 md:p-8 w-full md:w-[30rem] mx-4 fade-in" id="aboutSection">        <!-- Profielfoto -->
         <div class="flex justify-center mb-6">
             <img src="img/IMG_4026.JPEG" alt="Profielfoto" class="w-40 h-40 rounded-full object-cover ring-4 ring-indigo-500" />
@@ -562,7 +570,7 @@
 
         // Update de achtergrond bij resizen
         let vantaEffect = VANTA.CLOUDS({
-            el: ".mindmap-container",
+            el: "#vanta-bg",
             mouseControls: false,
             touchControls: true,
             gyroControls: false,
