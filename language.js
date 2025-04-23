@@ -54,7 +54,7 @@ export const translations = {
 
         visionTitle: "Toekomstvisie",
         vision1: "AI-integratie in webapps",
-        vision2: "Progressive Web Apps",
+        vision2: "Progressieve Web Apps",
         vision3: "3D web development",
         hobbiesTitle: "Hobby's",
         hobby1: "Anime kijken",
@@ -496,3 +496,4 @@ document.getElementById("langToggle")?.addEventListener("change", (e) => {
     currentLanguage = e.target.checked ? 'en' : 'nl';
     setLanguage(currentLanguage);
 });
+

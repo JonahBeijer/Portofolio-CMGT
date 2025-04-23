@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-translate="portfolioTitle">Mijn Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="./img/oog.png" type="image/png" />
 
@@ -168,8 +170,8 @@
 
 <div class="mindmap-container py-20">
     <!-- Centrale node -->
-
-    <div class="central-node bg-white shadow-2xl rounded-2xl p-8 w-[20rem] fade-in" id="aboutSection">
+    <div id="vanta-bg" class="pb-20"></div>
+    <div class="central-node bg-white shadow-2xl rounded-2xl p-8 w-[30rem] fade-in" id="aboutSection">
         <!-- Profielfoto -->
         <div class="flex justify-center mb-6">
             <img src="img/IMG_4026.JPEG" alt="Profielfoto" class="w-40 h-40 rounded-full object-cover ring-4 ring-indigo-500" />
@@ -231,7 +233,7 @@
         </div>
     </div>
 
-    <div class="satellite-node" style="bottom: 10%; left: 20%">
+    <div class="satellite-node" style="bottom: 10%; left: 8%">
         <a href="https://pokemondb.net/pokedex/lugia"><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/lugia.gif" alt="Lugia" class="satellite-photo" ></a>
         <div class="node-connection">
             <div class="bg-white p-6 rounded-xl shadow-lg">
@@ -264,7 +266,7 @@
     </div>
 </div>
 
-<footer class="bg-indigo-600 text-white py-6 mt-10">
+<footer class="bg-white text-indigo-600 py-6 ">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
         <!-- Left Side: Name and Study -->
         <div class="flex flex-col">
@@ -349,6 +351,16 @@
         loader.style.display = 'none';
     }, 1000); // Match de duur van de CSS transition
     });
+
+    VANTA.CLOUDS({
+        el: ".mindmap-container",
+        mouseControls: false,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        skyColor: 0x53ed,
+    })
 </script>
 </body>
 </html>

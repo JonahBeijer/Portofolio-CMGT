@@ -50,3 +50,50 @@ a, button, .clickable {
 .nav-link:hover .char:nth-child(even) {
     animation: charWave 0.8s ease 0.2s infinite;
 }
+
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.1;
+    filter: blur(2px);
+    transition: opacity 0.3s ease;
+}
+
+.shape:hover {
+    opacity: 0.3;
+}
+
+.circle {
+    border-radius: 50%;
+    background: rgba(79, 70, 229, 0.1);
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent transparent rgba(99, 102, 241, 0.1) transparent;
+}
+
+.square {
+    transform: rotate(45deg);
+}
+
+
+
+/* style.css */
+.bg-customblue {
+    background-color: #003279;
+}
+.text-customblue{
+    background-color: #003279;
+}

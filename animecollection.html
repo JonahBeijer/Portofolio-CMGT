@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-translate="animeCollectionTitle">Anime Collection - Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" href="./img/oog.png" type="image/png" />
 
@@ -187,12 +189,15 @@
     </div>
 </main>
 
-<footer class="bg-indigo-600 text-white py-6 mt-10">
+<footer class="bg-white text-indigo-600 py-6 mt-10">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <!-- Left Side: Name and Study -->
         <div class="flex flex-col">
-            <p class="text-lg font-semibold" data-translate="name">Jonah Beijer</p>
-            <p class="text-sm" data-translate="studyText">Studie: CMGT</p>
+            <p class="text-lg font-semibold" id="name">Jonah Beijer</p>
+            <p class="text-sm" id="study">Studie: CMGT</p>
         </div>
+
+        <!-- Right Side: Social Links with Icons -->
         <div class="flex space-x-6">
             <a href="https://github.com/JonahBeijer" class="hover:text-indigo-400" target="_blank">
                 <i class="fab fa-github fa-2x"></i>
@@ -272,6 +277,17 @@
         const newLang = currentLanguage === 'nl' ? 'en' : 'nl';
         setLanguage(newLang);
     });
+
+
+    VANTA.CLOUDS({
+        el: "body",
+        mouseControls: false,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        skyColor: 0x53ed,
+    })
 </script>
 </body>
 </html>
