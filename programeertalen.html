@@ -75,30 +75,6 @@
                 font-size: 1rem; /* 16px */
             }
 
-            #frontend-core,
-            #frontend-frameworks,
-            #backend-core,
-            #backend-frameworks,
-            #databases-tools {
-                font-size: 3rem !important; /* 48px */
-                margin-bottom: 1.5rem;
-
-            }
-
-            /* Specifieke aanpassing voor Expo icon */
-            #databases-tools .fa-chevron-up {
-                transform: scale(1.5);
-            }
-
-            /* Text onder icons */
-            .text-gray-800.font-medium.text-sm {
-                font-size: 1.25rem !important; /* 20px */
-            }
-
-            .fa-2x {
-                font-size: 2.5rem;
-            }
-
             [class^="fa-"],
             [class*=" fa-"] {
                 font-size: 3rem !important;
@@ -114,6 +90,8 @@
             .skill-text {
                 font-size: 1.25rem !important;
             }
+
+
 
         }
     </style>
@@ -291,9 +269,9 @@
             div.className = "bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition transform hover:scale-105 text-center";
 
             div.innerHTML = `
-                <i class="${skill.icon} text-2xl mb-2 block mx-auto"></i>
-                <p class="text-gray-800 font-medium text-sm">${skill.name}</p>
-            `;
+            <i class="${skill.icon}"></i>
+            <p class="skill-text text-gray-800 font-medium text-sm">${skill.name}</p>
+        `;
             container.appendChild(div);
         });
     }
