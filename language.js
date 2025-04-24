@@ -431,10 +431,16 @@ I’m 20 years old and an enthusiastic developer with a strong passion for build
 export let currentLanguage = localStorage.getItem("language") || "nl";
 
 export function setLanguage(lang) {
+    currentLanguage = lang; // Voeg deze regel toe
+    localStorage.setItem("language", lang);
+
+    // Update beide toggles
+    document.getElementById('langToggle').checked = lang === 'en';
+    document.getElementById('mobileLangToggle').checked = lang === 'en';
+
     updateNavAnimations();
     const t = translations[lang];
     document.documentElement.lang = lang;
-    document.getElementById('langToggle').checked = lang === 'en';
 
     document.querySelectorAll('[data-translate]').forEach(el => {
         const key = el.getAttribute('data-translate');

@@ -306,8 +306,10 @@
 
         function toggleMobileMenu() {
             mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('active');
             mobileMenuOverlay.classList.toggle('hidden');
             document.body.classList.toggle('overflow-hidden');
+            mobileMenuButton.classList.toggle('active');
         }
 
         [mobileMenuButton, mobileMenuOverlay, closeMenuButton].forEach(element => {
@@ -316,6 +318,7 @@
 
         window.addEventListener('resize', () => {
             if (window.innerWidth >= 768) {
+                mobileMenu.classList.remove('active');
                 mobileMenu.classList.add('hidden');
                 mobileMenuOverlay.classList.add('hidden');
                 document.body.classList.remove('overflow-hidden');
@@ -330,7 +333,6 @@
         });
 
         document.getElementById('mobileLangToggle').addEventListener('change', (e) => {
-
             const newLang = e.target.checked ? 'en' : 'nl';
             setLanguage(newLang);
             document.getElementById('langToggle').checked = e.target.checked;
