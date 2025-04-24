@@ -45,7 +45,7 @@
         .node-connection::after {
             content: '';
             position: absolute;
-            background: #818cf8;
+
             width: 2px;
             height: 100px;
             transform-origin: bottom;
@@ -303,11 +303,11 @@
          class="w-20 h-20 animate-spin">
 </div>
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center relative z-[1000]">
-    <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
+    <div class="text-xl font-bold text-customblue" data-translate="navbarTitle">Mijn Portfolio</div>
 
     <!-- Hamburger menu knop -->
     <button id="mobileMenuButton" class="md:hidden focus:outline-none transition-transform duration-300 hover:scale-110">
-        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-8 h-8 text-customblue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
     </button>
@@ -335,7 +335,7 @@
         <div class="container mx-auto px-4 py-8 flex flex-col items-center h-full">
             <!-- Sluitknop -->
             <div class="w-full flex justify-end mb-8">
-                <button id="closeMenuButton" class="text-indigo-600 hover:text-indigo-800 transition-colors">
+                <button id="closeMenuButton" class="text-customblue hover:text-indigo-800 transition-colors">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
@@ -344,9 +344,9 @@
 
             <!-- Menu items -->
             <nav class="flex flex-col items-center space-y-6 w-full">
-                <a href="./index.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navHome">Home</a>
-                <a href="projecten.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navProjects">Projecten</a>
-                <a href="programeertalen.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navLanguages">Programmeertalen</a>
+                <a href="./index.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-customblue transition-colors relative" data-translate="navHome">Home</a>
+                <a href="projecten.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-customblue transition-colors relative" data-translate="navProjects">Projecten</a>
+                <a href="programeertalen.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-customblue transition-colors relative" data-translate="navLanguages">Programmeertalen</a>
 
                 <!-- Taalwisselaar mobiel -->
                 <div class="mt-8 pt-8 border-t border-gray-200 w-full max-w-xs text-center">
@@ -371,11 +371,11 @@
     <!-- Centrale node -->
     <div class="central-node bg-white shadow-2xl rounded-2xl p-4 md:p-8 w-full md:w-[30rem] mx-4 fade-in" id="aboutSection">        <!-- Profielfoto -->
         <div class="flex justify-center mb-6">
-            <img src="img/IMG_4026.JPEG" alt="Profielfoto" class="w-40 h-40 rounded-full object-cover ring-4 ring-indigo-500" />
+            <img src="img/IMG_4026.JPEG" alt="Profielfoto" class="w-40 h-40 rounded-full object-cover ring-4 ring-customblue" />
         </div>
 
         <!-- Over Mij Inhoud -->
-        <h1 class="text-4xl font-bold text-center text-indigo-600 mb-4" id="heading">Wie ben ik?</h1>
+        <h1 class="text-4xl font-bold text-center text-customblue mb-4" id="heading">Wie ben ik?</h1>
         <p class="text-lg leading-relaxed text-gray-700 text-center" id="bio">
             Hoi, ik ben <strong> Jonah Beijer </strong>
             Ik ben 20 jaar en een enthousiaste developer met een passie voor het bouwen van webapplicaties en apps. Ik ben altijd leergierig en sta open om mezelf verder te ontwikkelen, of dat nu betekent dat ik nieuwe technieken leer of bijspijker waar nodig. Ik kijk er enorm naar uit om tijdens mijn stage nieuwe ervaringen op te doen, mijn vaardigheden te verbeteren en te ontdekken wat het werkveld allemaal te bieden heeft.</em>.
@@ -394,7 +394,7 @@
 
         <div class="node-connection">
             <div class="bg-white p-6 rounded-xl shadow-lg">
-                <h3 class="text-indigo-600 font-bold mb-2">
+                <h3 class="text-customblue font-bold mb-2">
                     <i class="fas fa-user text-sm mr-2"></i>
                     <span data-translate="traitsTitle">Eigenschappen</span>
                 </h3>
@@ -416,8 +416,8 @@
     <div class="satellite-node" style="top: 10%; right: 10%">
         <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/rayquaza.gif" alt="Rayquaza" class="satellite-photo" ></a>
         <div class="node-connection">
-            <div class="bg-white p-6 rounded-xl shadow-lg">
-                <h3 class="text-indigo-600 font-bold mb-2">
+            <div class="bg-white p-6 rounded-xl shadow-lgw-full sm:w-64">
+                <h3 class="text-customblue font-bold mb-2">
                     <i class="fas fa-rocket text-sm mr-2"></i>
                     <span data-translate="visionTitle">Toekomstvisie</span>
                 </h3>
@@ -433,14 +433,14 @@
     <div class="satellite-node" style="top: 45%; right: 10%">
         <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/groudon.gif" alt="groudon" class="satellite-photo" ></a>
         <div class="node-connection">
-            <div class="bg-white p-6 rounded-xl shadow-lg">
-                <h3 class="text-indigo-600 font-bold mb-2">
+            <div class="bg-white p-6 rounded-xl shadow-lg w-full sm:w-80">
+                <h3 class="text-customblue font-bold mb-2">
                     <i class="fas fa-briefcase text-sm mr-2"></i>
                     <span data-translate="werkTitle">Werk</span>
                 </h3>
                 <ul class="space-y-2 text-sm">
-                    <li id="work1">AH</li>
-                    <li id="work2">Stena Line </li>
+                    <li data-translate="work1"></li>
+                    <li data-translate="work2"></li>
                 </ul>
             </div>
         </div>
@@ -450,7 +450,7 @@
         <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/lugia.gif" alt="Lugia" class="satellite-photo" ></a>
         <div class="node-connection">
             <div class="bg-white p-6 rounded-xl shadow-lg">
-                <h3 class="text-indigo-600 font-bold mb-2">
+                <h3 class="text-customblue font-bold mb-2">
                     <i class="fas fa-heart text-sm mr-2"></i>
                     <span data-translate="hobbiesTitle">Hobby's</span>
                 </h3>
@@ -458,7 +458,9 @@
                     <li id="hobby1">Anime kijken</li>
                     <li id="hobby2">Gamen</li>
                     <li id="hobby3">Raves</li>
-                    <li id="hobby4">Chillen</li>
+                    <li id="hobby4">Chillen met mijn vrienden</li>
+                    <li id="hobby5">Met mijn vriendin reizen</li>
+
 
                 </ul>
             </div>
@@ -469,7 +471,7 @@
         <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/ho-oh.gif" alt="Ho-oh" class="satellite-photo"></a>
         <div class="node-connection">
             <div class="bg-white p-6 rounded-xl shadow-lg">
-                <h3 class="text-indigo-600 font-bold mb-2">
+                <h3 class="text-customblue font-bold mb-2">
                     <i class="fas fa-graduation-cap text-sm mr-2"></i>
                     <span data-translate="educationTitle">Opleiding</span>
                 </h3>
@@ -604,7 +606,7 @@
     })
 </script>
 </body>
-<footer class="bg-white text-indigo-600 py-6 px-4">
+<footer class="bg-white text-customblue py-6 px-4">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <!-- Left Side: Name and Study -->
         <div class="flex flex-col">

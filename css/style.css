@@ -122,10 +122,10 @@ main { position: relative; z-index: 1; }
 
 /* style.css */
 .bg-customblue {
-    background-color: #003279;
+    background-color: #0053ed;
 }
 .text-customblue{
-    background-color: #003279;
+    color: #0053ed;
 }
 
 #videoModal {

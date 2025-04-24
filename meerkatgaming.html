@@ -15,7 +15,7 @@
         .feature-icon {
             width: 50px;
             height: 50px;
-            background: #4F46E5;
+            background: #0053ed;
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -108,11 +108,11 @@
 <body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
 
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center relative z-[1000]">
-    <div class="text-xl font-bold text-indigo-600" data-translate="navbarTitle">Mijn Portfolio</div>
+    <div class="text-xl font-bold text-customblue" data-translate="navbarTitle">Mijn Portfolio</div>
 
     <!-- Hamburger menu knop -->
     <button id="mobileMenuButton" class="md:hidden focus:outline-none transition-transform duration-300 hover:scale-110">
-        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-8 h-8 text-customblue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
     </button>
@@ -127,7 +127,7 @@
             <span class="text-sm font-medium text-gray-700">NL</span>
             <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="langToggle" class="sr-only peer">
-                <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300 shadow-inner"></div>
+                <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-customblue transition-all duration-300 shadow-inner"></div>
                 <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
             </label>
             <span class="text-sm font-medium text-gray-700">EN</span>
@@ -138,7 +138,7 @@
     <div id="mobileMenu" class="fixed inset-0 bg-white hidden md:hidden z-[1000]">
         <div class="container mx-auto px-4 py-8 flex flex-col items-center h-full">
             <div class="w-full flex justify-end mb-8">
-                <button id="closeMenuButton" class="text-indigo-600 hover:text-indigo-800 transition-colors">
+                <button id="closeMenuButton" class="text-customblue hover:text-indigo-800 transition-colors">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
@@ -146,16 +146,16 @@
             </div>
 
             <nav class="flex flex-col items-center space-y-6 w-full">
-                <a href="./index.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navHome">Home</a>
-                <a href="projecten.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navProjects">Projecten</a>
-                <a href="programeertalen.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-indigo-600 transition-colors relative" data-translate="navLanguages">Programmeertalen</a>
+                <a href="./index.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-customblue transition-colors relative" data-translate="navHome">Home</a>
+                <a href="projecten.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-customblue transition-colors relative" data-translate="navProjects">Projecten</a>
+                <a href="programeertalen.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-customblue transition-colors relative" data-translate="navLanguages">Programmeertalen</a>
 
                 <div class="mt-8 pt-8 border-t border-gray-200 w-full max-w-xs text-center">
                     <div class="flex items-center justify-center gap-4">
                         <span class="text-sm font-medium text-gray-700">NL</span>
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" id="mobileLangToggle" class="sr-only peer">
-                            <div class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-indigo-600 transition-colors duration-300"></div>
+                            <div class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-customblue transition-colors duration-300"></div>
                             <div class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-6 shadow-md"></div>
                         </label>
                         <span class="text-sm font-medium text-gray-700">EN</span>
@@ -176,30 +176,30 @@
                 <div class="chat-preview">
                     <img src="./img/meerkatgaming.png" alt="Meerkat Gaming Screenshot" class="w-full h-auto object-cover" data-translate="meerkatImageAlt" data-translate-type="alt">
                 </div>
-                <div class="pt-4 flex gap-4 items-center">
+                <div class="pt-4 flex flex-col sm:flex-row gap-4 items-center">
                     <a href="https://github.com/JonahBeijer/webapplicatie-React"
                        target="_blank"
-                       class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                       class="bg-customblue text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2 sm:w-auto w-full mt-2 sm:mt-0">
                         <i class="fab fa-github"></i>
-
                         <span data-translate="frontendLink">Frontend Code</span>
                     </a>
                     <a href="https://github.com/JonahBeijer/RESTful-webservice"
                        target="_blank"
-                       class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2"
-                       >
+                       class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2 sm:w-auto w-full mt-2 sm:mt-0">
                         <i class="fab fa-github"></i>
-
                         <span data-translate="backendLink">Backend Code</span>
                     </a>
+
+                    <!-- Demo button (under the other two buttons on mobile) -->
                     <button onclick="openVideoModal()"
-                            class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+                            class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2 sm:w-auto w-full mt-2 sm:mt-0">
                         <i class="fas fa-circle-play"></i>
                         <span>Demo</span>
                     </button>
-
                 </div>
             </div>
+
+
             <div id="videoModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 transition-opacity duration-300">
                 <div class="relative w-full h-full flex items-center justify-center p-4">
                     <!-- Close Button BUITEN de video container -->
@@ -227,7 +227,7 @@
             </div>
             <div class="lg:w-1/2 xl:w-45% flex flex-col justify-between space-y-8">
                 <div>
-                    <h2 class="text-2xl font-semibold text-indigo-600 mb-4" data-translate="aboutTitle">Over het project</h2>
+                    <h2 class="text-2xl font-semibold text-customblue mb-4" data-translate="aboutTitle">Over het project</h2>
                     <p class="text-gray-700 mb-4" data-translate="meerkatGamingAbout">
                         Een gaming community platform met:
                     <ul class="list-disc pl-5 mt-2">
@@ -239,7 +239,7 @@
                 </div>
 
                 <div class="space-y-4">
-                    <h3 class="text-xl font-medium text-indigo-500" data-translate="featuresTitle">Kernfunctionaliteiten</h3>
+                    <h3 class="text-xl font-medium text-customblue" data-translate="featuresTitle">Kernfunctionaliteiten</h3>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="flex items-start gap-3">
                             <div class="feature-icon">
@@ -264,19 +264,19 @@
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-medium text-indigo-500 mb-3" data-translate="techTitle">Technologie Stack</h3>
+                    <h3 class="text-xl font-medium text-customblue mb-3" data-translate="techTitle">Technologie Stack</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="reactTag">React</span>
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="viteTag">Vite</span>
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="mongoTag">MongoDB</span>
-                        <span class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold" data-translate="jsxTag">JSX</span>
+                        <span class="bg-indigo-100 text-customblue px-4 py-2 rounded-full text-sm font-semibold" data-translate="reactTag">React</span>
+                        <span class="bg-indigo-100 text-customblue px-4 py-2 rounded-full text-sm font-semibold" data-translate="viteTag">Vite</span>
+                        <span class="bg-indigo-100 text-customblue px-4 py-2 rounded-full text-sm font-semibold" data-translate="mongoTag">MongoDB</span>
+                        <span class="bg-indigo-100 text-customblue px-4 py-2 rounded-full text-sm font-semibold" data-translate="jsxTag">JSX</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="mt-8 pt-8 border-t border-gray-200">
-            <h3 class="text-xl font-semibold text-indigo-600 mb-4" data-translate="techHighlightsTitle">Technische hoogtepunten</h3>
+            <h3 class="text-xl font-semibold text-customblue mb-4" data-translate="techHighlightsTitle">Technische hoogtepunten</h3>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-gray-50 p-4 rounded-lg">
                     <h4 class="font-medium mb-2" data-translate="scalableTitle">🚀 Schaalbaar</h4>
@@ -383,7 +383,7 @@
         }
     });
 </script>
-<footer class="bg-white text-indigo-600 py-6 px-4 mt-auto">
+<footer class="bg-white text-customblue py-6 px-4 mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <!-- Left Side: Name and Study -->
         <div class="flex flex-col">
