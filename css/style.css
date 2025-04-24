@@ -30,7 +30,7 @@ a, button, .clickable {
 }
 
 .nav-link:hover .char {
-    color: #6366f1 !important;
+    color: #0053ed !important;
     transform: translateY(-0.15em);
 }
 
