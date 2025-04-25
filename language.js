@@ -64,7 +64,7 @@ export const translations = {
         hobby4: "Chillen met vrienden",
         hobby5: "Reizen met mijn vriendin",
         educationTitle: "Opleiding",
-        educationText: "Hogeschool Rotterdam CMGT",
+        educationText: "Hogeschool Rotterdam Creative media & Game technologies",
         vintageAppTitle: "Vintage Store Finder",
         vintageAbout: "Een mobiele app ontwikkeld met React Native en Expo die vintage liefhebbers helpt bij het vinden van unieke tweedehands winkels. De app toont real-time openingsuren, locaties en laat gebruikers hun favoriete winkels opslaan.",
         featuresTitle: "Belangrijkste functies",
@@ -287,7 +287,7 @@ I’m 20 years old and an enthusiastic developer with a strong passion for build
         hobby5: "Traveling with my girlfriend",
 
         educationTitle: "Education",
-        educationText: "Rotterdam University CMGT",
+        educationText: "Rotterdam University Creative media & Game technologies",
         vintageAppTitle: "Vintage Store Finder",
         vintageAbout: "A mobile app developed with React Native and Expo that helps vintage lovers find unique thrift stores. The app shows real-time opening hours, locations, and allows users to save their favorite stores.",
         featuresTitle: "Key Features",
