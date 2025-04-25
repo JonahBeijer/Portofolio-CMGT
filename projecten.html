@@ -55,11 +55,11 @@
 
 <!-- Navigatiebalk -->
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center relative z-[1000]">
-    <div class="text-xl font-bold text-customblue" data-translate="navbarTitle">Mijn Portfolio</div>
+    <div class="text-xl font-bold text-blue-600" data-translate="navbarTitle">Mijn Portfolio</div>
 
     <!-- Hamburger menu knop -->
     <button id="mobileMenuButton" class="md:hidden focus:outline-none transition-transform duration-300 hover:scale-110">
-        <svg class="w-8 h-8 text-customblue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
     </button>
@@ -87,7 +87,7 @@
         <div class="container mx-auto px-4 py-8 flex flex-col items-center h-full">
             <!-- Sluitknop -->
             <div class="w-full flex justify-end mb-8">
-                <button id="closeMenuButton" class="text-customblue hover:text-indigo-800 transition-colors">
+                <button id="closeMenuButton" class="text-blue-600 hover:text-blue-800 transition-colors">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
@@ -96,9 +96,9 @@
 
             <!-- Menu items -->
             <nav class="flex flex-col items-center space-y-6 w-full">
-                <a href="./index.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-customblue transition-colors relative" data-translate="navHome">Home</a>
-                <a href="projecten.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-customblue transition-colors relative" data-translate="navProjects">Projecten</a>
-                <a href="programeertalen.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-customblue transition-colors relative" data-translate="navLanguages">Programmeertalen</a>
+                <a href="./index.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative" data-translate="navHome">Home</a>
+                <a href="projecten.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative" data-translate="navProjects">Projecten</a>
+                <a href="programeertalen.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative" data-translate="navLanguages">Programmeertalen</a>
 
                 <!-- Taalwisselaar mobiel -->
                 <div class="mt-8 pt-8 border-t border-gray-200 w-full max-w-xs text-center">
@@ -135,7 +135,7 @@
     <div class="  fixed right-4 top-1/2 -translate-y-1/2 opacity-100 z-20">
         <div class="arrow1 flex flex-col items-center space-y-2">
             <i class="fas fa-arrow-up text-3xl text-white"></i>
-            <span class="text-white font-semibold uppercase text-sm" data-translate="older">Vroegere projecten</span>
+            <span class="text-blue-600 font-semibold uppercase text-sm" data-translate="older">Vroegere projecten</span>
         </div>
     </div>
 
@@ -236,7 +236,7 @@
 
         projectsData.forEach((project, index) => {
             const tagsHTML = project.tags.map(tag =>
-                `<span class="inline-block bg-blue-600 rounded-full px-3 py-1 text-xs font-semibold text-white mr-2 mb-2 transition-colors hover:bg-indigo-700">${tag}</span>`
+                `<span class="inline-block bg-blue-600 rounded-full px-3 py-1 text-xs font-semibold text-white mr-2 mb-2 transition-colors hover:bg-blue-700">${tag}</span>`
             ).join('');
 
             const projectCard = document.createElement("div");
@@ -255,7 +255,7 @@
                     <p class="text-gray-400 text-base leading-relaxed">
                         ${t[project.descriptionKey]}
                     </p>
-                    <a href="${project.page}" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
+                    <a href="${project.page}" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
                         ${translations[lang].projectDetailsLink} →
                     </a>
                 </div>
@@ -327,7 +327,7 @@
         setTimeout(updateNavAnimations, 50);
     });
 </script>
-<footer class="bg-white text-customblue py-6 px-4 mt-auto">
+<footer class="bg-white text-blue-600 py-6 px-4 mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <!-- Left Side: Name and Study -->
         <div class="flex flex-col">
@@ -337,13 +337,13 @@
 
         <!-- Right Side: Social Links with Icons -->
         <div class="flex space-x-6">
-            <a href="https://github.com/JonahBeijer" class="hover:text-indigo-400" target="_blank">
+            <a href="https://github.com/JonahBeijer" class="hover:text-blue-400" target="_blank">
                 <i class="fab fa-github fa-2x"></i>
             </a>
-            <a href="mailto:jonahbeijer@gmail.com" class="hover:text-indigo-400">
+            <a href="mailto:jonahbeijer@gmail.com" class="hover:text-blue-400">
                 <i class="fas fa-envelope fa-2x"></i>
             </a>
-            <a href="https://www.linkedin.com/in/jonah-beijer/" class="hover:text-indigo-400" target="_blank">
+            <a href="https://www.linkedin.com/in/jonah-beijer/" class="hover:text-blue-400" target="_blank">
                 <i class="fab fa-linkedin fa-2x"></i>
             </a>
         </div>
