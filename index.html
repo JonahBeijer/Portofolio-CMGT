@@ -249,73 +249,41 @@
 
         @media (min-width: 2560px) {
             .mindmap-container {
-                padding-top: 12rem !important;
-                transform-origin: top center;
-                padding-bottom: 2rem !important;
-
+                padding-top: 8rem;
             }
 
             .central-node {
-                width: 70rem !important;
-                padding: 6rem !important;
-            }
-
-            .central-node h1 {
-                font-size: 3.5rem !important;
-            }
-
-            .central-node p {
-                font-size: 1.5rem !important;
-                line-height: 2.2rem !important;
+                width: 60rem !important;
+                padding: 5rem !important;
             }
 
             .satellite-node {
-                transform: scale(1.3) !important;
-            }
-
-            .satellite-node .bg-white {
-                padding: 2.5rem !important;
-                border-radius: 1.5rem !important;
-            }
-
-            .satellite-node h3 {
-                font-size: 1.6rem !important;
-                margin-bottom: 1.5rem !important;
-            }
-
-            .satellite-node li,
-            .satellite-node p {
-                font-size: 1.3rem !important;
-                line-height: 1.8rem !important;
+                width: 400px;
+                transform: scale(1);
             }
 
             .satellite-photo {
-                width: 140px !important;
-                height: 140px !important;
-                transform: translateX(-50%) translateY(50px) !important;
-                padding-bottom: 50px !important;
+                width: 120px;
+                height: 120px;
+                position: relative;
+                transform: translateX(-50%) translateY(-30px) !important;
+                left: 50%;
+                right: auto;
+                margin-bottom: -40px;
+                z-index: 10;
+
             }
 
-            .satellite-node:hover .satellite-photo {
-                transform: translateX(-50%) translateY(-100px) !important;
+            .central-photo{
+                width: 120px;
+                height: 120px;
+               margin-top: -50px;
+
+
             }
 
             .node-connection::after {
-                height: 280px !important;
-            }
-
-            .central-photo {
-                width: 140px !important;
-                height: 140px !important;
-                margin-top: -70px !important;
-            }
-
-            /* Positionering satelliet-nodes aanpassen */
-            .satellite-node[style*="top: 11%"] {
-                top: 15% !important;
-            }
-            .satellite-node[style*="bottom: 8%"] {
-                bottom: 12% !important;
+                height: 220px;
             }
 
 
@@ -333,7 +301,7 @@
         </style>
 </head>
 <body class="bg-gray-100 font-sans min-h-screen">
-<div id="vanta-bg"></div>
+<div id="vanta-bg" class="pb-20"></div>
 
 <div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
     <img src="img/pokeball.png"
@@ -405,7 +373,8 @@
 <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/50 z-[999] hidden"></div>
 
 
-<div class="mindmap-container py-20 flex-grow">
+<div class="mindmap-container py-20">
+    <!-- Centrale node -->
     <div class="central-node bg-white shadow-2xl rounded-2xl p-4 md:p-8 w-full md:w-[30rem] mx-4 fade-in" id="aboutSection">        <!-- Profielfoto -->
         <div class="flex justify-center mb-6">
             <img src="img/IMG_4026.JPEG" alt="Profielfoto" class="w-40 h-40 rounded-full object-cover ring-4 ring-blue-500" />
@@ -453,7 +422,7 @@
     <div class="satellite-node" style="top: 10%; right: 10%">
         <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/rayquaza.gif" alt="Rayquaza" class="satellite-photo" ></a>
         <div class="node-connection">
-            <div class="bg-white p-6 rounded-xl shadow-lgw-full sm:w-96">
+            <div class="bg-white p-6 rounded-xl shadow-lgw-full sm:w-64">
                 <h3 class="text-blue-600 font-bold mb-2">
                     <i class="fas fa-rocket text-sm mr-2"></i>
                     <span data-translate="visionTitle">Toekomstvisie</span>
@@ -643,7 +612,7 @@
     })
 </script>
 </body>
-<footer class="bg-white text-blue-600 py-6 px-4 mt-auto">
+<footer class="bg-white text-blue-600 py-6 px-4">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <!-- Left Side: Name and Study -->
         <div class="flex flex-col">
