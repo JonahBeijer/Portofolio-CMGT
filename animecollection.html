@@ -294,34 +294,7 @@
     import { currentLanguage, setLanguage, updateNavAnimations } from './language.js';
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Initializeer animaties
-        updateNavAnimations();
-
-        // Taalwissel handler
-        document.getElementById('langToggle').addEventListener('change', (e) => {
-            const newLang = e.target.checked ? 'en' : 'nl';
-            setLanguage(newLang);
-        });
-    });
-
-    // Herinitialiseer animaties bij elke taalverandering
-    document.addEventListener('languageChanged', () => {
-        setTimeout(updateNavAnimations, 50);
-    });
-    AOS.init({
-        once: true,
-        duration: 600,
-        offset: 50,
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-        setLanguage(currentLanguage);
-
-
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-        // Menu functionaliteit
+        // Mobile menu functionaliteit
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
@@ -348,23 +321,42 @@
             }
         });
 
-        // Taalwisselaar
+        // Taalwisselaar sync
         document.getElementById('langToggle').addEventListener('change', (e) => {
             const newLang = e.target.checked ? 'en' : 'nl';
             setLanguage(newLang);
+            document.getElementById('mobileLangToggle').checked = e.target.checked;
         });
 
         document.getElementById('mobileLangToggle').addEventListener('change', (e) => {
-            document.getElementById('langToggle').checked = e.target.checked;
-            document.getElementById('langToggle').dispatchEvent(new Event('change'));
-        });
-
-
-        document.getElementById("langToggle").addEventListener("click", () => {
-            const newLang = currentLanguage === 'nl' ? 'en' : 'nl';
+            const newLang = e.target.checked ? 'en' : 'nl';
             setLanguage(newLang);
+            document.getElementById('langToggle').checked = e.target.checked;
         });
 
+        // Video modal
+        window.openVideoModal = () => {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('demoVideo');
+            modal.classList.remove('hidden');
+            video.play();
+        }
+
+        window.closeVideoModal = () => {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('demoVideo');
+            modal.classList.add('hidden');
+            video.pause();
+        }
+
+        // AOS initialisatie
+        AOS.init({
+            once: true,
+            duration: 600,
+            offset: 50,
+        });
+
+        // Vanta.js achtergrond
         VANTA.CLOUDS({
             el: "body",
             mouseControls: false,
@@ -373,10 +365,19 @@
             minHeight: 200.00,
             minWidth: 200.00,
             skyColor: 0x53ed,
-        })
+        });
+    });
 
+    // Click outside modal
+    document.addEventListener('click', (e) => {
+        const modal = document.getElementById('videoModal');
+        if (e.target === modal) {
+            closeVideoModal();
+        }
+    });
 
-    })
+    document.getElementById("demoVideo").muted = true;
+
 </script>
 <footer class="bg-white text-blue-600 py-6 px-4 mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">

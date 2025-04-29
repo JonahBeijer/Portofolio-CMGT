@@ -183,36 +183,18 @@
                         <i class="fab fa-github"></i>
                         <span data-translate="viewCode">Bekijk code</span>
                     </a>
-                    <button onclick="openVideoModal()"
-                            class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
-                        <i class="fas fa-circle-play"></i>
-                        <span>Demo</span>
-                    </button>
+
 
                     <!-- Video Modal -->
 
                     <div id="videoModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 transition-opacity duration-300">
                         <div class="relative w-full h-full flex items-center justify-center p-4">
                             <!-- Close Button BUITEN de video container -->
-                            <button onclick="closeVideoModal()"
-                                    class="absolute top-8 right-8 p-3 text-white hover:bg-white/20 rounded-full transition-all duration-200 z-50 group">
-                                <svg class="w-12 h-12 group-hover:scale-125 transition-transform"
-                                     fill="none"
-                                     stroke="currentColor"
-                                     viewBox="0 0 24 24">
-                                    <path stroke-linecap="round"
-                                          stroke-linejoin="round"
-                                          stroke-width="3"
-                                          d="M6 18L18 6M6 6l12 12"/>
-                                </svg>
-                            </button>
+
 
                             <!-- Video Container -->
                             <div class="relative w-full max-w-4xl bg-black rounded-xl overflow-hidden shadow-2xl">
-                                <video controls class="w-full" id="demoVideo">
-                                    <source src="./img/chatbot.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+
                             </div>
                         </div>
                     </div>
@@ -261,9 +243,10 @@
                 <div>
                     <h3 class="text-xl font-medium text-blue-500 mb-3" data-translate="techTitle">Technologie Stack</h3>
                     <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">HTML</span>
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">CSS</span>
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">Javacript</span>
                         <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">Azure OpenAI</span>
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">Python</span>
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">FAISS</span>
                         <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">NewsAPI</span>
                     </div>
                 </div>
