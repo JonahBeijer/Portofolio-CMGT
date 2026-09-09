@@ -65,6 +65,47 @@ export const translations = {
         hobby3: "Raves",
         hobby4: "Chillen met vrienden",
         hobby5: "Reizen met mijn vriendin",
+        hobby6: "Aan mijn auto werken",
+        jojosPopsPageTitle: "JoJosPops",
+        jojosPopsAboutTitle: "Over het project",
+        jojosPopsAboutDescription: "JoJosPops is een mobiele applicatie waarmee gebruikers exclusieve evenementen kunnen ontdekken, bekijken en bijwonen.",
+
+        jojosPopsEventsTitle: "Evenementen",
+        jojosPopsEventsDescription: "Gebruikers kunnen actieve en aankomende evenementen bekijken en ontdekken.",
+
+        jojosPopsLocationTitle: "Vertraagde locatie",
+        jojosPopsLocationDescription: "De exacte locatie van een evenement wordt pas na de ingestelde reveal-tijd beschikbaar gemaakt.",
+
+        jojosPopsNotificationsDescription: "Firebase Cloud Messaging wordt gebruikt voor systeemnotificaties en uitnodigingen.",
+
+        jojosPopsFriendsDescription: "Gebruikers, vriendschappen, evenementen en uitnodigingen zijn centraal met elkaar verbonden.",
+
+        jojosPopsFeaturesTitle: "Belangrijkste functies",
+
+        jojosPopsTechnologiesTitle: "Technologieën",
+
+        jojosPopsTechnicalHighlightsTitle: "Technische highlights",
+
+        jojosPopsLocationSecurityTitle: "Beveiligde locatievrijgave",
+        jojosPopsLocationSecurityDescription: "Exacte latitude- en longitudegegevens worden niet naar de frontend gestuurd voordat de reveal_time is verstreken.",
+
+        jojosPopsEmailTitle: "E-mail en OTP",
+        jojosPopsEmailDescription: "E-mail- en One-Time Password-verificatie verlopen via de externe API-infrastructuur van Mailgun.",
+
+        jojosPopsMediaTitle: "Media-opslag",
+        jojosPopsMediaDescription: "Afbeeldingen, event-flyers en andere bestanden worden extern opgeslagen via een beveiligde SFTP-verbinding.",
+
+        jojosPopsPerformanceTitle: "Prestaties & betrouwbaarheid",
+        jojosPopsPerformanceDescription: "Core API-endpoints hebben een doelresponstijd van maximaal twee seconden.",
+
+        jojosPopsSecurityTitle: "Netwerkbeveiliging",
+        jojosPopsSecurityDescription: "De productieomgeving maakt gebruik van DDoS-bescherming, CDN en Edge-caching.",
+
+        jojosPopsMaintenanceTitle: "Onderhoudbare architectuur",
+        jojosPopsMaintenanceDescription: "De Laravel-backend volgt PSR-standaarden en een MVC-structuur met Models, Controllers en Services.",
+
+        jojosPopsDemoApp: "Demo app",
+        jojosPopsBackLink: "← Terug naar projecten",
         educationTitle: "Opleiding",
         educationText: "Hogeschool Rotterdam Creative media & Game technologies",
         vintageAppTitle: "Vintage Store Finder",
@@ -261,7 +302,7 @@ I’m 20 years old and an enthusiastic developer with a strong passion for build
         werkTitle: "Work",
         work1: "Albert Heijn - Shelf stocker 2019/2022",
         work2: "Stena Line - Lasher 2022/Present",
-        work3: "Developer - Developer 2026/Present",
+        work3: "Digiwedo - Developer 2026/Present",
 
 
         gamePageTitle: "2D Game ",
@@ -433,8 +474,50 @@ I’m 20 years old and an enthusiastic developer with a strong passion for build
         insight3: "Always think from the end-user's perspective",
         insight4: "Be open to feedback and improvement",
         study: "Study: CMGT",
+jojosPopsPageTitle: "JoJosPops",
 
-        experienceConclusion: "These practical experiences have not only strengthened me technically but also as a team member and future professional. They've taught me that taking responsibility, listening to feedback, and focusing on accessibility are essential for successful projects."
+jojosPopsAboutTitle: "About the Project",
+jojosPopsAboutDescription: "JoJosPops is a mobile application that allows users to discover, view, and attend exclusive events. The application is developed with React Native and Expo and uses a Laravel REST API as its backend. An important feature of the application is the delayed release of the exact location of events.",
+
+jojosPopsEventsTitle: "Events",
+jojosPopsEventsDescription: "Users can view and discover active and upcoming events.",
+
+jojosPopsLocationTitle: "Delayed Location",
+jojosPopsLocationDescription: "The exact location of an event only becomes available after the configured reveal time.",
+
+jojosPopsNotificationsDescription: "Firebase Cloud Messaging is used for system notifications and invitations.",
+
+jojosPopsFriendsDescription: "Users can manage friendships and receive invitations to events.",
+
+jojosPopsFeaturesTitle: "Key Features",
+
+jojosPopsTechnologiesTitle: "Technologies",
+
+jojosPopsTechnicalHighlightsTitle: "Technical Highlights",
+
+jojosPopsLocationSecurityTitle: "Secure Location Release",
+jojosPopsLocationSecurityDescription: "Exact latitude and longitude data is not sent to the frontend before the reveal_time has passed. Until then, users only receive a general neighbourhood indication.",
+
+jojosPopsEmailTitle: "Email and OTP",
+jojosPopsEmailDescription: "Email and One-Time Password verification are handled through the external Mailgun API infrastructure. OTP tokens have a limited expiration time.",
+
+jojosPopsMediaTitle: "Media Storage",
+jojosPopsMediaDescription: "Images, event flyers, and other files are stored externally through a secure SFTP connection with StackStorage and are not stored locally on the application server.",
+
+jojosPopsPerformanceTitle: "Performance & Reliability",
+jojosPopsPerformanceDescription: "Core API endpoints are designed to respond within a maximum of two seconds under normal network conditions. Errors from external APIs are caught and logged.",
+
+jojosPopsSecurityTitle: "Network Security",
+jojosPopsSecurityDescription: "The production environment uses DDoS protection, CDN, and Edge caching. Rate limiting helps manage peak traffic when event locations are released.",
+
+jojosPopsMaintenanceTitle: "Maintainable Architecture",
+jojosPopsMaintenanceDescription: "The Laravel backend follows PSR standards and uses an MVC structure with Models, Controllers, and Services. The repositories document requirements, environment variables, and reproducible installation.",
+
+jojosPopsDemoApp: "Demo App",
+
+jojosPopsBackLink: "← Back to Projects",
+
+    experienceConclusion: "These practical experiences have not only strengthened me technically but also as a team member and future professional. They've taught me that taking responsibility, listening to feedback, and focusing on accessibility are essential for successful projects."
 
     }
 };

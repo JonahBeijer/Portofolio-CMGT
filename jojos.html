@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JoJosPops</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./img/oog.png" type="image/png" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: #0053ed;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-preview {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        main {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+        }
+
+        main {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+        }
+
+        @media (min-width: 1440px) {
+            main {
+                padding: 6rem 4rem;
+            }
+
+            .project-container {
+                max-width: 90%;
+                margin: 0 auto;
+            }
+
+            .chat-preview {
+                max-height: 600px;
+            }
+
+            h1.text-3xl {
+                font-size: 3.5rem;
+                margin-bottom: 4rem;
+            }
+
+            .feature-icon {
+                width: 65px;
+                height: 65px;
+            }
+
+            .tech-stack span {
+                font-size: 1.1rem;
+                padding: 0.75rem 1.5rem;
+            }
+        }
+
+        @media (min-width: 2560px) {
+            body {
+                font-size: 1.2rem;
+                line-height: 1.8;
+            }
+
+            h1 { font-size: 4.6rem; }
+            h2 { font-size: 3.9rem; }
+            h3 { font-size: 3.2rem; }
+            h4 { font-size: 2.6rem; }
+
+            p, li { font-size: 1.4rem; }
+
+            .project-container {
+                max-width: 80%;
+                margin: 0 auto;
+            }
+
+            .chat-preview {
+                max-height: 800px;
+            }
+
+            main {
+                padding: 8rem 6rem;
+            }
+        }
+
+        #videoModal {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #videoModal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        video {
+            aspect-ratio: 16/9;
+        }
+
+        .map-preview {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
+
+<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center relative z-[1000]">
+
+    <div class="text-xl font-bold text-blue-600" data-translate="portfolioTitle">
+        Mijn Portfolio
+    </div>
+
+    <!-- Hamburger menu knop -->
+    <button id="mobileMenuButton" class="md:hidden focus:outline-none transition-transform duration-300 hover:scale-110">
+        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
+
+    <!-- Desktop menu -->
+    <div class="hidden md:flex items-center space-x-6">
+
+        <a href="./index.html"
+           class="nav-link text-gray-700 font-medium relative"
+           data-translate="navHome">
+            Home
+        </a>
+
+        <a href="projecten.html"
+           class="nav-link text-gray-700 font-medium relative"
+           data-translate="navProjects">
+            Projecten
+        </a>
+
+        <a href="programeertalen.html"
+           class="nav-link text-gray-700 font-medium relative"
+           data-translate="navLanguages">
+            Programmeertalen
+        </a>
+
+        <div class="flex items-center gap-2">
+            <span class="text-sm font-medium text-gray-700">NL</span>
+
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="langToggle" class="sr-only peer">
+                <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-blue-600 transition-all duration-300 shadow-inner"></div>
+                <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
+            </label>
+
+            <span class="text-sm font-medium text-gray-700">EN</span>
+        </div>
+    </div>
+
+    <!-- Mobiel menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-white hidden md:hidden z-[1000]">
+
+        <div class="container mx-auto px-4 py-8 flex flex-col items-center h-full">
+
+            <div class="w-full flex justify-end mb-8">
+                <button id="closeMenuButton"
+                        class="text-blue-600 hover:text-blue-800 transition-colors">
+
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+
+                </button>
+            </div>
+
+            <nav class="flex flex-col items-center space-y-6 w-full">
+
+                <a href="./index.html"
+                   class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative"
+                   data-translate="navHome">
+                    Home
+                </a>
+
+                <a href="projecten.html"
+                   class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative"
+                   data-translate="navProjects">
+                    Projecten
+                </a>
+
+                <a href="programeertalen.html"
+                   class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative"
+                   data-translate="navLanguages">
+                    Programmeertalen
+                </a>
+
+                <div class="mt-8 pt-8 border-t border-gray-200 w-full max-w-xs text-center">
+
+                    <div class="flex items-center justify-center gap-4">
+
+                        <span class="text-sm font-medium text-gray-700">NL</span>
+
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox"
+                                   id="mobileLangToggle"
+                                   class="sr-only peer">
+
+                            <div class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 transition-colors duration-300"></div>
+
+                            <div class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-6 shadow-md"></div>
+                        </label>
+
+                        <span class="text-sm font-medium text-gray-700">EN</span>
+
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+    </div>
+
+</nav>
+
+<div id="mobileMenuOverlay"
+     class="fixed inset-0 bg-black/50 z-[999] hidden">
+</div>
+
+
+<main class="p-8 w-full mx-auto project-container">
+
+    <h1 class="text-3xl font-bold text-white mb-8 text-center lg:text-4xl xl:text-5xl"
+        data-translate="jojosPopsPageTitle">
+        JoJosPops
+    </h1>
+
+    <div class="bg-white p-8 rounded-lg shadow-lg min-h-[70vh]">
+
+        <div class="flex flex-col lg:flex-row gap-8">
+
+            <div class="lg:w-1/2">
+
+                <div class="map-preview flex justify-center">
+
+                    <img src="./img/vintageapp.PNG"
+                         alt="JoJosPops app preview"
+                         class="w-[300px] h-auto object-cover">
+
+                </div>
+
+            </div>
+
+
+            <div class="lg:w-1/2 xl:w-[45%] flex flex-col justify-between space-y-8">
+
+                <div>
+
+                    <h2 class="text-2xl font-semibold text-blue-600 mb-4"
+                        data-translate="jojosPopsAboutTitle">
+                        Over het project
+                    </h2>
+
+                    <p class="text-gray-700 mb-4"
+                       data-translate="jojosPopsAboutDescription">
+                        JoJosPops is een cross-platform mobiele applicatie voor het organiseren en ontdekken van pop-up events. De frontend is gebouwd met React Native en Expo in TypeScript en communiceert via een REST API met een Laravel-backend. Een belangrijk technisch uitgangspunt is dat exacte eventlocaties pas na de ingestelde reveal_time worden vrijgegeven.
+                    </p>
+
+                    <ul class="list-disc pl-5 mt-2">
+
+                        <li data-translate="jojosPopsEventsDescription">
+                            Pop-up events aanmaken en ontdekken
+                        </li>
+
+                        <li data-translate="jojosPopsLocationDescription">
+                            Uitgestelde vrijgave van exacte locaties
+                        </li>
+
+                        <li data-translate="jojosPopsNotificationsDescription">
+                            OTP-verificatie, notificaties en premiumfuncties
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="space-y-4">
+
+                    <h3 class="text-xl font-medium text-blue-500"
+                        data-translate="jojosPopsFeaturesTitle">
+                        Belangrijkste functies
+                    </h3>
+
+                    <div class="grid grid-cols-2 gap-4">
+
+                        <div class="flex items-start gap-3">
+
+                            <div class="feature-icon">
+                                <i class="fas fa-users text-white"></i>
+                            </div>
+
+                            <div>
+
+                                <h4 class="font-semibold"
+                                    data-translate="jojosPopsEventsTitle">
+                                    Events & Community
+                                </h4>
+
+                                <p class="text-sm text-gray-600"
+                                   data-translate="jojosPopsFriendsDescription">
+                                    Gebruikers, vriendschappen, events en aanvragen centraal gekoppeld
+                                </p>
+
+                            </div>
+                        </div>
+
+
+                        <div class="flex items-start gap-3">
+
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt text-white"></i>
+                            </div>
+
+                            <div>
+
+                                <h4 class="font-semibold"
+                                    data-translate="jojosPopsLocationTitle">
+                                    Delayed Location Reveal
+                                </h4>
+
+                                <p class="text-sm text-gray-600"
+                                   data-translate="jojosPopsLocationDescription">
+                                    Exacte coördinaten blijven verborgen tot de reveal_time is verstreken
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div>
+
+                    <h3 class="text-xl font-medium text-blue-500 mb-3 xl:text-2xl"
+                        data-translate="jojosPopsTechnologiesTitle">
+                        Technologieën
+                    </h3>
+
+                    <div class="flex flex-wrap gap-3">
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Expo
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            React Native
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            TypeScript
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Laravel REST API
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            MySQL 8.4
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Firebase Cloud Messaging
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Google Maps & Places API
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Mailgun
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Stripe Billing
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="pt-4 flex gap-4 items-center">
+
+                    <button onclick="openVideoModal()"
+                            class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+
+                        <i class="fas fa-circle-play"></i>
+
+                        <span data-translate="jojosPopsDemoApp">
+                            Demo app
+                        </span>
+
+                    </button>
+
+
+                    <div id="videoModal"
+                         class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 transition-opacity duration-300">
+
+                        <div class="relative w-full h-full flex items-center justify-center p-4">
+
+                            <!-- Close Button BUITEN de video container -->
+
+                            <button onclick="closeVideoModal()"
+                                    class="absolute top-8 right-8 p-3 text-white hover:bg-white/20 rounded-full transition-all duration-200 z-50 group">
+
+                                <svg class="w-12 h-12 group-hover:scale-125 transition-transform"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     viewBox="0 0 24 24">
+
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="3"
+                                          d="M6 18L18 6M6 6l12 12"/>
+
+                                </svg>
+
+                            </button>
+
+
+                            <!-- Video Container -->
+
+                            <div class="relative w-full max-w-4xl bg-black rounded-xl overflow-hidden shadow-2xl">
+
+                                <video controls
+                                       class="w-full"
+                                       id="demoVideo">
+
+                                    <source src="./img/vintageapp.MP4"
+                                            type="video/mp4">
+
+                                    Your browser does not support the video tag.
+
+                                </video>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Technische highlights -->
+
+        <div class="mt-8 pt-8 border-t border-gray-200">
+
+            <h3 class="text-xl font-semibold text-blue-600 mb-4"
+                data-translate="jojosPopsTechnicalHighlightsTitle">
+                Technische highlights
+            </h3>
+
+            <div class="grid md:grid-cols-2 gap-4">
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="jojosPopsLocationSecurityTitle">
+                        Beveiligde locatievrijgave
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="jojosPopsLocationSecurityDescription">
+                        De Laravel API geeft <code>latitude</code> en <code>longitude</code> pas vrij nadat <code>reveal_time</code> is verstreken. Tot dat moment ontvangt de app alleen een globale wijk- of buurtindicatie.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="jojosPopsEmailTitle">
+                        E-mail en OTP
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="jojosPopsEmailDescription">
+                        OTP-verificatie verloopt via Mailgun, pushnotificaties via Firebase Cloud Messaging en premium-gebruikers worden afgehandeld via Stripe Billing.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="jojosPopsMediaTitle">
+                        Media-opslag
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="jojosPopsMediaDescription">
+                        Relationele data wordt opgeslagen in MySQL 8.4. Media en event-flyers worden extern bewaard via een beveiligde SFTP-verbinding met StackStorage en niet lokaal op de applicatieserver.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="jojosPopsPerformanceTitle">
+                        Performance & betrouwbaarheid
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="jojosPopsPerformanceDescription">
+                        Core API-endpoints hebben een doelresponstijd van maximaal 2 seconden. Externe API-fouten worden opgevangen en gelogd, terwijl timestamps in UTC worden opgeslagen voor consistente synchronisatie.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="jojosPopsSecurityTitle">
+                        Netwerkbeveiliging
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="jojosPopsSecurityDescription">
+                        De productieomgeving is ingericht met DDoS-bescherming, CDN en Edge-caching. Rate-limiting helpt piekbelasting rond het vrijgeven van eventlocaties beheersbaar te houden.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="jojosPopsMaintenanceTitle">
+                        Onderhoudbare architectuur
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="jojosPopsMaintenanceDescription">
+                        De Laravel-backend volgt PSR-standaarden en een MVC-structuur met Models, Controllers en Services. De repositories documenteren vereisten, omgevingsvariabelen en reproduceerbare installatie.
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="mt-8">
+
+            <a href="projecten.html"
+               class="text-blue-500 hover:underline"
+               data-translate="jojosPopsBackLink">
+                ← Terug naar projecten
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script type="module">
+
+    import {
+        currentLanguage,
+        setLanguage,
+        updateNavAnimations
+    } from './language.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Mobile menu functionaliteit
+
+        const mobileMenuButton =
+            document.getElementById('mobileMenuButton');
+
+        const mobileMenu =
+            document.getElementById('mobileMenu');
+
+        const mobileMenuOverlay =
+            document.getElementById('mobileMenuOverlay');
+
+        const closeMenuButton =
+            document.getElementById('closeMenuButton');
+
+
+        function toggleMobileMenu() {
+
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('active');
+
+            mobileMenuOverlay.classList.toggle('hidden');
+
+            document.body.classList.toggle('overflow-hidden');
+
+            mobileMenuButton.classList.toggle('active');
+
+        }
+
+
+        [
+            mobileMenuButton,
+            mobileMenuOverlay,
+            closeMenuButton
+        ].forEach(element => {
+
+            element.addEventListener(
+                'click',
+                toggleMobileMenu
+            );
+
+        });
+
+
+        window.addEventListener('resize', () => {
+
+            if (window.innerWidth >= 768) {
+
+                mobileMenu.classList.remove('active');
+                mobileMenu.classList.add('hidden');
+
+                mobileMenuOverlay.classList.add('hidden');
+
+                document.body.classList.remove('overflow-hidden');
+
+            }
+
+        });
+
+
+        // Taalwisselaar sync
+
+        document
+            .getElementById('langToggle')
+            .addEventListener('change', (e) => {
+
+                const newLang =
+                    e.target.checked ? 'en' : 'nl';
+
+                setLanguage(newLang);
+
+                document.getElementById(
+                    'mobileLangToggle'
+                ).checked = e.target.checked;
+
+            });
+
+
+        document
+            .getElementById('mobileLangToggle')
+            .addEventListener('change', (e) => {
+
+                const newLang =
+                    e.target.checked ? 'en' : 'nl';
+
+                setLanguage(newLang);
+
+                document.getElementById(
+                    'langToggle'
+                ).checked = e.target.checked;
+
+            });
+
+
+        // Video modal
+
+        window.openVideoModal = () => {
+
+            const modal =
+                document.getElementById('videoModal');
+
+            const video =
+                document.getElementById('demoVideo');
+
+            modal.classList.remove('hidden');
+
+            video.play();
+
+        }
+
+
+        window.closeVideoModal = () => {
+
+            const modal =
+                document.getElementById('videoModal');
+
+            const video =
+                document.getElementById('demoVideo');
+
+            modal.classList.add('hidden');
+
+            video.pause();
+
+        }
+
+
+        // AOS initialisatie
+
+        AOS.init({
+            once: true,
+            duration: 600,
+            offset: 50,
+        });
+
+
+        // Vanta.js achtergrond
+
+        VANTA.CLOUDS({
+
+            el: "body",
+
+            mouseControls: false,
+
+            touchControls: true,
+
+            gyroControls: false,
+
+            minHeight: 200.00,
+
+            minWidth: 200.00,
+
+            skyColor: 0x53ed,
+
+        });
+
+    });
+
+
+    // Click outside modal
+
+    document.addEventListener('click', (e) => {
+
+        const modal =
+            document.getElementById('videoModal');
+
+        if (e.target === modal) {
+            closeVideoModal();
+        }
+
+    });
+
+
+    document.getElementById("demoVideo").muted = true;
+
+</script>
+
+
+<footer class="bg-white text-blue-600 py-6 px-4 mt-auto">
+
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+
+        <!-- Left Side: Name and Study -->
+
+        <div class="flex flex-col">
+
+            <p class="text-lg font-semibold" id="name">
+                Jonah Beijer
+            </p>
+
+            <p class="text-sm" id="study">
+                CMGT
+            </p>
+
+        </div>
+
+
+        <!-- Right Side: Social Links with Icons -->
+
+        <div class="flex space-x-6">
+
+            <a href="https://github.com/JonahBeijer"
+               class="hover:text-blue-400"
+               target="_blank">
+
+                <i class="fab fa-github fa-2x"></i>
+
+            </a>
+
+            <a href="mailto:jonahbeijer@gmail.com"
+               class="hover:text-blue-400">
+
+                <i class="fas fa-envelope fa-2x"></i>
+
+            </a>
+
+            <a href="https://www.linkedin.com/in/jonah-beijer/"
+               class="hover:text-blue-400"
+               target="_blank">
+
+                <i class="fab fa-linkedin fa-2x"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
