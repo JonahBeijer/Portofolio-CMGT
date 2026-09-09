@@ -299,7 +299,7 @@ export const translations = {
 
         heading: "Who am i?",
         bio: `Hi, I’m Jonah Beijer 
-I’m 20 years old and an enthusiastic developer with a strong passion for building web applications and apps. I’m always eager to learn and grow, whether that means picking up new skills or improving existing ones. I'm really looking forward to what my internship has to offer and everything I can learn from it along the way.`,
+I’m 22 years old and an enthusiastic developer with a strong passion for building web applications and apps. I’m always eager to learn and grow, whether that means picking up new skills or improving existing ones. I'm really looking forward to what my internship has to offer and everything I can learn from it along the way.`,
 
         navbarTitle: "My Portfolio",
         homeLink: "Home",
