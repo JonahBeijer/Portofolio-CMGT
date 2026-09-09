@@ -191,32 +191,30 @@
         <div class="flex flex-col lg:flex-row gap-8">
 
             <!-- LINKERKANT (SLIDER) -->
-            <div class="lg:w-1/2 flex justify-center items-start">
-                <!-- Slider Container -->
-                <div class="relative w-full max-w-[500px] rounded-2xl overflow-hidden shadow-lg group bg-transparent">
+            <div class="lg:w-1/2 flex justify-center items-start pt-4">
+                <!-- Slider Container: Telefoon layout, Vaste ratio (aspect-[9/19.5]) en witte achtergrond -->
+                <div class="relative w-[240px] aspect-[9/19.5] rounded-[2rem] overflow-hidden shadow-2xl group border-[6px] border-black bg-white mx-auto">
 
                     <!-- Images Track -->
-                    <div id="appSlider" class="flex transition-transform duration-500 ease-in-out w-full">
-                        <!-- Voeg hieronder al je afbeeldingen toe -->
-                        <img src="./img/IMG_6325.PNG" alt="IFCC preview 1" class="w-full block shrink-0 h-auto object-cover">
-                        <img src="./img/IMG_6328.PNG" alt="IFCC preview 1" class="w-full block shrink-0 h-auto object-cover">
-                        <img src="./img/IMG_6327.PNG" alt="IFCC preview 1" class="w-full block shrink-0 h-auto object-cover">
-                        <img src="./img/IMG_6326.PNG" alt="IFCC preview 1" class="w-full block shrink-0 h-auto object-cover">
-
+                    <div id="appSlider" class="flex transition-transform duration-500 ease-in-out w-full h-full">
+                        <!-- 'p-3' zorgt voor net dat beetje extra uitzoomen -->
+                        <img src="./img/IMG_6325.PNG" alt="IFCC preview 1" class="w-full h-full object-contain p-3 shrink-0 block bg-black">
+                        <img src="./img/IMG_6328.PNG" alt="IFCC preview 2" class="w-full h-full object-contain p-3 shrink-0 block bg-black">
+                        <img src="./img/IMG_6327.PNG" alt="IFCC preview 3" class="w-full h-full object-contain p-3 shrink-0 block bg-black">
+                        <img src="./img/IMG_6326.PNG" alt="IFCC preview 4" class="w-full h-full object-contain p-3 shrink-0 block bg-black">
                     </div>
 
                     <!-- Navigation Arrows -->
-                    <button id="sliderPrev" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/40 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-blue-600 z-10">
+                    <button id="sliderPrev" class="absolute top-1/2 left-1 transform -translate-y-1/2 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-blue-600 z-10">
                         <i class="fas fa-chevron-left"></i>
                     </button>
 
-                    <button id="sliderNext" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/40 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-blue-600 z-10">
+                    <button id="sliderNext" class="absolute top-1/2 right-1 transform -translate-y-1/2 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-blue-600 z-10">
                         <i class="fas fa-chevron-right"></i>
                     </button>
 
                     <!-- Indicators (Dots) -->
-                    <!-- Bolletjes worden dynamisch door het script ingevuld -->
-                    <div id="sliderDotsContainer" class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+                    <div id="sliderDotsContainer" class="absolute bottom-0 left-0 right-0 flex justify-center gap-2 z-10 bg-gradient-to-t from-black/20 to-transparent pb-3 pt-6">
                     </div>
 
                 </div>
@@ -392,8 +390,8 @@
             dotsContainer.innerHTML = '';
             slides.forEach((_, index) => {
                 const dot = document.createElement('button');
-                const activeClass = index === 0 ? 'opacity-100' : 'opacity-40';
-                dot.className = `w-2.5 h-2.5 rounded-full bg-black transition-opacity hover:opacity-100 ${activeClass}`;
+                const activeClass = index === 0 ? 'opacity-100 bg-gray-800 scale-110' : 'opacity-40 bg-gray-500';
+                dot.className = `w-2 h-2 rounded-full transition-all duration-300 hover:opacity-100 hover:bg-gray-800 hover:scale-110 ${activeClass}`;
 
                 dot.addEventListener('click', () => {
                     currentSlide = index;
@@ -409,11 +407,11 @@
 
                 sliderDots.forEach((dot, index) => {
                     if(index === currentSlide) {
-                        dot.classList.remove('opacity-40');
-                        dot.classList.add('opacity-100');
+                        dot.classList.remove('opacity-40', 'bg-gray-500');
+                        dot.classList.add('opacity-100', 'bg-gray-800', 'scale-110');
                     } else {
-                        dot.classList.add('opacity-40');
-                        dot.classList.remove('opacity-100');
+                        dot.classList.add('opacity-40', 'bg-gray-500');
+                        dot.classList.remove('opacity-100', 'bg-gray-800', 'scale-110');
                     }
                 });
             }
