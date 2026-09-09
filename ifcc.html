@@ -1,1120 +1,1669 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title data-translate="ifccPageTitle">IFCC Events</title>
+    <title>IFCC Events</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./img/oog.png" type="image/png" />
 
-    <script src="./js/language.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: #0053ed;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-preview {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        main {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+        }
+
+        main {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+        }
+
+        @media (min-width: 1440px) {
+            main {
+                padding: 6rem 4rem;
+            }
+
+            .project-container {
+                max-width: 90%;
+                margin: 0 auto;
+            }
+
+            .chat-preview {
+                max-height: 600px;
+            }
+
+            h1.text-3xl {
+                font-size: 3.5rem;
+                margin-bottom: 4rem;
+            }
+
+            .feature-icon {
+                width: 65px;
+                height: 65px;
+            }
+
+            .tech-stack span {
+                font-size: 1.1rem;
+                padding: 0.75rem 1.5rem;
+            }
+        }
+
+        @media (min-width: 2560px) {
+            body {
+                font-size: 1.2rem;
+                line-height: 1.8;
+            }
+
+            h1 { font-size: 4.6rem; }
+            h2 { font-size: 3.9rem; }
+            h3 { font-size: 3.2rem; }
+            h4 { font-size: 2.6rem; }
+
+            p, li { font-size: 1.4rem; }
+
+            .project-container {
+                max-width: 80%;
+                margin: 0 auto;
+            }
+
+            .chat-preview {
+                max-height: 800px;
+            }
+
+            main {
+                padding: 8rem 6rem;
+            }
+        }
+
+        #videoModal {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #videoModal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        video {
+            aspect-ratio: 16/9;
+        }
+
+        .map-preview {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+    </style>
 </head>
 
-<body>
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
 
-<header>
-    <nav>
-        <div class="navbar-title">
-            <a href="index.html" data-translate="navbarTitle">Mijn Portfolio</a>
-        </div>
+<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center relative z-[1000]">
 
-        <div class="navbar-links">
-            <a href="index.html" data-translate="navHome">Home</a>
-            <a href="projecten.html" data-translate="navProjects">Projecten</a>
-            <a href="#" data-translate="navLanguages">Talen</a>
-        </div>
-    </nav>
-</header>
+    <div class="text-xl font-bold text-blue-600"
+         data-translate="portfolioTitle">
+        Mijn Portfolio
+    </div>
 
+    <!-- Hamburger menu knop -->
+    <button id="mobileMenuButton"
+            class="md:hidden focus:outline-none transition-transform duration-300 hover:scale-110">
 
-<main class="project-page">
+        <svg class="w-8 h-8 text-blue-600"
+             fill="none"
+             stroke="currentColor"
+             viewBox="0 0 24 24">
 
-    <!-- HERO -->
-    <section class="project-hero">
-        <h1 data-translate="ifccPageTitle">IFCC Events</h1>
+            <path stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"/>
 
-        <p data-translate="ifccIntroduction">
-            Een mobiele eventapplicatie met een uitgebreid Filament-beheersysteem,
-            ontwikkeld voor het beheren en presenteren van evenementen, presentaties,
-            sprekers, channels en gepersonaliseerde content.
-        </p>
-    </section>
+        </svg>
 
+    </button>
 
-    <!-- TIMELINE -->
-    <section class="project-section">
-        <h2 data-translate="ifccTimelineTitle">
-            Tijdlijn / Plannen
-        </h2>
 
-        <h3 data-translate="ifccFirstWeekTitle">
-            Eerste week
-        </h3>
+    <!-- Desktop menu -->
+    <div class="hidden md:flex items-center space-x-6">
 
-        <p data-translate="ifccFirstWeekDescription">
-            Filament en Herd bestuderen en een testomgeving opzetten.
-        </p>
-
-        <p>
-            <strong data-translate="ifccTestRepositoryLabel">
-                GitHub Repository:
-            </strong>
-
-            <a
-                    href="https://github.com/JonahBeijer/Stage-Filament"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-translate="ifccTestRepositoryLink"
-            >
-                Testomgeving Filament GitHub
-            </a>
-        </p>
-    </section>
-
-
-    <!-- FLOWCHART -->
-    <section class="project-section">
-
-        <h2 data-translate="ifccFlowchartTitle">
-            Flowchart
-        </h2>
-
-        <div class="project-image">
-            <img
-                    src="./img/ifcc/flowchart.png"
-                    alt="IFCC Flowchart"
-            >
-        </div>
-
-        <p data-translate="ifccFlowchartExplanation">
-            De reden van de streep is dat ik eerst ga focussen op het linker gedeelte.
-        </p>
-
-    </section>
-
-
-    <!-- DATABASE -->
-    <section class="project-section">
-
-        <h2 data-translate="ifccDatabaseTitle">
-            Database structuur voor nu
-        </h2>
-
-        <div class="project-image">
-            <img
-                    src="./img/ifcc/database-structure.png"
-                    alt="IFCC database structuur"
-            >
-        </div>
-
-    </section>
-
-
-    <!-- FILAMENT -->
-    <section class="project-section">
-
-        <h2 data-translate="ifccPlanFilamentTitle">
-            Plan: Filament
-        </h2>
-
-        <p data-translate="ifccPlanFilamentIntroduction">
-            Hieronder volgen de ontwikkelingsstappen.
-        </p>
-
-
-        <!-- STEP 1 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccFilamentStep1Title">
-                1. Database Structuur en Basis Modellen
-            </h3>
-
-            <p data-translate="ifccFilamentStep1Description">
-                De basis werd gelegd door de drie kerntabellen op te zetten:
-                Articles, Presentations en Speakers. Voor elk van deze entiteiten
-                zijn de bijbehorende Models, Resources en Controllers in Filament
-                aangemaakt om de data te kunnen beheren.
-            </p>
-
-        </article>
-
-
-        <!-- STEP 2 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccFilamentStep2Title">
-                2. API Ontwikkeling voor Expo-integratie
-            </h3>
-
-            <p data-translate="ifccFilamentStep2Description">
-                Nadat de datastructuur was opgezet, zijn er API-endpoints ontwikkeld.
-                Hierdoor kon de data uit de Filament-backend worden ontsloten en
-                beschikbaar gemaakt voor consumptie door de Expo-applicatie.
-            </p>
-
-        </article>
-
-
-        <!-- STEP 3 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccFilamentStep3Title">
-                3. Channel Management Implementeren
-            </h3>
-
-            <p data-translate="ifccFilamentStep3Description">
-                Er is een cluster in de Filament-instellingen gebouwd voor het
-                beheren van channels. Deze functionaliteit maakt het mogelijk om
-                content te segmenteren. Beheerders kunnen een channel actief zetten,
-                en alleen een actieve channel kan worden ingesteld als de main
-                channel die door de app wordt gebruikt.
-            </p>
-
-        </article>
-
-
-        <!-- STEP 4 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccFilamentStep4Title">
-                4. Gebruikersauthenticatie en Rollenbeheer
-            </h3>
-
-            <h4 data-translate="ifccAuthenticationTitle">
-                QR-code & Authenticatie
-            </h4>
-
-            <p data-translate="ifccAuthenticationDescription">
-                Voor gebruikers is een profielpagina opgezet waar een unieke
-                QR-code gegenereerd kan worden. Deze code bevat een Personal Access
-                Token via Laravel Sanctum. Door de QR-code te scannen in de Expo-app,
-                krijgt de gebruiker toegang tot zijn of haar persoonlijke closed
-                meeting content.
-            </p>
-
-            <h4 data-translate="ifccRolesTitle">
-                Rollen en Rechten
-            </h4>
-
-            <p data-translate="ifccRolesDescription">
-                Met de Spatie Permission-package is een rollensysteem geïmplementeerd.
-                Gebruikers kunnen rollen krijgen zoals Super Admin, Editor en Officer,
-                wat hun rechten binnen het systeem bepaalt.
-            </p>
-
-        </article>
-
-
-        <!-- STEP 5 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccFilamentStep5Title">
-                5. Dynamische Menu-structuren
-            </h3>
-
-            <p data-translate="ifccFilamentStep5Description">
-                Om de navigatie per channel flexibel te maken, zijn er aanpasbare
-                menu's ontwikkeld. Beheerders kunnen per channel een uniek menu
-                samenstellen en de volgorde van de menu-items eenvoudig aanpassen
-                via een schuifbare drag-and-drop interface.
-            </p>
-
-        </article>
-
-
-        <!-- STEP 6 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccFilamentStep6Title">
-                6. Map maken
-            </h3>
-
-            <p data-translate="ifccFilamentStep6Description">
-                Er is gewerkt aan een functionaliteit waarbij Filament het path
-                van een geüploade SVG herkent, zodat gebieden en blokken op de kaart
-                kunnen worden aangegeven. Daarnaast moet het mogelijk zijn om een
-                JPEG, JPG of PNG als 2D-map te gebruiken.
-            </p>
-
-        </article>
-
-
-        <!-- STEP 7 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccFilamentStep7Title">
-                7. Page-Maker
-            </h3>
-
-            <p data-translate="ifccFilamentStep7Description">
-                De Page-Maker is bedoeld voor de klant om zelfstandig pagina's te
-                kunnen maken met vooraf bepaalde contentblokken, zoals Heading,
-                Paragraph, Image, Event Info, Location, Accordion en Sponsors.
-            </p>
-
-        </article>
-
-
-        <!-- REPOSITORIES -->
-        <div class="project-links">
-
-            <p>
-                <strong data-translate="ifccPortalRepositoryLabel">
-                    GitHub Repository:
-                </strong>
-
-                <a
-                        href="https://github.com/DIGIWEDO/ifcc-app-portal"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-translate="ifccPortalRepositoryLink"
-                >
-                    IFCC App Portal GitHub
-                </a>
-            </p>
-
-            <p>
-                <strong data-translate="ifccLiveWebsiteLabel">
-                    Live website:
-                </strong>
-
-                <a
-                        href="https://www.alboweb.nl/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                >
-                    alboweb.nl
-                </a>
-            </p>
-
-            <p>
-                <strong data-translate="ifccAdminPanelLabel">
-                    Admin panel:
-                </strong>
-
-                <a
-                        href="https://portal-app.digiwedo.dev/admin/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                >
-                    IFCC Admin
-                </a>
-            </p>
-
-        </div>
-
-
-        <!-- TESTING -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccTestingTitle">
-                Code testen en verbeteren
-            </h3>
-
-            <p data-translate="ifccTestingDescription">
-                De code wordt getest en netter gemaakt voordat er verder wordt
-                gewerkt aan de Expo-applicatie. Hiervoor worden Pint en Pest gebruikt.
-            </p>
-
-            <div class="project-image">
-                <img
-                        src="./img/ifcc/filament-testing.png"
-                        alt="IFCC code testing"
-                >
-            </div>
-
-        </article>
-
-    </section>
-
-
-    <!-- EXPO -->
-    <section class="project-section">
-
-        <h2 data-translate="ifccPlanExpoTitle">
-            Plan: Expo
-        </h2>
-
-        <h3 data-translate="ifccExpoSetupTitle">
-            Expo-project opzetten
-        </h3>
-
-        <p data-translate="ifccExpoSetupDescription">
-            Het project wordt aangemaakt via de terminal met Expo. Met Expo Go
-            kan de applicatie vervolgens op een mobiel apparaat worden getest.
-        </p>
-
-        <pre><code>npx create-expo-app@latest</code></pre>
-
-        <pre><code>npx expo start</code></pre>
-
-
-        <!-- LOCAL API -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccLocalApiTitle">
-                Lokale API koppelen
-            </h3>
-
-            <p data-translate="ifccLocalApiDescription">
-                Om de Expo-app met een lokale Laravel-backend te laten communiceren,
-                moet de server toegankelijk zijn via het lokale netwerk. Hiervoor
-                wordt de Laravel-server gestart met het volgende commando:
-            </p>
-
-            <pre><code>php artisan serve --host=0.0.0.0</code></pre>
-
-            <p data-translate="ifccLocalApiIpDescription">
-                In de app wordt vervolgens het IP-adres van de computer gebruikt
-                in plaats van localhost om de API aan te roepen.
-            </p>
-
-        </article>
-
-
-        <h3 data-translate="ifccExpoDevelopmentTitle">
-            Ontwikkelingsstappen
-        </h3>
-
-
-        <!-- EXPO STEP 1 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccExpoStep1Title">
-                1. Navigatie implementeren
-            </h3>
-
-            <p data-translate="ifccExpoStep1Description">
-                De basisnavigatie, zoals tabbladen, wordt geconfigureerd in het
-                app/_layout.tsx bestand. Dit vormt het skelet van de applicatie.
-            </p>
-
-        </article>
-
-
-        <!-- EXPO STEP 2 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccExpoStep2Title">
-                2. Schermen ontwikkelen
-            </h3>
-
-            <p data-translate="ifccExpoStep2Description">
-                De overzichts- en detailpagina's worden gebouwd en logisch per
-                feature georganiseerd.
-            </p>
-
-            <ul>
-                <li>app/speakers/index.tsx</li>
-                <li>app/speakers/[slug].tsx</li>
-                <li>Articles</li>
-                <li>Presentations</li>
-            </ul>
-
-        </article>
-
-
-        <!-- EXPO STEP 3 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccExpoStep3Title">
-                3. Dynamische content renderen
-            </h3>
-
-            <p data-translate="ifccExpoStep3Description">
-                Generieke componenten worden ontwikkeld voor het weergeven van
-                contentblokken die vanuit de API worden aangeleverd.
-            </p>
-
-            <ul>
-                <li>components/blocks/Heading.tsx</li>
-                <li>components/blocks/Image.tsx</li>
-                <li>components/blocks/Paragraph.tsx</li>
-            </ul>
-
-        </article>
-
-
-        <!-- EXPO STEP 4 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccExpoStep4Title">
-                4. Centrale render-component
-            </h3>
-
-            <p data-translate="ifccExpoStep4Description">
-                Een centrale render-component analyseert de API-response en roept
-                dynamisch het juiste block-component aan.
-            </p>
-
-        </article>
-
-
-        <!-- EXPO STEP 5 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccExpoStep5Title">
-                5. Data ophalen en cachen
-            </h3>
-
-            <p data-translate="ifccExpoStep5Description">
-                Er wordt een custom hook ontwikkeld voor data-fetching met een
-                stale-while-revalidate-strategie.
-            </p>
-
-            <ul>
-                <li data-translate="ifccCachePoint1">
-                    De app toont onmiddellijk data uit de cache.
-                </li>
-                <li data-translate="ifccCachePoint2">
-                    Op de achtergrond wordt de meest recente data opgehaald.
-                </li>
-                <li data-translate="ifccCachePoint3">
-                    De UI wordt bijgewerkt zodra nieuwe data beschikbaar is.
-                </li>
-                <li data-translate="ifccCachePoint4">
-                    De app blijft functioneel met gecachte data wanneer er geen
-                    internetverbinding is.
-                </li>
-            </ul>
-
-            <div class="project-image">
-                <img
-                        src="./img/ifcc/cache-flow.png"
-                        alt="IFCC cache flow"
-                >
-            </div>
-
-        </article>
-
-
-        <!-- EXPO STEP 6 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccExpoStep6Title">
-                6. Beheer van channels
-            </h3>
-
-            <p data-translate="ifccExpoStep6Description">
-                Verschillende channels worden ingericht binnen Filament. Eén
-                channel wordt ingesteld als main channel die met Expo communiceert.
-                De app weet hierdoor bij het opstarten welke channel gebruikt moet
-                worden en welke cache daarbij hoort.
-            </p>
-
-        </article>
-
-
-        <!-- EXPO STEP 7 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccExpoStep7Title">
-                7. QR-code en gebruikersrollen
-            </h3>
-
-            <p data-translate="ifccExpoStep7Description">
-                Voor gebruikers met een closed meeting wordt een QR-code gegenereerd
-                op basis van hun Personal Access Token via Laravel Sanctum. De QR-code
-                staat op het profiel in Filament en kan in de app worden gescand.
-                Dankzij Sanctum kan iedere gebruiker in Filament een specifieke rol krijgen.
-            </p>
-
-        </article>
-
-
-        <!-- EXPO STEP 8 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccExpoStep8Title">
-                8. Menu's en navigatie
-            </h3>
-
-            <p data-translate="ifccExpoStep8Description">
-                Menu's met een More Menu kunnen in Filament worden aangemaakt en
-                aangepast. Deze menu's kunnen in de app worden gesorteerd, zodat
-                duidelijk wordt welke pagina's beschikbaar zijn. De tabs onderaan
-                de app zijn hardcoded.
-            </p>
-
-        </article>
-
-
-        <!-- EXPO STEP 9 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccExpoStep9Title">
-                9. Presentations buttons
-            </h3>
-
-            <p data-translate="ifccExpoStep9Description">
-                Er is gekeken naar vergelijkbare apps om nette buttons voor
-                Presentations te maken. De buttons tonen alleen presentaties van
-                een specifieke channel en beperken zich tot de datums binnen de
-                start- en einddatum van die channel.
-            </p>
-
-        </article>
-
-
-        <!-- EXPO STEP 10 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccExpoStep10Title">
-                10. Online zetten
-            </h3>
-
-            <p data-translate="ifccExpoStep10Description">
-                Er werd gewerkt aan een APK om de Android-app te testen. Voor
-                publicatie in de Google Play Store bleek echter een AAB-bestand
-                nodig te zijn in plaats van een APK.
-            </p>
-
-        </article>
-
-
-        <!-- EXPO STEP 11 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccExpoStep11Title">
-                11. Map
-            </h3>
-
-            <p data-translate="ifccExpoStep11Description">
-                In de app wordt een plattegrond weergegeven waarop gebruikers
-                op aangegeven punten kunnen klikken. Vervolgens verschijnt een
-                modal met informatie over de geselecteerde locatie.
-            </p>
-
-        </article>
-
-
-        <p>
-            <strong data-translate="ifccEventRepositoryLabel">
-                GitHub Repository:
-            </strong>
-
-            <a
-                    href="https://github.com/DIGIWEDO/ifcc-event-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-translate="ifccEventRepositoryLink"
-            >
-                IFCC Event App GitHub
-            </a>
-        </p>
-
-    </section>
-
-
-    <!-- GOOGLE PLAY -->
-    <section class="project-section">
-
-        <h2 data-translate="ifccPlayStoreTitle">
-            Plan: App live zetten in de Google Play Store
-        </h2>
-
-
-        <!-- PLAY STEP 1 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccPlayStep1Title">
-                1. Voorbereiding
-            </h3>
-
-            <p data-translate="ifccPlayStep1Description">
-                Ik begon met het bouwen van een APK via Expo.dev met het commando
-                eas build --platform android --profile production. In het begin
-                mislukte de build meerdere keren vanwege verouderde packages.
-                Nadat deze waren opgeschoond en geüpdatet, lukte het om de APK
-                succesvol te bouwen.
-            </p>
-
-        </article>
-
-
-        <!-- PLAY STEP 2 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccPlayStep2Title">
-                2. Testen van de APK
-            </h3>
-
-            <p data-translate="ifccPlayStep2Description">
-                De gegenereerde APK werd op een Android-tablet geïnstalleerd om
-                de app te testen. Na een succesvolle test werd de app klaargemaakt
-                voor publicatie in de Google Play Store.
-            </p>
-
-        </article>
-
-
-        <!-- PLAY STEP 3 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccPlayStep3Title">
-                3. Overstap naar AAB-bestand
-            </h3>
-
-            <p data-translate="ifccPlayStep3Description">
-                Tijdens het uploadproces in de Google Play Console werd ontdekt
-                dat een AAB-bestand nodig was. Daarom werd de buildconfiguratie
-                aangepast van APK naar AAB en werd een nieuwe build gemaakt.
-            </p>
-
-        </article>
-
-
-        <!-- PLAY STEP 4 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccPlayStep4Title">
-                4. Voorbereiding van de Play Store-pagina
-            </h3>
-
-            <p data-translate="ifccPlayStep4Description">
-                Na het genereren van het AAB-bestand werden alle vereiste gegevens
-                en bestanden in de Google Play Console toegevoegd.
-            </p>
-
-            <ul>
-                <li data-translate="ifccPlayRequirement1">Privacybeleid</li>
-                <li data-translate="ifccPlayRequirement2">Gegevensbeveiliging</li>
-                <li data-translate="ifccPlayRequirement3">Doelgroep en inhoudsclassificatie</li>
-                <li data-translate="ifccPlayRequirement4">Naleving van richtlijnen</li>
-                <li data-translate="ifccPlayRequirement5">Korte en volledige beschrijving</li>
-                <li data-translate="ifccPlayRequirement6">App-pictogram en schermafbeeldingen</li>
-                <li data-translate="ifccPlayRequirement7">API-sleutels</li>
-            </ul>
-
-        </article>
-
-
-        <!-- PLAY STEP 5 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccPlayStep5Title">
-                5. Eerste review en afkeuring
-            </h3>
-
-            <p data-translate="ifccPlayStep5Description">
-                Na ongeveer een week werd de app afgekeurd omdat het launcher-icoon
-                niet overeenkwam met het app-icoon.
-            </p>
-
-        </article>
-
-
-        <!-- PLAY STEP 6 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccPlayStep6Title">
-                6. Aanpassing en opnieuw bouwen
-            </h3>
-
-            <p data-translate="ifccPlayStep6Description">
-                Het probleem werd opgelost door het icoon in de code aan te passen.
-                Daarna moest opnieuw een AAB-bundle worden gebouwd. Omdat de gratis
-                Expo-builds waren opgebruikt, werd dit lokaal via PhpStorm gedaan.
-            </p>
-
-            <pre><code>npx expo prebuild
-cd android
-./gradlew bundleRelease</code></pre>
-
-        </article>
-
-
-        <!-- PLAY STEP 7 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccPlayStep7Title">
-                7. Succesvolle goedkeuring
-            </h3>
-
-            <p data-translate="ifccPlayStep7Description">
-                Na het lokaal bouwen werd het nieuwe AAB-bestand opnieuw geüpload
-                naar de Google Play Console. Deze keer werd de app goedgekeurd en
-                succesvol live gezet in de Google Play Store.
-            </p>
-
-        </article>
-
-
-        <div class="project-image">
-            <img
-                    src="./img/ifcc/google-play.png"
-                    alt="IFCC Google Play Store"
-            >
-        </div>
-
-    </section>
-
-
-    <!-- APP STORE -->
-    <section class="project-section">
-
-        <h2 data-translate="ifccAppStoreTitle">
-            Plan: App live zetten in de App Store
-        </h2>
-
-
-        <article class="project-feature">
-
-            <h3 data-translate="ifccIosPreparationTitle">
-                Voorbereiding
-            </h3>
-
-            <p data-translate="ifccIosPreparationDescription">
-                Voor de iOS-build was weinig voorbereiding nodig. Er was alleen
-                een Apple Store Connect-account en een Expo.dev-account vereist.
-                Na het succesvol genereren van het Android AAB-bestand hoefde er
-                in PhpStorm weinig te worden aangepast.
-            </p>
-
-        </article>
-
-
-        <article class="project-feature">
-
-            <h3 data-translate="ifccIosBuildTitle">
-                iOS-build
-            </h3>
-
-            <p data-translate="ifccIosBuildDescription">
-                De iOS-build werd aangemaakt via Expo. Daarna werd de build
-                ingediend bij Apple en toegevoegd aan Apple Store Connect.
-            </p>
-
-            <pre><code>eas build --platform ios</code></pre>
-
-            <pre><code>eas submit -p ios</code></pre>
-
-        </article>
-
-
-        <article class="project-feature">
-
-            <h3 data-translate="ifccAppStoreConnectTitle">
-                Opzet in Apple Store Connect
-            </h3>
-
-            <p data-translate="ifccAppStoreConnectDescription">
-                Na het aanmaken van een nieuwe app in App Store Connect moest
-                de basisinformatie worden ingevuld.
-            </p>
-
-            <h4 data-translate="ifccGeneralInformationTitle">
-                Algemene informatie
-            </h4>
-
-            <ul>
-                <li data-translate="ifccAppInfoName">Naam van de app</li>
-                <li data-translate="ifccAppInfoLanguage">Primary language</li>
-                <li data-translate="ifccAppInfoBundle">Bundle ID</li>
-                <li data-translate="ifccAppInfoSku">SKU</li>
-                <li data-translate="ifccAppInfoPlatform">Platform</li>
-            </ul>
-
-            <h4 data-translate="ifccStoreListingTitle">
-                App Store vermelding
-            </h4>
-
-            <ul>
-                <li data-translate="ifccStoreSubtitle">Subtitle</li>
-                <li data-translate="ifccStorePrivacy">Privacy policy URL</li>
-                <li data-translate="ifccStoreCategory">Category</li>
-                <li data-translate="ifccStoreAgeRating">Age rating</li>
-                <li data-translate="ifccStorePromotionalText">Promotional text</li>
-                <li data-translate="ifccStoreDescription">Description</li>
-                <li data-translate="ifccStoreKeywords">Keywords</li>
-                <li data-translate="ifccStoreSupport">Support URL</li>
-                <li data-translate="ifccStoreMarketing">Marketing URL</li>
-                <li data-translate="ifccStoreScreenshots">Screenshots</li>
-            </ul>
-
-            <h4 data-translate="ifccAppPrivacyTitle">
-                App privacy
-            </h4>
-
-            <p data-translate="ifccAppPrivacyDescription">
-                De privacyvragenlijst over verzamelde data werd ingevuld.
-            </p>
-
-        </article>
-
-
-        <article class="project-feature">
-
-            <h3 data-translate="ifccTestFlightTitle">
-                Testfase via TestFlight
-            </h3>
-
-            <p data-translate="ifccTestFlightDescription">
-                Via TestFlight werd de app per e-mail beschikbaar gemaakt om
-                deze op iOS te testen zonder dat de app al publiekelijk in de
-                App Store stond. Hierdoor konden de werking en lay-out vooraf
-                worden gecontroleerd.
-            </p>
-
-        </article>
-
-
-        <article class="project-feature">
-
-            <h3 data-translate="ifccIosApprovalTitle">
-                Goedkeuring
-            </h3>
-
-            <p data-translate="ifccIosApprovalDescription">
-                Na ongeveer dertig uur werd de app goedgekeurd. De app was
-                echter niet direct zichtbaar in Europa omdat de DSA
-                (Digital Services Act) Compliance nog niet was ingevuld.
-                Nadat dit onderdeel was aangevuld, werd de app uiteindelijk
-                gepubliceerd en beschikbaar gesteld in de App Store.
-            </p>
-
-        </article>
-
-
-        <div class="project-image">
-            <img
-                    src="./img/ifcc/app-store.png"
-                    alt="IFCC Apple App Store"
-            >
-        </div>
-
-    </section>
-
-
-    <!-- DESIGN -->
-    <section class="project-section">
-
-        <h2 data-translate="ifccDesignTitle">
-            Ontwerp
-        </h2>
-
-
-        <!-- DESIGN ROUND 1 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccDesignFirstTitle">
-                Eerste ontwerp zonder hulp
-            </h3>
-
-            <p data-translate="ifccDesignFirstDescription">
-                Met een schone lei ben ik begonnen. Ik heb veel geprobeerd en
-                inspiratie opgedaan uit vergelijkbare apps. Luuk, Digital Designer,
-                heeft vervolgens feedback gegeven op het ontwerp.
-            </p>
-
-            <div class="project-image-grid">
-
-                <img
-                        src="./img/ifcc/design/first-design-1.png"
-                        alt="IFCC eerste ontwerp"
-                >
-
-                <img
-                        src="./img/ifcc/design/first-design-2.png"
-                        alt="IFCC eerste ontwerp"
-                >
-
-            </div>
-
-        </article>
-
-
-        <!-- DESIGN ROUND 2 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccDesignSecondTitle">
-                Na de eerste feedbackronde van Luuk
-            </h3>
-
-            <p data-translate="ifccDesignSecondDescription">
-                Dit was het resultaat na de eerste feedbackronde. Ik was nog
-                steeds niet tevreden met de resultaten en vond vooral de Home
-                page moeilijk om goed te ontwerpen. Daarom vroeg ik Luuk om
-                verschillende eigen ontwerpen te maken, waaronder een ontwerp
-                voor de Home page.
-            </p>
-
-            <div class="project-image-grid">
-
-                <img
-                        src="./img/ifcc/design/second-design-1.png"
-                        alt="IFCC ontwerp na eerste feedback"
-                >
-
-                <img
-                        src="./img/ifcc/design/second-design-2.png"
-                        alt="IFCC ontwerp na eerste feedback"
-                >
-
-            </div>
-
-        </article>
-
-
-        <!-- DESIGN ROUND 3 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccDesignThirdTitle">
-                Na de tweede feedbackronde met designs van Luuk
-            </h3>
-
-            <p data-translate="ifccDesignThirdDescription">
-                Er kwam steeds meer duidelijkheid en eenheid in het ontwerp.
-                Met de inbreng van Luuk kon ik verder bouwen op de designs en
-                waar nodig aanpassingen doen.
-            </p>
-
-            <div class="project-image-grid">
-
-                <img
-                        src="./img/ifcc/design/third-design-1.png"
-                        alt="IFCC ontwerp na tweede feedback"
-                >
-
-                <img
-                        src="./img/ifcc/design/third-design-2.png"
-                        alt="IFCC ontwerp na tweede feedback"
-                >
-
-            </div>
-
-        </article>
-
-
-        <!-- DESIGN ROUND 4 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccDesignFourthTitle">
-                Na de derde feedbackronde van Luuk
-            </h3>
-
-            <div class="project-image-grid">
-
-                <img
-                        src="./img/ifcc/design/fourth-design-1.png"
-                        alt="IFCC ontwerp na derde feedback"
-                >
-
-                <img
-                        src="./img/ifcc/design/fourth-design-2.png"
-                        alt="IFCC ontwerp na derde feedback"
-                >
-
-            </div>
-
-        </article>
-
-
-        <!-- DESIGN ROUND 5 -->
-        <article class="project-feature">
-
-            <h3 data-translate="ifccDesignFifthTitle">
-                Na de vierde feedbackronde van Gino en Luuk
-            </h3>
-
-            <p data-translate="ifccDesignFifthDescription">
-                Tijdens de vierde feedbackronde hebben Gino, Project Manager,
-                en Luuk, Digital Designer, opnieuw feedback gegeven op het ontwerp.
-            </p>
-
-            <div class="project-image-grid">
-
-                <img
-                        src="./img/ifcc/design/fifth-design-1.png"
-                        alt="IFCC definitief ontwerp"
-                >
-
-                <img
-                        src="./img/ifcc/design/fifth-design-2.png"
-                        alt="IFCC definitief ontwerp"
-                >
-
-            </div>
-
-        </article>
-
-
-        <!-- FIGMA -->
-        <div class="project-links">
-
-            <p>
-                <strong data-translate="ifccFigmaLabel">
-                    Figma ontwerp:
-                </strong>
-
-                <a
-                        href="https://www.figma.com/design/SzwZezMW1KineKC3QtM5ye/IFFC-App-Design?node-id=0-1&t=sjElwft3TTUC7pXp-1"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-translate="ifccFigmaLink"
-                >
-                    IFCC App Design
-                </a>
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- APP LINKS -->
-    <section class="project-section">
-
-        <h2 data-translate="ifccPublishedAppsTitle">
-            Gepubliceerde apps
-        </h2>
-
-        <div class="project-links">
-
-            <a
-                    href="https://apps.apple.com/nl/app/ifcc-events/id6754977474"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-translate="ifccAppStoreLink"
-            >
-                Bekijk op de App Store
-            </a>
-
-            <a
-                    href="https://play.google.com/store/apps/details?id=com.jonahbeijer.IFCCPrototype"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-translate="ifccPlayStoreLink"
-            >
-                Bekijk op Google Play
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- BACK -->
-    <section class="project-navigation">
-
-        <a
-                href="projecten.html"
-                data-translate="ifccBackLink"
-        >
-            ← Terug naar projecten
+        <a href="./index.html"
+           class="nav-link text-gray-700 font-medium relative"
+           data-translate="navHome">
+            Home
         </a>
 
-    </section>
+        <a href="projecten.html"
+           class="nav-link text-gray-700 font-medium relative"
+           data-translate="navProjects">
+            Projecten
+        </a>
+
+        <a href="programeertalen.html"
+           class="nav-link text-gray-700 font-medium relative"
+           data-translate="navLanguages">
+            Programmeertalen
+        </a>
+
+
+        <div class="flex items-center gap-2">
+
+            <span class="text-sm font-medium text-gray-700">
+                NL
+            </span>
+
+            <label class="relative inline-flex items-center cursor-pointer">
+
+                <input type="checkbox"
+                       id="langToggle"
+                       class="sr-only peer">
+
+                <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-blue-600 transition-all duration-300 shadow-inner"></div>
+
+                <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
+
+            </label>
+
+            <span class="text-sm font-medium text-gray-700">
+                EN
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- Mobiel menu -->
+    <div id="mobileMenu"
+         class="fixed inset-0 bg-white hidden md:hidden z-[1000]">
+
+        <div class="container mx-auto px-4 py-8 flex flex-col items-center h-full">
+
+            <div class="w-full flex justify-end mb-8">
+
+                <button id="closeMenuButton"
+                        class="text-blue-600 hover:text-blue-800 transition-colors">
+
+                    <svg class="w-8 h-8"
+                         fill="none"
+                         stroke="currentColor"
+                         viewBox="0 0 24 24">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M6 18L18 6M6 6l12 12"/>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+
+            <nav class="flex flex-col items-center space-y-6 w-full">
+
+                <a href="./index.html"
+                   class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative"
+                   data-translate="navHome">
+                    Home
+                </a>
+
+                <a href="projecten.html"
+                   class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative"
+                   data-translate="navProjects">
+                    Projecten
+                </a>
+
+                <a href="programeertalen.html"
+                   class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative"
+                   data-translate="navLanguages">
+                    Programmeertalen
+                </a>
+
+
+                <div class="mt-8 pt-8 border-t border-gray-200 w-full max-w-xs text-center">
+
+                    <div class="flex items-center justify-center gap-4">
+
+                        <span class="text-sm font-medium text-gray-700">
+                            NL
+                        </span>
+
+                        <label class="relative inline-flex items-center cursor-pointer">
+
+                            <input type="checkbox"
+                                   id="mobileLangToggle"
+                                   class="sr-only peer">
+
+                            <div class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 transition-colors duration-300"></div>
+
+                            <div class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-6 shadow-md"></div>
+
+                        </label>
+
+                        <span class="text-sm font-medium text-gray-700">
+                            EN
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<div id="mobileMenuOverlay"
+     class="fixed inset-0 bg-black/50 z-[999] hidden">
+</div>
+
+
+<main class="p-8 w-full mx-auto project-container">
+
+    <h1 class="text-3xl font-bold text-white mb-8 text-center lg:text-4xl xl:text-5xl"
+        data-translate="ifccPageTitle">
+        IFCC Events
+    </h1>
+
+
+    <div class="bg-white p-8 rounded-lg shadow-lg min-h-[70vh]">
+
+        <div class="flex flex-col lg:flex-row gap-8">
+
+
+            <!-- LINKERKANT -->
+
+            <div class="lg:w-1/2">
+
+                <div class="map-preview flex justify-center">
+
+                    <img src="./img/ifcc-flowchart.png"
+                         alt="IFCC Events flowchart"
+                         class="w-full h-auto object-cover">
+
+                </div>
+
+            </div>
+
+
+            <!-- RECHTERKANT -->
+
+            <div class="lg:w-1/2 xl:w-[45%] flex flex-col justify-between space-y-8">
+
+
+                <!-- Over het project -->
+
+                <div>
+
+                    <h2 class="text-2xl font-semibold text-blue-600 mb-4"
+                        data-translate="ifccAboutTitle">
+                        Over het project
+                    </h2>
+
+                    <p class="text-gray-700 mb-4"
+                       data-translate="ifccAboutDescription">
+                        IFCC Events is een platform bestaande uit een Laravel/Filament backend en een Expo mobiele applicatie. Het platform wordt gebruikt voor het beheren en presenteren van congressen, artikelen, presentaties, sprekers, kanalen, menu's en andere evenementgerelateerde content.
+                    </p>
+
+                    <ul class="list-disc pl-5 mt-2">
+
+                        <li data-translate="ifccPlanningDescription">
+                            Een Laravel- en Filament backend voor contentbeheer
+                        </li>
+
+                        <li data-translate="ifccExpoDescription">
+                            Een Expo mobiele applicatie voor bezoekers
+                        </li>
+
+                        <li data-translate="ifccStoreDescription">
+                            Publicatie naar Google Play Store en Apple App Store
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Belangrijkste functies -->
+
+                <div class="space-y-4">
+
+                    <h3 class="text-xl font-medium text-blue-500"
+                        data-translate="ifccFeaturesTitle">
+                        Belangrijkste onderdelen
+                    </h3>
+
+
+                    <div class="grid grid-cols-2 gap-4">
+
+
+                        <div class="flex items-start gap-3">
+
+                            <div class="feature-icon">
+
+                                <i class="fas fa-database text-white"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h4 class="font-semibold"
+                                    data-translate="ifccDatabaseTitle">
+                                    Database & Models
+                                </h4>
+
+                                <p class="text-sm text-gray-600"
+                                   data-translate="ifccDatabaseDescription">
+                                    Artikelen, presentaties en sprekers vormen de basis van het platform.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="flex items-start gap-3">
+
+                            <div class="feature-icon">
+
+                                <i class="fas fa-mobile-screen-button text-white"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h4 class="font-semibold"
+                                    data-translate="ifccMobileTitle">
+                                    Expo App
+                                </h4>
+
+                                <p class="text-sm text-gray-600"
+                                   data-translate="ifccMobileDescription">
+                                    Dynamische content wordt vanuit de Laravel API in de mobiele applicatie geladen.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- Technologieën -->
+
+                <div>
+
+                    <h3 class="text-xl font-medium text-blue-500 mb-3 xl:text-2xl"
+                        data-translate="ifccTechnologiesTitle">
+                        Technologieën
+                    </h3>
+
+
+                    <div class="flex flex-wrap gap-3">
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Laravel
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Filament
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Laravel Herd
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Expo
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            React Native
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            TypeScript
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Laravel Sanctum
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Spatie Permission
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Pest
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Pint
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Google Play Store
+                        </span>
+
+                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
+                            Apple App Store
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Links -->
+
+                <div class="pt-4 flex flex-wrap gap-4 items-center">
+
+                    <a href="https://github.com/DIGIWEDO/ifcc-app-portal"
+                       target="_blank"
+                       class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+
+                        <i class="fab fa-github"></i>
+
+                        <span data-translate="ifccBackendGithub">
+                            Backend GitHub
+                        </span>
+
+                    </a>
+
+
+                    <a href="https://github.com/DIGIWEDO/ifcc-event-app"
+                       target="_blank"
+                       class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+
+                        <i class="fab fa-github"></i>
+
+                        <span data-translate="ifccExpoGithub">
+                            Expo GitHub
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Planning / Timeline -->
+
+        <div class="mt-8 pt-8 border-t border-gray-200">
+
+            <h3 class="text-xl font-semibold text-blue-600 mb-4"
+                data-translate="ifccPlanningTitle">
+                Planning & Tijdlijn
+            </h3>
+
+
+            <div class="grid md:grid-cols-2 gap-4">
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccFirstWeekTitle">
+                        Eerste week
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccFirstWeekDescription">
+                        In de eerste week lag de focus op het bestuderen van Filament en Laravel Herd en het opzetten van een testomgeving.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccGithubPlanningTitle">
+                        GitHub
+                    </h4>
+
+                    <p class="text-sm text-gray-600">
+                        <a href="https://github.com/JonahBeijer/Stage-Filament"
+                           target="_blank"
+                           class="text-blue-500 hover:underline">
+                            github.com/JonahBeijer/Stage-Filament
+                        </a>
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccFlowchartTitle">
+                        Flowchart
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccFlowchartDescription">
+                        De reden van de streep in de flowchart is dat ik eerst ga focussen op het linker gedeelte.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- Database -->
+
+        <div class="mt-8 pt-8 border-t border-gray-200">
+
+            <h3 class="text-xl font-semibold text-blue-600 mb-4"
+                data-translate="ifccDatabaseStructureTitle">
+                Database structuur
+            </h3>
+
+            <p class="text-gray-700 mb-4"
+               data-translate="ifccDatabaseStructureDescription">
+                De database structuur zoals deze momenteel is gepland vormt de basis voor de verschillende contenttypes binnen het IFCC platform.
+            </p>
+
+
+            <div class="map-preview flex justify-center">
+
+                <img src="./img/ifcc-database.png"
+                     alt="IFCC database structure"
+                     class="w-full max-w-5xl h-auto object-cover">
+
+            </div>
+
+        </div>
+
+
+        <!-- Filament -->
+
+        <div class="mt-8 pt-8 border-t border-gray-200">
+
+            <h3 class="text-xl font-semibold text-blue-600 mb-4"
+                data-translate="ifccFilamentPlanTitle">
+                Plan: Filament
+            </h3>
+
+
+            <div class="grid md:grid-cols-2 gap-4">
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccFilamentModelsTitle">
+                        1. Database Structure and Basic Models
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccFilamentModelsDescription">
+                        Articles, Presentations en Speakers worden opgezet met Models, Resources en Controllers.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccFilamentApiTitle">
+                        2. API Development
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccFilamentApiDescription">
+                        Een REST API wordt ontwikkeld voor de integratie met de Expo mobiele applicatie.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccFilamentChannelTitle">
+                        3. Channel Management
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccFilamentChannelDescription">
+                        Channels kunnen actief worden gemaakt en er kan een main channel worden ingesteld.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccFilamentAuthenticationTitle">
+                        4. Authentication & Rollen
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccFilamentAuthenticationDescription">
+                        QR-codes bevatten een Personal Access Token via Laravel Sanctum. Voor rollen wordt Spatie Permission gebruikt met Super Admin, Editor en Officer.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccFilamentMenuTitle">
+                        5. Dynamische menu's
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccFilamentMenuDescription">
+                        Menu-structuren kunnen per channel worden ingesteld en via drag-and-drop worden beheerd.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccFilamentMapTitle">
+                        6. Map making
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccFilamentMapDescription">
+                        SVG-paden, punten en blokken worden herkend zodat een interactieve 2D-kaart kan worden opgebouwd vanuit JPEG, JPG of PNG.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccFilamentPageMakerTitle">
+                        7. Page-Maker
+                    </h4>
+
+                    <p class="text-sm text-gray-600 mb-2"
+                       data-translate="ifccFilamentPageMakerDescription">
+                        Pagina's kunnen worden opgebouwd uit verschillende dynamische contentblokken.
+                    </p>
+
+                    <ul class="list-disc pl-5 text-sm text-gray-600">
+
+                        <li data-translate="ifccBlockHeading">
+                            Heading
+                        </li>
+
+                        <li data-translate="ifccBlockParagraph">
+                            Paragraph
+                        </li>
+
+                        <li data-translate="ifccBlockImage">
+                            Image
+                        </li>
+
+                        <li data-translate="ifccBlockEventInfo">
+                            Event Info
+                        </li>
+
+                        <li data-translate="ifccBlockLocation">
+                            Location
+                        </li>
+
+                        <li data-translate="ifccBlockAccordion">
+                            Accordion
+                        </li>
+
+                        <li data-translate="ifccBlockSponsors">
+                            Sponsors
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- Expo -->
+
+        <div class="mt-8 pt-8 border-t border-gray-200">
+
+            <h3 class="text-xl font-semibold text-blue-600 mb-4"
+                data-translate="ifccExpoPlanTitle">
+                Plan: Expo
+            </h3>
+
+
+            <div class="grid md:grid-cols-2 gap-4">
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccExpoSetupTitle">
+                        Project setup
+                    </h4>
+
+                    <p class="text-sm text-gray-600">
+                        <code>npx create-expo-app@latest</code><br>
+                        <code>npx expo start</code>
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccExpoLocalServerTitle">
+                        Lokale Laravel server
+                    </h4>
+
+                    <p class="text-sm text-gray-600">
+                        <code>php artisan serve --host=0.0.0.0</code>
+                    </p>
+
+                    <p class="text-sm text-gray-600 mt-2"
+                       data-translate="ifccExpoLocalServerDescription">
+                        Tijdens development wordt het lokale IP-adres van de computer gebruikt in plaats van localhost.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccExpoNavigationTitle">
+                        Navigation & Screens
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccExpoNavigationDescription">
+                        Navigation wordt ingesteld in _layout.tsx. Screens worden gemaakt voor Speakers, Articles en Presentations.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccExpoBlocksTitle">
+                        Dynamic content blocks
+                    </h4>
+
+                    <p class="text-sm text-gray-600">
+                        <code>Heading.tsx</code>,
+                        <code>Image.tsx</code>,
+                        <code>Paragraph.tsx</code>
+                    </p>
+
+                    <p class="text-sm text-gray-600 mt-2"
+                       data-translate="ifccExpoBlocksDescription">
+                        Een centrale render component bepaalt welk component voor ieder contentblok wordt gebruikt.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccExpoCachingTitle">
+                        Caching
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccExpoCachingDescription">
+                        Een stale-while-revalidate hook toont direct gecachte data en ververst deze vervolgens op de achtergrond. Hierdoor blijft eerder geladen data ook offline beschikbaar.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccExpoQrTitle">
+                        QR-code & Rollen
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccExpoQrDescription">
+                        QR-codes worden gebruikt om toegang te geven tot gesloten meeting content. Rollen en rechten bepalen welke informatie beschikbaar is.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccExpoMenuTitle">
+                        Menus & More Menu
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccExpoMenuDescription">
+                        De More Menu structuur is dynamisch. De onderste tabs blijven hardcoded.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccExpoPresentationTitle">
+                        Presentations
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccExpoPresentationDescription">
+                        Presentatieknoppen worden bepaald op basis van channel en de bijbehorende datumrange.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccExpoMapTitle">
+                        Interactieve kaart
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccExpoMapDescription">
+                        De app krijgt een interactieve kaart met klikbare punten. Bij het selecteren van een punt wordt aanvullende informatie in een modal weergegeven.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Google Play Store -->
+
+        <div class="mt-8 pt-8 border-t border-gray-200">
+
+            <h3 class="text-xl font-semibold text-blue-600 mb-4"
+                data-translate="ifccPlayStoreTitle">
+                Google Play Store
+            </h3>
+
+
+            <div class="grid md:grid-cols-2 gap-4">
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccPlayBuildTitle">
+                        APK bouwen
+                    </h4>
+
+                    <p class="text-sm text-gray-600">
+                        <code>eas build --platform android --profile production</code>
+                    </p>
+
+                    <p class="text-sm text-gray-600 mt-2"
+                       data-translate="ifccPlayBuildDescription">
+                        De eerste builds mislukten door verouderde packages. Na het oplossen hiervan kon de APK succesvol worden gebouwd en getest.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccPlayTestingTitle">
+                        Testen
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccPlayTestingDescription">
+                        De APK is getest op een Android-tablet voordat de overstap naar het AAB-formaat werd gemaakt.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccPlayStoreListingTitle">
+                        Play Store informatie
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccPlayStoreListingDescription">
+                        Privacy policy, data safety, doelgroep, content rating, guidelines, beschrijvingen, iconen, screenshots en API keys werden voorbereid.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccPlayRejectionTitle">
+                        Eerste review
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccPlayRejectionDescription">
+                        De eerste inzending werd afgewezen vanwege een mismatch met het launcher icon. Het icon werd aangepast en de app opnieuw gebouwd.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccPlayLocalBuildTitle">
+                        Lokale AAB build
+                    </h4>
+
+                    <p class="text-sm text-gray-600">
+                        <code>npx expo prebuild</code><br>
+                        <code>cd android</code><br>
+                        <code>./gradlew bundleRelease</code>
+                    </p>
+
+                    <p class="text-sm text-gray-600 mt-2"
+                       data-translate="ifccPlayApprovalDescription">
+                        Na de aanpassingen werd de app succesvol goedgekeurd en live gezet.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- App Store -->
+
+        <div class="mt-8 pt-8 border-t border-gray-200">
+
+            <h3 class="text-xl font-semibold text-blue-600 mb-4"
+                data-translate="ifccAppStoreTitle">
+                Apple App Store
+            </h3>
+
+
+            <div class="grid md:grid-cols-2 gap-4">
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccAppPreparationTitle">
+                        Voorbereiding
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccAppPreparationDescription">
+                        Apple Store Connect en Expo.dev werden voorbereid voor de iOS release.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccIosBuildTitle">
+                        iOS build
+                    </h4>
+
+                    <p class="text-sm text-gray-600">
+                        <code>eas build --platform ios</code><br>
+                        <code>eas submit -p ios</code>
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccAppGeneralInfoTitle">
+                        General Information
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccAppGeneralInfoDescription">
+                        App name, primaire taal, bundle ID, SKU en platform werden ingesteld.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccAppListingTitle">
+                        Store Listing
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccAppListingDescription">
+                        Subtitle, privacy URL, categorie, leeftijdsclassificatie, promotietekst, beschrijving, keywords, support URL, marketing URL en screenshots werden toegevoegd.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccAppPrivacyTitle">
+                        App Privacy
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccAppPrivacyDescription">
+                        De privacyvragenlijst van Apple werd ingevuld en gecontroleerd.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccAppTestflightTitle">
+                        TestFlight
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccAppTestflightDescription">
+                        De applicatie werd via TestFlight getest voordat deze ter beoordeling werd ingestuurd.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccAppApprovalTitle">
+                        Goedkeuring
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccAppApprovalDescription">
+                        De review duurde ongeveer 30 uur. De app was in eerste instantie niet zichtbaar in Europa vanwege DSA-compliance, waarna dit werd opgelost en de applicatie gepubliceerd werd.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Design -->
+
+        <div class="mt-8 pt-8 border-t border-gray-200">
+
+            <h3 class="text-xl font-semibold text-blue-600 mb-4"
+                data-translate="ifccDesignTitle">
+                Designproces
+            </h3>
+
+
+            <div class="grid md:grid-cols-2 gap-4">
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccDesignFirstTitle">
+                        Eerste ontwerp
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccDesignFirstDescription">
+                        Het eerste ontwerp is zelfstandig gemaakt met inspiratie uit vergelijkbare applicaties.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccDesignFeedbackTitle">
+                        Feedback van Luuk
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccDesignFeedbackDescription">
+                        Luuk, Digital Designer, gaf feedback op het ontwerp. Na de eerste feedbackronde was ik nog niet tevreden, vooral de homepagina bleek lastig om goed vorm te geven.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccDesignSecondTitle">
+                        Tweede feedbackronde
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccDesignSecondDescription">
+                        Na de tweede feedbackronde, waarbij Luuk ontwerpen aanleverde, ontstond meer duidelijkheid en een betere visuele eenheid.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccDesignThirdTitle">
+                        Derde feedbackronde
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccDesignThirdDescription">
+                        Tijdens de derde feedbackronde werd het ontwerp verder verfijnd.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccDesignFourthTitle">
+                        Vierde feedbackronde
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccDesignFourthDescription">
+                        De vierde feedbackronde vond plaats met Gino, Project Manager, en Luuk, Digital Designer. Hiermee werd het uiteindelijke ontwerp verder afgestemd.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccFigmaTitle">
+                        Figma ontwerp
+                    </h4>
+
+                    <a href="https://www.figma.com/design/SzwZezMW1KineKC3QtM5ye/IFFC-App-Design?node-id=0-1&t=sjElwft3TTUC7pXp-1"
+                       target="_blank"
+                       class="text-blue-500 hover:underline break-all">
+
+                        Figma – IFCC App Design
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Technical Highlights -->
+
+        <div class="mt-8 pt-8 border-t border-gray-200">
+
+            <h3 class="text-xl font-semibold text-blue-600 mb-4"
+                data-translate="ifccTechnicalHighlightsTitle">
+                Technische highlights
+            </h3>
+
+
+            <div class="grid md:grid-cols-2 gap-4">
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccSanctumTitle">
+                        Laravel Sanctum
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccSanctumDescription">
+                        Persoonlijke access tokens worden via QR-codes gebruikt om vanuit de Expo-app toegang te krijgen tot gesloten meeting content.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccRolesTitle">
+                        Rollen & Permissions
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccRolesDescription">
+                        Spatie Permission wordt gebruikt om Super Admin-, Editor- en Officer-rechten te beheren.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccPageMakerTechnicalTitle">
+                        Dynamische Page-Maker
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccPageMakerTechnicalDescription">
+                        Content wordt opgebouwd met herbruikbare blokken waardoor verschillende pagina's dynamisch vanuit het CMS kunnen worden samengesteld.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccChannelTechnicalTitle">
+                        Channel Management
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccChannelTechnicalDescription">
+                        Content, menu's en presentaties kunnen per channel worden beheerd, inclusief actieve channels en datumranges.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccCachingTechnicalTitle">
+                        Stale-While-Revalidate
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccCachingTechnicalDescription">
+                        De mobiele applicatie gebruikt gecachte data direct en voert daarna een achtergrondupdate uit om de interface actueel te houden.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+
+                    <h4 class="font-medium mb-2"
+                        data-translate="ifccTestingTitle">
+                        Code quality & Testing
+                    </h4>
+
+                    <p class="text-sm text-gray-600"
+                       data-translate="ifccTestingDescription">
+                        Laravel Pint en Pest worden gebruikt voor code formatting, testing en het schoonhouden van de codebase.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Live links -->
+
+        <div class="mt-8 pt-8 border-t border-gray-200">
+
+            <h3 class="text-xl font-semibold text-blue-600 mb-4"
+                data-translate="ifccLiveLinksTitle">
+                Live applicaties
+            </h3>
+
+
+            <div class="flex flex-wrap gap-4">
+
+
+                <a href="https://www.alboweb.nl/"
+                   target="_blank"
+                   class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+
+                    <i class="fas fa-globe"></i>
+
+                    <span data-translate="ifccWebsiteLink">
+                        Website
+                    </span>
+
+                </a>
+
+
+                <a href="https://portal-app.digiwedo.dev/admin/"
+                   target="_blank"
+                   class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+
+                    <i class="fas fa-lock"></i>
+
+                    <span data-translate="ifccAdminLink">
+                        Admin Portal
+                    </span>
+
+                </a>
+
+
+                <a href="https://apps.apple.com/nl/app/ifcc-events/id6754977474"
+                   target="_blank"
+                   class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+
+                    <i class="fab fa-apple"></i>
+
+                    <span data-translate="ifccAppStoreLink">
+                        App Store
+                    </span>
+
+                </a>
+
+
+                <a href="https://play.google.com/store/apps/details?id=com.jonahbeijer.IFCCPrototype"
+                   target="_blank"
+                   class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+
+                    <i class="fab fa-google-play"></i>
+
+                    <span data-translate="ifccPlayStoreLink">
+                        Google Play
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Back -->
+
+        <div class="mt-8">
+
+            <a href="projecten.html"
+               class="text-blue-500 hover:underline"
+               data-translate="ifccBackLink">
+
+                ← Terug naar projecten
+
+            </a>
+
+        </div>
+
+    </div>
 
 </main>
 
 
-<footer>
-    <p data-translate="footerText">
-        © 2025 Mijn Portfolio
-    </p>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+<script type="module">
+
+    import {
+        currentLanguage,
+        setLanguage,
+        updateNavAnimations
+    } from './language.js';
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+
+        // Mobile menu functionaliteit
+
+        const mobileMenuButton =
+            document.getElementById('mobileMenuButton');
+
+        const mobileMenu =
+            document.getElementById('mobileMenu');
+
+        const mobileMenuOverlay =
+            document.getElementById('mobileMenuOverlay');
+
+        const closeMenuButton =
+            document.getElementById('closeMenuButton');
+
+
+        function toggleMobileMenu() {
+
+            mobileMenu.classList.toggle('hidden');
+
+            mobileMenu.classList.toggle('active');
+
+            mobileMenuOverlay.classList.toggle('hidden');
+
+            document.body.classList.toggle('overflow-hidden');
+
+            mobileMenuButton.classList.toggle('active');
+
+        }
+
+
+        [
+            mobileMenuButton,
+            mobileMenuOverlay,
+            closeMenuButton
+        ].forEach(element => {
+
+            element.addEventListener(
+                'click',
+                toggleMobileMenu
+            );
+
+        });
+
+
+        window.addEventListener('resize', () => {
+
+            if (window.innerWidth >= 768) {
+
+                mobileMenu.classList.remove('active');
+
+                mobileMenu.classList.add('hidden');
+
+                mobileMenuOverlay.classList.add('hidden');
+
+                document.body.classList.remove('overflow-hidden');
+
+            }
+
+        });
+
+
+        // Taalwisselaar sync
+
+        document
+            .getElementById('langToggle')
+            .addEventListener('change', (e) => {
+
+                const newLang =
+                    e.target.checked ? 'en' : 'nl';
+
+                setLanguage(newLang);
+
+                document.getElementById(
+                    'mobileLangToggle'
+                ).checked = e.target.checked;
+
+            });
+
+
+        document
+            .getElementById('mobileLangToggle')
+            .addEventListener('change', (e) => {
+
+                const newLang =
+                    e.target.checked ? 'en' : 'nl';
+
+                setLanguage(newLang);
+
+                document.getElementById(
+                    'langToggle'
+                ).checked = e.target.checked;
+
+            });
+
+
+        // AOS initialisatie
+
+        AOS.init({
+            once: true,
+            duration: 600,
+            offset: 50,
+        });
+
+
+        // Vanta.js achtergrond
+
+        VANTA.CLOUDS({
+
+            el: "body",
+
+            mouseControls: false,
+
+            touchControls: true,
+
+            gyroControls: false,
+
+            minHeight: 200.00,
+
+            minWidth: 200.00,
+
+            skyColor: 0x53ed,
+
+        });
+
+    });
+
+</script>
+
+
+<footer class="bg-white text-blue-600 py-6 px-4 mt-auto">
+
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+
+
+        <!-- Left Side: Name and Study -->
+
+        <div class="flex flex-col">
+
+            <p class="text-lg font-semibold" id="name">
+                Jonah Beijer
+            </p>
+
+            <p class="text-sm" id="study">
+                CMGT
+            </p>
+
+        </div>
+
+
+        <!-- Right Side: Social Links with Icons -->
+
+        <div class="flex space-x-6">
+
+            <a href="https://github.com/JonahBeijer"
+               class="hover:text-blue-400"
+               target="_blank">
+
+                <i class="fab fa-github fa-2x"></i>
+
+            </a>
+
+
+            <a href="mailto:jonahbeijer@gmail.com"
+               class="hover:text-blue-400">
+
+                <i class="fas fa-envelope fa-2x"></i>
+
+            </a>
+
+
+            <a href="https://www.linkedin.com/in/jonah-beijer/"
+               class="hover:text-blue-400"
+               target="_blank">
+
+                <i class="fab fa-linkedin fa-2x"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
 </footer>
+
 
 </body>
 </html>
