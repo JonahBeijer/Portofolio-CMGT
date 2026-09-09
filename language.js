@@ -11,7 +11,7 @@ export const translations = {
 
         heading: "Wie ben ik?",
         bio: `Hoi, ik ben <strong> Jonah Beijer </strong>
-            Ik ben 20 jaar en een enthousiaste developer met een passie voor het bouwen van webapplicaties en apps. Ik ben altijd leergierig en sta open om mezelf verder te ontwikkelen, of dat nu betekent dat ik nieuwe technieken leer of bijspijker waar nodig. Ik kijk er enorm naar uit om tijdens mijn stage nieuwe ervaringen op te doen, mijn vaardigheden te verbeteren en te ontdekken wat het werkveld allemaal te bieden heeft.`,
+            Ik ben 22 jaar en een enthousiaste developer met een passie voor het bouwen van webapplicaties en apps. Ik ben altijd leergierig en sta open om mezelf verder te ontwikkelen, of dat nu betekent dat ik nieuwe technieken leer of bijspijker waar nodig. Ik kijk er enorm naar uit om tijdens mijn stage nieuwe ervaringen op te doen, mijn vaardigheden te verbeteren en te ontdekken wat het werkveld allemaal te bieden heeft.`,
 
         navbarTitle: "Mijn Portfolio",
         homeLink: "Home",
@@ -54,6 +54,7 @@ export const translations = {
         trait6: "Open-minded",
         work1: "Albert Heijn - Vakkenvuller 2019/2022",
         work2: "Stena Line - Sjorder 2022/Heden",
+        work3: "DIGIWEDO - Developer 2026/Heden",
         visionTitle: "Toekomstvisie",
         vision1: "AI-integratie in webapps",
         vision2: "Progressieve Web Apps",
@@ -153,7 +154,7 @@ export const translations = {
         albumDesc: "CRUD-functionaliteit voor albums",
         mvcTitle: " MVC Architectuur",
         mvcDesc: "Gestructureerde code-organisatie",
-        apiTitle2: "🔌 REST API",
+        apiTitle2: "REST API",
         apiDesc2: "Integratie met externe services",
         laravelTag: "Laravel",
         tailwindTag: "Tailwind CSS",
@@ -168,7 +169,7 @@ export const translations = {
         realtimeTitle: "Real-time",
         scalableTitle: "FE&BE",
         scalableDesc: "Frontend en Backend werken samen apart",
-        secureTitle: "🔒 Beveiligd",
+        secureTitle: "Beveiligd",
         secureDesc: "JWT authenticatie",
         frontendLink: "Frontend Code",
         backendLink: "Backend Code",
@@ -260,6 +261,8 @@ I’m 20 years old and an enthusiastic developer with a strong passion for build
         werkTitle: "Work",
         work1: "Albert Heijn - Shelf stocker 2019/2022",
         work2: "Stena Line - Lasher 2022/Present",
+        work3: "Developer - Developer 2026/Present",
+
 
         gamePageTitle: "2D Game ",
         gameAboutText: `This is a game I developed using Excalibur.js, a 2D game engine for JavaScript. The player aims to achieve the highest possible score in an endless runner where speed and timing are crucial. I worked with physics, collision detection, and sprite animations to ensure smooth gameplay.`,
@@ -282,6 +285,8 @@ I’m 20 years old and an enthusiastic developer with a strong passion for build
         hobby3: "Attending raves",
         hobby4: "Hanging out with friends",
         hobby5: "Traveling with my girlfriend",
+        hobby6: "Working on my car",
+
 
         educationTitle: "Education",
         educationText: "Rotterdam University Creative media & Game technologies",
@@ -388,7 +393,7 @@ I’m 20 years old and an enthusiastic developer with a strong passion for build
         realtimeDesc: "Live updates and notifications",
         scalableTitle: "FE&BE",
         scalableDesc: "Frontend and Backend working together separately ",
-        secureTitle: "🔒 Secure",
+        secureTitle: "Secure",
         secureDesc: "JWT authentication",
         frontendLink: "Frontend Code",
         backendLink: "Backend Code",
@@ -497,6 +502,7 @@ export function setLanguage(lang) {
         hobby3: t.hobby3,
         hobby4: t.hobby4,
         hobby5: t.hobby5,
+        hobby6: t.hobby6,
         educationTitle: t.educationTitle
 
     };
