@@ -250,9 +250,267 @@ export const translations = {
         insight3: "Altijd denken vanuit de eindgebruiker",
         insight4: "Open staan voor feedback en verbetering",
         experienceConclusion: "Deze praktijkervaringen hebben me niet alleen technisch sterker gemaakt, maar ook als teamlid en als toekomstig professional. Het heeft me geleerd dat verantwoordelijkheid nemen, luisteren naar feedback en aandacht voor toegankelijkheid essentieel zijn voor succesvolle projecten.",
-        study: "Studie: CMGT"
+        study: "Studie: CMGT",
 
+        ifccPageTitle: "IFCC Events",
 
+        ifccIntroduction:
+            "Een mobiele eventapplicatie met een uitgebreid Filament-beheersysteem, ontwikkeld voor het beheren en presenteren van evenementen, presentaties, sprekers, channels en gepersonaliseerde content.",
+
+        ifccTimelineTitle: "Tijdlijn / Plannen",
+        ifccFirstWeekTitle: "Eerste week",
+        ifccFirstWeekDescription:
+            "Filament en Herd bestuderen en een testomgeving opzetten.",
+
+        ifccTestRepositoryLabel: "GitHub Repository:",
+        ifccTestRepositoryLink: "Testomgeving Filament GitHub",
+
+        ifccFlowchartTitle: "Flowchart",
+        ifccFlowchartExplanation:
+            "De reden van de streep is dat ik eerst ga focussen op het linker gedeelte.",
+
+        ifccDatabaseTitle: "Database structuur voor nu",
+
+        ifccPlanFilamentTitle: "Plan: Filament",
+        ifccPlanFilamentIntroduction:
+            "Hieronder volgen de ontwikkelingsstappen.",
+
+        ifccFilamentStep1Title:
+            "1. Database Structuur en Basis Modellen",
+        ifccFilamentStep1Description:
+            "De basis werd gelegd door de drie kerntabellen op te zetten: Articles, Presentations en Speakers. Voor elk van deze entiteiten zijn de bijbehorende Models, Resources en Controllers in Filament aangemaakt om de data te kunnen beheren.",
+
+        ifccFilamentStep2Title:
+            "2. API Ontwikkeling voor Expo-integratie",
+        ifccFilamentStep2Description:
+            "Nadat de datastructuur was opgezet, zijn er API-endpoints ontwikkeld. Hierdoor kon de data uit de Filament-backend worden ontsloten en beschikbaar gemaakt voor consumptie door de Expo-applicatie.",
+
+        ifccFilamentStep3Title:
+            "3. Channel Management Implementeren",
+        ifccFilamentStep3Description:
+            "Er is een cluster in de Filament-instellingen gebouwd voor het beheren van channels. Deze functionaliteit maakt het mogelijk om content te segmenteren. Beheerders kunnen een channel actief zetten, en alleen een actieve channel kan worden ingesteld als de main channel die door de app wordt gebruikt.",
+
+        ifccFilamentStep4Title:
+            "4. Gebruikersauthenticatie en Rollenbeheer",
+
+        ifccAuthenticationTitle:
+            "QR-code & Authenticatie",
+        ifccAuthenticationDescription:
+            "Voor gebruikers is een profielpagina opgezet waar een unieke QR-code gegenereerd kan worden. Deze code bevat een Personal Access Token via Laravel Sanctum. Door de QR-code te scannen in de Expo-app, krijgt de gebruiker toegang tot zijn of haar persoonlijke closed meeting content.",
+
+        ifccRolesTitle: "Rollen en Rechten",
+        ifccRolesDescription:
+            "Met de Spatie Permission-package is een rollensysteem geïmplementeerd. Gebruikers kunnen rollen krijgen zoals Super Admin, Editor en Officer, wat hun rechten binnen het systeem bepaalt.",
+
+        ifccFilamentStep5Title:
+            "5. Dynamische Menu-structuren",
+        ifccFilamentStep5Description:
+            "Om de navigatie per channel flexibel te maken, zijn er aanpasbare menu's ontwikkeld. Beheerders kunnen per channel een uniek menu samenstellen en de volgorde van de menu-items eenvoudig aanpassen via een schuifbare drag-and-drop interface.",
+
+        ifccFilamentStep6Title: "6. Map maken",
+        ifccFilamentStep6Description:
+            "Er is gewerkt aan een functionaliteit waarbij Filament het path van een geüploade SVG herkent, zodat gebieden en blokken op de kaart kunnen worden aangegeven. Daarnaast moet het mogelijk zijn om een JPEG, JPG of PNG als 2D-map te gebruiken.",
+
+        ifccFilamentStep7Title: "7. Page-Maker",
+        ifccFilamentStep7Description:
+            "De Page-Maker is bedoeld voor de klant om zelfstandig pagina's te kunnen maken met vooraf bepaalde contentblokken, zoals Heading, Paragraph, Image, Event Info, Location, Accordion en Sponsors.",
+
+        ifccPortalRepositoryLabel: "GitHub Repository:",
+        ifccPortalRepositoryLink: "IFCC App Portal GitHub",
+        ifccLiveWebsiteLabel: "Live website:",
+        ifccAdminPanelLabel: "Admin panel:",
+
+        ifccTestingTitle: "Code testen en verbeteren",
+        ifccTestingDescription:
+            "De code wordt getest en netter gemaakt voordat er verder wordt gewerkt aan de Expo-applicatie. Hiervoor worden Pint en Pest gebruikt.",
+
+        ifccPlanExpoTitle: "Plan: Expo",
+        ifccExpoSetupTitle: "Expo-project opzetten",
+        ifccExpoSetupDescription:
+            "Het project wordt aangemaakt via de terminal met Expo. Met Expo Go kan de applicatie vervolgens op een mobiel apparaat worden getest.",
+
+        ifccLocalApiTitle: "Lokale API koppelen",
+        ifccLocalApiDescription:
+            "Om de Expo-app met een lokale Laravel-backend te laten communiceren, moet de server toegankelijk zijn via het lokale netwerk. Hiervoor wordt de Laravel-server gestart met het volgende commando:",
+
+        ifccLocalApiIpDescription:
+            "In de app wordt vervolgens het IP-adres van de computer gebruikt in plaats van localhost om de API aan te roepen.",
+
+        ifccExpoDevelopmentTitle: "Ontwikkelingsstappen",
+
+        ifccExpoStep1Title: "1. Navigatie implementeren",
+        ifccExpoStep1Description:
+            "De basisnavigatie, zoals tabbladen, wordt geconfigureerd in het app/_layout.tsx bestand. Dit vormt het skelet van de applicatie.",
+
+        ifccExpoStep2Title: "2. Schermen ontwikkelen",
+        ifccExpoStep2Description:
+            "De overzichts- en detailpagina's worden gebouwd en logisch per feature georganiseerd.",
+
+        ifccExpoStep3Title: "3. Dynamische content renderen",
+        ifccExpoStep3Description:
+            "Generieke componenten worden ontwikkeld voor het weergeven van contentblokken die vanuit de API worden aangeleverd.",
+
+        ifccExpoStep4Title: "4. Centrale render-component",
+        ifccExpoStep4Description:
+            "Een centrale render-component analyseert de API-response en roept dynamisch het juiste block-component aan.",
+
+        ifccExpoStep5Title: "5. Data ophalen en cachen",
+        ifccExpoStep5Description:
+            "Er wordt een custom hook ontwikkeld voor data-fetching met een stale-while-revalidate-strategie.",
+
+        ifccCachePoint1: "De app toont onmiddellijk data uit de cache.",
+        ifccCachePoint2: "Op de achtergrond wordt de meest recente data opgehaald.",
+        ifccCachePoint3: "De UI wordt bijgewerkt zodra nieuwe data beschikbaar is.",
+        ifccCachePoint4:
+            "De app blijft functioneel met gecachte data wanneer er geen internetverbinding is.",
+
+        ifccExpoStep6Title: "6. Beheer van channels",
+        ifccExpoStep6Description:
+            "Verschillende channels worden ingericht binnen Filament. Eén channel wordt ingesteld als main channel die met Expo communiceert. De app weet hierdoor bij het opstarten welke channel gebruikt moet worden en welke cache daarbij hoort.",
+
+        ifccExpoStep7Title: "7. QR-code en gebruikersrollen",
+        ifccExpoStep7Description:
+            "Voor gebruikers met een closed meeting wordt een QR-code gegenereerd op basis van hun Personal Access Token via Laravel Sanctum. De QR-code staat op het profiel in Filament en kan in de app worden gescand. Dankzij Sanctum kan iedere gebruiker in Filament een specifieke rol krijgen.",
+
+        ifccExpoStep8Title: "8. Menu's en navigatie",
+        ifccExpoStep8Description:
+            "Menu's met een More Menu kunnen in Filament worden aangemaakt en aangepast. Deze menu's kunnen in de app worden gesorteerd, zodat duidelijk wordt welke pagina's beschikbaar zijn. De tabs onderaan de app zijn hardcoded.",
+
+        ifccExpoStep9Title: "9. Presentations buttons",
+        ifccExpoStep9Description:
+            "Er is gekeken naar vergelijkbare apps om nette buttons voor Presentations te maken. De buttons tonen alleen presentaties van een specifieke channel en beperken zich tot de datums binnen de start- en einddatum van die channel.",
+
+        ifccExpoStep10Title: "10. Online zetten",
+        ifccExpoStep10Description:
+            "Er werd gewerkt aan een APK om de Android-app te testen. Voor publicatie in de Google Play Store bleek echter een AAB-bestand nodig te zijn in plaats van een APK.",
+
+        ifccExpoStep11Title: "11. Map",
+        ifccExpoStep11Description:
+            "In de app wordt een plattegrond weergegeven waarop gebruikers op aangegeven punten kunnen klikken. Vervolgens verschijnt een modal met informatie over de geselecteerde locatie.",
+
+        ifccEventRepositoryLabel: "GitHub Repository:",
+        ifccEventRepositoryLink: "IFCC Event App GitHub",
+
+        ifccPlayStoreTitle:
+            "Plan: App live zetten in de Google Play Store",
+
+        ifccPlayStep1Title: "1. Voorbereiding",
+        ifccPlayStep1Description:
+            "Ik begon met het bouwen van een APK via Expo.dev met het commando eas build --platform android --profile production. In het begin mislukte de build meerdere keren vanwege verouderde packages. Nadat deze waren opgeschoond en geüpdatet, lukte het om de APK succesvol te bouwen.",
+
+        ifccPlayStep2Title: "2. Testen van de APK",
+        ifccPlayStep2Description:
+            "De gegenereerde APK werd op een Android-tablet geïnstalleerd om de app te testen. Na een succesvolle test werd de app klaargemaakt voor publicatie in de Google Play Store.",
+
+        ifccPlayStep3Title: "3. Overstap naar AAB-bestand",
+        ifccPlayStep3Description:
+            "Tijdens het uploadproces in de Google Play Console werd ontdekt dat een AAB-bestand nodig was. Daarom werd de buildconfiguratie aangepast van APK naar AAB en werd een nieuwe build gemaakt.",
+
+        ifccPlayStep4Title:
+            "4. Voorbereiding van de Play Store-pagina",
+        ifccPlayStep4Description:
+            "Na het genereren van het AAB-bestand werden alle vereiste gegevens en bestanden in de Google Play Console toegevoegd.",
+
+        ifccPlayRequirement1: "Privacybeleid",
+        ifccPlayRequirement2: "Gegevensbeveiliging",
+        ifccPlayRequirement3: "Doelgroep en inhoudsclassificatie",
+        ifccPlayRequirement4: "Naleving van richtlijnen",
+        ifccPlayRequirement5: "Korte en volledige beschrijving",
+        ifccPlayRequirement6: "App-pictogram en schermafbeeldingen",
+        ifccPlayRequirement7: "API-sleutels",
+
+        ifccPlayStep5Title: "5. Eerste review en afkeuring",
+        ifccPlayStep5Description:
+            "Na ongeveer een week werd de app afgekeurd omdat het launcher-icoon niet overeenkwam met het app-icoon.",
+
+        ifccPlayStep6Title: "6. Aanpassing en opnieuw bouwen",
+        ifccPlayStep6Description:
+            "Het probleem werd opgelost door het icoon in de code aan te passen. Daarna moest opnieuw een AAB-bundle worden gebouwd. Omdat de gratis Expo-builds waren opgebruikt, werd dit lokaal via PhpStorm gedaan.",
+
+        ifccPlayStep7Title: "7. Succesvolle goedkeuring",
+        ifccPlayStep7Description:
+            "Na het lokaal bouwen werd het nieuwe AAB-bestand opnieuw geüpload naar de Google Play Console. Deze keer werd de app goedgekeurd en succesvol live gezet in de Google Play Store.",
+
+        ifccAppStoreTitle:
+            "Plan: App live zetten in de App Store",
+
+        ifccIosPreparationTitle: "Voorbereiding",
+        ifccIosPreparationDescription:
+            "Voor de iOS-build was weinig voorbereiding nodig. Er was alleen een Apple Store Connect-account en een Expo.dev-account vereist. Na het succesvol genereren van het Android AAB-bestand hoefde er in PhpStorm weinig te worden aangepast.",
+
+        ifccIosBuildTitle: "iOS-build",
+        ifccIosBuildDescription:
+            "De iOS-build werd aangemaakt via Expo. Daarna werd de build ingediend bij Apple en toegevoegd aan Apple Store Connect.",
+
+        ifccAppStoreConnectTitle:
+            "Opzet in Apple Store Connect",
+        ifccAppStoreConnectDescription:
+            "Na het aanmaken van een nieuwe app in App Store Connect moest de basisinformatie worden ingevuld.",
+
+        ifccGeneralInformationTitle: "Algemene informatie",
+        ifccAppInfoName: "Naam van de app",
+        ifccAppInfoLanguage: "Primary language",
+        ifccAppInfoBundle: "Bundle ID",
+        ifccAppInfoSku: "SKU",
+        ifccAppInfoPlatform: "Platform",
+
+        ifccStoreListingTitle: "App Store vermelding",
+        ifccStoreSubtitle: "Subtitle",
+        ifccStorePrivacy: "Privacy policy URL",
+        ifccStoreCategory: "Category",
+        ifccStoreAgeRating: "Age rating",
+        ifccStorePromotionalText: "Promotional text",
+        ifccStoreDescription: "Description",
+        ifccStoreKeywords: "Keywords",
+        ifccStoreSupport: "Support URL",
+        ifccStoreMarketing: "Marketing URL",
+        ifccStoreScreenshots: "Screenshots",
+
+        ifccAppPrivacyTitle: "App privacy",
+        ifccAppPrivacyDescription:
+            "De privacyvragenlijst over verzamelde data werd ingevuld.",
+
+        ifccTestFlightTitle: "Testfase via TestFlight",
+        ifccTestFlightDescription:
+            "Via TestFlight werd de app per e-mail beschikbaar gemaakt om deze op iOS te testen zonder dat de app al publiekelijk in de App Store stond. Hierdoor konden de werking en lay-out vooraf worden gecontroleerd.",
+
+        ifccIosApprovalTitle: "Goedkeuring",
+        ifccIosApprovalDescription:
+            "Na ongeveer dertig uur werd de app goedgekeurd. De app was echter niet direct zichtbaar in Europa omdat de DSA (Digital Services Act) Compliance nog niet was ingevuld. Nadat dit onderdeel was aangevuld, werd de app uiteindelijk gepubliceerd en beschikbaar gesteld in de App Store.",
+
+        ifccDesignTitle: "Ontwerp",
+
+        ifccDesignFirstTitle:
+            "Eerste ontwerp zonder hulp",
+        ifccDesignFirstDescription:
+            "Met een schone lei ben ik begonnen. Ik heb veel geprobeerd en inspiratie opgedaan uit vergelijkbare apps. Luuk, Digital Designer, heeft vervolgens feedback gegeven op het ontwerp.",
+
+        ifccDesignSecondTitle:
+            "Na de eerste feedbackronde van Luuk",
+        ifccDesignSecondDescription:
+            "Dit was het resultaat na de eerste feedbackronde. Ik was nog steeds niet tevreden met de resultaten en vond vooral de Home page moeilijk om goed te ontwerpen. Daarom vroeg ik Luuk om verschillende eigen ontwerpen te maken, waaronder een ontwerp voor de Home page.",
+
+        ifccDesignThirdTitle:
+            "Na de tweede feedbackronde met designs van Luuk",
+        ifccDesignThirdDescription:
+            "Er kwam steeds meer duidelijkheid en eenheid in het ontwerp. Met de inbreng van Luuk kon ik verder bouwen op de designs en waar nodig aanpassingen doen.",
+
+        ifccDesignFourthTitle:
+            "Na de derde feedbackronde van Luuk",
+
+        ifccDesignFifthTitle:
+            "Na de vierde feedbackronde van Gino en Luuk",
+        ifccDesignFifthDescription:
+            "Tijdens de vierde feedbackronde hebben Gino, Project Manager, en Luuk, Digital Designer, opnieuw feedback gegeven op het ontwerp.",
+
+        ifccFigmaLabel: "Figma ontwerp:",
+        ifccFigmaLink: "IFCC App Design",
+
+        ifccPublishedAppsTitle: "Gepubliceerde apps",
+        ifccAppStoreLink: "Bekijk op de App Store",
+        ifccPlayStoreLink: "Bekijk op Google Play",
+
+        ifccBackLink: "← Terug naar projecten"
 
 
     },
@@ -517,8 +775,269 @@ jojosPopsDemoApp: "Demo App",
 
 jojosPopsBackLink: "← Back to Projects",
 
-    experienceConclusion: "These practical experiences have not only strengthened me technically but also as a team member and future professional. They've taught me that taking responsibility, listening to feedback, and focusing on accessibility are essential for successful projects."
+    experienceConclusion: "These practical experiences have not only strengthened me technically but also as a team member and future professional. They've taught me that taking responsibility, listening to feedback, and focusing on accessibility are essential for successful projects.",
+        ifccPageTitle: "IFCC Events",
 
+        ifccIntroduction:
+            "A mobile event application with an extensive Filament management system, developed to manage and present events, presentations, speakers, channels and personalized content.",
+
+        ifccTimelineTitle: "Timeline / Plans",
+        ifccFirstWeekTitle: "First week",
+        ifccFirstWeekDescription:
+            "Study Filament and Herd and set up a test environment.",
+
+        ifccTestRepositoryLabel: "GitHub Repository:",
+        ifccTestRepositoryLink: "Filament Test Environment GitHub",
+
+        ifccFlowchartTitle: "Flowchart",
+        ifccFlowchartExplanation:
+            "The reason for the line is that I will initially focus on the left section.",
+
+        ifccDatabaseTitle: "Database structure for now",
+
+        ifccPlanFilamentTitle: "Plan: Filament",
+        ifccPlanFilamentIntroduction:
+            "The following development steps were carried out:",
+
+        ifccFilamentStep1Title:
+            "1. Database Structure and Basic Models",
+        ifccFilamentStep1Description:
+            "The foundation was created by setting up the three core tables: Articles, Presentations and Speakers. For each entity, the corresponding Models, Resources and Controllers were created in Filament to manage the data.",
+
+        ifccFilamentStep2Title:
+            "2. API Development for Expo Integration",
+        ifccFilamentStep2Description:
+            "After setting up the data structure, API endpoints were developed. This made the data from the Filament backend available for consumption by the Expo application.",
+
+        ifccFilamentStep3Title:
+            "3. Implementing Channel Management",
+        ifccFilamentStep3Description:
+            "A cluster was created in the Filament settings for managing channels. This functionality makes it possible to segment content. Administrators can activate a channel, and only an active channel can be configured as the main channel used by the app.",
+
+        ifccFilamentStep4Title:
+            "4. User Authentication and Role Management",
+
+        ifccAuthenticationTitle:
+            "QR Code & Authentication",
+        ifccAuthenticationDescription:
+            "A profile page was created where users can generate a unique QR code. This code contains a Personal Access Token through Laravel Sanctum. By scanning the QR code in the Expo app, users gain access to their personal closed meeting content.",
+
+        ifccRolesTitle: "Roles and Permissions",
+        ifccRolesDescription:
+            "A role system was implemented using the Spatie Permission package. Users can be assigned roles such as Super Admin, Editor and Officer, which determine their permissions within the system.",
+
+        ifccFilamentStep5Title:
+            "5. Dynamic Menu Structures",
+        ifccFilamentStep5Description:
+            "To make navigation flexible for each channel, customizable menus were developed. Administrators can create a unique menu for each channel and easily change the order of menu items using a drag-and-drop interface.",
+
+        ifccFilamentStep6Title: "6. Creating the Map",
+        ifccFilamentStep6Description:
+            "A functionality was developed to allow Filament to recognize the path of an uploaded SVG, making it possible to define areas and blocks on the map. JPEG, JPG and PNG files can also be used as a 2D map.",
+
+        ifccFilamentStep7Title: "7. Page Maker",
+        ifccFilamentStep7Description:
+            "The Page Maker is intended to allow clients to independently create pages using predefined content blocks such as Heading, Paragraph, Image, Event Info, Location, Accordion and Sponsors.",
+
+        ifccPortalRepositoryLabel: "GitHub Repository:",
+        ifccPortalRepositoryLink: "IFCC App Portal GitHub",
+        ifccLiveWebsiteLabel: "Live website:",
+        ifccAdminPanelLabel: "Admin panel:",
+
+        ifccTestingTitle: "Testing and Improving the Code",
+        ifccTestingDescription:
+            "The code is tested and cleaned up before continuing work on the Expo application. Pint and Pest are used for this.",
+
+        ifccPlanExpoTitle: "Plan: Expo",
+        ifccExpoSetupTitle: "Setting Up the Expo Project",
+        ifccExpoSetupDescription:
+            "The project is created through the terminal using Expo. Expo Go can then be used to test the application on a mobile device.",
+
+        ifccLocalApiTitle: "Connecting the Local API",
+        ifccLocalApiDescription:
+            "To allow the Expo app to communicate with a local Laravel backend, the server needs to be accessible through the local network. The Laravel server is started using the following command:",
+
+        ifccLocalApiIpDescription:
+            "The app then uses the computer's IP address instead of localhost when calling the API.",
+
+        ifccExpoDevelopmentTitle: "Development Steps",
+
+        ifccExpoStep1Title: "1. Implementing Navigation",
+        ifccExpoStep1Description:
+            "Basic navigation, such as tabs, is configured in the app/_layout.tsx file. This forms the skeleton of the application.",
+
+        ifccExpoStep2Title: "2. Developing Screens",
+        ifccExpoStep2Description:
+            "Overview and detail pages are developed and logically organized by feature.",
+
+        ifccExpoStep3Title: "3. Rendering Dynamic Content",
+        ifccExpoStep3Description:
+            "Generic components are developed to display content blocks provided by the API.",
+
+        ifccExpoStep4Title: "4. Central Render Component",
+        ifccExpoStep4Description:
+            "A central render component analyzes the API response and dynamically calls the appropriate block component.",
+
+        ifccExpoStep5Title: "5. Fetching and Caching Data",
+        ifccExpoStep5Description:
+            "A custom data-fetching hook is developed using a stale-while-revalidate strategy.",
+
+        ifccCachePoint1:
+            "The app immediately displays data from the cache.",
+        ifccCachePoint2:
+            "The latest data is fetched in the background.",
+        ifccCachePoint3:
+            "The UI is updated when new data becomes available.",
+        ifccCachePoint4:
+            "The app remains functional with cached data when there is no internet connection.",
+
+        ifccExpoStep6Title: "6. Channel Management",
+        ifccExpoStep6Description:
+            "Different channels are configured within Filament. One channel is set as the main channel that communicates with Expo. This allows the app to know which channel to use when starting and which cache belongs to that channel.",
+
+        ifccExpoStep7Title: "7. QR Code and User Roles",
+        ifccExpoStep7Description:
+            "For users with a closed meeting, a QR code is generated based on their Personal Access Token through Laravel Sanctum. The QR code is displayed on their Filament profile and can be scanned in the app. Sanctum allows each Filament user to have a specific role.",
+
+        ifccExpoStep8Title: "8. Menus and Navigation",
+        ifccExpoStep8Description:
+            "Menus with a More Menu can be created and modified in Filament. They can be sorted in the app, making it clear which pages are available. The bottom tabs are hardcoded.",
+
+        ifccExpoStep9Title: "9. Presentation Buttons",
+        ifccExpoStep9Description:
+            "Similar applications were studied to create clean buttons for Presentations. The buttons only show presentations from a specific channel and are limited to the dates within that channel's start and end dates.",
+
+        ifccExpoStep10Title: "10. Going Online",
+        ifccExpoStep10Description:
+            "An APK was created to test the Android application. However, an AAB file was required for publication on the Google Play Store instead of an APK.",
+
+        ifccExpoStep11Title: "11. Map",
+        ifccExpoStep11Description:
+            "The app displays a floor plan where users can click on indicated points. A modal then appears with information about the selected location.",
+
+        ifccEventRepositoryLabel: "GitHub Repository:",
+        ifccEventRepositoryLink: "IFCC Event App GitHub",
+
+        ifccPlayStoreTitle:
+            "Plan: Publishing the App on the Google Play Store",
+
+        ifccPlayStep1Title: "1. Preparation",
+        ifccPlayStep1Description:
+            "I started by building an APK through Expo.dev using eas build --platform android --profile production. Initially, the build failed several times due to outdated packages. After cleaning up and updating them, the APK was successfully built.",
+
+        ifccPlayStep2Title: "2. Testing the APK",
+        ifccPlayStep2Description:
+            "The generated APK was installed on an Android tablet to test the application. After a successful test, the app was prepared for publication on the Google Play Store.",
+
+        ifccPlayStep3Title: "3. Switching to an AAB File",
+        ifccPlayStep3Description:
+            "During the upload process in the Google Play Console, it became clear that an AAB file was required. The build configuration was therefore changed from APK to AAB and a new build was created.",
+
+        ifccPlayStep4Title:
+            "4. Preparing the Play Store Page",
+        ifccPlayStep4Description:
+            "After generating the AAB file, all required information and files were added to the Google Play Console.",
+
+        ifccPlayRequirement1: "Privacy Policy",
+        ifccPlayRequirement2: "Data Safety",
+        ifccPlayRequirement3: "Target Audience and Content Rating",
+        ifccPlayRequirement4: "Guideline Compliance",
+        ifccPlayRequirement5: "Short and Full Description",
+        ifccPlayRequirement6: "App Icon and Screenshots",
+        ifccPlayRequirement7: "API Keys",
+
+        ifccPlayStep5Title: "5. First Review and Rejection",
+        ifccPlayStep5Description:
+            "After approximately one week, the app was rejected because the launcher icon did not match the app icon.",
+
+        ifccPlayStep6Title: "6. Adjustments and Rebuilding",
+        ifccPlayStep6Description:
+            "The issue was resolved by changing the icon in the code. A new AAB bundle then had to be built. Since the free Expo builds had been used, this was done locally through PhpStorm.",
+
+        ifccPlayStep7Title: "7. Successful Approval",
+        ifccPlayStep7Description:
+            "After building locally, the new AAB file was uploaded to the Google Play Console again. This time the app was approved and successfully published on the Google Play Store.",
+
+        ifccAppStoreTitle:
+            "Plan: Publishing the App on the App Store",
+
+        ifccIosPreparationTitle: "Preparation",
+        ifccIosPreparationDescription:
+            "Very little preparation was required for the iOS build. Only an Apple Store Connect account and an Expo.dev account were required. After successfully generating the Android AAB file, very few changes were needed in PhpStorm.",
+
+        ifccIosBuildTitle: "iOS Build",
+        ifccIosBuildDescription:
+            "The iOS build was created through Expo. The build was then submitted to Apple and added to Apple Store Connect.",
+
+        ifccAppStoreConnectTitle:
+            "Setting Up Apple Store Connect",
+        ifccAppStoreConnectDescription:
+            "After creating a new app in App Store Connect, the basic information had to be completed.",
+
+        ifccGeneralInformationTitle: "General Information",
+        ifccAppInfoName: "App Name",
+        ifccAppInfoLanguage: "Primary Language",
+        ifccAppInfoBundle: "Bundle ID",
+        ifccAppInfoSku: "SKU",
+        ifccAppInfoPlatform: "Platform",
+
+        ifccStoreListingTitle: "App Store Listing",
+        ifccStoreSubtitle: "Subtitle",
+        ifccStorePrivacy: "Privacy Policy URL",
+        ifccStoreCategory: "Category",
+        ifccStoreAgeRating: "Age Rating",
+        ifccStorePromotionalText: "Promotional Text",
+        ifccStoreDescription: "Description",
+        ifccStoreKeywords: "Keywords",
+        ifccStoreSupport: "Support URL",
+        ifccStoreMarketing: "Marketing URL",
+        ifccStoreScreenshots: "Screenshots",
+
+        ifccAppPrivacyTitle: "App Privacy",
+        ifccAppPrivacyDescription:
+            "The privacy questionnaire regarding collected data was completed.",
+
+        ifccTestFlightTitle: "Testing Through TestFlight",
+        ifccTestFlightDescription:
+            "Through TestFlight, the app was made available via email so it could be tested on iOS before being publicly released in the App Store. This made it possible to check the functionality and layout beforehand.",
+
+        ifccIosApprovalTitle: "Approval",
+        ifccIosApprovalDescription:
+            "After approximately thirty hours, the app was approved. However, it was not immediately visible in Europe because the DSA (Digital Services Act) Compliance had not yet been completed. After completing this section, the app was eventually published and made available in the App Store.",
+
+        ifccDesignTitle: "Design",
+
+        ifccDesignFirstTitle:
+            "First Design Without Assistance",
+        ifccDesignFirstDescription:
+            "I started with a clean slate. I experimented with many ideas and took inspiration from similar applications. Luuk, Digital Designer, then provided feedback on the design.",
+
+        ifccDesignSecondTitle:
+            "After the First Feedback Round with Luuk",
+        ifccDesignSecondDescription:
+            "This was the result after the first feedback round. I was still not satisfied with the results and found the Home page particularly difficult to design. I therefore asked Luuk to create several of his own designs, including a Home page.",
+
+        ifccDesignThirdTitle:
+            "After the Second Feedback Round with Luuk's Designs",
+        ifccDesignThirdDescription:
+            "The design became increasingly clear and consistent. With Luuk's input, I was able to continue building on the designs and make adjustments where necessary.",
+
+        ifccDesignFourthTitle:
+            "After the Third Feedback Round with Luuk",
+
+        ifccDesignFifthTitle:
+            "After the Fourth Feedback Round with Gino and Luuk",
+        ifccDesignFifthDescription:
+            "During the fourth feedback round, Gino, Project Manager, and Luuk, Digital Designer, provided additional feedback on the design.",
+
+        ifccFigmaLabel: "Figma Design:",
+        ifccFigmaLink: "IFCC App Design",
+
+        ifccPublishedAppsTitle: "Published Apps",
+        ifccAppStoreLink: "View on the App Store",
+        ifccPlayStoreLink: "View on Google Play",
+
+        ifccBackLink: "← Back to Projects"
     }
 };
 
