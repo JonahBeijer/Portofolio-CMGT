@@ -16,7 +16,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
     <style>
-
         .feature-icon {
             width: 50px;
             height: 50px;
@@ -31,11 +30,6 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        }
-
-        main {
-            min-height: 100vh;
-            padding: 4rem 2rem;
         }
 
         main {
@@ -120,1550 +114,333 @@
             overflow: hidden;
             box-shadow: 0 10px 15px rgba(0,0,0,0.1);
         }
-
     </style>
 </head>
 
 <body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
 
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center relative z-[1000]">
-
-    <div class="text-xl font-bold text-blue-600"
-         data-translate="portfolioTitle">
+    <div class="text-xl font-bold text-blue-600" data-translate="portfolioTitle">
         Mijn Portfolio
     </div>
 
     <!-- Hamburger menu knop -->
-    <button id="mobileMenuButton"
-            class="md:hidden focus:outline-none transition-transform duration-300 hover:scale-110">
-
-        <svg class="w-8 h-8 text-blue-600"
-             fill="none"
-             stroke="currentColor"
-             viewBox="0 0 24 24">
-
-            <path stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"/>
-
+    <button id="mobileMenuButton" class="md:hidden focus:outline-none transition-transform duration-300 hover:scale-110">
+        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
-
     </button>
-
 
     <!-- Desktop menu -->
     <div class="hidden md:flex items-center space-x-6">
-
-        <a href="./index.html"
-           class="nav-link text-gray-700 font-medium relative"
-           data-translate="navHome">
-            Home
-        </a>
-
-        <a href="projecten.html"
-           class="nav-link text-gray-700 font-medium relative"
-           data-translate="navProjects">
-            Projecten
-        </a>
-
-        <a href="programeertalen.html"
-           class="nav-link text-gray-700 font-medium relative"
-           data-translate="navLanguages">
-            Programmeertalen
-        </a>
-
+        <a href="./index.html" class="nav-link text-gray-700 font-medium relative" data-translate="navHome">Home</a>
+        <a href="projecten.html" class="nav-link text-gray-700 font-medium relative" data-translate="navProjects">Projecten</a>
+        <a href="programeertalen.html" class="nav-link text-gray-700 font-medium relative" data-translate="navLanguages">Programmeertalen</a>
 
         <div class="flex items-center gap-2">
-
-            <span class="text-sm font-medium text-gray-700">
-                NL
-            </span>
-
+            <span class="text-sm font-medium text-gray-700">NL</span>
             <label class="relative inline-flex items-center cursor-pointer">
-
-                <input type="checkbox"
-                       id="langToggle"
-                       class="sr-only peer">
-
+                <input type="checkbox" id="langToggle" class="sr-only peer">
                 <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-blue-600 transition-all duration-300 shadow-inner"></div>
-
                 <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
-
             </label>
-
-            <span class="text-sm font-medium text-gray-700">
-                EN
-            </span>
-
+            <span class="text-sm font-medium text-gray-700">EN</span>
         </div>
-
     </div>
-
 
     <!-- Mobiel menu -->
-    <div id="mobileMenu"
-         class="fixed inset-0 bg-white hidden md:hidden z-[1000]">
-
+    <div id="mobileMenu" class="fixed inset-0 bg-white hidden md:hidden z-[1000]">
         <div class="container mx-auto px-4 py-8 flex flex-col items-center h-full">
-
             <div class="w-full flex justify-end mb-8">
-
-                <button id="closeMenuButton"
-                        class="text-blue-600 hover:text-blue-800 transition-colors">
-
-                    <svg class="w-8 h-8"
-                         fill="none"
-                         stroke="currentColor"
-                         viewBox="0 0 24 24">
-
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M6 18L18 6M6 6l12 12"/>
-
+                <button id="closeMenuButton" class="text-blue-600 hover:text-blue-800 transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
-
                 </button>
-
             </div>
 
-
             <nav class="flex flex-col items-center space-y-6 w-full">
-
-                <a href="./index.html"
-                   class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative"
-                   data-translate="navHome">
-                    Home
-                </a>
-
-                <a href="projecten.html"
-                   class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative"
-                   data-translate="navProjects">
-                    Projecten
-                </a>
-
-                <a href="programeertalen.html"
-                   class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative"
-                   data-translate="navLanguages">
-                    Programmeertalen
-                </a>
-
+                <a href="./index.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative" data-translate="navHome">Home</a>
+                <a href="projecten.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative" data-translate="navProjects">Projecten</a>
+                <a href="programeertalen.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative" data-translate="navLanguages">Programmeertalen</a>
 
                 <div class="mt-8 pt-8 border-t border-gray-200 w-full max-w-xs text-center">
-
                     <div class="flex items-center justify-center gap-4">
-
-                        <span class="text-sm font-medium text-gray-700">
-                            NL
-                        </span>
-
+                        <span class="text-sm font-medium text-gray-700">NL</span>
                         <label class="relative inline-flex items-center cursor-pointer">
-
-                            <input type="checkbox"
-                                   id="mobileLangToggle"
-                                   class="sr-only peer">
-
+                            <input type="checkbox" id="mobileLangToggle" class="sr-only peer">
                             <div class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 transition-colors duration-300"></div>
-
                             <div class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-6 shadow-md"></div>
-
                         </label>
-
-                        <span class="text-sm font-medium text-gray-700">
-                            EN
-                        </span>
-
+                        <span class="text-sm font-medium text-gray-700">EN</span>
                     </div>
-
                 </div>
-
             </nav>
-
         </div>
-
     </div>
-
 </nav>
 
-
-<div id="mobileMenuOverlay"
-     class="fixed inset-0 bg-black/50 z-[999] hidden">
-</div>
-
+<div id="mobileMenuOverlay" class="fixed inset-0 bg-black/50 z-[999] hidden"></div>
 
 <main class="p-8 w-full mx-auto project-container">
-
-    <h1 class="text-3xl font-bold text-white mb-8 text-center lg:text-4xl xl:text-5xl"
-        data-translate="ifccPageTitle">
+    <h1 class="text-3xl font-bold text-white mb-8 text-center lg:text-4xl xl:text-5xl" data-translate="ifccPageTitle">
         IFCC Events
     </h1>
 
-
     <div class="bg-white p-8 rounded-lg shadow-lg min-h-[70vh]">
-
         <div class="flex flex-col lg:flex-row gap-8">
 
-
-            <!-- LINKERKANT -->
-
+            <!-- LINKERKANT (Afbeelding) -->
             <div class="lg:w-1/2">
-
                 <div class="map-preview flex justify-center">
-
-                    <img src="./img/ifcc-flowchart.png"
-                         alt="IFCC Events flowchart"
-                         class="w-full h-auto object-cover">
-
+                    <img src="./img/ifcc-flowchart.png" alt="IFCC Events flowchart" class="w-full h-auto object-cover">
                 </div>
-
             </div>
 
-
-            <!-- RECHTERKANT -->
-
+            <!-- RECHTERKANT (Info) -->
             <div class="lg:w-1/2 xl:w-[45%] flex flex-col justify-between space-y-8">
 
-
                 <!-- Over het project -->
-
                 <div>
-
-                    <h2 class="text-2xl font-semibold text-blue-600 mb-4"
-                        data-translate="ifccAboutTitle">
-                        Over het project
-                    </h2>
-
-                    <p class="text-gray-700 mb-4"
-                       data-translate="ifccAboutDescription">
-                        IFCC Events is een platform bestaande uit een Laravel/Filament backend en een Expo mobiele applicatie. Het platform wordt gebruikt voor het beheren en presenteren van congressen, artikelen, presentaties, sprekers, kanalen, menu's en andere evenementgerelateerde content.
+                    <h2 class="text-2xl font-semibold text-blue-600 mb-4" data-translate="ifccAboutTitle">Over het project</h2>
+                    <p class="text-gray-700 mb-4">
+                        IFCC Events is een compleet platform bestaande uit een Laravel/Filament backend en een Expo mobiele applicatie. Het stelt organisaties in staat om congressen, presentaties en interactieve plattegronden naadloos te beheren en te presenteren aan bezoekers.
                     </p>
-
-                    <ul class="list-disc pl-5 mt-2">
-
-                        <li data-translate="ifccPlanningDescription">
-                            Een Laravel- en Filament backend voor contentbeheer
-                        </li>
-
-                        <li data-translate="ifccExpoDescription">
-                            Een Expo mobiele applicatie voor bezoekers
-                        </li>
-
-                        <li data-translate="ifccStoreDescription">
-                            Publicatie naar Google Play Store en Apple App Store
-                        </li>
-
+                    <ul class="list-disc pl-5 mt-2 text-gray-700">
+                        <li>Filament CMS voor content- en kanaalbeheer</li>
+                        <li>Dynamische Expo app met offline caching</li>
+                        <li>Gepubliceerd in de App Store & Play Store</li>
                     </ul>
-
                 </div>
-
 
                 <!-- Belangrijkste functies -->
-
                 <div class="space-y-4">
-
-                    <h3 class="text-xl font-medium text-blue-500"
-                        data-translate="ifccFeaturesTitle">
-                        Belangrijkste onderdelen
-                    </h3>
-
-
+                    <h3 class="text-xl font-medium text-blue-500" data-translate="ifccFeaturesTitle">Kernonderdelen</h3>
                     <div class="grid grid-cols-2 gap-4">
-
-
                         <div class="flex items-start gap-3">
-
-                            <div class="feature-icon">
-
-                                <i class="fas fa-database text-white"></i>
-
-                            </div>
-
+                            <div class="feature-icon"><i class="fas fa-database text-white"></i></div>
                             <div>
-
-                                <h4 class="font-semibold"
-                                    data-translate="ifccDatabaseTitle">
-                                    Database & Models
-                                </h4>
-
-                                <p class="text-sm text-gray-600"
-                                   data-translate="ifccDatabaseDescription">
-                                    Artikelen, presentaties en sprekers vormen de basis van het platform.
-                                </p>
-
+                                <h4 class="font-semibold" data-translate="ifccDatabaseTitle">Backend & API</h4>
+                                <p class="text-sm text-gray-600">Centraal beheer van alle data.</p>
                             </div>
-
                         </div>
-
-
                         <div class="flex items-start gap-3">
-
-                            <div class="feature-icon">
-
-                                <i class="fas fa-mobile-screen-button text-white"></i>
-
-                            </div>
-
+                            <div class="feature-icon"><i class="fas fa-mobile-screen-button text-white"></i></div>
                             <div>
-
-                                <h4 class="font-semibold"
-                                    data-translate="ifccMobileTitle">
-                                    Expo App
-                                </h4>
-
-                                <p class="text-sm text-gray-600"
-                                   data-translate="ifccMobileDescription">
-                                    Dynamische content wordt vanuit de Laravel API in de mobiele applicatie geladen.
-                                </p>
-
+                                <h4 class="font-semibold" data-translate="ifccMobileTitle">Mobiele App</h4>
+                                <p class="text-sm text-gray-600">Interactieve ervaring voor bezoekers.</p>
                             </div>
-
                         </div>
-
-
                     </div>
-
                 </div>
-
 
                 <!-- Technologieën -->
-
                 <div>
-
-                    <h3 class="text-xl font-medium text-blue-500 mb-3 xl:text-2xl"
-                        data-translate="ifccTechnologiesTitle">
-                        Technologieën
-                    </h3>
-
-
-                    <div class="flex flex-wrap gap-3">
-
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
-                            Laravel
-                        </span>
-
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
-                            Filament
-                        </span>
-
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
-                            Laravel Herd
-                        </span>
-
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
-                            Expo
-                        </span>
-
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
-                            React Native
-                        </span>
-
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
-                            TypeScript
-                        </span>
-
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
-                            Laravel Sanctum
-                        </span>
-
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
-                            Spatie Permission
-                        </span>
-
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
-                            Pest
-                        </span>
-
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
-                            Pint
-                        </span>
-
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
-                            Google Play Store
-                        </span>
-
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">
-                            Apple App Store
-                        </span>
-
+                    <h3 class="text-xl font-medium text-blue-500 mb-3 xl:text-2xl" data-translate="ifccTechnologiesTitle">Technologieën</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Laravel & Filament</span>
+                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Expo & React Native</span>
+                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">TypeScript</span>
+                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Sanctum</span>
+                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">App/Play Store</span>
                     </div>
-
                 </div>
-
 
                 <!-- Links -->
-
                 <div class="pt-4 flex flex-wrap gap-4 items-center">
-
-                    <a href="https://github.com/DIGIWEDO/ifcc-app-portal"
-                       target="_blank"
-                       class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
-
+                    <a href="https://github.com/DIGIWEDO/ifcc-app-portal" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
                         <i class="fab fa-github"></i>
-
-                        <span data-translate="ifccBackendGithub">
-                            Backend GitHub
-                        </span>
-
+                        <span data-translate="ifccBackendGithub">Backend GitHub</span>
                     </a>
-
-
-                    <a href="https://github.com/DIGIWEDO/ifcc-event-app"
-                       target="_blank"
-                       class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
-
+                    <a href="https://github.com/DIGIWEDO/ifcc-event-app" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
                         <i class="fab fa-github"></i>
-
-                        <span data-translate="ifccExpoGithub">
-                            Expo GitHub
-                        </span>
-
+                        <span data-translate="ifccExpoGithub">Expo GitHub</span>
                     </a>
-
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- Planning / Timeline -->
-
+        <!-- Database Structuur -->
         <div class="mt-8 pt-8 border-t border-gray-200">
-
-            <h3 class="text-xl font-semibold text-blue-600 mb-4"
-                data-translate="ifccPlanningTitle">
-                Planning & Tijdlijn
-            </h3>
-
-
-            <div class="grid md:grid-cols-2 gap-4">
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccFirstWeekTitle">
-                        Eerste week
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccFirstWeekDescription">
-                        In de eerste week lag de focus op het bestuderen van Filament en Laravel Herd en het opzetten van een testomgeving.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccGithubPlanningTitle">
-                        GitHub
-                    </h4>
-
-                    <p class="text-sm text-gray-600">
-                        <a href="https://github.com/JonahBeijer/Stage-Filament"
-                           target="_blank"
-                           class="text-blue-500 hover:underline">
-                            github.com/JonahBeijer/Stage-Filament
-                        </a>
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccFlowchartTitle">
-                        Flowchart
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccFlowchartDescription">
-                        De reden van de streep in de flowchart is dat ik eerst ga focussen op het linker gedeelte.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-        <!-- Database -->
-
-        <div class="mt-8 pt-8 border-t border-gray-200">
-
-            <h3 class="text-xl font-semibold text-blue-600 mb-4"
-                data-translate="ifccDatabaseStructureTitle">
-                Database structuur
-            </h3>
-
-            <p class="text-gray-700 mb-4"
-               data-translate="ifccDatabaseStructureDescription">
-                De database structuur zoals deze momenteel is gepland vormt de basis voor de verschillende contenttypes binnen het IFCC platform.
-            </p>
-
-
+            <h3 class="text-xl font-semibold text-blue-600 mb-4" data-translate="ifccDatabaseStructureTitle">Database structuur</h3>
             <div class="map-preview flex justify-center">
-
-                <img src="./img/ifcc-database.png"
-                     alt="IFCC database structure"
-                     class="w-full max-w-5xl h-auto object-cover">
-
+                <img src="./img/ifcc-database.png" alt="IFCC database structure" class="w-full max-w-5xl h-auto object-cover">
             </div>
-
         </div>
 
-
-        <!-- Filament -->
-
+        <!-- Backend / Filament (Samengevoegd) -->
         <div class="mt-8 pt-8 border-t border-gray-200">
-
-            <h3 class="text-xl font-semibold text-blue-600 mb-4"
-                data-translate="ifccFilamentPlanTitle">
-                Plan: Filament
-            </h3>
-
-
-            <div class="grid md:grid-cols-2 gap-4">
-
-
+            <h3 class="text-xl font-semibold text-blue-600 mb-4">Ontwikkeling: Backend (Filament)</h3>
+            <div class="grid md:grid-cols-3 gap-4">
                 <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccFilamentModelsTitle">
-                        1. Database Structure and Basic Models
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccFilamentModelsDescription">
-                        Articles, Presentations en Speakers worden opgezet met Models, Resources en Controllers.
-                    </p>
-
+                    <h4 class="font-medium mb-2">API & Databeheer</h4>
+                    <p class="text-sm text-gray-600">Opbouw van resources voor artikelen, sprekers en presentaties. Gegevens worden via een beveiligde REST API ontsloten naar de app.</p>
                 </div>
-
-
                 <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccFilamentApiTitle">
-                        2. API Development
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccFilamentApiDescription">
-                        Een REST API wordt ontwikkeld voor de integratie met de Expo mobiele applicatie.
-                    </p>
-
+                    <h4 class="font-medium mb-2">Auth & Rechten</h4>
+                    <p class="text-sm text-gray-600">Toegangsbeheer via QR-codes (Laravel Sanctum) en Spatie Permission voor rollen zoals Admin, Editor en Officer.</p>
                 </div>
-
-
                 <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccFilamentChannelTitle">
-                        3. Channel Management
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccFilamentChannelDescription">
-                        Channels kunnen actief worden gemaakt en er kan een main channel worden ingesteld.
-                    </p>
-
+                    <h4 class="font-medium mb-2">Page-Maker & Kaarten</h4>
+                    <p class="text-sm text-gray-600">Complexe pagina's en dynamische menu's opbouwen via datablokken, plus een tool om afbeeldingen om te zetten in interactieve 2D-kaarten.</p>
                 </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccFilamentAuthenticationTitle">
-                        4. Authentication & Rollen
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccFilamentAuthenticationDescription">
-                        QR-codes bevatten een Personal Access Token via Laravel Sanctum. Voor rollen wordt Spatie Permission gebruikt met Super Admin, Editor en Officer.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccFilamentMenuTitle">
-                        5. Dynamische menu's
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccFilamentMenuDescription">
-                        Menu-structuren kunnen per channel worden ingesteld en via drag-and-drop worden beheerd.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccFilamentMapTitle">
-                        6. Map making
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccFilamentMapDescription">
-                        SVG-paden, punten en blokken worden herkend zodat een interactieve 2D-kaart kan worden opgebouwd vanuit JPEG, JPG of PNG.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccFilamentPageMakerTitle">
-                        7. Page-Maker
-                    </h4>
-
-                    <p class="text-sm text-gray-600 mb-2"
-                       data-translate="ifccFilamentPageMakerDescription">
-                        Pagina's kunnen worden opgebouwd uit verschillende dynamische contentblokken.
-                    </p>
-
-                    <ul class="list-disc pl-5 text-sm text-gray-600">
-
-                        <li data-translate="ifccBlockHeading">
-                            Heading
-                        </li>
-
-                        <li data-translate="ifccBlockParagraph">
-                            Paragraph
-                        </li>
-
-                        <li data-translate="ifccBlockImage">
-                            Image
-                        </li>
-
-                        <li data-translate="ifccBlockEventInfo">
-                            Event Info
-                        </li>
-
-                        <li data-translate="ifccBlockLocation">
-                            Location
-                        </li>
-
-                        <li data-translate="ifccBlockAccordion">
-                            Accordion
-                        </li>
-
-                        <li data-translate="ifccBlockSponsors">
-                            Sponsors
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
             </div>
-
         </div>
 
-
-        <!-- Expo -->
-
+        <!-- Frontend / Expo (Samengevoegd) -->
         <div class="mt-8 pt-8 border-t border-gray-200">
-
-            <h3 class="text-xl font-semibold text-blue-600 mb-4"
-                data-translate="ifccExpoPlanTitle">
-                Plan: Expo
-            </h3>
-
-
-            <div class="grid md:grid-cols-2 gap-4">
-
-
+            <h3 class="text-xl font-semibold text-blue-600 mb-4">Ontwikkeling: Frontend (Expo)</h3>
+            <div class="grid md:grid-cols-3 gap-4">
                 <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccExpoSetupTitle">
-                        Project setup
-                    </h4>
-
-                    <p class="text-sm text-gray-600">
-                        <code>npx create-expo-app@latest</code><br>
-                        <code>npx expo start</code>
-                    </p>
-
+                    <h4 class="font-medium mb-2">Dynamische Interface</h4>
+                    <p class="text-sm text-gray-600">De app genereert schermen op basis van dynamische componenten (headings, afbeeldingen, paragrafen) uit de API.</p>
                 </div>
-
-
                 <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccExpoLocalServerTitle">
-                        Lokale Laravel server
-                    </h4>
-
-                    <p class="text-sm text-gray-600">
-                        <code>php artisan serve --host=0.0.0.0</code>
-                    </p>
-
-                    <p class="text-sm text-gray-600 mt-2"
-                       data-translate="ifccExpoLocalServerDescription">
-                        Tijdens development wordt het lokale IP-adres van de computer gebruikt in plaats van localhost.
-                    </p>
-
+                    <h4 class="font-medium mb-2">Offline Caching</h4>
+                    <p class="text-sm text-gray-600">Met stale-while-revalidate logica blijft eerder ingeladen content ook zonder stabiele internetverbinding soepel werken.</p>
                 </div>
-
-
                 <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccExpoNavigationTitle">
-                        Navigation & Screens
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccExpoNavigationDescription">
-                        Navigation wordt ingesteld in _layout.tsx. Screens worden gemaakt voor Speakers, Articles en Presentations.
-                    </p>
-
+                    <h4 class="font-medium mb-2">Navigatie & QR</h4>
+                    <p class="text-sm text-gray-600">Interactieve plattegronden voor oriëntatie en een QR-scanner om afgeschermde meetings of sprekersinformatie te openen.</p>
                 </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccExpoBlocksTitle">
-                        Dynamic content blocks
-                    </h4>
-
-                    <p class="text-sm text-gray-600">
-                        <code>Heading.tsx</code>,
-                        <code>Image.tsx</code>,
-                        <code>Paragraph.tsx</code>
-                    </p>
-
-                    <p class="text-sm text-gray-600 mt-2"
-                       data-translate="ifccExpoBlocksDescription">
-                        Een centrale render component bepaalt welk component voor ieder contentblok wordt gebruikt.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccExpoCachingTitle">
-                        Caching
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccExpoCachingDescription">
-                        Een stale-while-revalidate hook toont direct gecachte data en ververst deze vervolgens op de achtergrond. Hierdoor blijft eerder geladen data ook offline beschikbaar.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccExpoQrTitle">
-                        QR-code & Rollen
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccExpoQrDescription">
-                        QR-codes worden gebruikt om toegang te geven tot gesloten meeting content. Rollen en rechten bepalen welke informatie beschikbaar is.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccExpoMenuTitle">
-                        Menus & More Menu
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccExpoMenuDescription">
-                        De More Menu structuur is dynamisch. De onderste tabs blijven hardcoded.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccExpoPresentationTitle">
-                        Presentations
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccExpoPresentationDescription">
-                        Presentatieknoppen worden bepaald op basis van channel en de bijbehorende datumrange.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccExpoMapTitle">
-                        Interactieve kaart
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccExpoMapDescription">
-                        De app krijgt een interactieve kaart met klikbare punten. Bij het selecteren van een punt wordt aanvullende informatie in een modal weergegeven.
-                    </p>
-
-                </div>
-
             </div>
-
         </div>
 
-
-        <!-- Google Play Store -->
-
+        <!-- Store & Design (Samengevoegd) -->
         <div class="mt-8 pt-8 border-t border-gray-200">
-
-            <h3 class="text-xl font-semibold text-blue-600 mb-4"
-                data-translate="ifccPlayStoreTitle">
-                Google Play Store
-            </h3>
-
-
+            <h3 class="text-xl font-semibold text-blue-600 mb-4">Publicatie & Design</h3>
             <div class="grid md:grid-cols-2 gap-4">
-
-
                 <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccPlayBuildTitle">
-                        APK bouwen
-                    </h4>
-
-                    <p class="text-sm text-gray-600">
-                        <code>eas build --platform android --profile production</code>
-                    </p>
-
-                    <p class="text-sm text-gray-600 mt-2"
-                       data-translate="ifccPlayBuildDescription">
-                        De eerste builds mislukten door verouderde packages. Na het oplossen hiervan kon de APK succesvol worden gebouwd en getest.
-                    </p>
-
+                    <h4 class="font-medium mb-2">Iteratief Ontwerp</h4>
+                    <p class="text-sm text-gray-600 mb-2">Ontworpen in nauw overleg met Digital Designers via meerdere feedbackrondes voor optimale UX/UI.</p>
+                    <a href="https://www.figma.com/design/SzwZezMW1KineKC3QtM5ye/IFFC-App-Design?node-id=0-1&t=sjElwft3TTUC7pXp-1" target="_blank" class="text-blue-500 hover:underline break-all text-sm">Bekijk het Figma Ontwerp</a>
                 </div>
-
-
                 <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccPlayTestingTitle">
-                        Testen
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccPlayTestingDescription">
-                        De APK is getest op een Android-tablet voordat de overstap naar het AAB-formaat werd gemaakt.
-                    </p>
-
+                    <h4 class="font-medium mb-2">App Store & Play Store</h4>
+                    <p class="text-sm text-gray-600">Cloud builds uitgevoerd met EAS. Na het doorlopen van testfases (TestFlight/Internal Tracks) en compliance checks succesvol gelanceerd op beide platformen.</p>
                 </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccPlayStoreListingTitle">
-                        Play Store informatie
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccPlayStoreListingDescription">
-                        Privacy policy, data safety, doelgroep, content rating, guidelines, beschrijvingen, iconen, screenshots en API keys werden voorbereid.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccPlayRejectionTitle">
-                        Eerste review
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccPlayRejectionDescription">
-                        De eerste inzending werd afgewezen vanwege een mismatch met het launcher icon. Het icon werd aangepast en de app opnieuw gebouwd.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccPlayLocalBuildTitle">
-                        Lokale AAB build
-                    </h4>
-
-                    <p class="text-sm text-gray-600">
-                        <code>npx expo prebuild</code><br>
-                        <code>cd android</code><br>
-                        <code>./gradlew bundleRelease</code>
-                    </p>
-
-                    <p class="text-sm text-gray-600 mt-2"
-                       data-translate="ifccPlayApprovalDescription">
-                        Na de aanpassingen werd de app succesvol goedgekeurd en live gezet.
-                    </p>
-
-                </div>
-
             </div>
-
         </div>
-
-
-        <!-- App Store -->
-
-        <div class="mt-8 pt-8 border-t border-gray-200">
-
-            <h3 class="text-xl font-semibold text-blue-600 mb-4"
-                data-translate="ifccAppStoreTitle">
-                Apple App Store
-            </h3>
-
-
-            <div class="grid md:grid-cols-2 gap-4">
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccAppPreparationTitle">
-                        Voorbereiding
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccAppPreparationDescription">
-                        Apple Store Connect en Expo.dev werden voorbereid voor de iOS release.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccIosBuildTitle">
-                        iOS build
-                    </h4>
-
-                    <p class="text-sm text-gray-600">
-                        <code>eas build --platform ios</code><br>
-                        <code>eas submit -p ios</code>
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccAppGeneralInfoTitle">
-                        General Information
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccAppGeneralInfoDescription">
-                        App name, primaire taal, bundle ID, SKU en platform werden ingesteld.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccAppListingTitle">
-                        Store Listing
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccAppListingDescription">
-                        Subtitle, privacy URL, categorie, leeftijdsclassificatie, promotietekst, beschrijving, keywords, support URL, marketing URL en screenshots werden toegevoegd.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccAppPrivacyTitle">
-                        App Privacy
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccAppPrivacyDescription">
-                        De privacyvragenlijst van Apple werd ingevuld en gecontroleerd.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccAppTestflightTitle">
-                        TestFlight
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccAppTestflightDescription">
-                        De applicatie werd via TestFlight getest voordat deze ter beoordeling werd ingestuurd.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccAppApprovalTitle">
-                        Goedkeuring
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccAppApprovalDescription">
-                        De review duurde ongeveer 30 uur. De app was in eerste instantie niet zichtbaar in Europa vanwege DSA-compliance, waarna dit werd opgelost en de applicatie gepubliceerd werd.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Design -->
-
-        <div class="mt-8 pt-8 border-t border-gray-200">
-
-            <h3 class="text-xl font-semibold text-blue-600 mb-4"
-                data-translate="ifccDesignTitle">
-                Designproces
-            </h3>
-
-
-            <div class="grid md:grid-cols-2 gap-4">
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccDesignFirstTitle">
-                        Eerste ontwerp
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccDesignFirstDescription">
-                        Het eerste ontwerp is zelfstandig gemaakt met inspiratie uit vergelijkbare applicaties.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccDesignFeedbackTitle">
-                        Feedback van Luuk
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccDesignFeedbackDescription">
-                        Luuk, Digital Designer, gaf feedback op het ontwerp. Na de eerste feedbackronde was ik nog niet tevreden, vooral de homepagina bleek lastig om goed vorm te geven.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccDesignSecondTitle">
-                        Tweede feedbackronde
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccDesignSecondDescription">
-                        Na de tweede feedbackronde, waarbij Luuk ontwerpen aanleverde, ontstond meer duidelijkheid en een betere visuele eenheid.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccDesignThirdTitle">
-                        Derde feedbackronde
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccDesignThirdDescription">
-                        Tijdens de derde feedbackronde werd het ontwerp verder verfijnd.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccDesignFourthTitle">
-                        Vierde feedbackronde
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccDesignFourthDescription">
-                        De vierde feedbackronde vond plaats met Gino, Project Manager, en Luuk, Digital Designer. Hiermee werd het uiteindelijke ontwerp verder afgestemd.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccFigmaTitle">
-                        Figma ontwerp
-                    </h4>
-
-                    <a href="https://www.figma.com/design/SzwZezMW1KineKC3QtM5ye/IFFC-App-Design?node-id=0-1&t=sjElwft3TTUC7pXp-1"
-                       target="_blank"
-                       class="text-blue-500 hover:underline break-all">
-
-                        Figma – IFCC App Design
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Technical Highlights -->
-
-        <div class="mt-8 pt-8 border-t border-gray-200">
-
-            <h3 class="text-xl font-semibold text-blue-600 mb-4"
-                data-translate="ifccTechnicalHighlightsTitle">
-                Technische highlights
-            </h3>
-
-
-            <div class="grid md:grid-cols-2 gap-4">
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccSanctumTitle">
-                        Laravel Sanctum
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccSanctumDescription">
-                        Persoonlijke access tokens worden via QR-codes gebruikt om vanuit de Expo-app toegang te krijgen tot gesloten meeting content.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccRolesTitle">
-                        Rollen & Permissions
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccRolesDescription">
-                        Spatie Permission wordt gebruikt om Super Admin-, Editor- en Officer-rechten te beheren.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccPageMakerTechnicalTitle">
-                        Dynamische Page-Maker
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccPageMakerTechnicalDescription">
-                        Content wordt opgebouwd met herbruikbare blokken waardoor verschillende pagina's dynamisch vanuit het CMS kunnen worden samengesteld.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccChannelTechnicalTitle">
-                        Channel Management
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccChannelTechnicalDescription">
-                        Content, menu's en presentaties kunnen per channel worden beheerd, inclusief actieve channels en datumranges.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccCachingTechnicalTitle">
-                        Stale-While-Revalidate
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccCachingTechnicalDescription">
-                        De mobiele applicatie gebruikt gecachte data direct en voert daarna een achtergrondupdate uit om de interface actueel te houden.
-                    </p>
-
-                </div>
-
-
-                <div class="bg-gray-50 p-4 rounded-lg">
-
-                    <h4 class="font-medium mb-2"
-                        data-translate="ifccTestingTitle">
-                        Code quality & Testing
-                    </h4>
-
-                    <p class="text-sm text-gray-600"
-                       data-translate="ifccTestingDescription">
-                        Laravel Pint en Pest worden gebruikt voor code formatting, testing en het schoonhouden van de codebase.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
 
         <!-- Live links -->
-
         <div class="mt-8 pt-8 border-t border-gray-200">
-
-            <h3 class="text-xl font-semibold text-blue-600 mb-4"
-                data-translate="ifccLiveLinksTitle">
-                Live applicaties
-            </h3>
-
-
+            <h3 class="text-xl font-semibold text-blue-600 mb-4" data-translate="ifccLiveLinksTitle">Live applicaties</h3>
             <div class="flex flex-wrap gap-4">
-
-
-                <a href="https://www.alboweb.nl/"
-                   target="_blank"
-                   class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
-
+                <a href="https://www.alboweb.nl/" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
                     <i class="fas fa-globe"></i>
-
-                    <span data-translate="ifccWebsiteLink">
-                        Website
-                    </span>
-
+                    <span data-translate="ifccWebsiteLink">Website</span>
                 </a>
-
-
-                <a href="https://portal-app.digiwedo.dev/admin/"
-                   target="_blank"
-                   class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
-
+                <a href="https://portal-app.digiwedo.dev/admin/" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
                     <i class="fas fa-lock"></i>
-
-                    <span data-translate="ifccAdminLink">
-                        Admin Portal
-                    </span>
-
+                    <span data-translate="ifccAdminLink">Admin Portal</span>
                 </a>
-
-
-                <a href="https://apps.apple.com/nl/app/ifcc-events/id6754977474"
-                   target="_blank"
-                   class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
-
+                <a href="https://apps.apple.com/nl/app/ifcc-events/id6754977474" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
                     <i class="fab fa-apple"></i>
-
-                    <span data-translate="ifccAppStoreLink">
-                        App Store
-                    </span>
-
+                    <span data-translate="ifccAppStoreLink">App Store</span>
                 </a>
-
-
-                <a href="https://play.google.com/store/apps/details?id=com.jonahbeijer.IFCCPrototype"
-                   target="_blank"
-                   class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
-
+                <a href="https://play.google.com/store/apps/details?id=com.jonahbeijer.IFCCPrototype" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
                     <i class="fab fa-google-play"></i>
-
-                    <span data-translate="ifccPlayStoreLink">
-                        Google Play
-                    </span>
-
+                    <span data-translate="ifccPlayStoreLink">Google Play</span>
                 </a>
-
             </div>
-
         </div>
-
 
         <!-- Back -->
-
         <div class="mt-8">
-
-            <a href="projecten.html"
-               class="text-blue-500 hover:underline"
-               data-translate="ifccBackLink">
-
+            <a href="projecten.html" class="text-blue-500 hover:underline" data-translate="ifccBackLink">
                 ← Terug naar projecten
-
             </a>
-
         </div>
-
     </div>
-
 </main>
 
-
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-
 <script type="module">
-
-    import {
-        currentLanguage,
-        setLanguage,
-        updateNavAnimations
-    } from './language.js';
-
+    import { currentLanguage, setLanguage, updateNavAnimations } from './language.js';
 
     document.addEventListener('DOMContentLoaded', () => {
-
-
         // Mobile menu functionaliteit
-
-        const mobileMenuButton =
-            document.getElementById('mobileMenuButton');
-
-        const mobileMenu =
-            document.getElementById('mobileMenu');
-
-        const mobileMenuOverlay =
-            document.getElementById('mobileMenuOverlay');
-
-        const closeMenuButton =
-            document.getElementById('closeMenuButton');
-
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const closeMenuButton = document.getElementById('closeMenuButton');
 
         function toggleMobileMenu() {
-
             mobileMenu.classList.toggle('hidden');
-
             mobileMenu.classList.toggle('active');
-
             mobileMenuOverlay.classList.toggle('hidden');
-
             document.body.classList.toggle('overflow-hidden');
-
             mobileMenuButton.classList.toggle('active');
-
         }
 
-
-        [
-            mobileMenuButton,
-            mobileMenuOverlay,
-            closeMenuButton
-        ].forEach(element => {
-
-            element.addEventListener(
-                'click',
-                toggleMobileMenu
-            );
-
+        [mobileMenuButton, mobileMenuOverlay, closeMenuButton].forEach(element => {
+            element.addEventListener('click', toggleMobileMenu);
         });
-
 
         window.addEventListener('resize', () => {
-
             if (window.innerWidth >= 768) {
-
                 mobileMenu.classList.remove('active');
-
                 mobileMenu.classList.add('hidden');
-
                 mobileMenuOverlay.classList.add('hidden');
-
                 document.body.classList.remove('overflow-hidden');
-
             }
-
         });
 
-
         // Taalwisselaar sync
+        document.getElementById('langToggle').addEventListener('change', (e) => {
+            const newLang = e.target.checked ? 'en' : 'nl';
+            setLanguage(newLang);
+            document.getElementById('mobileLangToggle').checked = e.target.checked;
+        });
 
-        document
-            .getElementById('langToggle')
-            .addEventListener('change', (e) => {
-
-                const newLang =
-                    e.target.checked ? 'en' : 'nl';
-
-                setLanguage(newLang);
-
-                document.getElementById(
-                    'mobileLangToggle'
-                ).checked = e.target.checked;
-
-            });
-
-
-        document
-            .getElementById('mobileLangToggle')
-            .addEventListener('change', (e) => {
-
-                const newLang =
-                    e.target.checked ? 'en' : 'nl';
-
-                setLanguage(newLang);
-
-                document.getElementById(
-                    'langToggle'
-                ).checked = e.target.checked;
-
-            });
-
+        document.getElementById('mobileLangToggle').addEventListener('change', (e) => {
+            const newLang = e.target.checked ? 'en' : 'nl';
+            setLanguage(newLang);
+            document.getElementById('langToggle').checked = e.target.checked;
+        });
 
         // AOS initialisatie
-
         AOS.init({
             once: true,
             duration: 600,
             offset: 50,
         });
 
-
         // Vanta.js achtergrond
-
         VANTA.CLOUDS({
-
             el: "body",
-
             mouseControls: false,
-
             touchControls: true,
-
             gyroControls: false,
-
             minHeight: 200.00,
-
             minWidth: 200.00,
-
             skyColor: 0x53ed,
-
         });
-
     });
-
 </script>
 
-
 <footer class="bg-white text-blue-600 py-6 px-4 mt-auto">
-
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-
-
         <!-- Left Side: Name and Study -->
-
         <div class="flex flex-col">
-
-            <p class="text-lg font-semibold" id="name">
-                Jonah Beijer
-            </p>
-
-            <p class="text-sm" id="study">
-                CMGT
-            </p>
-
+            <p class="text-lg font-semibold" id="name">Jonah Beijer</p>
+            <p class="text-sm" id="study">CMGT</p>
         </div>
-
 
         <!-- Right Side: Social Links with Icons -->
-
         <div class="flex space-x-6">
-
-            <a href="https://github.com/JonahBeijer"
-               class="hover:text-blue-400"
-               target="_blank">
-
+            <a href="https://github.com/JonahBeijer" class="hover:text-blue-400" target="_blank">
                 <i class="fab fa-github fa-2x"></i>
-
             </a>
-
-
-            <a href="mailto:jonahbeijer@gmail.com"
-               class="hover:text-blue-400">
-
+            <a href="mailto:jonahbeijer@gmail.com" class="hover:text-blue-400">
                 <i class="fas fa-envelope fa-2x"></i>
-
             </a>
-
-
-            <a href="https://www.linkedin.com/in/jonah-beijer/"
-               class="hover:text-blue-400"
-               target="_blank">
-
+            <a href="https://www.linkedin.com/in/jonah-beijer/" class="hover:text-blue-400" target="_blank">
                 <i class="fab fa-linkedin fa-2x"></i>
-
             </a>
-
         </div>
-
     </div>
-
 </footer>
-
 
 </body>
 </html>
