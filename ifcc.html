@@ -190,10 +190,35 @@
     <div class="bg-white p-8 rounded-lg shadow-lg min-h-[70vh]">
         <div class="flex flex-col lg:flex-row gap-8">
 
-            <!-- LINKERKANT (Afbeelding) -->
-            <div class="lg:w-1/2">
-                <div class="map-preview flex justify-center">
-                    <img src="./img/ifcc-flowchart.png" alt="IFCC Events flowchart" class="w-full h-auto object-cover">
+            <!-- LINKERKANT (SLIDER) -->
+            <div class="lg:w-1/2 flex justify-center items-start">
+                <!-- Slider Container -->
+                <div class="relative w-full max-w-[500px] rounded-2xl overflow-hidden shadow-lg group bg-transparent">
+
+                    <!-- Images Track -->
+                    <div id="appSlider" class="flex transition-transform duration-500 ease-in-out w-full">
+                        <!-- Voeg hieronder al je afbeeldingen toe -->
+                        <img src="./img/IMG_6325.PNG" alt="IFCC preview 1" class="w-full block shrink-0 h-auto object-cover">
+                        <img src="./img/IMG_6328.PNG" alt="IFCC preview 1" class="w-full block shrink-0 h-auto object-cover">
+                        <img src="./img/IMG_6327.PNG" alt="IFCC preview 1" class="w-full block shrink-0 h-auto object-cover">
+                        <img src="./img/IMG_6326.PNG" alt="IFCC preview 1" class="w-full block shrink-0 h-auto object-cover">
+
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <button id="sliderPrev" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/40 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-blue-600 z-10">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+
+                    <button id="sliderNext" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/40 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-blue-600 z-10">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+
+                    <!-- Indicators (Dots) -->
+                    <!-- Bolletjes worden dynamisch door het script ingevuld -->
+                    <div id="sliderDotsContainer" class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+                    </div>
+
                 </div>
             </div>
 
@@ -260,15 +285,7 @@
             </div>
         </div>
 
-        <!-- Database Structuur -->
-        <div class="mt-8 pt-8 border-t border-gray-200">
-            <h3 class="text-xl font-semibold text-blue-600 mb-4" data-translate="ifccDatabaseStructureTitle">Database structuur</h3>
-            <div class="map-preview flex justify-center">
-                <img src="./img/ifcc-database.png" alt="IFCC database structure" class="w-full max-w-5xl h-auto object-cover">
-            </div>
-        </div>
-
-        <!-- Backend / Filament (Samengevoegd) -->
+        <!-- Backend / Filament -->
         <div class="mt-8 pt-8 border-t border-gray-200">
             <h3 class="text-xl font-semibold text-blue-600 mb-4" data-translate="ifccBackendTitle">Ontwikkeling: Backend (Filament)</h3>
             <div class="grid md:grid-cols-3 gap-4">
@@ -287,7 +304,7 @@
             </div>
         </div>
 
-        <!-- Frontend / Expo (Samengevoegd) -->
+        <!-- Frontend / Expo -->
         <div class="mt-8 pt-8 border-t border-gray-200">
             <h3 class="text-xl font-semibold text-blue-600 mb-4" data-translate="ifccFrontendTitle">Ontwikkeling: Frontend (Expo)</h3>
             <div class="grid md:grid-cols-3 gap-4">
@@ -306,7 +323,7 @@
             </div>
         </div>
 
-        <!-- Store & Design (Samengevoegd) -->
+        <!-- Store & Design -->
         <div class="mt-8 pt-8 border-t border-gray-200">
             <h3 class="text-xl font-semibold text-blue-600 mb-4" data-translate="ifccStoreDesignTitle">Publicatie & Design</h3>
             <div class="grid md:grid-cols-2 gap-4">
@@ -359,6 +376,60 @@
     import { currentLanguage, setLanguage, updateNavAnimations } from './language.js';
 
     document.addEventListener('DOMContentLoaded', () => {
+
+        // --- SLIDER LOGICA MET DYNAMISCHE BOLLETJES ---
+        const appSlider = document.getElementById('appSlider');
+        const sliderPrev = document.getElementById('sliderPrev');
+        const sliderNext = document.getElementById('sliderNext');
+        const dotsContainer = document.getElementById('sliderDotsContainer');
+
+        if (appSlider) {
+            const slides = appSlider.querySelectorAll('img');
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+
+            // Maak de bolletjes dynamisch aan op basis van het aantal afbeeldingen
+            dotsContainer.innerHTML = '';
+            slides.forEach((_, index) => {
+                const dot = document.createElement('button');
+                const activeClass = index === 0 ? 'opacity-100' : 'opacity-40';
+                dot.className = `w-2.5 h-2.5 rounded-full bg-black transition-opacity hover:opacity-100 ${activeClass}`;
+
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateSliderPosition();
+                });
+                dotsContainer.appendChild(dot);
+            });
+
+            const sliderDots = dotsContainer.querySelectorAll('button');
+
+            function updateSliderPosition() {
+                appSlider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+                sliderDots.forEach((dot, index) => {
+                    if(index === currentSlide) {
+                        dot.classList.remove('opacity-40');
+                        dot.classList.add('opacity-100');
+                    } else {
+                        dot.classList.add('opacity-40');
+                        dot.classList.remove('opacity-100');
+                    }
+                });
+            }
+
+            sliderPrev?.addEventListener('click', () => {
+                currentSlide = (currentSlide > 0) ? currentSlide - 1 : totalSlides - 1;
+                updateSliderPosition();
+            });
+
+            sliderNext?.addEventListener('click', () => {
+                currentSlide = (currentSlide < totalSlides - 1) ? currentSlide + 1 : 0;
+                updateSliderPosition();
+            });
+        }
+        // --- EINDE SLIDER LOGICA ---
+
         // Mobile menu functionaliteit
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');

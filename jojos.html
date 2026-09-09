@@ -189,38 +189,33 @@
         <div class="flex flex-col lg:flex-row gap-8">
 
             <!-- LINKERKANT (SLIDER) -->
-            <div class="lg:w-1/2 flex justify-center">
+            <div class="lg:w-1/2 flex justify-center items-start">
 
                 <!-- Slider Container -->
-                <div class="relative w-[300px] rounded-2xl overflow-hidden shadow-lg group">
+                <div class="relative w-[300px] rounded-2xl overflow-hidden shadow-lg group bg-transparent">
 
                     <!-- Images Track -->
-                    <div id="appSlider" class="flex transition-transform duration-500 ease-in-out">
-                        <!-- Slide 1 -->
-                        <img src="./img/image%20213.png" alt="App preview 1" class="w-full shrink-0 h-auto object-cover">
-                        <img src="./img/image%20214.png" alt="App preview 2" class="w-full shrink-0 h-auto object-cover">
-                        <img src="./img/image%20215.png" alt="App preview 3" class="w-full shrink-0 h-auto object-cover">
-                        <img src="./img/image%20216.png" alt="App preview 4" class="w-full shrink-0 h-auto object-cover">
-                        <img src="./img/image%20217.png" alt="App preview 5" class="w-full shrink-0 h-auto object-cover">
-                        <img src="./img/image%20218.png" alt="App preview 6" class="w-full shrink-0 h-auto object-cover">
-                        <img src="./img/image%20219.png" alt="App preview 7" class="w-full shrink-0 h-auto object-cover">
-
+                    <div id="appSlider" class="flex transition-transform duration-500 ease-in-out w-full">
+                        <img src="./img/image%20213.png" alt="App preview 1" class="w-full block shrink-0 h-auto object-cover">
+                        <img src="./img/image%20214.png" alt="App preview 2" class="w-full block shrink-0 h-auto object-cover">
+                        <img src="./img/image%20215.png" alt="App preview 3" class="w-full block shrink-0 h-auto object-cover">
+                        <img src="./img/image%20216.png" alt="App preview 4" class="w-full block shrink-0 h-auto object-cover">
+                        <img src="./img/image%20217.png" alt="App preview 5" class="w-full block shrink-0 h-auto object-cover">
+                        <img src="./img/image%20218.png" alt="App preview 6" class="w-full block shrink-0 h-auto object-cover">
+                        <img src="./img/image%20219.png" alt="App preview 7" class="w-full block shrink-0 h-auto object-cover">
                     </div>
 
                     <!-- Navigation Arrows -->
-                    <button id="sliderPrev" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/40 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-blue-600">
+                    <button id="sliderPrev" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/40 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-blue-600 z-10">
                         <i class="fas fa-chevron-left"></i>
                     </button>
 
-                    <button id="sliderNext" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/40 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-blue-600">
+                    <button id="sliderNext" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/40 text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-blue-600 z-10">
                         <i class="fas fa-chevron-right"></i>
                     </button>
 
                     <!-- Indicators (Dots) -->
-                    <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-                        <button class="slider-dot w-2.5 h-2.5 rounded-full bg-white opacity-100 transition-opacity"></button>
-                        <button class="slider-dot w-2.5 h-2.5 rounded-full bg-white opacity-40 transition-opacity hover:opacity-100"></button>
-                        <button class="slider-dot w-2.5 h-2.5 rounded-full bg-white opacity-40 transition-opacity hover:opacity-100"></button>
+                    <div id="sliderDotsContainer" class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
                     </div>
 
                 </div>
@@ -277,11 +272,36 @@
                     </div>
                 </div>
 
-                <div class="pt-4 flex gap-4 items-center">
-                    <button onclick="openVideoModal()" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+                <!-- Hier zijn de nieuwe knoppen toegevoegd met flex-wrap zodat ze netjes meeschalen -->
+                <div class="pt-4 flex flex-wrap gap-4 items-center">
+                    <button onclick="openVideoModal()" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
                         <i class="fas fa-circle-play"></i>
                         <span data-translate="jojosPopsDemoApp">Demo app</span>
                     </button>
+
+                    <!-- Backend GitHub Button -->
+                    <a href="#" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+                        <i class="fab fa-github"></i>
+                        <span data-translate="ifccBackendGithub">Backend GitHub</span>
+                    </a>
+
+                    <!-- Expo GitHub Button -->
+                    <a href="#" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+                        <i class="fab fa-github"></i>
+                        <span data-translate="ifccExpoGithub">Expo GitHub</span>
+                    </a>
+
+                    <!-- App Store Button -->
+                    <a href="#" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+                        <i class="fab fa-apple"></i>
+                        <span data-translate="ifccAppStoreLink">App Store</span>
+                    </a>
+
+                    <!-- Play Store Button -->
+                    <a href="#" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+                        <i class="fab fa-google-play"></i>
+                        <span data-translate="ifccPlayStoreLink">Google Play</span>
+                    </a>
 
                     <div id="videoModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 transition-opacity duration-300">
                         <div class="relative w-full h-full flex items-center justify-center p-4">
@@ -365,20 +385,38 @@
 
     document.addEventListener('DOMContentLoaded', () => {
 
-        // --- SLIDER LOGICA ---
+        // --- SLIDER LOGICA MET DYNAMISCHE BOLLETJES ---
         const appSlider = document.getElementById('appSlider');
         const sliderPrev = document.getElementById('sliderPrev');
         const sliderNext = document.getElementById('sliderNext');
-        const sliderDots = document.querySelectorAll('.slider-dot');
+        const dotsContainer = document.getElementById('sliderDotsContainer');
 
+        const slides = appSlider.querySelectorAll('img');
+        const totalSlides = slides.length;
         let currentSlide = 0;
-        const totalSlides = sliderDots.length;
+
+        // Maak de bolletjes dynamisch aan op basis van het aantal afbeeldingen
+        dotsContainer.innerHTML = ''; // Maak container leeg
+        slides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            // De eerste is actief, de rest is inactief (transparanter)
+            const activeClass = index === 0 ? 'opacity-100' : 'opacity-40';
+            dot.className = `w-2.5 h-2.5 rounded-full bg-white transition-opacity hover:opacity-100 ${activeClass}`;
+
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateSliderPosition();
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const sliderDots = dotsContainer.querySelectorAll('button');
 
         function updateSliderPosition() {
-            // Schuif de container op basis van index (100% per afbeelding)
+            // Schuif de container op basis van index
             appSlider.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-            // Update de bolletjes
+            // Update de visuele status van de bolletjes
             sliderDots.forEach((dot, index) => {
                 if(index === currentSlide) {
                     dot.classList.remove('opacity-40');
@@ -399,14 +437,8 @@
             currentSlide = (currentSlide < totalSlides - 1) ? currentSlide + 1 : 0;
             updateSliderPosition();
         });
-
-        sliderDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                updateSliderPosition();
-            });
-        });
         // --- EINDE SLIDER LOGICA ---
+
 
         // Mobile menu functionaliteit
         const mobileMenuButton = document.getElementById('mobileMenuButton');

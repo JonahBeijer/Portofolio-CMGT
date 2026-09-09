@@ -12,13 +12,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-
-
         @media (min-width: 2560px) {
             main {
                 min-height: calc(100vh - 200px);
             }
-
 
             .skill-icon {
                 font-size: 3rem !important; /* 48px */
@@ -75,12 +72,12 @@
             .skill-text {
                 font-size: 1.25rem !important;
             }
-
-
-
         }
     </style>
 </head>
+
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
+
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center relative z-[1000]">
     <div class="text-xl font-bold text-customblue" data-translate="navbarTitle">Mijn Portfolio</div>
 
@@ -143,15 +140,12 @@
         </div>
     </div>
 </nav>
-<div id="mobileMenuOverlay" class="fixed inset-0 bg-black/50 z-[999] hidden"></div>
 
-<body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
+<div id="mobileMenuOverlay" class="fixed inset-0 bg-black/50 z-[999] hidden"></div>
 
 
 <main class="py-10 px-6 max-w-[2400px] mx-auto">
-    <h2 class="text-white text-5xl font-bold mb-10 text-center">Skills</h2>
-
-
+    <h2 class="text-white text-5xl font-bold mb-10 text-center">Skills & Tools</h2>
 
     <div class="grid md:grid-cols-3 gap-8">
 
@@ -159,10 +153,10 @@
         <div>
             <div class="mb-6">
                 <h3 class="text-2xl text-white font-semibold mb-4 text-center">Frontend</h3>
-                <div id="frontend-core" class="grid grid-cols-2 gap-4 mb-6"></div>
+                <div id="frontend-core" class="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-6"></div>
 
                 <h4 class="text-xl text-white font-medium mb-3 text-center">Frameworks & Libraries</h4>
-                <div id="frontend-frameworks" class="grid grid-cols-2 gap-4"></div>
+                <div id="frontend-frameworks" class="grid grid-cols-2 lg:grid-cols-3 gap-4"></div>
             </div>
         </div>
 
@@ -170,24 +164,23 @@
         <div>
             <div class="mb-6">
                 <h3 class="text-2xl text-white font-semibold mb-4 text-center">Backend</h3>
-                <div id="backend-core" class="grid grid-cols gap-4 mb-6"></div>
+                <div id="backend-core" class="grid grid-cols-2 gap-4 mb-6"></div>
 
-                <h4 class="text-xl text-white font-medium mb-3 text-center">Frameworks</h4>
-                <div id="backend-frameworks" class="grid grid-cols gap-4"></div>
+                <h4 class="text-xl text-white font-medium mb-3 text-center">Frameworks & CMS</h4>
+                <div id="backend-frameworks" class="grid grid-cols-2 gap-4"></div>
             </div>
         </div>
 
         <!-- Databases & Tools -->
         <div>
-            <h3 class="text-2xl text-white font-semibold mb-4 text-center">Databases & Tools</h3>
-            <div id="databases-tools" class="grid grid-cols-2 gap-4"></div>
+            <h3 class="text-2xl text-white font-semibold mb-4 text-center">Databases & Services</h3>
+            <div id="databases-tools" class="grid grid-cols-2 lg:grid-cols-3 gap-4"></div>
         </div>
-
 
     </div>
 
-    <!-- Plaats dit in het main element, voor de skills sectie -->
-    <section class="bg-blue-50 py-12 mt-10 mb-16 px-4 rounded-lg max-w-5xl align-center mx-auto">
+    <!-- Ervaring Sectie -->
+    <section class="bg-blue-50 py-12 mt-10 mb-16 px-4 rounded-lg max-w-5xl align-center mx-auto shadow-lg">
         <div class="max-w-3xl mx-auto prose">
             <h2 class="text-3xl font-bold text-blue-700 mb-8 text-center" data-translate="experienceTitle">Ervaring & Leerpunten</h2>
 
@@ -237,6 +230,13 @@
         document.getElementById('langToggle').addEventListener('change', (e) => {
             const newLang = e.target.checked ? 'en' : 'nl';
             setLanguage(newLang);
+            document.getElementById('mobileLangToggle').checked = e.target.checked;
+        });
+
+        document.getElementById('mobileLangToggle').addEventListener('change', (e) => {
+            const newLang = e.target.checked ? 'en' : 'nl';
+            setLanguage(newLang);
+            document.getElementById('langToggle').checked = e.target.checked;
         });
     });
 
@@ -244,6 +244,7 @@
     document.addEventListener('languageChanged', () => {
         setTimeout(updateNavAnimations, 50);
     });
+
     // Initialize animations
     AOS.init({
         once: true,
@@ -264,34 +265,35 @@
         });
     });
 
-
-    // Handle language toggle
-    document.getElementById("langToggle").addEventListener("click", () => {
-        const newLang = currentLanguage === 'nl' ? 'en' : 'nl';
-        setLanguage(newLang);
-    });
-
+    // HIER ZIJN DE NIEUWE SKILLS TOEGEVOEGD
     const skills = {
         frontendCore: [
             { name: 'HTML/CSS', icon: 'fa-brands fa-html5 text-orange-500 text-2xl ' },
-            { name: 'JavaScript', icon: 'fa-brands fa-js text-yellow-500 text-2xl' }
+            { name: 'JavaScript', icon: 'fa-brands fa-js text-yellow-500 text-2xl' },
+            { name: 'TypeScript', icon: 'fas fa-file-code text-blue-600 text-2xl' } // Nieuw
         ],
         frontendFrameworks: [
-            { name: 'React + JSX', icon: 'fa-brands fa-react text-blue-500 text-2xl ' },
-            { name: 'TailwindCSS', icon: 'fa-brands fa-css3-alt text-teal-400 text-2xl' },
+            { name: 'React', icon: 'fa-brands fa-react text-blue-500 text-2xl ' },
+            { name: 'React Native', icon: 'fa-brands fa-react text-cyan-500 text-2xl ' }, // Nieuw
+            { name: 'TailwindCSS', icon: 'fa-solid fa-wind text-teal-400 text-2xl' }, // Icon aangepast voor Tailwind
+            { name: 'Expo', icon: 'fas fa-chevron-up text-black text-2xl' }, // Verplaatst vanuit tools
             { name: 'Excalibur', icon: 'fas fa-gamepad text-purple-500 text-2xl' }
         ],
         backendCore: [
-            { name: 'PHP', icon: 'fab fa-php text-customblue text-2xl' }
+            { name: 'PHP', icon: 'fab fa-php text-indigo-500 text-2xl' },
+            { name: 'SQL', icon: 'fas fa-database text-gray-500 text-2xl' } // Nieuw
         ],
         backendFrameworks: [
-            { name: 'Laravel', icon: 'fab fa-laravel text-red-600 text-2xl' }
+            { name: 'Laravel', icon: 'fab fa-laravel text-red-600 text-2xl' },
+            { name: 'Filament', icon: 'fas fa-layer-group text-yellow-500 text-2xl' } // Nieuw (CMS/Admin panel)
         ],
         databasesTools: [
-            { name: 'MySQL/SQLite', icon: 'fas fa-database text-blue-400 text-2xl' },
-            { name: 'MongoDB', icon: 'fas fa-database text-green-400 text-2xl' },
-            { name: 'Vite', icon: 'fas fa-toolbox text-gray-500 text-2xl' },
-            {name: 'Expo', icon: 'fas fa-solid fa-chevron-up text-2xl'}
+            { name: 'MySQL/SQLite', icon: 'fas fa-server text-blue-400 text-2xl' },
+            { name: 'MongoDB', icon: 'fas fa-leaf text-green-500 text-2xl' },
+            { name: 'Firebase', icon: 'fas fa-fire text-orange-500 text-2xl' }, // Nieuw
+            { name: 'Git/GitHub', icon: 'fab fa-github text-gray-800 text-2xl' }, // Nieuw
+            { name: 'Stripe API', icon: 'fab fa-stripe text-indigo-500 text-2xl' }, // Nieuw
+            { name: 'Azure OpenAI', icon: 'fas fa-robot text-blue-600 text-2xl' } // Nieuw (LLM Chatbot)
         ]
     };
 
@@ -299,12 +301,13 @@
         const container = document.getElementById(containerId);
         skills.forEach(skill => {
             const div = document.createElement('div');
-            div.className = "bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition transform hover:scale-105 text-center";
+            // Zorg dat de kaartjes allemaal dezelfde hoogte/uitlijning behouden
+            div.className = "bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition transform hover:scale-105 flex flex-col items-center justify-center min-h-[100px]";
 
             div.innerHTML = `
-            <i class="${skill.icon}"></i>
-            <p class="skill-text text-gray-800 font-medium text-sm">${skill.name}</p>
-        `;
+                <i class="${skill.icon} mb-2"></i>
+                <p class="skill-text text-gray-800 font-medium text-sm text-center leading-tight">${skill.name}</p>
+            `;
             container.appendChild(div);
         });
     }
@@ -344,17 +347,6 @@
             }
         });
 
-        // Taalwisselaar
-        document.getElementById('langToggle').addEventListener('change', (e) => {
-            const newLang = e.target.checked ? 'en' : 'nl';
-            setLanguage(newLang);
-        });
-
-        document.getElementById('mobileLangToggle').addEventListener('change', (e) => {
-            document.getElementById('langToggle').checked = e.target.checked;
-            document.getElementById('langToggle').dispatchEvent(new Event('change'));
-        });
-
         VANTA.CLOUDS({
             el: "body",
             mouseControls: false,
@@ -367,9 +359,7 @@
     })
 </script>
 
-</body>
-
-<footer class="bg-white text-customblue py-6 px-4 mt-auto">
+<footer class="bg-white text-customblue py-6 px-4 mt-auto relative z-[10]">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <!-- Left Side: Name and Study -->
         <div class="flex flex-col">
@@ -391,4 +381,5 @@
         </div>
     </div>
 </footer>
+</body>
 </html>
