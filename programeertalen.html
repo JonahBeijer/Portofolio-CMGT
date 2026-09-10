@@ -147,35 +147,37 @@
 <main class="py-10 px-6 max-w-[2400px] mx-auto">
     <h2 class="text-white text-5xl font-bold mb-10 text-center">Skills & Tools</h2>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
 
         <!-- Frontend -->
-        <div>
-            <div class="mb-6">
-                <h3 class="text-2xl text-white font-semibold mb-4 text-center">Frontend</h3>
-                <div id="frontend-core" class="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-6"></div>
+        <section>
+            <h3 class="text-2xl text-white font-semibold mb-4 text-center">Frontend</h3>
+            <div id="frontend-core" class="grid grid-cols-2 gap-4 mb-6"></div>
 
-                <h4 class="text-xl text-white font-medium mb-3 text-center">Frameworks & Libraries</h4>
-                <div id="frontend-frameworks" class="grid grid-cols-2 lg:grid-cols-3 gap-4"></div>
-            </div>
-        </div>
+            <h4 class="text-xl text-white font-medium mb-3 text-center">Frameworks & Libraries</h4>
+            <div id="frontend-frameworks" class="grid grid-cols-2 gap-4"></div>
+        </section>
 
         <!-- Backend -->
-        <div>
-            <div class="mb-6">
-                <h3 class="text-2xl text-white font-semibold mb-4 text-center">Backend</h3>
-                <div id="backend-core" class="grid grid-cols-2 gap-4 mb-6"></div>
+        <section>
+            <h3 class="text-2xl text-white font-semibold mb-4 text-center">Backend</h3>
+            <div id="backend-core" class="grid grid-cols-2 gap-4 mb-6"></div>
 
-                <h4 class="text-xl text-white font-medium mb-3 text-center">Frameworks & CMS</h4>
-                <div id="backend-frameworks" class="grid grid-cols-2 gap-4"></div>
-            </div>
-        </div>
+            <h4 class="text-xl text-white font-medium mb-3 text-center">Frameworks & CMS</h4>
+            <div id="backend-frameworks" class="grid grid-cols-2 gap-4"></div>
+        </section>
 
-        <!-- Databases & Tools -->
-        <div>
-            <h3 class="text-2xl text-white font-semibold mb-4 text-center">Databases & Services</h3>
-            <div id="databases-tools" class="grid grid-cols-2 lg:grid-cols-3 gap-4"></div>
-        </div>
+        <!-- Databases -->
+        <section>
+            <h3 class="text-2xl text-white font-semibold mb-4 text-center">Databases</h3>
+            <div id="databases" class="grid grid-cols-2 gap-4"></div>
+        </section>
+
+        <!-- Tools & Services -->
+        <section>
+            <h3 class="text-2xl text-white font-semibold mb-4 text-center">Tools & Services</h3>
+            <div id="tools-services" class="grid grid-cols-2 gap-4"></div>
+        </section>
 
     </div>
 
@@ -265,35 +267,43 @@
         });
     });
 
-    // HIER ZIJN DE NIEUWE SKILLS TOEGEVOEGD
+    // Skills gegroepeerd per type technologie
     const skills = {
         frontendCore: [
-            { name: 'HTML/CSS', icon: 'fa-brands fa-html5 text-orange-500 text-2xl ' },
+            { name: 'HTML/CSS', icon: 'fa-brands fa-html5 text-orange-500 text-2xl' },
             { name: 'JavaScript', icon: 'fa-brands fa-js text-yellow-500 text-2xl' },
-            { name: 'TypeScript', icon: 'fas fa-file-code text-blue-600 text-2xl' } // Nieuw
+            { name: 'TypeScript', icon: 'fas fa-file-code text-blue-600 text-2xl' }
         ],
+
         frontendFrameworks: [
-            { name: 'React', icon: 'fa-brands fa-react text-blue-500 text-2xl ' },
-            { name: 'React Native', icon: 'fa-brands fa-react text-cyan-500 text-2xl ' }, // Nieuw
-            { name: 'TailwindCSS', icon: 'fa-solid fa-wind text-teal-400 text-2xl' }, // Icon aangepast voor Tailwind
-            { name: 'Expo', icon: 'fas fa-chevron-up text-black text-2xl' }, // Verplaatst vanuit tools
+            { name: 'React', icon: 'fa-brands fa-react text-blue-500 text-2xl' },
+            { name: 'React Native', icon: 'fa-brands fa-react text-cyan-500 text-2xl' },
+            { name: 'TailwindCSS', icon: 'fa-solid fa-wind text-teal-400 text-2xl' },
+            { name: 'Expo', icon: 'fas fa-chevron-up text-black text-2xl' },
             { name: 'Excalibur', icon: 'fas fa-gamepad text-purple-500 text-2xl' }
         ],
+
         backendCore: [
-            { name: 'PHP', icon: 'fab fa-php text-indigo-500 text-2xl' },
-            { name: 'SQL', icon: 'fas fa-database text-gray-500 text-2xl' } // Nieuw
+            { name: 'PHP', icon: 'fab fa-php text-indigo-500 text-2xl' }
         ],
+
         backendFrameworks: [
             { name: 'Laravel', icon: 'fab fa-laravel text-red-600 text-2xl' },
-            { name: 'Filament', icon: 'fas fa-layer-group text-yellow-500 text-2xl' } // Nieuw (CMS/Admin panel)
+            { name: 'Filament', icon: 'fas fa-layer-group text-yellow-500 text-2xl' }
         ],
-        databasesTools: [
-            { name: 'MySQL/SQLite', icon: 'fas fa-server text-blue-400 text-2xl' },
+
+        databases: [
+            { name: 'SQL', icon: 'fas fa-database text-gray-500 text-2xl' },
+            { name: 'MySQL', icon: 'fas fa-server text-blue-400 text-2xl' },
+            { name: 'SQLite', icon: 'fas fa-database text-sky-500 text-2xl' },
             { name: 'MongoDB', icon: 'fas fa-leaf text-green-500 text-2xl' },
-            { name: 'Firebase', icon: 'fas fa-fire text-orange-500 text-2xl' }, // Nieuw
-            { name: 'Git/GitHub', icon: 'fab fa-github text-gray-800 text-2xl' }, // Nieuw
-            { name: 'Stripe API', icon: 'fab fa-stripe text-indigo-500 text-2xl' }, // Nieuw
-            { name: 'Azure OpenAI', icon: 'fas fa-robot text-blue-600 text-2xl' } // Nieuw (LLM Chatbot)
+            { name: 'Firebase', icon: 'fas fa-fire text-orange-500 text-2xl' }
+        ],
+
+        toolsServices: [
+            { name: 'Git/GitHub', icon: 'fab fa-github text-gray-800 text-2xl' },
+            { name: 'Stripe API', icon: 'fab fa-stripe text-indigo-500 text-2xl' },
+            { name: 'Azure OpenAI', icon: 'fas fa-robot text-blue-600 text-2xl' }
         ]
     };
 
@@ -317,7 +327,8 @@
     renderSkills('frontend-frameworks', skills.frontendFrameworks);
     renderSkills('backend-core', skills.backendCore);
     renderSkills('backend-frameworks', skills.backendFrameworks);
-    renderSkills('databases-tools', skills.databasesTools);
+    renderSkills('databases', skills.databases);
+    renderSkills('tools-services', skills.toolsServices);
 
     document.addEventListener('DOMContentLoaded', () => {
         // Menu functionaliteit
