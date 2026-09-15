@@ -22,7 +22,6 @@
                 margin-bottom: 1.5rem !important;
             }
 
-            /* Vergroot de icon text */
             .skill-text {
                 font-size: 1.25rem !important; /* 20px */
             }
@@ -63,12 +62,10 @@
                 margin-bottom: 1.5rem;
             }
 
-            /* Specifieke aanpassing voor Expo icon */
             .fa-chevron-up {
                 transform: scale(1.5);
             }
 
-            /* Text onder icons */
             .skill-text {
                 font-size: 1.25rem !important;
             }
@@ -76,7 +73,7 @@
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen flex flex-col">
 
 <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center relative z-[1000]">
     <div class="text-xl font-bold text-customblue" data-translate="navbarTitle">Mijn Portfolio</div>
@@ -143,46 +140,65 @@
 
 <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/50 z-[999] hidden"></div>
 
+<main class="py-10 px-6 w-full max-w-[1400px] mx-auto flex-grow">
+    <h2 class="text-white text-5xl font-bold mb-10 text-center drop-shadow-lg">Skills & Tools</h2>
 
-<main class="py-10 px-6 max-w-[2400px] mx-auto">
-    <h2 class="text-white text-5xl font-bold mb-10 text-center">Skills & Tools</h2>
+    <!-- Grid: Maximaal 3 kaarten breed (xl:grid-cols-3) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
-
-        <!-- Frontend -->
-        <section>
-            <h3 class="text-2xl text-white font-semibold mb-4 text-center">Frontend</h3>
-            <div id="frontend-core" class="grid grid-cols-2 gap-3 mb-5 max-w-md mx-auto"></div>
-
-            <h4 class="text-xl text-white font-medium mb-3 text-center">Frameworks & Libraries</h4>
-            <div id="frontend-frameworks" class="grid grid-cols-2 gap-3 max-w-md mx-auto"></div>
+        <!-- Frontend Core -->
+        <section class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-100 flex flex-col">
+            <div class="flex items-center gap-3 mb-4 border-b pb-3">
+                <i class="fas fa-code text-2xl text-customblue"></i>
+                <h3 class="text-xl font-bold text-gray-800">Frontend Core</h3>
+            </div>
+            <!-- Maximaal 2 skills breed (grid-cols-2) -->
+            <div id="frontend-core" class="grid grid-cols-2 gap-3"></div>
         </section>
 
-        <!-- Backend -->
-        <section>
-            <h3 class="text-2xl text-white font-semibold mb-4 text-center">Backend</h3>
-            <div id="backend-core" class="grid grid-cols-2 gap-3 mb-5 max-w-md mx-auto"></div>
+        <!-- Frontend Frameworks -->
+        <section class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-100 flex flex-col">
+            <div class="flex items-center gap-3 mb-4 border-b pb-3">
+                <i class="fas fa-layer-group text-2xl text-customblue"></i>
+                <h3 class="text-xl font-bold text-gray-800">UI Frameworks</h3>
+            </div>
+            <div id="frontend-frameworks" class="grid grid-cols-2 gap-3"></div>
+        </section>
 
-            <h4 class="text-xl text-white font-medium mb-3 text-center">Frameworks & CMS</h4>
-            <div id="backend-frameworks" class="grid grid-cols-2 gap-3 max-w-md mx-auto"></div>
+        <!-- Backend & CMS -->
+        <section class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-100 flex flex-col">
+            <div class="flex items-center gap-3 mb-4 border-b pb-3">
+                <i class="fas fa-server text-2xl text-customblue"></i>
+                <h3 class="text-xl font-bold text-gray-800">Backend & CMS</h3>
+            </div>
+            <div class="space-y-3">
+                <div id="backend-core" class="grid grid-cols-2 gap-3"></div>
+                <div id="backend-frameworks" class="grid grid-cols-2 gap-3"></div>
+            </div>
         </section>
 
         <!-- Databases -->
-        <section>
-            <h3 class="text-2xl text-white font-semibold mb-4 text-center">Databases</h3>
-            <div id="databases" class="grid grid-cols-2 gap-3 max-w-md mx-auto"></div>
+        <section class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-100 flex flex-col">
+            <div class="flex items-center gap-3 mb-4 border-b pb-3">
+                <i class="fas fa-database text-2xl text-customblue"></i>
+                <h3 class="text-xl font-bold text-gray-800">Databases</h3>
+            </div>
+            <div id="databases" class="grid grid-cols-2 gap-3"></div>
         </section>
 
         <!-- Tools & Services -->
-        <section>
-            <h3 class="text-2xl text-white font-semibold mb-4 text-center">Tools & Services</h3>
-            <div id="tools-services" class="grid grid-cols-2 gap-3 max-w-md mx-auto"></div>
+        <section class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-100 flex flex-col">
+            <div class="flex items-center gap-3 mb-4 border-b pb-3">
+                <i class="fas fa-tools text-2xl text-customblue"></i>
+                <h3 class="text-xl font-bold text-gray-800">Tools & Services</h3>
+            </div>
+            <div id="tools-services" class="grid grid-cols-2 gap-3"></div>
         </section>
 
     </div>
 
     <!-- Ervaring Sectie -->
-    <section class="bg-blue-50 py-12 mt-10 mb-16 px-4 rounded-lg max-w-5xl align-center mx-auto shadow-lg">
+    <section class="bg-white/90 backdrop-blur-sm py-12 mt-16 mb-10 px-6 rounded-2xl max-w-5xl mx-auto shadow-xl border border-gray-100">
         <div class="max-w-3xl mx-auto prose">
             <h2 class="text-3xl font-bold text-blue-700 mb-8 text-center" data-translate="experienceTitle">Ervaring & Leerpunten</h2>
 
@@ -200,10 +216,10 @@
                 Daarnaast hebben we als groep een project gedaan voor Open Hiring, waarbij we een website ontwikkelden. Wat dit project speciaal maakte, was dat we begeleiding kregen van IO Digital. Zij hielpen ons bij het vormgeven van de website, gaven advies over hoe je professioneel te werk gaat en voorzagen ons regelmatig van waardevolle feedback.
             </p>
 
-            <div class="bg-blue-100 p-6 rounded-lg mb-6">
-                <p class="text-gray-700 mb-0">
-                    <strong data-translate="insightsTitle">Belangrijkste inzichten:</strong>
-                <ul class="list-disc pl-6 mt-2">
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-6 shadow-sm">
+                <p class="text-gray-800 mb-0">
+                    <strong data-translate="insightsTitle" class="block mb-3 text-blue-800">Belangrijkste inzichten:</strong>
+                <ul class="list-disc pl-6 space-y-2 text-gray-700">
                     <li data-translate="insight1">Techniek en ontwerp zijn maar een deel van het werk</li>
                     <li data-translate="insight2">Samenwerking en communicatie zijn cruciaal</li>
                     <li data-translate="insight3">Altijd denken vanuit de eindgebruiker</li>
@@ -225,10 +241,8 @@
     import { currentLanguage, setLanguage, updateNavAnimations } from './language.js';
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Initializeer animaties
         updateNavAnimations();
 
-        // Taalwissel handler
         document.getElementById('langToggle').addEventListener('change', (e) => {
             const newLang = e.target.checked ? 'en' : 'nl';
             setLanguage(newLang);
@@ -242,23 +256,19 @@
         });
     });
 
-    // Herinitialiseer animaties bij elke taalverandering
     document.addEventListener('languageChanged', () => {
         setTimeout(updateNavAnimations, 50);
     });
 
-    // Initialize animations
     AOS.init({
         once: true,
         duration: 600,
         offset: 50,
     });
 
-    // Set initial language
     document.addEventListener("DOMContentLoaded", () => {
         setLanguage(currentLanguage);
 
-        // Animatie initialisatie
         document.querySelectorAll('.nav-link').forEach(link => {
             const text = link.textContent.trim();
             link.innerHTML = text.split('').map((char, index) =>
@@ -267,7 +277,6 @@
         });
     });
 
-    // Skills gegroepeerd per type technologie
     const skills = {
         frontendCore: [
             { name: 'HTML/CSS', icon: 'fa-brands fa-html5 text-orange-500 text-2xl' },
@@ -307,22 +316,21 @@
         ]
     };
 
-    function renderSkills(containerId, skills) {
+    function renderSkills(containerId, skillsArray) {
         const container = document.getElementById(containerId);
-        skills.forEach(skill => {
+        if(!container) return;
+        skillsArray.forEach(skill => {
             const div = document.createElement('div');
-            // Zorg dat de kaartjes allemaal dezelfde hoogte/uitlijning behouden
-            div.className = "bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition transform hover:scale-105 flex flex-col items-center justify-center min-h-[100px]";
+            div.className = "bg-gray-50 hover:bg-blue-50 border border-gray-100 p-3 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center justify-center min-h-[90px] group";
 
             div.innerHTML = `
-                <i class="${skill.icon} mb-2"></i>
-                <p class="skill-text text-gray-800 font-medium text-sm text-center leading-tight">${skill.name}</p>
+                <i class="${skill.icon} mb-2 transition-transform duration-300 group-hover:scale-110"></i>
+                <p class="skill-text text-gray-700 font-semibold text-xs md:text-sm text-center leading-tight">${skill.name}</p>
             `;
             container.appendChild(div);
         });
     }
 
-    // Render alle secties
     renderSkills('frontend-core', skills.frontendCore);
     renderSkills('frontend-frameworks', skills.frontendFrameworks);
     renderSkills('backend-core', skills.backendCore);
@@ -331,7 +339,6 @@
     renderSkills('tools-services', skills.toolsServices);
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Menu functionaliteit
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
@@ -346,7 +353,7 @@
         }
 
         [mobileMenuButton, mobileMenuOverlay, closeMenuButton].forEach(element => {
-            element.addEventListener('click', toggleMobileMenu);
+            if(element) element.addEventListener('click', toggleMobileMenu);
         });
 
         window.addEventListener('resize', () => {
@@ -372,13 +379,11 @@
 
 <footer class="bg-white text-customblue py-6 px-4 mt-auto relative z-[10]">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-        <!-- Left Side: Name and Study -->
         <div class="flex flex-col">
             <p class="text-lg font-semibold" id="name">Jonah Beijer</p>
             <p class="text-sm" id="study">CMGT</p>
         </div>
 
-        <!-- Right Side: Social Links with Icons -->
         <div class="flex space-x-6">
             <a href="https://github.com/JonahBeijer" class="hover:text-blue-400" target="_blank">
                 <i class="fab fa-github fa-2x"></i>
