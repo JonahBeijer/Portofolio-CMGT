@@ -84,7 +84,7 @@ main { padding-top: 80px; }
 .bio-text strong .is-read { color: #ff675e; }
 .text-link { display: inline-flex; gap: 35px; align-items: center; font-size: 12px; border-bottom: 1px solid currentColor; padding: 15px 0 8px; }
 .portrait-cutout { position: sticky; top: 120px; margin: 0; padding: 14px 14px 55px; background: #d8d7cc; color: var(--ink); transform: rotate(6deg) translateY(calc(var(--bio-p,0)*-60px)); box-shadow: 15px 20px 0 #0002; }
-.hero-portrait { width: 100%; height: 360px; object-fit: cover; filter: grayscale(1); }
+.hero-portrait { width: 100%; height: 360px; object-fit: cover; object-position: 65% 22%; filter: grayscale(1); }
 .portrait-cutout figcaption { position: absolute; left: 15px; bottom: 13px; font: 500 8px/1.6 'Space Grotesk'; letter-spacing: .08em; }
 .portrait-pin { position: absolute; top: -33px; right: 20px; color: var(--accent); font-size: 65px; line-height: 1; }
 .portrait-pokemon { position: absolute; width: 125px; right: -35px; bottom: -35px; image-rendering: pixelated; transform: rotate(-6deg); }
@@ -142,14 +142,14 @@ main { padding-top: 80px; }
 .gallery-bottom { margin-top: auto; padding-top: 25px; }
 .gallery-progress { height: 1px; flex: 1; background: #ffffff30; max-width: 60%; }
 .gallery-progress>span { display: block; width: calc(var(--gallery-p,0)*100%); height: 1px; background: var(--accent); }
-.project-viewport { overflow: hidden; flex: 1; display: flex; align-items: stretch; }
-.project-list { display: flex; width: max-content; gap: 4vw; padding: 0 5vw; transform: translateX(calc(var(--gallery-x,0px)*-1)); will-change: transform; }
-.project-card { width: 67vw; max-width: 1050px; flex-shrink: 0; height: 100%; display: flex; flex-direction: column; position: relative; }
-.project-image { background: #c1bde5; height: 59%; min-height: 250px; padding: 25px 45px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.project-viewport { overflow: hidden; flex: 1; min-height: 0; display: flex; align-items: stretch; }
+.project-list { display: flex; width: max-content; height: 100%; min-height: 0; gap: 4vw; padding: 0 5vw; transform: translateX(calc(var(--gallery-x,0px)*-1)); will-change: transform; }
+.project-card { width: 54vw; max-width: 760px; flex-shrink: 0; height: 100%; min-height: 0; display: flex; flex-direction: column; position: relative; }
+.project-image { background: #c1bde5; flex: 0 0 auto; width: 100%; height: clamp(190px, 36svh, 320px); min-height: 0; padding: 0; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .project-card:nth-child(3n+2) .project-image { background: #d6e5cf; }
 .project-card:nth-child(3n) .project-image { background: #eb8f68; }
 .project-image:before { content: attr(data-number); position: absolute; left: -15px; bottom: -45px; font: 400 240px/1 'Anton'; color: #17171a15; }
-.project-image img { width: 100%; height: 100%; object-fit: contain; z-index: 1; transition: transform .4s; filter: drop-shadow(0 15px 13px #17171a20); }
+.project-image img { position: absolute; inset: 20px 30px; width: calc(100% - 60px); height: calc(100% - 40px); object-fit: contain; z-index: 1; transition: transform .4s; filter: drop-shadow(0 15px 13px #17171a20); }
 .project-image:hover img { transform: scale(1.025) rotate(-1deg); }
 .project-info { position: relative; padding: 22px 0 0; }
 .project-info>.eyebrow { position: absolute; right: 0; top: 29px; font-size: 8px; }
@@ -242,7 +242,7 @@ body[data-page=resbeijer] .case-cover,body[data-page=animecollection] .case-cove
 .cursor-ring.over-link { width: 54px; height: 54px; background: #ef392f18; }
 /* Every scene still reads naturally if scripts are disabled. */
 .no-scroll-scenes .opening-scene,.no-scroll-scenes .story-chapter { height: auto; }
-.no-scroll-scenes .project-list { flex-wrap: wrap; width: 100%; transform: none; }
+.no-scroll-scenes .project-list { flex-wrap: wrap; width: 100%; height: auto; transform: none; }
 .no-scroll-scenes .project-card { width: 100%; }
 .no-scroll-scenes .gallery-stage { height: auto; position: relative; }
 @media(min-width:1800px) {
@@ -260,7 +260,7 @@ body[data-page=resbeijer] .case-cover,body[data-page=animecollection] .case-cove
     .chapter-content li { padding: 7px 0; font-size: 20px; }
     .scene-1 .chapter-content li { font-size: 27px; }
     .gallery-stage { min-height: 570px; }
-    .project-image { min-height: 220px; height: 55%; }
+    .project-image { height: clamp(180px, 32svh, 250px); }
     .project-info h2 { font-size: 30px; margin-bottom: 9px; }
     .project-info .project-description { font-size: 11px; }
 }
@@ -273,7 +273,7 @@ body[data-page=resbeijer] .case-cover,body[data-page=animecollection] .case-cove
     .chapter-content li { font-size: 18px; }
     .scene-1 .chapter-content li { font-size: 25px; }
     .chapter-title { font-size: 10.5vw; }
-    .project-card { width: 76vw; }
+    .project-card { width: 62vw; }
     .project-info .project-description { max-width: 70%; }
     .case-layout { gap: 4vw; }
     .skill-group { padding: 30px; }
@@ -349,9 +349,9 @@ body[data-page=resbeijer] .case-cover,body[data-page=animecollection] .case-cove
     .gallery-stage { height: auto; min-height: 0; position: relative; top: auto; padding-top: 35px; overflow: visible; }
     .gallery-top { margin-bottom: 35px; padding: 0 6vw; font-size: 7px; }
     .project-viewport { display: block; overflow: visible; }
-    .project-list { display: block; width: 100%; padding: 0 6vw; transform: none; }
+    .project-list { display: block; width: 100%; height: auto; padding: 0 6vw; transform: none; }
     .project-card { width: 100%; height: auto; margin-bottom: 55px; }
-    .project-image { height: 260px; min-height: 0; padding: 25px; }
+    .project-image { height: 240px; min-height: 0; padding: 0; }
     .project-info { padding-top: 20px; }
     .project-info h2 { font-size: 32px; margin: 0 30px 15px 0; }
     .project-info>.eyebrow { top: 25px; font-size: 7px; }
@@ -404,15 +404,15 @@ body[data-page=resbeijer] .case-cover,body[data-page=animecollection] .case-cove
     .bio-word { color: var(--paper); }
     .gallery-stage { position: relative; top: auto; height: auto; }
     .work-gallery { height: auto!important; }
-    .project-list { flex-wrap: wrap; width: 100%; transform: none; }
+    .project-list { flex-wrap: wrap; width: 100%; height: auto; transform: none; }
     .project-card { width: 100%; height: auto; margin-bottom: 50px; }
-    .project-image { height: 50svh; }
+    .project-image { height: clamp(190px, 36svh, 320px); }
     .motion-ready .reveal { opacity: 1; transform: none; }
     .cursor-ring { display: none; }
 }
 .no-scroll-scenes .opening-stage,.no-scroll-scenes .chapter-stage{position:relative;top:auto}
 .no-scroll-scenes .gallery-stage{padding:40px 0}
-.no-scroll-scenes .project-image{height:50svh}
+.no-scroll-scenes .project-image{height:clamp(190px,36svh,320px)}
 .no-scroll-scenes .project-card{margin-bottom:60px}
 @media(max-width:767px){.orb-caption{right:-12%;font-size:5.5px}}
 .journey-nav{position:fixed;right:1.6vw;top:50%;transform:translateY(-50%);z-index:80;display:flex;flex-direction:column;gap:18px;opacity:0;visibility:hidden;transition:opacity .25s;color:var(--ink)}
