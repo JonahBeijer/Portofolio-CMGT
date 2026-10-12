@@ -1,0 +1,6 @@
+Asset: img/pokeball-sculpture.png
+Generated with: built-in ImageGen tool
+Background: transparent
+
+Final prompt:
+Use case: stylized-concept. Asset type: transparent website hero centerpiece for a unique cinematic scrollytelling developer portfolio with Pokémon inspiration. Create one very large iconic Poké Ball floating in midair, polished red upper hemisphere and ivory-white lower hemisphere, dark graphite equatorial band, brushed chrome beveled rims, circular white front button. High-end sculptural 3D product render, tactile slightly worn enamel with subtle microtexture, dramatic warm studio highlights and cool lavender reflections. Camera three-quarter angle, front button slightly to the left, dynamic tilt 18 degrees. Whole ball visible, centered with generous transparent margins. Sharp silhouette, realistic volume. Transparent background, no floor, no backdrop, no cast shadow outside object, no people, no lettering, no watermark, no extra objects. The single orb should feel like an editorial art object, bold playful futuristic collectible, not a UI icon.
