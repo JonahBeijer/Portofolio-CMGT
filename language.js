@@ -579,94 +579,72 @@ I’m 22 years old and an enthusiastic developer with a strong passion for build
     }
 };
 
-export let currentLanguage = localStorage.getItem("language") || "nl";
+const storyTranslations = {
+    nl: {
+        storyKeepScrolling: "Blijf ontdekken", storyDrag: "Scroll door mijn projecten",
+        storyContact: "Een idee? Laten we iets bouwen.", storyTop: "Terug naar boven ↑",
+        storyDiscover: "Ontdek mijn verhaal", storyPlayer: "Developer. Altijd in ontwikkeling.",
+        storyScroll: "Scroll om te ontdekken", storyChapters: "Mijn verhaal",
+        storyNext: "Het volgende hoofdstuk", storyWork: "Van eerste website tot mobiele apps.",
+        storySkills: "Skills & Tools", storyTools: "De tools achter mijn projecten.",
+        storyExplore: "Ontdek het project ↓",
+        liveDemo: "Live demo", viewDemo: "Bekijk demo", jsTag: "JavaScript",
+        gameImageAlt: "Screenshot van de 2D game", vintageAppImageAlt: "Preview van de Vintage app",
+        realtimeDesc: "Live updates en notificaties"
+    },
+    en: {
+        storyKeepScrolling: "Keep exploring", storyDrag: "Scroll through my projects",
+        storyContact: "Have an idea? Let's build something.", storyTop: "Back to top ↑",
+        storyDiscover: "Discover my story", storyPlayer: "Developer. Always evolving.",
+        storyScroll: "Scroll to discover", storyChapters: "My story",
+        storyNext: "The next chapter", storyWork: "From my first website to mobile apps.",
+        storySkills: "Skills & Tools", storyTools: "The tools behind my projects.",
+        storyExplore: "Explore the project ↓",
+        liveDemo: "Live demo", viewDemo: "View demo", jsTag: "JavaScript",
+        gameImageAlt: "2D game screenshot", vintageAppImageAlt: "Vintage app preview"
+    }
+};
+Object.assign(translations.nl, storyTranslations.nl);
+Object.assign(translations.en, storyTranslations.en);
+for (const lang of ['nl', 'en']) {
+    translations[lang].projectCardDescJoJosPops = translations[lang].jojosPopsAboutDescription;
+    translations[lang].projectCardDescIFCC = translations[lang].ifccAboutDesc;
+}
+
+export let currentLanguage = 'nl';
+try { currentLanguage = localStorage.getItem('language') === 'en' ? 'en' : 'nl'; } catch {}
 
 export function setLanguage(lang) {
-    currentLanguage = lang;
-    localStorage.setItem("language", lang);
-
-    document.getElementById('langToggle').checked = lang === 'en';
-    document.getElementById('mobileLangToggle').checked = lang === 'en';
-
-    updateNavAnimations();
-    const t = translations[lang];
-    document.documentElement.lang = lang;
-
+    currentLanguage = lang === 'en' ? 'en' : 'nl';
+    const t = translations[currentLanguage];
+    document.documentElement.lang = currentLanguage;
+    for (const id of ['langToggle', 'mobileLangToggle']) {
+        const toggle = document.getElementById(id);
+        if (toggle) toggle.checked = currentLanguage === 'en';
+    }
     document.querySelectorAll('[data-translate]').forEach(el => {
-        const key = el.getAttribute('data-translate');
-        if (t[key]) el.textContent = t[key];
+        const value = t[el.dataset.translate];
+        if (value === undefined) return;
+        if (el.dataset.translateType === 'alt') el.alt = value;
+        else el.textContent = value;
     });
-
-    const innerHTMLMap = {
-        bio: t.bio,
-        gameAboutText: t.gameAboutText,
-        spinShareAbout: t.spinShareAbout,
-        gamemaniacAbout: t.gamemaniacAbout,
-        educationText: t.educationText
-    };
-
-    Object.entries(innerHTMLMap).forEach(([id, content]) => {
+    const richText = ['bio', 'gameAboutText', 'spinShareAbout', 'gamemaniacAbout', 'educationText'];
+    richText.forEach(id => {
         const el = document.getElementById(id);
-        if (el) el.innerHTML = content;
+        if (el && t[id] !== undefined) el.innerHTML = t[id];
     });
-
-    const textContentMap = {
-        langToggle: t.langButton,
-        portfolioTitle: t.portfolioTitle,
-        navHome: t.navHome,
-        navProjects: t.navProjects,
-        navLanguages: t.navLanguages,
-        heading: t.heading,
-        gamePageTitle: t.gamePageTitle,
-        spinShareTitle: t.spinShareTitle,
-        projectsTitle: t.projectsTitle,
-        backLink: t.backLink,
-        backToProjects: t.backLink,
-        traitsTitle: t.traitsTitle,
-        trait1: t.trait1,
-        trait2: t.trait2,
-        trait3: t.trait3,
-        trait4: t.trait4,
-        trait5: t.trait5,
-        trait6: t.trait6,
-        visionTitle: t.visionTitle,
-        vision1: t.vision1,
-        vision2: t.vision2,
-        vision3: t.vision3,
-        hobbiesTitle: t.hobbiesTitle,
-        hobby1: t.hobby1,
-        hobby2: t.hobby2,
-        hobby3: t.hobby3,
-        hobby4: t.hobby4,
-        hobby5: t.hobby5,
-        hobby6: t.hobby6,
-        educationTitle: t.educationTitle
-    };
-
-    Object.entries(textContentMap).forEach(([id, content]) => {
+    const ids = ['heading', 'traitsTitle', 'trait1', 'trait2', 'trait3', 'trait4', 'trait5', 'trait6',
+        'visionTitle', 'vision1', 'vision2', 'vision3', 'hobbiesTitle', 'hobby1', 'hobby2', 'hobby3',
+        'hobby4', 'hobby5', 'hobby6', 'educationTitle'];
+    ids.forEach(id => {
         const el = document.getElementById(id);
-        if (el) el.textContent = content;
+        if (el && t[id] !== undefined) el.textContent = t[id];
     });
-
-    localStorage.setItem("language", lang);
-    document.dispatchEvent(new CustomEvent('languageChanged', { detail: lang }));
+    try { localStorage.setItem('language', currentLanguage); } catch {}
+    const title = document.body.dataset.page === 'index' ? t.portfolioTitle : document.querySelector('main h1')?.textContent.trim().replace(/\s+/g, ' ') || t.portfolioTitle;
+    document.title = `${title} — Jonah Beijer`;
+    document.dispatchEvent(new CustomEvent('languageChanged', { detail: currentLanguage }));
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    setLanguage(currentLanguage);
-    document.getElementById('langToggle').checked = currentLanguage === 'en';
-});
-
-export function updateNavAnimations() {
-    document.querySelectorAll('.nav-link').forEach(link => {
-        const text = link.textContent.trim();
-        link.innerHTML = text.split('').map((char, index) =>
-            `<span class="char" style="--delay: ${index * 30}ms">${char}</span>`
-        ).join('');
-    });
-}
-
-document.getElementById("langToggle")?.addEventListener("change", (e) => {
-    currentLanguage = e.target.checked ? 'en' : 'nl';
-    setLanguage(currentLanguage);
-});
+// Kept for compatibility with any consumers of the existing module.
+export function updateNavAnimations() {}

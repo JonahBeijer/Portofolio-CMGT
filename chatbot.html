@@ -1,390 +1,165 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-translate="llmChatbotTitle">Mijn Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="./img/oog.png" type="image/png" />
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <style>
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: #0053ed;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .chat-preview {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        }
-
-        main {
-            min-height: 100vh;
-            padding: 4rem 2rem;
-        }
-
-        @media (min-width: 1440px) {
-            main {
-                padding: 6rem 4rem;
-            }
-
-            .project-container {
-                max-width: 90%;
-                margin: 0 auto;
-            }
-
-            .chat-preview {
-                max-height: 600px;
-            }
-
-            h1.text-3xl {
-                font-size: 3.5rem;
-                margin-bottom: 4rem;
-            }
-
-            .feature-icon {
-                width: 65px;
-                height: 65px;
-            }
-
-            .tech-stack span {
-                font-size: 1.1rem;
-                padding: 0.75rem 1.5rem;
-            }
-        }
-
-        @media (min-width: 2560px) {
-            body {
-                font-size: 1.2rem;
-                line-height: 1.8;
-            }
-
-            h1 { font-size: 4.6rem; }
-            h2 { font-size: 3.9rem; }
-            h3 { font-size: 3.2rem; }
-            h4 { font-size: 2.6rem; }
-
-            p, li { font-size: 1.4rem; }
-
-            .project-container {
-                max-width: 80%;
-                margin: 0 auto;
-            }
-
-            .chat-preview {
-                max-height: 800px;
-            }
-
-            main {
-                padding: 8rem 6rem;
-            }
-        }
-
-        #videoModal {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        #videoModal.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        video {
-            aspect-ratio: 16/9;
-        }
-    </style>
-</head>
-<body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
-
-<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center relative z-[1000]">
-    <div class="text-xl font-bold text-blue-600" data-translate="navbarTitle">Mijn Portfolio</div>
-
-    <!-- Hamburger menu knop -->
-    <button id="mobileMenuButton" class="md:hidden focus:outline-none transition-transform duration-300 hover:scale-110">
-        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-    </button>
-
-    <!-- Desktop menu -->
-    <div class="hidden md:flex items-center space-x-6">
-        <a href="./index.html" class="nav-link text-gray-700 font-medium relative" data-translate="navHome">Home</a>
-        <a href="projecten.html" class="nav-link text-gray-700 font-medium relative" data-translate="navProjects">Projecten</a>
-        <a href="programeertalen.html" class="nav-link text-gray-700 font-medium relative" data-translate="navLanguages">Programmeertalen</a>
-
-        <div class="flex items-center gap-2">
-            <span class="text-sm font-medium text-gray-700">NL</span>
-            <label class="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" id="langToggle" class="sr-only peer">
-                <div class="w-12 h-7 bg-gray-300 rounded-full peer peer-checked:bg-blue-600 transition-all duration-300 shadow-inner"></div>
-                <div class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow"></div>
-            </label>
-            <span class="text-sm font-medium text-gray-700">EN</span>
-        </div>
-    </div>
-
-    <!-- Mobiel menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-white hidden md:hidden z-[1000]">
-        <div class="container mx-auto px-4 py-8 flex flex-col items-center h-full">
-            <div class="w-full flex justify-end mb-8">
-                <button id="closeMenuButton" class="text-blue-600 hover:text-blue-800 transition-colors">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title data-translate="llmChatbotTitle">Mijn Portfolio</title>
+        <link rel="icon" href="./img/oog.png" type="image/png">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script type="module" src="js/site.js"></script>
+    </head>
+    <body id="top" data-page="chatbot" class="no-scroll-scenes">
+        <header class="site-header">
+            <a class="brand" href="index.html" aria-label="Jonah Beijer — Home">J/B<span class="brand-star" aria-hidden="true">✳</span>
+            </a>
+            <nav class="desktop-nav" aria-label="Navigatie">
+                <a class="nav-link" href="index.html" data-translate="navHome">Home</a>
+                <a class="nav-link" href="projecten.html" data-translate="navProjects">Projecten</a>
+                <a class="nav-link" href="programeertalen.html" data-translate="navLanguages">Programmeertalen</a>
+            </nav>
+            <div class="header-actions">
+                <label class="language-switch">
+                    <span>NL</span>
+                    <input type="checkbox" id="langToggle" aria-label="Switch to English">
+                    <span class="toggle-track"></span>
+                    <span>EN</span>
+                </label>
+                <button id="mobileMenuButton" class="menu-button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
-
-            <nav class="flex flex-col items-center space-y-6 w-full">
-                <a href="./index.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative" data-translate="navHome">Home</a>
-                <a href="projecten.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative" data-translate="navProjects">Projecten</a>
-                <a href="programeertalen.html" class="nav-link text-2xl font-medium text-gray-700 hover:text-blue-600 transition-colors relative" data-translate="navLanguages">Programmeertalen</a>
-
-                <div class="mt-8 pt-8 border-t border-gray-200 w-full max-w-xs text-center">
-                    <div class="flex items-center justify-center gap-4">
-                        <span class="text-sm font-medium text-gray-700">NL</span>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" id="mobileLangToggle" class="sr-only peer">
-                            <div class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 transition-colors duration-300"></div>
-                            <div class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-6 shadow-md"></div>
-                        </label>
-                        <span class="text-sm font-medium text-gray-700">EN</span>
-                    </div>
+            <div id="mobileMenu" class="mobile-menu" hidden>
+                <button id="closeMenuButton" class="menu-close" aria-label="Sluit menu">×</button>
+                <nav aria-label="Mobiele navigatie">
+                    <a href="index.html" data-translate="navHome">Home</a>
+                    <a href="projecten.html" data-translate="navProjects">Projecten</a>
+                    <a href="programeertalen.html" data-translate="navLanguages">Programmeertalen</a>
+                </nav>
+                <label class="language-switch">
+                    <span>NL</span>
+                    <input type="checkbox" id="mobileLangToggle" aria-label="Switch to English">
+                    <span class="toggle-track"></span>
+                    <span>EN</span>
+                </label>
+            </div>
+        </header>
+        <main class="case-main">
+            <section class="page-hero case-hero">
+                <a class="eyebrow" href="projecten.html" data-translate="backLink">Terug naar projecten</a>
+                <h1 data-translate="llmChatbotTitle">AI News Analyzer</h1>
+                <div class="page-hero-bottom">
+                    <span>CASE STUDY / CMGT</span>
+                    <img src="img/pokeball.png" width="44" height="44" alt="Pokéball">
+                    <a href="#case-story" data-translate="storyExplore">Ontdek het project ↓</a>
                 </div>
-            </nav>
-        </div>
-    </div>
-</nav>
-<div id="mobileMenuOverlay" class="fixed inset-0 bg-black/50 z-[999] hidden"></div>
-
-<main class="p-8 w-full mx-auto project-container">
-    <h1 class="text-3xl font-bold text-white mb-8 text-center" data-translate="llmChatbotTitle">AI News Analyzer</h1>
-
-    <div class="bg-white p-8 rounded-lg shadow-lg min-h-[70vh]">
-        <div class="flex flex-col lg:flex-row gap-8 h-full">
-            <div class="lg:w-1/2 xl:w-55% flex flex-col">
-                <div class="chat-preview flex-grow">
-                    <img src="./img/chatbot.png" alt="Chatbot interface" class="w-full h-auto object-contain" data-translate="chatbotImageAlt" data-translate-type="alt">
+                <span class="case-hero-mark" aria-hidden="true">✳</span>
+                <div class="case-cover">
+                    <div class="cover-grid" aria-hidden="true"></div>
+                    <img src="./img/chatbot.png" alt="AI News Analyzer">
+                    <span class="cover-index">PROJECT / JB</span>
+                    <span class="cover-plus" aria-hidden="true">+</span>
                 </div>
-                <div class="pt-4 flex gap-4 items-center">
-                    <a href="https://github.com/JonahBeijer/Taakmodel"
-                       target="_blank"
-                       class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
-                        <i class="fab fa-github"></i>
-                        <span data-translate="viewCode">Bekijk code</span>
-                    </a>
-
-
-                    <!-- Video Modal -->
-
-                    <div id="videoModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 transition-opacity duration-300">
-                        <div class="relative w-full h-full flex items-center justify-center p-4">
-                            <!-- Close Button BUITEN de video container -->
-
-
-                            <!-- Video Container -->
-                            <div class="relative w-full max-w-4xl bg-black rounded-xl overflow-hidden shadow-2xl">
-
-                            </div>
+            </section>
+            <div class="case-body" id="case-story">
+                <div class="case-layout">
+                    <div class="case-media">
+                        <div class="chat-preview flex-grow">
+                            <img src="./img/chatbot.png" alt="Chatbot interface" class="w-full h-auto object-contain" data-translate="chatbotImageAlt" data-translate-type="alt">
+                        </div>
+                        <div class="pt-4 flex gap-4 items-center">
+                            <a href="https://github.com/JonahBeijer/Taakmodel" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i>
+                                <span data-translate="viewCode">Bekijk code</span>
+                            </a>
+                            <!-- Video Modal -->
                         </div>
                     </div>
-                </div>
-
-            </div>
-
-
-            <div class="lg:w-1/2 xl:w-45% flex flex-col justify-between space-y-8">
-                <div>
-                    <h2 class="text-2xl font-semibold text-blue-600 mb-4" data-translate="aboutTitle">Over het project</h2>
-                    <p class="text-gray-700 mb-4" data-translate="llmAbout">
+                    <div class="case-narrative">
+                        <div class="case-chapter" data-index="01">
+                            <h2 class="text-2xl font-semibold text-blue-600 mb-4" data-translate="aboutTitle">Over het project</h2>
+                            <p class="text-gray-700 mb-4" data-translate="llmAbout">
                         Een geavanceerde chatbot ontwikkeld met Azure OpenAI, geïntegreerd met een nieuws-API en vector databases. De AI kan:
-                    <ul class="list-disc pl-5 mt-2">
-                        <li data-translate="feature1">Real-time nieuws analyseren</li>
-                        <li data-translate="feature2">Verbanden leggen tussen verschillende bronnen</li>
-                        <li data-translate="feature3">Contextuele antwoorden genereren</li>
-                    </ul>
                     </p>
-                </div>
-
-                <div class="space-y-4">
-                    <h3 class="text-xl font-medium text-blue-500" data-translate="featuresTitle">Kernfunctionaliteiten</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-start gap-3">
-                            <div class="feature-icon">
-                                <i class="fas fa-brain text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold" data-translate="nlpTitle">NLP Verwerking</h4>
-                                <p class="text-sm text-gray-600" data-translate="nlpDesc">Geavanceerde tekstanalyse met Azure OpenAI</p>
-                            </div>
+                            <ul class="list-disc pl-5 mt-2">
+                                <li data-translate="feature1">Real-time nieuws analyseren</li>
+                                <li data-translate="feature2">Verbanden leggen tussen verschillende bronnen</li>
+                                <li data-translate="feature3">Contextuele antwoorden genereren</li>
+                            </ul>
                         </div>
-
-                        <div class="flex items-start gap-3">
-                            <div class="feature-icon">
-                                <i class="fas fa-database text-white"></i>
+                        <div class="case-chapter" data-index="02">
+                            <h3 class="text-xl font-medium text-blue-500" data-translate="featuresTitle">Kernfunctionaliteiten</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-brain text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold" data-translate="nlpTitle">NLP Verwerking</h4>
+                                        <p class="text-sm text-gray-600" data-translate="nlpDesc">Geavanceerde tekstanalyse met Azure OpenAI</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-database text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold" data-translate="vectorTitle">Vector Database</h4>
+                                        <p class="text-sm text-gray-600" data-translate="vectorDesc">Semantische zoekfuncties met FAISS indexering</p>
+                                    </div>
+                                </div>
                             </div>
                             <div>
-                                <h4 class="font-semibold" data-translate="vectorTitle">Vector Database</h4>
-                                <p class="text-sm text-gray-600" data-translate="vectorDesc">Semantische zoekfuncties met FAISS indexering</p>
+                                <h3 class="text-xl font-medium text-blue-500 mb-3" data-translate="techTitle">Technologie Stack</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">HTML</span>
+                                    <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">CSS</span>
+                                    <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">Javacript</span>
+                                    <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">Azure OpenAI</span>
+                                    <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">NewsAPI</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                <div>
-                    <h3 class="text-xl font-medium text-blue-500 mb-3" data-translate="techTitle">Technologie Stack</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">HTML</span>
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">CSS</span>
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">Javacript</span>
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">Azure OpenAI</span>
-                        <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">NewsAPI</span>
+                </div>
+                <div class="case-highlights reveal">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-4" data-translate="techHighlightsTitle">Technische hoogtepunten</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-gray-200 p-4 rounded-lg">
+                            <h4 class="font-medium mb-2" data-translate="apiIntegrationTitle">🔗 API Integratie</h4>
+                            <p class="text-sm text-gray-600" data-translate="apiIntegrationDesc">Real-time nieuwsdata ophalen van 15+ bronnen</p>
+                        </div>
+                        <div class="bg-gray-200 p-4 rounded-lg">
+                            <h4 class="font-medium mb-2" data-translate="contextualTitle">🎯 Contextueel Begrip</h4>
+                            <p class=" text-gray-600" data-translate="contextualDesc">Semantische matching met 95% nauwkeurigheid</p>
+                        </div>
                     </div>
                 </div>
+                <div class="case-highlights reveal">
+                    <a href="projecten.html" class="text-blue-500 hover:underline" data-translate="backLink">← Terug naar projecten</a>
                 </div>
             </div>
-        </div>
-
-        <div class="mt-8 pt-8 border-t border-gray-200">
-            <h3 class="text-xl font-semibold text-blue-600 mb-4" data-translate="techHighlightsTitle">Technische hoogtepunten</h3>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="bg-gray-200 p-4 rounded-lg">
-                    <h4 class="font-medium mb-2" data-translate="apiIntegrationTitle">🔗 API Integratie</h4>
-                    <p class="text-sm text-gray-600" data-translate="apiIntegrationDesc">Real-time nieuwsdata ophalen van 15+ bronnen</p>
-                </div>
-                <div class="bg-gray-200 p-4 rounded-lg">
-                    <h4 class="font-medium mb-2" data-translate="contextualTitle">🎯 Contextueel Begrip</h4>
-                    <p class=" text-gray-600" data-translate="contextualDesc">Semantische matching met 95% nauwkeurigheid</p>
-                </div>
+        </main>
+        <footer class="site-footer">
+            <div class="footer-top">
+                <p data-translate="storyContact">Een idee? Laten we iets bouwen.</p>
+                <a href="mailto:jonahbeijer@gmail.com" class="contact-link">jonahbeijer@gmail.com <span>↗</span>
+                </a>
             </div>
-        </div>
-
-
-
-        <div class="mt-8">
-            <a href="projecten.html" class="text-blue-500 hover:underline" data-translate="backLink">← Terug naar projecten</a>
-        </div>
-    </div>
-</main>
-
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script type="module">
-    import { currentLanguage, setLanguage, updateNavAnimations } from './language.js';
-
-    document.addEventListener('DOMContentLoaded', () => {
-        // Mobile menu functionaliteit
-        const mobileMenuButton = document.getElementById('mobileMenuButton');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const closeMenuButton = document.getElementById('closeMenuButton');
-
-        function toggleMobileMenu() {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('active');
-            mobileMenuOverlay.classList.toggle('hidden');
-            document.body.classList.toggle('overflow-hidden');
-            mobileMenuButton.classList.toggle('active');
-        }
-
-        [mobileMenuButton, mobileMenuOverlay, closeMenuButton].forEach(element => {
-            element.addEventListener('click', toggleMobileMenu);
-        });
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 768) {
-                mobileMenu.classList.remove('active');
-                mobileMenu.classList.add('hidden');
-                mobileMenuOverlay.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
-            }
-        });
-
-        // Taalwisselaar sync
-        document.getElementById('langToggle').addEventListener('change', (e) => {
-            const newLang = e.target.checked ? 'en' : 'nl';
-            setLanguage(newLang);
-            document.getElementById('mobileLangToggle').checked = e.target.checked;
-        });
-
-        document.getElementById('mobileLangToggle').addEventListener('change', (e) => {
-            const newLang = e.target.checked ? 'en' : 'nl';
-            setLanguage(newLang);
-            document.getElementById('langToggle').checked = e.target.checked;
-        });
-
-        // Video modal
-        window.openVideoModal = () => {
-            const modal = document.getElementById('videoModal');
-            const video = document.getElementById('demoVideo');
-            modal.classList.remove('hidden');
-            video.play();
-        }
-
-        window.closeVideoModal = () => {
-            const modal = document.getElementById('videoModal');
-            const video = document.getElementById('demoVideo');
-            modal.classList.add('hidden');
-            video.pause();
-        }
-
-        // AOS initialisatie
-        AOS.init({
-            once: true,
-            duration: 600,
-            offset: 50,
-        });
-
-        // Vanta.js achtergrond
-        VANTA.CLOUDS({
-            el: "body",
-            mouseControls: false,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            skyColor: 0x53ed,
-        });
-    });
-
-    // Click outside modal
-    document.addEventListener('click', (e) => {
-        const modal = document.getElementById('videoModal');
-        if (e.target === modal) {
-            closeVideoModal();
-        }
-    });
-</script>
-<footer class="bg-white text-blue-600 py-6 px-4 mt-auto">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-        <!-- Left Side: Name and Study -->
-        <div class="flex flex-col">
-            <p class="text-lg font-semibold" id="name">Jonah Beijer</p>
-            <p class="text-sm" id="study">CMGT</p>
-        </div>
-
-        <!-- Right Side: Social Links with Icons -->
-        <div class="flex space-x-6">
-            <a href="https://github.com/JonahBeijer" class="hover:text-blue-400" target="_blank">
-                <i class="fab fa-github fa-2x"></i>
-            </a>
-            <a href="mailto:jonahbeijer@gmail.com" class="hover:text-blue-400">
-                <i class="fas fa-envelope fa-2x"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/jonah-beijer/" class="hover:text-blue-400" target="_blank">
-                <i class="fab fa-linkedin fa-2x"></i>
-            </a>
-        </div>
-    </div>
-</footer>
-</body>
+            <div class="footer-bottom">
+                <a class="brand" href="index.html">J/B<span class="brand-star" aria-hidden="true">✳</span>
+                </a>
+                <span>Jonah Beijer / CMGT</span>
+                <div class="socials">
+                    <a href="https://github.com/JonahBeijer" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                    <a href="https://www.linkedin.com/in/jonah-beijer/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                </div>
+                <a href="#top" data-translate="storyTop">Terug naar boven ↑</a>
+            </div>
+            <div class="footer-wordmark" aria-hidden="true">LET’S BUILD<span>↗</span>
+            </div>
+        </footer>
+    </body>
 </html>
