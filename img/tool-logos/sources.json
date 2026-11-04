@@ -1,0 +1,88 @@
+[
+  {
+    "name": "html5",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"
+  },
+  {
+    "name": "css3",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg"
+  },
+  {
+    "name": "javascript",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
+  },
+  {
+    "name": "typescript",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"
+  },
+  {
+    "name": "react",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"
+  },
+  {
+    "name": "tailwindcss",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg"
+  },
+  {
+    "name": "expo",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/expo/expo-original.svg"
+  },
+  {
+    "name": "php",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg"
+  },
+  {
+    "name": "laravel",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/laravel/laravel-original.svg"
+  },
+  {
+    "name": "mysql",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg"
+  },
+  {
+    "name": "sqlite",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/sqlite/sqlite-original.svg"
+  },
+  {
+    "name": "mongodb",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg"
+  },
+  {
+    "name": "firebase",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-original.svg"
+  },
+  {
+    "name": "github",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg"
+  },
+  {
+    "name": "azure",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg"
+  },
+  {
+    "name": "filament",
+    "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/filament.svg"
+  },
+  {
+    "name": "stripe",
+    "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/stripe.svg"
+  },
+  {
+    "name": "excalibur",
+    "url": "https://excaliburjs.com/img/ex-logo.png",
+    "extension": "png"
+  },
+  {
+    "name": "database",
+    "url": "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/database.svg",
+    "extension": "svg"
+  },
+  {
+    "name": "herd",
+    "url": "https://herd.laravel.com/images/home/icons/herd-glyph-red.svg"
+  },
+  {
+    "name": "wordpress",
+    "url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/wordpress/wordpress-original.svg"
+  }
+]

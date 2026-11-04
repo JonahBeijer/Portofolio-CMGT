@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mijn Portfolio</title>
+        <link rel="icon" href="../../img/oog.png" type="image/png">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css?v=20261012-2">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script type="module" src="js/site.js"></script>
+    </head>
+    <body id="top" data-page="programeertalen" class="no-scroll-scenes">
+        <header class="site-header">
+            <a class="brand" href="index.html" aria-label="Jonah Beijer — Home">J/B<span class="brand-star" aria-hidden="true">✳</span>
+            </a>
+            <nav class="desktop-nav" aria-label="Navigatie">
+                <a class="nav-link" href="index.html" data-translate="navHome">Home</a>
+                <a class="nav-link" href="projecten.html" data-translate="navProjects">Projecten</a>
+                <a class="nav-link" href="programeertalen.html" data-translate="navLanguages">Programmeertalen</a>
+            </nav>
+            <div class="header-actions">
+                <label class="language-switch">
+                    <span>NL</span>
+                    <input type="checkbox" id="langToggle" aria-label="Switch to English">
+                    <span class="toggle-track"></span>
+                    <span>EN</span>
+                </label>
+                <button id="mobileMenuButton" class="menu-button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <div id="mobileMenu" class="mobile-menu" hidden>
+                <button id="closeMenuButton" class="menu-close" aria-label="Sluit menu">×</button>
+                <nav aria-label="Mobiele navigatie">
+                    <a href="index.html" data-translate="navHome">Home</a>
+                    <a href="projecten.html" data-translate="navProjects">Projecten</a>
+                    <a href="programeertalen.html" data-translate="navLanguages">Programmeertalen</a>
+                </nav>
+                <label class="language-switch">
+                    <span>NL</span>
+                    <input type="checkbox" id="mobileLangToggle" aria-label="Switch to English">
+                    <span class="toggle-track"></span>
+                    <span>EN</span>
+                </label>
+            </div>
+        </header>
+        <main class="skills-main">
+            <section class="page-hero">
+                <p class="eyebrow">03 / TOOLKIT</p>
+                <h1 data-translate="storySkills">Skills &amp; Tools</h1>
+                <div class="page-hero-bottom">
+                    <span data-translate="storyTools">De tools achter mijn projecten.</span>
+                    <img src="../../img/pokeball.png" width="44" height="44" alt="Pokéball">
+                    <span>SKILLS &amp; TOOLS / ↓</span>
+                </div>
+                <span class="page-art-mark" aria-hidden="true">✳</span>
+            </section>
+            <!-- Grid: Maximaal 3 kaarten breed (xl:grid-cols-3) -->
+            <div class="skill-groups">
+                <!-- Frontend Core -->
+                <section class="skill-group" data-index="01">
+                    <div class="flex items-center gap-3 mb-4 border-b pb-3">
+                        <i class="fas fa-code text-2xl text-customblue"></i>
+                        <h2 class="text-xl font-bold text-gray-800">Frontend Core</h2>
+                    </div>
+                    <!-- Maximaal 2 skills breed (grid-cols-2) -->
+                    <div id="frontend-core" class="grid grid-cols-2 gap-3">
+                        <div class="skill-item">
+                            <i class="fa-brands fa-html5 text-orange-500 text-2xl" aria-hidden="true"></i>
+                            <p>HTML/CSS</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-js text-yellow-500 text-2xl" aria-hidden="true"></i>
+                            <p>JavaScript</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-file-code text-blue-600 text-2xl" aria-hidden="true"></i>
+                            <p>TypeScript</p>
+                        </div>
+                    </div>
+                    <span class="skill-asterisk" aria-hidden="true">✳</span>
+                </section>
+                <!-- Frontend Frameworks -->
+                <section class="skill-group" data-index="02">
+                    <div class="flex items-center gap-3 mb-4 border-b pb-3">
+                        <i class="fas fa-layer-group text-2xl text-customblue"></i>
+                        <h2 class="text-xl font-bold text-gray-800">UI Frameworks</h2>
+                    </div>
+                    <div id="frontend-frameworks" class="grid grid-cols-2 gap-3">
+                        <div class="skill-item">
+                            <i class="fa-brands fa-react text-blue-500 text-2xl" aria-hidden="true"></i>
+                            <p>React</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-react text-cyan-500 text-2xl" aria-hidden="true"></i>
+                            <p>React Native</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-solid fa-wind text-teal-400 text-2xl" aria-hidden="true"></i>
+                            <p>TailwindCSS</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chevron-up text-black text-2xl" aria-hidden="true"></i>
+                            <p>Expo</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-gamepad text-purple-500 text-2xl" aria-hidden="true"></i>
+                            <p>Excalibur</p>
+                        </div>
+                    </div>
+                    <span class="skill-asterisk" aria-hidden="true">✳</span>
+                </section>
+                <!-- Backend & CMS -->
+                <section class="skill-group" data-index="03">
+                    <div class="flex items-center gap-3 mb-4 border-b pb-3">
+                        <i class="fas fa-server text-2xl text-customblue"></i>
+                        <h2 class="text-xl font-bold text-gray-800">Backend &amp; CMS</h2>
+                    </div>
+                    <div class="space-y-3">
+                        <div id="backend-core" class="grid grid-cols-2 gap-3">
+                            <div class="skill-item">
+                                <i class="fab fa-php text-indigo-500 text-2xl" aria-hidden="true"></i>
+                                <p>PHP</p>
+                            </div>
+                        </div>
+                        <div id="backend-frameworks" class="grid grid-cols-2 gap-3">
+                            <div class="skill-item">
+                                <i class="fab fa-laravel text-red-600 text-2xl" aria-hidden="true"></i>
+                                <p>Laravel</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-layer-group text-yellow-500 text-2xl" aria-hidden="true"></i>
+                                <p>Filament</p>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="skill-asterisk" aria-hidden="true">✳</span>
+                </section>
+                <!-- Databases -->
+                <section class="skill-group" data-index="04">
+                    <div class="flex items-center gap-3 mb-4 border-b pb-3">
+                        <i class="fas fa-database text-2xl text-customblue"></i>
+                        <h2 class="text-xl font-bold text-gray-800">Databases</h2>
+                    </div>
+                    <div id="databases" class="grid grid-cols-2 gap-3">
+                        <div class="skill-item">
+                            <i class="fas fa-database text-gray-500 text-2xl" aria-hidden="true"></i>
+                            <p>SQL</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-server text-blue-400 text-2xl" aria-hidden="true"></i>
+                            <p>MySQL</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database text-sky-500 text-2xl" aria-hidden="true"></i>
+                            <p>SQLite</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-leaf text-green-500 text-2xl" aria-hidden="true"></i>
+                            <p>MongoDB</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-fire text-orange-500 text-2xl" aria-hidden="true"></i>
+                            <p>Firebase</p>
+                        </div>
+                    </div>
+                    <span class="skill-asterisk" aria-hidden="true">✳</span>
+                </section>
+                <!-- Tools & Services -->
+                <section class="skill-group" data-index="05">
+                    <div class="flex items-center gap-3 mb-4 border-b pb-3">
+                        <i class="fas fa-tools text-2xl text-customblue"></i>
+                        <h2 class="text-xl font-bold text-gray-800">Tools &amp; Services</h2>
+                    </div>
+                    <div id="tools-services" class="grid grid-cols-2 gap-3">
+                        <div class="skill-item">
+                            <i class="fab fa-github text-gray-800 text-2xl" aria-hidden="true"></i>
+                            <p>Git/GitHub</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-stripe text-indigo-500 text-2xl" aria-hidden="true"></i>
+                            <p>Stripe API</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-robot text-blue-600 text-2xl" aria-hidden="true"></i>
+                            <p>Azure OpenAI</p>
+                        </div>
+                    </div>
+                    <span class="skill-asterisk" aria-hidden="true">✳</span>
+                </section>
+            </div>
+            <!-- Ervaring Sectie -->
+            <section class="experience-section reveal" data-index="06">
+                <div class="max-w-3xl mx-auto prose">
+                    <h2 class="text-3xl font-bold text-blue-700 mb-8 text-center" data-translate="experienceTitle">Ervaring &amp; Leerpunten</h2>
+                    <p class="text-gray-700 mb-6" data-translate="experienceIntro">
+                Tijdens mijn opleiding CMGT heb ik veel waardevolle ervaring opgedaan, zowel op technisch gebied als in het samenwerken met echte opdrachtgevers. Eén van de belangrijkste dingen die ik heb geleerd, is hoe je werkt volgens professionele standaarden zoals het OTAP-model (Ontwikkeling, Test, Acceptatie en Productie), de OWASP-richtlijnen voor veiligheid, en de WCAG-criteria om websites toegankelijk te maken voor iedereen, ook voor mensen met een beperking.
+            </p>
+                    <h3 class="text-xl font-semibold text-customblue mt-8 mb-4" data-translate="experienceSub1">Praktijkervaring met Opdrachtgevers</h3>
+                    <p class="text-gray-700 mb-6" data-translate="experienceText1">
+                Wat deze ervaringen extra bijzonder maakte, was dat we niet alleen theoretisch aan de slag gingen, maar ook praktijkervaring opdeden met echte opdrachtgevers. Zo werkte ik aan een project waarbij mijn vader de klant was. Dit gaf me een hele andere kijk op het contact met een opdrachtgever: je moet helder communiceren, verwachtingen afstemmen en professioneel blijven, ook als het om iemand gaat die je persoonlijk kent.
+            </p>
+                    <h3 class="text-xl font-semibold text-customblue mt-8 mb-4" data-translate="experienceSub2">Samenwerking &amp; Teamwork</h3>
+                    <p class="text-gray-700 mb-6" data-translate="experienceText2">
+                Daarnaast hebben we als groep een project gedaan voor Open Hiring, waarbij we een website ontwikkelden. Wat dit project speciaal maakte, was dat we begeleiding kregen van IO Digital. Zij hielpen ons bij het vormgeven van de website, gaven advies over hoe je professioneel te werk gaat en voorzagen ons regelmatig van waardevolle feedback.
+            </p>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-6 shadow-sm">
+                        <p class="text-gray-800 mb-0">
+                            <strong data-translate="insightsTitle" class="block mb-3 text-blue-800">Belangrijkste inzichten:</strong>
+                        </p>
+                        <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                            <li data-translate="insight1">Techniek en ontwerp zijn maar een deel van het werk</li>
+                            <li data-translate="insight2">Samenwerking en communicatie zijn cruciaal</li>
+                            <li data-translate="insight3">Altijd denken vanuit de eindgebruiker</li>
+                            <li data-translate="insight4">Open staan voor feedback en verbetering</li>
+                        </ul>
+                    </div>
+                    <p class="text-gray-700" data-translate="experienceConclusion">
+                Deze praktijkervaringen hebben me niet alleen technisch sterker gemaakt, maar ook als teamlid en als toekomstig professional. Het heeft me geleerd dat verantwoordelijkheid nemen, luisteren naar feedback en aandacht voor toegankelijkheid essentieel zijn voor succesvolle projecten.
+            </p>
+                </div>
+            </section>
+        </main>
+        <footer class="site-footer">
+            <div class="footer-top">
+                <p data-translate="storyContact">Een idee? Laten we iets bouwen.</p>
+                <a href="mailto:jonahbeijer@gmail.com" class="contact-link">jonahbeijer@gmail.com <span>↗</span>
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <a class="brand" href="index.html">J/B<span class="brand-star" aria-hidden="true">✳</span>
+                </a>
+                <span>Jonah Beijer / CMGT</span>
+                <div class="socials">
+                    <a href="https://github.com/JonahBeijer" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                    <a href="https://www.linkedin.com/in/jonah-beijer/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                </div>
+                <a href="#top" data-translate="storyTop">Terug naar boven ↑</a>
+            </div>
+            <div class="footer-wordmark" aria-hidden="true">LET’S BUILD<span>↗</span>
+            </div>
+        </footer>
+    <script type="module" src="../../js/portfolio-versions.js?v=20261103-1"></script>
+</body>
+</html>

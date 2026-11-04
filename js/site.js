@@ -1,5 +1,12 @@
+import './portfolio-versions.js?v=20261103-1';
+import './cd-navigation.js?v=20261103-reference1';
 import { currentLanguage, setLanguage, translations } from '../language.js';
 
+// The CD preview has already loaded these fonts. Wait for the same faces before
+// the browser replaces that snapshot with the real project document.
+if(document.querySelector('.case-main')) {
+    await Promise.all([document.fonts.load('500 48px "Space Grotesk"'),document.fonts.load('400 16px "DM Sans"')]).catch(()=>{});
+}
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const menu = document.getElementById('mobileMenu');
 const menuButton = document.getElementById('mobileMenuButton');
@@ -166,16 +173,22 @@ let modalTrigger;
 if (modal) {
     modal.setAttribute('role', 'dialog'); modal.setAttribute('aria-modal', 'true'); modal.setAttribute('aria-label', 'Project demo');
     window.openVideoModal = () => {
-        modalTrigger = document.activeElement; modal.classList.remove('hidden'); document.body.classList.add('modal-open');
+        modalTrigger = document.activeElement; modal.hidden = false; modal.classList.remove('hidden'); document.body.classList.add('modal-open');
         modal.querySelector('button')?.focus(); modal.querySelector('video')?.play().catch(() => {});
     };
     window.closeVideoModal = () => {
         if (modal.classList.contains('hidden')) return;
-        modal.classList.add('hidden'); document.body.classList.remove('modal-open');
+        modal.hidden = true; modal.classList.add('hidden'); document.body.classList.remove('modal-open');
         modal.querySelector('video')?.pause(); modalTrigger?.focus();
     };
     modal.addEventListener('click', event => { if (!event.target.closest('video,button')) window.closeVideoModal(); });
     modal.querySelector('video')?.setAttribute('preload', 'none');
+    for (const trigger of document.querySelectorAll('[data-video-trigger]')) {
+        trigger.addEventListener('click', event => {
+            event.preventDefault();
+            window.openVideoModal();
+        });
+    }
 }
 const slider = document.getElementById('appSlider');
 if (slider) {
@@ -203,7 +216,7 @@ if (slider) {
     update();
 }
 
-if (page === 'projecten') {
+if (page === 'projecten' && projectTrack) {
     const { projectsData } = await import('./projects-data.js');
     function renderProjects(lang) {
         const container = document.getElementById('projects');
@@ -237,7 +250,7 @@ if (page === 'projecten') {
         updateScroll();
     });
 }
-if (page === 'programeertalen') {
+if (page === 'programeertalen' && !document.querySelector('.stack-console')) {
     const { skills } = await import('./skills-data.js');
     const groups = { 'frontend-core': skills.frontendCore, 'frontend-frameworks': skills.frontendFrameworks, 'backend-core': skills.backendCore, 'backend-frameworks': skills.backendFrameworks, databases: skills.databases, 'tools-services': skills.toolsServices };
     for (const [id, items] of Object.entries(groups)) {

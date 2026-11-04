@@ -1,0 +1,19 @@
+/* Supplied campaign artwork already contains the phone frames and captions. */
+body[data-page=ifcc] .ifcc-banner { height: auto; padding: 0; background: #d8e5ed; aspect-ratio: 6339 / 3095; }
+body[data-page=ifcc] .ifcc-banner img { display: block; width: 100%; height: auto; max-width: none; transform: none; filter: none; object-fit: contain; }
+body[data-page=ifcc] .ifcc-media { padding: 0; background: transparent; gap: 18px; align-items: stretch; }
+body[data-page=ifcc] .ifcc-gallery { position: relative; width: min(100%,350px); margin: 0 auto; overflow: hidden; background: #c6def1; }
+body[data-page=ifcc] #appSlider { align-items: start; }
+body[data-page=ifcc] #appSlider img { display: block; height: auto; aspect-ratio: 886 / 1920; object-fit: contain; }
+body[data-page=ifcc] #sliderPrev,body[data-page=ifcc] #sliderNext { position: absolute; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; border: 1px solid #ffffff80; background: #17171acc; color: #fff; cursor: pointer; z-index: 2; }
+body[data-page=ifcc] #sliderPrev { left: 10px; }
+body[data-page=ifcc] #sliderNext { right: 10px; }
+body[data-page=ifcc] #sliderDotsContainer { position: absolute; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center; gap: 10px; }
+body[data-page=ifcc] #sliderDotsContainer button { width: 12px; height: 12px; padding: 0; border: 1px solid white; border-radius: 50%; background: #17171a; cursor: pointer; }
+body[data-page=ifcc] #sliderDotsContainer button[aria-current=true] { background: #fff; }
+.ifcc-store-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.ifcc-store-links a { display: inline-flex; align-items: center; gap: 10px; }
+@media(max-width:767px) { body[data-page=ifcc] .ifcc-gallery { width: min(100%,350px); } }
+@media(prefers-reduced-motion:reduce) { body[data-page=ifcc] #appSlider { transition: none; } }
+body[data-page=ifcc] .case-media>.ifcc-gallery:has(>#appSlider) { width: min(100%,350px,calc((100svh - 230px)*.46146)); }
+@media(max-width:767px) { body[data-page=ifcc] .case-media>.ifcc-gallery:has(>#appSlider) { width: min(100%,350px); } }

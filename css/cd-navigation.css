@@ -1,0 +1,7 @@
+/* Keep the revealed reader visible across the native document handoff. */
+@view-transition { navigation:auto; }
+::view-transition-group(root) { animation-duration:120ms; }
+::view-transition-old(root) { animation:cd-document-handoff 120ms linear both; mix-blend-mode:normal; z-index:2; }
+::view-transition-new(root) { animation:none; mix-blend-mode:normal; }
+@keyframes cd-document-handoff { from { opacity:1; } to { opacity:0; } }
+@media(prefers-reduced-motion:reduce) { @view-transition { navigation:none; } }

@@ -1,0 +1,55 @@
+/* Photo prints move around one another instead of cutting to a new z-index. */
+.offline-photos { isolation:isolate; }
+.offline-print { cursor:pointer; will-change:transform; transition:none; }
+.offline-back { z-index:1; }
+.offline-front { z-index:2; }
+.offline-photos.is-swapped .offline-front { transform:translate(-32%,-15%) rotate(-9deg); z-index:1; }
+.offline-photos.is-swapped .offline-back { transform:translate(37%,16%) rotate(7deg); z-index:2; }
+.offline-photo-switch { position:absolute; bottom:-24px; right:6%; z-index:5; padding:5px 0; background:transparent; color:var(--blue); border-bottom:1px solid var(--blue); font:500 10px/1.5 var(--heading-font); }
+/* Fixed photo windows: the picture belongs to the card, never covers another entry. */
+.career-reveal { position:relative; isolation:isolate; overflow:hidden; }
+.career-trigger { position:absolute; inset:0; width:100%; height:100%; z-index:3; background:transparent; border:0; cursor:pointer; border-radius:inherit; }
+.career-trigger:focus-visible { outline:2px solid var(--paper); outline-offset:-5px; }
+.profile-notes .work-stub { min-height:182px; grid-template-columns:28px 1fr; padding:25px 135px 25px 20px; }
+.work-stub .stub-symbol { position:absolute; right:42px; top:50%; transform:translateY(-50%); transition:opacity .2s; }
+.work-stub:after { right:120px; top:16px; bottom:16px; }
+.work-stub.is-photo-visible .stub-symbol { opacity:0; }
+.career-photo { position:absolute; pointer-events:none; z-index:2; margin:0; width:88px; aspect-ratio:9/16; right:16px; top:50%; padding:3px; background:var(--paper); box-shadow:0 3px 9px #112d4e20; opacity:0; visibility:hidden; clip-path:inset(0 0 0 100%); transform:translate(12px,-50%); transition:clip-path .6s cubic-bezier(.22,.75,.2,1),transform .6s cubic-bezier(.22,.75,.2,1),opacity .3s,visibility 0s .6s; }
+.career-photo img { display:block; width:100%; height:100%; aspect-ratio:9/16; object-fit:cover; }
+.career-reveal.is-photo-visible .career-photo { opacity:1; visibility:visible; clip-path:inset(0); transform:translate(0,-50%); transition-delay:0s; }
+.profile-notes .study-card { min-height:330px; padding-right:145px; }
+.study-card .career-photo { width:100px; right:22px; }
+.study-card-foot { gap:12px; }
+@media(max-width:1000px) {
+ .profile-notes .work-stub { padding-right:110px; padding-left:14px; gap:9px; }
+ .career-photo { width:76px; right:12px; }.work-stub:after { right:99px; }
+ .work-stub .stub-symbol { right:35px; }
+ .profile-notes .study-card { padding:25px 115px 20px 20px; }.study-card .career-photo { width:83px; right:15px; }
+ .profile-notes .study-card h3 { font-size:28px; }
+}
+@media(max-width:767px) {
+ .offline-photo-switch { bottom:-19px; right:3%; }
+ .profile-notes .work-stub { min-height:170px; padding:22px 104px 22px 14px; grid-template-columns:22px 1fr; gap:8px; }
+ .profile-notes .work-stub h4 { font-size:25px; }.profile-notes .work-stub p { font-size:10px; }
+ .career-photo { width:75px; right:12px; }.work-stub:after { right:96px; top:14px; bottom:14px; }
+ .profile-notes .study-card { padding:25px 115px 20px 20px; min-height:330px; }.study-card .career-photo { width:82px; right:15px; }
+}
+@media(prefers-reduced-motion:reduce) { .offline-print { will-change:auto; }.career-photo,.career-reveal.is-photo-visible .career-photo,.work-stub .stub-symbol { transition:none; } }
+
+/* Show the whole DIGIWEDO team; keep the Stena equipment in frame. */
+[data-career="digiwedo"] .career-photo,[data-career="digiwedo"] .career-photo img { aspect-ratio:4/3; }
+[data-career="stena"] .career-photo img { object-position:right center; }
+/* Landscape team photo: larger window, same card height and left text alignment. */
+.profile-notes .work-stub[data-career="digiwedo"] { --team-photo-width:160px; --team-photo-right:16px; padding-right:calc(var(--team-photo-width) + var(--team-photo-right) + 32px); }
+[data-career="digiwedo"] .career-photo { width:var(--team-photo-width); right:var(--team-photo-right); }
+.work-stub[data-career="digiwedo"]:after { right:calc(var(--team-photo-width) + var(--team-photo-right) + 16px); }
+@media(max-width:1000px) { .profile-notes .work-stub[data-career="digiwedo"] { --team-photo-width:140px; --team-photo-right:12px; } }
+@media(max-width:767px) { .profile-notes .work-stub[data-career="digiwedo"] { --team-photo-width:clamp(96px,30vw,124px); padding-right:calc(var(--team-photo-width) + 36px); }.work-stub[data-career="digiwedo"]:after { right:calc(var(--team-photo-width) + 24px); } }
+@media(max-width:374px) { .profile-notes .work-stub h4 { font-size:22px; } }
+
+/* The education photograph uses its own near-square frame. */
+.profile-notes .study-card { padding-right:184px; }
+.study-card .career-photo { width:140px; aspect-ratio:445/449; }
+.study-card .career-photo img { aspect-ratio:445/449; }
+@media(max-width:1000px) { .profile-notes .study-card { padding-right:147px; }.study-card .career-photo { width:112px; } }
+@media(max-width:374px) { .profile-notes .study-card { padding-right:135px; }.study-card .career-photo { width:100px; }.profile-notes .study-card h3 { font-size:22px; } }

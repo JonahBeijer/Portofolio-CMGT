@@ -1,0 +1,45 @@
+/* The wall gathers into a draggable constellation of portrait prints. */
+.photo-globe-halo { position:absolute; z-index:0; border:1px solid #3f72af25; border-radius:50%; pointer-events:none; background:radial-gradient(circle,#f9f7f722 30%,#3f72af0c 75%,transparent); opacity:0; }
+.photo-globe-halo:before,.photo-globe-halo:after { content:''; position:absolute; inset:-3%; border:1px solid #3f72af1c; border-radius:50%; transform:rotate(-23deg) scaleY(.32); }
+.photo-globe-halo:after { transform:rotate(67deg) scaleY(.32); }
+.photo-wall-stage .photo-wall { cursor:grab; touch-action:pan-y; }
+.photo-wall-card { pointer-events:none; }
+.photo-wall-print { transition:none; }
+.photo-wall-card img { transition:none; }
+.photo-wall-stage .photo-wall:focus-visible { outline:2px solid var(--blue); outline-offset:-6px; }
+.photo-wall-stage.is-globe .photo-wall-card:hover .photo-wall-print { transform:rotate(var(--turn,0deg)) scale(var(--print-scale,1)); }
+.photo-wall-stage .wall-pan { left:calc(50% - 110px); bottom:59px; width:160px; height:22px; }
+.photo-globe-reset { position:absolute; z-index:6; left:calc(50% + 70px); bottom:60px; padding:5px 0; border:0; border-bottom:1px solid #3f72af66; background:transparent; color:var(--navy); font:10px/1.5 var(--heading-font); cursor:pointer; }
+.photo-globe-reset[hidden] { display:none; }
+.photo-globe-reset:hover { color:var(--blue); }.photo-globe-reset:focus-visible { outline:2px solid var(--blue); outline-offset:5px; }
+/* Full-width chapters give the existing palette a changing rhythm. */
+.home-profile.profile-notes { padding:0; border-top:0; background:var(--paper); }
+.home-profile .profile-opening,.home-profile .profile-offline,.home-profile .profile-occupation { max-width:none; margin:0; padding:100px max(7vw,calc((100vw - 1140px)/2)); }
+.home-profile .profile-opening { background:var(--paper); }
+.home-profile .profile-offline { background:var(--navy); color:var(--paper); }
+.home-profile .profile-offline .pencil-note { color:var(--light-blue); }
+.home-profile .offline-list h3 { color:var(--paper); }
+.home-profile .offline-list button { color:var(--light-blue); border-color:#dbe2ef40; }
+.home-profile .offline-list button[aria-pressed=true],.home-profile .offline-list button:hover { color:var(--paper); }
+.home-profile .offline-list .hobby-number { color:var(--light-blue); opacity:.7; }
+.home-profile .offline-photo-switch { color:var(--paper); border-color:#dbe2ef77; }
+.home-profile .profile-occupation { background:var(--light-blue); }
+.home-profile .profile-occupation .pencil-note { color:var(--blue); }
+.home-profile .work-stub:nth-child(2) { background:var(--paper); }
+.home-profile .profile-project-link { max-width:none; margin:0; padding:60px max(7vw,calc((100vw - 1140px)/2)); border:0; background:var(--blue); color:var(--paper); }
+.home-profile .profile-project-link .pencil-note { color:var(--light-blue); }
+.home-profile .profile-project-arrow { color:var(--paper); }
+@media(max-width:767px) {
+ .home-profile .profile-opening,.home-profile .profile-offline,.home-profile .profile-occupation { padding:65px 7vw 75px; }
+ .home-profile .profile-project-link { padding:45px 7vw; }
+ .photo-wall-stage .wall-pan { bottom:55px; }
+ .photo-globe-reset { bottom:56px; font-size:9px; }
+ .photo-wall-stage .memory-guide { font-size:7px; gap:12px; }
+ .photo-wall-stage .memory-guide>span { max-width:48%; }
+}
+@media(prefers-reduced-motion:reduce) { .photo-wall-print { transition:none; } }
+.photo-wall-card { transform-origin:0 0; }
+
+/* Release the wall's rendering hints when it scrolls out of view. */
+.photo-wall-card { will-change:auto; }
+@media(prefers-reduced-motion:no-preference) { .is-wall-visible .photo-wall-card { will-change:transform; } }

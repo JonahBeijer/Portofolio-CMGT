@@ -1,0 +1,140 @@
+.life-page { --life-bg:#f3efe6; background:var(--life-bg); }
+.life-page .site-header { background:color-mix(in srgb,var(--life-bg) 94%,transparent); }
+.journey-masthead { padding:25px 5vw 0; }
+.journey-masthead .journal-name { font-size:clamp(80px,12vw,185px); margin:24px 0 15px; }
+.unified-journey { display:grid; grid-template-columns:.92fr 1.08fr; gap:3vw; padding:0 5vw; align-items:start; position:relative; }
+.journey-reading { grid-column:1; grid-row:1; padding-bottom:8svh; min-width:0; z-index:2; }
+.journey-scene { min-height:84svh; display:flex; flex-direction:column; justify-content:center; padding:60px 3vw 60px 0; scroll-margin-top:100px; }
+.journey-scene:first-child { padding-top:35px; min-height:80svh; }
+.journey-chapter-number { font:8px 'Space Grotesk',sans-serif; letter-spacing:.13em; color:#947456; margin-bottom:25px; }
+.journey-scene h2,.journey-scene .journal-intro-copy h2 { font-size:clamp(36px,4.1vw,62px); margin:12px 0 25px; }
+.journey-scene .journal-intro-copy { padding:0; max-width:none; }
+.journey-scene p { font-size:13px; color:#62695a; max-width:420px; }
+.journey-scene .journal-role { font-size:9px; }
+.journey-scene .journal-about-copy #bio,.journey-scene .journal-about-copy .bio-word { font-size:13px; }
+.journey-next { font:10px 'Space Grotesk',sans-serif; color:#965f40; border-bottom:1px solid #b3997c60; padding-bottom:8px; align-self:start; margin-top:28px; }
+.journey-example { font:8px/1.7 'Space Grotesk',sans-serif!important; color:#90816b!important; margin-top:25px; }
+.journey-selected-location { font:italic 28px 'Cormorant Garamond',Georgia,serif!important; color:#915e3c!important; }
+.journey-scene>ol { list-style:none; padding:0; margin:20px 0; }
+.journey-scene>ol li { display:flex; align-items:center; gap:20px; padding:20px 0; border-bottom:1px solid #78816933; }
+.journey-scene>ol li>span { font-size:9px; color:#9d7453; }
+.journey-scene>ol p { flex:1; margin:0; }
+.life-desk { grid-column:2; grid-row:1; position:sticky; top:95px; height:calc(100svh - 120px); min-height:530px; align-self:start; isolation:isolate; }
+.life-stage-meta { display:flex; justify-content:space-between; font:7px 'Space Grotesk',sans-serif; letter-spacing:.1em; color:#7b816c; padding:15px 5px; }
+.life-stage-count { color:#a96c43; }
+.life-thread { position:absolute; inset:4% 0; opacity:.45; pointer-events:none; }
+.life-thread svg { width:100%; height:100%; overflow:visible; }
+.life-thread path { fill:none; stroke:#b47c4a; stroke-width:1; stroke-dasharray:2100; }
+.life-object { position:absolute; left:50%; top:48%; transform-origin:center; will-change:transform; transition:opacity .2s; }
+button.life-object { padding:11px 11px 0; border:0; text-align:left; background:#fffcf2; color:#2b3229; box-shadow:0 12px 30px #493e2920; cursor:grab; touch-action:pan-y; }
+button.life-object:active { cursor:grabbing; }
+button.life-object img { display:block; width:100%; object-fit:cover; pointer-events:none; }
+button.life-object>span:not(.life-tape) { display:flex; justify-content:space-between; align-items:center; height:42px; font:italic 19px 'Cormorant Garamond',Georgia,serif; }
+button.life-object i { font:11px 'Space Grotesk',sans-serif; }
+.life-person { width:58%; max-width:350px; }
+.life-person img { height:clamp(300px,44svh,460px); }
+.life-city { width:67%; max-width:400px; }
+.life-city img { height:clamp(250px,36svh,360px); }
+.life-concert { width:75%; max-width:445px; }
+.life-concert img { height:clamp(220px,30svh,310px); }
+.life-object small { position:absolute; top:22px; left:22px; padding:4px 6px; font:6px 'Space Grotesk',sans-serif; letter-spacing:.08em; background:#faf5e7dd; }
+.life-tape { position:absolute; top:-12px; left:35%; width:90px; height:25px; transform:rotate(9deg); background:#ded0a7c9; }
+.life-career { width:75%; max-width:440px; }
+.life-career-label { display:block; font:8px 'Space Grotesk',sans-serif; letter-spacing:.1em; margin-bottom:20px; color:#8a7358; }
+.life-job-deck { position:relative; height:300px; }
+.life-job { position:absolute; inset:0; width:100%; text-align:left; padding:25px; border:1px solid #f5ebd370; box-shadow:0 7px 25px #313f2925; display:flex; flex-direction:column; color:#fff9e9; cursor:pointer; transition:transform .65s cubic-bezier(.22,.8,.2,1); }
+.job-0 { background:#8d9e81; }.job-1 { background:#6f94ad; }.job-2 { background:#354e61; }.job-3 { background:#b85c40; }
+.life-job-number { font:9px 'Space Grotesk',sans-serif; letter-spacing:.1em; }
+.life-job strong { font:500 clamp(28px,3.3vw,47px)/1 'DM Sans',sans-serif; letter-spacing:-.055em; margin-top:auto; margin-bottom:15px; }
+.life-job-role { font:italic 23px 'Cormorant Garamond',Georgia,serif; }
+.life-job-period { font:8px 'Space Grotesk',sans-serif; letter-spacing:.09em; border-top:1px solid #f5ebd360; padding-top:18px; margin-top:24px; }
+.life-job-mark { position:absolute; right:24px; top:24px; font-size:23px; }
+.life-job-controls { display:flex; gap:20px; justify-content:center; align-items:center; margin-top:65px; }
+.life-job-controls button { border:1px solid #75806b66; width:36px; height:36px; border-radius:50%; background:#f3efe680; color:#45543a; cursor:pointer; }
+.life-job-current { font:8px 'Space Grotesk',sans-serif; color:#797d68; }
+.life-job-link { display:block; background:transparent; color:inherit; text-align:left; border:0; border-bottom:1px solid transparent; padding:6px 0; cursor:pointer; }
+.life-job-link p,.life-job-link li { margin:0; }
+.life-job-link[aria-pressed=true] { border-bottom-color:#a66a3f; }
+.life-job-link:hover { color:#a7633c; }
+.life-role-summary { border-left:2px solid #a66a3f; padding-left:15px; font:italic 21px 'Cormorant Garamond',Georgia,serif!important; margin-top:25px; color:#886143!important; }
+.life-vinyl { display:flex; flex-direction:column; align-items:center; gap:35px; pointer-events:none; }
+.life-vinyl .mini-record { width:clamp(250px,28vw,400px); height:clamp(250px,28vw,400px); }
+.life-vinyl .mini-record>span { top:22%; }
+.life-vinyl>span { font:8px 'Space Grotesk',sans-serif; color:#906c4f; letter-spacing:.08em; white-space:nowrap; }
+.life-memory-controls { position:absolute; bottom:52px; left:8%; width:84%; display:flex; align-items:center; gap:10px; opacity:0; pointer-events:none; transform:translateY(8px); transition:opacity .3s,transform .4s; z-index:70; }
+.life-page[data-life=travel] .life-memory-controls,.life-page[data-life=music] .life-memory-controls { opacity:1; pointer-events:auto; transform:none; }
+.life-memory-controls button { width:34px; height:34px; border:1px solid #81907460; border-radius:50%; background:#fff6e480; cursor:pointer; }
+.life-memory-controls select { flex:1; min-width:0; padding:10px 26px 10px 12px; border:0; border-bottom:1px solid #8d967b60; background:#f9f6edb8; color:#45533c; font:11px 'Space Grotesk',sans-serif; cursor:pointer; }
+.life-memory-count { font:8px 'Space Grotesk',sans-serif; color:#81866c; }
+.life-stage-footer { position:absolute; bottom:5px; left:0; right:0; font:6px 'Space Grotesk',sans-serif; letter-spacing:.1em; color:#898b75; }
+.life-stage-progress { display:block; height:1px; margin-top:15px; background:linear-gradient(to right,#a9734d calc(var(--life-progress,0)*100%),#838d7020 0); }
+.unified-nav { position:fixed; left:5vw; bottom:16px; z-index:80; display:flex; gap:0; padding:6px; border:1px solid #c1c7b58c; border-radius:40px; background:#faf8f0eb; backdrop-filter:blur(12px); }
+.unified-nav a { display:flex; align-items:center; gap:6px; padding:9px 9px; font:8px 'Space Grotesk',sans-serif; color:#7d826e; border-radius:30px; white-space:nowrap; }
+.journey-nav-dot { width:3px; height:3px; background:#a8b09b; border-radius:50%; }
+.unified-nav a[aria-current] { background:#354936; color:#f3efe6; }
+.unified-nav a[aria-current] .journey-nav-dot { background:#edb67d; }
+.life-memory-dialog { width:min(92vw,1000px); border:0; padding:16px; background:#f5f1e7; }
+.life-memory-dialog::backdrop { background:#253c2ced; }
+.life-memory-dialog>button { position:absolute; top:25px; right:25px; width:38px; height:38px; border:0; border-radius:50%; font-size:25px; cursor:pointer; }
+.life-memory-dialog img { display:block; width:100%; max-height:65dvh; object-fit:contain; }
+.life-memory-dialog h3 { font:500 30px 'Cormorant Garamond',Georgia,serif; margin:16px 0; }
+.life-memory-dialog p { font-size:12px; }
+.life-page .personal-footnote { background:transparent; }
+@media(max-width:767px) {
+ .journey-masthead { padding:20px 6vw 0; }.journey-masthead .journal-name { font-size:16vw; margin:22px 0 10px; }
+ .unified-journey { display:block; padding:0 6vw; }
+ .life-desk { top:64px; height:40svh; min-height:285px; margin:0 -6vw; padding:0 6vw; background:var(--life-bg); border-bottom:1px solid #7e8b7130; overflow:hidden; z-index:8; }
+ .life-stage-meta { padding:10px 0; font-size:6px; position:relative; z-index:65; }
+ .life-stage-footer { left:6vw; right:6vw; font-size:4.5px; bottom:6px; }
+ .life-stage-progress { margin-top:7px; }
+ .journey-scene { justify-content:flex-start; min-height:68svh; padding:35px 0 70px; scroll-margin-top:calc(40svh + 85px); }
+ .journey-scene:first-child { min-height:70svh; padding-top:30px; }
+ .journey-scene h2,.journey-scene .journal-intro-copy h2 { font-size:38px; }
+ .journey-scene p,.journey-scene .journal-about-copy #bio,.journey-scene .journal-about-copy .bio-word { font-size:12px; }
+ .journey-chapter-number { font-size:7px; margin-bottom:18px; }
+ .journey-scene .journal-role { font-size:7px; }
+ .journey-next { font-size:9px; }
+ button.life-object { padding:7px 7px 0; }
+ button.life-object>span:not(.life-tape) { height:28px; font-size:12px; }
+ .life-person { width:44%; }.life-person img { height:calc(40svh - 100px); min-height:165px; }
+ .life-city { width:56%; }.life-city img { height:calc(40svh - 140px); min-height:135px; }
+ .life-concert { width:63%; }.life-concert img { height:calc(40svh - 170px); min-height:110px; }
+ .life-object small { font-size:4px; top:12px; left:12px; padding:3px; }
+ .life-tape { width:60px; height:18px; top:-7px; }
+ .life-career { width:65%; }
+ .life-career-label { font-size:5px; margin-bottom:10px; }
+ .life-job-deck { height:175px; }
+ .life-job { padding:15px; }
+ .life-job strong { font-size:28px; margin-bottom:8px; }
+ .life-job-role { font-size:16px; }
+ .life-job-number { font-size:6px; }
+ .life-job-period { font-size:5px; padding-top:10px; margin-top:12px; }
+ .life-job-mark { font-size:15px; top:15px; right:15px; }
+ .life-job-controls { margin-top:50px; gap:15px; }
+ .life-job-controls button { width:25px; height:25px; font-size:12px; }
+ .life-job-current { font-size:6px; }
+ .life-memory-controls { bottom:28px; gap:6px; }
+ .life-memory-controls select { font-size:9px; padding:7px; }
+ .life-memory-controls button { width:25px; height:25px; font-size:11px; }
+ .life-memory-count { font-size:6px; }
+ .life-vinyl .mini-record { width:190px; height:190px; }
+ .life-vinyl { gap:20px; }
+ .life-vinyl>span { font-size:5px; }
+ .unified-nav { left:3%; bottom:10px; width:94%; padding:5px; justify-content:space-around; }
+ .unified-nav a { font-size:5.5px; padding:8px 5px; gap:3px; }
+ .journey-reading { padding-bottom:8svh; }
+}
+@media(prefers-reduced-motion:reduce) { .life-object,.life-job,.life-memory-controls { transition:none!important; } }
+/* Less presentation furniture; the photographs and actual information do the talking. */
+.life-page .name-spark,.life-page .journey-chapter-number,.life-stage-count { display:none; }
+.life-page .journey-masthead .journal-name { letter-spacing:-.07em; }
+.life-stage-meta { justify-content:flex-end; }
+.life-stage-title { font-size:10px; letter-spacing:0; color:#67725d; }
+.life-thread { opacity:.18; }
+.life-stage-footer { font-size:7px; letter-spacing:.04em; }
+.life-page .journey-scene h2 { letter-spacing:-.045em; }
+.life-page .journey-next { color:#526548; }
+.life-page .personal-traits h3 { text-transform:none; font-size:12px; letter-spacing:0; }
+.life-page .personal-traits li { border-radius:2px; border-color:#7a89734d; }
+.life-page .journal-link { gap:22px; }
+@media(max-width:767px) { .life-stage-title { font-size:8px; } .life-stage-footer { font-size:6px; } }

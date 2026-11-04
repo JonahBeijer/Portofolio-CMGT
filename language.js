@@ -10,8 +10,7 @@ export const translations = {
         backLink: "Terug naar projecten",
 
         heading: "Wie ben ik?",
-        bio: `Hoi, ik ben <strong> Jonah Beijer </strong>
-            Ik ben 22 jaar en een enthousiaste developer met een passie voor het bouwen van webapplicaties en apps. Ik ben altijd leergierig en sta open om mezelf verder te ontwikkelen, of dat nu betekent dat ik nieuwe technieken leer of bijspijker waar nodig. Ik kijk er enorm naar uit om tijdens mijn stage nieuwe ervaringen op te doen, mijn vaardigheden te verbeteren en te ontdekken wat het werkveld allemaal te bieden heeft.`,
+        bio: `Ik ben <strong>Jonah Beijer</strong>, 22 jaar. Ik studeer Creative Media & Game Technologies aan Hogeschool Rotterdam en maak websites en apps. Sinds 2026 werk ik als developer bij DIGIWEDO. Daarnaast werk ik bij Stena Line. Ik leer graag nieuwe technieken en wil beter worden in wat ik maak.`,
 
         navbarTitle: "Mijn Portfolio",
         homeLink: "Home",
@@ -298,8 +297,7 @@ export const translations = {
         backLink: "Back to projects",
 
         heading: "Who am i?",
-        bio: `Hi, I’m Jonah Beijer 
-I’m 22 years old and an enthusiastic developer with a strong passion for building web applications and apps. I’m always eager to learn and grow, whether that means picking up new skills or improving existing ones. I'm really looking forward to what my internship has to offer and everything I can learn from it along the way.`,
+        bio: `I’m <strong>Jonah Beijer</strong>, 22. I study Creative Media & Game Technologies at Rotterdam University of Applied Sciences and build websites and apps. I’ve worked as a developer at DIGIWEDO since 2026, and I also work at Stena Line. I like learning new technologies and getting better at what I make.`,
 
         navbarTitle: "My Portfolio",
         homeLink: "Home",

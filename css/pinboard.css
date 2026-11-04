@@ -1,0 +1,188 @@
+.pinboard-page { --paper:#f0ecdf; --ink:#273026; --accent:#ac482f; background:var(--paper); }
+.pinboard-page .site-header { background:#f0ecdfed; }
+.pinboard-page .name-spark,.pinboard-page .handwritten { display:none; }
+.pin-scene { position:relative; scroll-margin-top:95px; }
+.pin-scene h2 { font:500 clamp(38px,5vw,75px)/1.02 'DM Sans',sans-serif; letter-spacing:-.06em; margin:15px 0 25px; }
+.pin-scene h2 em { font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; }
+.pin-scene p { font-size:13px; line-height:1.85; }
+.pin-side-label { font:9px 'Space Grotesk',sans-serif; letter-spacing:.1em; color:#7b826e; }
+.pin-intro { padding:25px 6vw 35px; min-height:calc(100svh - 80px); }
+.pin-intro .journey-masthead { padding:0; }
+.pin-intro .journal-name { font-size:clamp(78px,14.4vw,220px); line-height:1; margin:22px 0 0; letter-spacing:-.08em; }
+.pin-hero-layout { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:9vw; }
+.pin-hero-layout .journal-intro-copy { padding:40px 0 30px; max-width:430px; }
+.pin-hero-layout .journal-intro-copy h2 { font-size:clamp(37px,4.5vw,67px); }
+.pin-hero-layout .journal-intro-copy>p:not(.journal-role) { font-size:13px; max-width:330px; }
+.pin-portrait { display:block; justify-self:center; width:75%; max-width:355px; padding:0; border:0; background:none; cursor:pointer; margin:-30px 0 0; perspective:1400px; --pin-shape:rotate(-7deg); }
+.pin-portrait-inner { display:block; position:relative; transform-style:preserve-3d; transition:transform .85s cubic-bezier(.22,.8,.2,1); transform:rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)); }
+.pin-portrait.is-flipped .pin-portrait-inner { transform:rotateY(180deg); }
+.pin-portrait-front { display:block; backface-visibility:hidden; background:#fffaf0; padding:10px 10px 0; box-shadow:0 18px 35px #313b2528; }
+.pin-portrait-front img { display:block; width:100%; height:430px; object-fit:cover; }
+.pin-portrait-front>span { display:flex; justify-content:space-between; padding:15px 5px; color:var(--ink); font:italic 23px 'Cormorant Garamond',Georgia,serif; }
+.pin-portrait-front i { font:14px 'Space Grotesk',sans-serif; }
+.pin-portrait-back { position:absolute; inset:0; padding:28px; text-align:left; display:flex; flex-direction:column; background:#d6bd90; backface-visibility:hidden; transform:rotateY(180deg); border:10px solid #fffaf0; box-shadow:0 18px 35px #313b2528; }
+.pin-portrait-back>span { font:10px/1.8 'Space Grotesk',sans-serif; }
+.pin-portrait-back strong { font:500 45px/.98 'DM Sans',sans-serif; letter-spacing:-.06em; margin:auto 0; }
+.pin-portrait-back small { margin-top:20px; font-size:25px; }
+.pin-scroll { display:flex; justify-content:space-between; border-top:1px solid #8a94734d; font:10px 'Space Grotesk',sans-serif; padding-top:18px; margin-top:28px; }
+.pin-scroll>span:last-child { color:var(--accent); font-size:20px; }
+.pin-about { display:grid; grid-template-columns:.45fr 1.5fr .7fr; align-items:start; gap:5vw; padding:90px 6vw 115px; }
+.pin-about .pin-side-label { padding-top:20px; }
+.pin-about-copy h2 { font-size:clamp(38px,4.2vw,64px); }
+.pin-about-copy #bio,.pin-about-copy .bio-word { color:var(--ink)!important; font-size:14px; line-height:1.95; }
+.pin-about-photo { margin:60px -2vw 0 0; --pin-shape:rotate(9deg); }
+.pin-about-photo img { display:block; width:100%; height:290px; object-fit:cover; }
+.pin-about-photo figcaption { font:italic 18px 'Cormorant Garamond',Georgia,serif; padding-top:12px; }
+.pin-about .personal-traits h3 { font:11px 'Space Grotesk',sans-serif; text-transform:none; }
+.pin-about .personal-traits li { border-radius:0; padding:6px 10px; font-size:10px; }
+.pin-travel { display:grid; grid-template-columns:1.35fr 1fr; align-items:center; padding:65px 6vw 80px 0; gap:0; }
+.pin-travel-shot { position:relative; width:100%; border:0; padding:12px 12px 0; background:#fffaf0; text-align:left; cursor:zoom-in; --pin-shape:rotate(-4deg); box-shadow:7px 17px 40px #48442b25; }
+.pin-travel-shot img { width:100%; height:540px; object-fit:cover; object-position:center calc(50% + var(--photo-drift,0px)); display:block; }
+.pin-travel-shot .life-photo-title { display:block; padding:18px 20px; font:italic 28px 'Cormorant Garamond',Georgia,serif; }
+.pin-travel-shot small { position:absolute; left:25px; top:25px; padding:5px 7px; background:#fffaf0e8; font:7px 'Space Grotesk',sans-serif; letter-spacing:.08em; }
+.pin-travel-copy { position:relative; margin-left:-65px; background:#eee4cf; padding:40px 45px; z-index:3; transform:rotate(2deg); box-shadow:3px 7px 18px #48442b0d; }
+.pin-travel-copy:before { content:''; position:absolute; width:100px; height:25px; background:#d7c397bb; left:35%; top:-12px; transform:rotate(-8deg); }
+.pin-travel-copy h2 { font-size:clamp(38px,4.7vw,70px); }
+.pin-travel-copy .journal-role { font-size:8px; }
+.pin-travel-copy .journey-example { font-size:9px; color:#887c64; margin:25px 0 0; }
+.pin-travel-copy .journey-selected-location { font:italic 25px 'Cormorant Garamond',Georgia,serif; margin:15px 0; }
+.pin-memory-controls { display:flex; gap:15px; align-items:center; margin:30px 4vw 0 8vw; grid-column:1; }
+.pin-memory-controls button,.pin-ticket-controls button { width:35px; height:35px; border:1px solid #86936f66; border-radius:50%; background:transparent; cursor:pointer; color:inherit; }
+.pin-memory-controls select { flex:1; min-width:0; padding:10px; border:0; border-bottom:1px solid #86936f66; background:transparent; color:var(--ink); font:11px 'Space Grotesk',sans-serif; }
+.pin-memory-controls>span { font:9px 'Space Grotesk',sans-serif; color:#7f896d; }
+.pin-music { display:grid; grid-template-columns:1fr .7fr; align-items:center; gap:12vw; padding:95px 8vw 105px; min-height:90svh; isolation:isolate; margin-top:65px; color:#fff5db; background:#17221b; }
+.pin-concert-shot { position:absolute; inset:0; z-index:-1; padding:0; width:100%; height:100%; border:0; background:#17221b; cursor:zoom-in; }
+.pin-concert-shot img { width:100%; height:100%; object-fit:cover; opacity:.35; display:block; }
+.pin-concert-shot>span,.pin-concert-shot>small { display:none; }
+.pin-music-copy { position:relative; pointer-events:none; }
+.pin-music-copy a { pointer-events:auto; }
+.pin-music-copy h2 { font-size:clamp(54px,7vw,105px); }
+.pin-music-copy p { max-width:380px; color:#eee3cb; }
+.pin-music-copy .journal-role { font-size:8px; }
+.pin-music-copy h3 { font-size:12px; font-weight:400; text-transform:none; letter-spacing:0; margin-top:30px; }
+.pin-music-copy .hobby-list { font-size:10px; max-width:380px; }
+.pin-music-copy .journey-selected-location { font:italic 24px 'Cormorant Garamond',Georgia,serif; }
+.pin-ticket { background:#e7a67c; color:#3b3526; padding:30px 25px 0; max-width:310px; position:relative; --pin-shape:rotate(7deg); box-shadow:0 25px 50px #0006; }
+.pin-ticket-top { font:9px 'Space Grotesk',sans-serif; letter-spacing:.12em; }
+.pin-ticket-title { font:500 40px/1 'DM Sans',sans-serif; letter-spacing:-.06em; margin:45px 0 12px; }
+.pin-ticket-place { font:italic 26px 'Cormorant Garamond',Georgia,serif; margin:0 0 25px; }
+.pin-ticket>[data-life-text] { font:7px 'Space Grotesk',sans-serif; letter-spacing:.1em; }
+.pin-ticket-controls { display:flex; align-items:center; gap:8px; margin:18px 0; }
+.pin-ticket-controls select { flex:1; width:100%; min-width:0; border:0; padding:8px 3px; background:transparent; color:#3b3526; font:10px 'Space Grotesk',sans-serif; }
+.pin-ticket-controls button { flex-shrink:0; border-color:#5c493855; width:30px; height:30px; }
+.pin-ticket-rip { display:block; border-top:2px dashed #5c493866; margin:0 -25px; }
+.pin-ticket-pull { position:relative; width:calc(100% + 50px); margin:0 -25px; display:flex; flex-direction:column; align-items:center; gap:15px; padding:22px 25px; background:#ebb28c; border:0; color:#3b3526; cursor:ns-resize; transform:translateY(var(--ticket-pull,0px)); touch-action:none; }
+.pin-ticket-pull>span { font:7px 'Space Grotesk',sans-serif; letter-spacing:.1em; }
+.pin-barcode { display:block; height:32px; width:100%; background:repeating-linear-gradient(90deg,#4e3a28 0 1px,transparent 1px 4px,#4e3a28 4px 6px,transparent 6px 9px); }
+.pin-route { padding:90px 7vw 65px; }
+.pin-route>h2 { font-size:clamp(45px,6.5vw,95px); margin:30px 0 40px; }
+.pin-career-strip { display:flex; gap:0; min-height:345px; width:100%; }
+.pin-career-card { min-width:0; flex:1; position:relative; display:flex; flex-direction:column; align-items:start; text-align:left; padding:28px; border:0; border-right:1px solid #ffffff40; color:#fff8e5; cursor:pointer; transition:flex .75s cubic-bezier(.22,.8,.2,1),filter .4s; overflow:hidden; }
+.pin-career-card:after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,#00000018,transparent 12%,transparent 88%,#ffffff15); pointer-events:none; }
+.pin-career-card.job-0 { background:#89977a; }.pin-career-card.job-1 { background:#7195aa; }.pin-career-card.job-2 { background:#314f60; }.pin-career-card.job-3 { background:#ac553b; }
+.pin-career-card[aria-pressed=true] { flex:3; }
+.life-job-number { font:8px 'Space Grotesk',sans-serif; }
+.pin-career-card strong { font:500 clamp(28px,3vw,44px)/1 'DM Sans',sans-serif; letter-spacing:-.055em; margin:auto 0 20px; white-space:nowrap; }
+.pin-career-card:not([aria-pressed=true]) strong { writing-mode:vertical-rl; transform:rotate(180deg); margin:auto; }
+.life-job-role { font:italic 24px 'Cormorant Garamond',Georgia,serif; }
+.life-job-period { font:8px 'Space Grotesk',sans-serif; padding-top:18px; margin-top:24px; border-top:1px solid #fff5e760; width:100%; }
+.life-job-mark { position:absolute; right:22px; top:22px; font-size:22px; }
+.pin-career-card:not([aria-pressed=true]) .life-job-role,.pin-career-card:not([aria-pressed=true]) .life-job-period { visibility:hidden; height:0; padding:0; margin:0; }
+.pin-route .route-records { display:grid; grid-template-columns:1fr 1fr; gap:20px 7vw; margin-top:35px; }
+.route-records article { display:flex; gap:20px; padding:20px 0; border-bottom:1px solid #82916c3d; }
+.route-index { color:#a56a44; font:8px 'Space Grotesk',sans-serif; padding-top:6px; }
+.route-records h3 { font:500 18px 'DM Sans',sans-serif; margin-bottom:15px; }
+.route-records p,.route-records li { font-size:12px; line-height:1.8; }
+.route-symbol { margin-left:auto; }
+.route-records ul { padding:0; list-style:none; }
+.life-job-link { padding:5px 0; border:0; border-bottom:1px solid transparent; background:none; color:var(--ink); text-align:left; cursor:pointer; }
+.life-job-link[aria-pressed=true] { border-bottom-color:#ac553b; color:#ac553b; }
+.life-job-link p { margin:0; }
+.pin-route .life-role-summary { font:italic 23px 'Cormorant Garamond',Georgia,serif; color:#8c5c39; margin:20px 0 0; }
+.pin-future { margin:55px 13vw 80px 7vw; padding:35px 6vw 50px; background:#e3d9b9; --pin-shape:rotate(-2deg); }
+.pin-future:before { content:''; position:absolute; width:125px; height:28px; top:-14px; right:12%; background:#d3bd87b0; transform:rotate(7deg); }
+.pin-future h2 { font-size:clamp(36px,4vw,60px); }
+.pin-future ol { margin:25px 0 0; padding:0; list-style:none; }
+.pin-future li { display:flex; align-items:center; gap:25px; border-bottom:1px solid #736e4c38; padding:15px 0; }
+.pin-future li p { margin:0; flex:1; }
+.pin-future li>span { font:9px 'Space Grotesk',sans-serif; color:#8b7752; }
+.pin-work { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:10vw; padding:55px 9vw 80px; }
+.pin-work>div { grid-column:1; grid-row:1; }
+.pin-disc-link { grid-column:2; grid-row:1; justify-self:center; }
+.pin-disc-link .mini-record { width:clamp(200px,28vw,370px); height:clamp(200px,28vw,370px); transition:transform 1s cubic-bezier(.22,.8,.2,1); }
+.pin-disc-link:hover .mini-record { transform:rotate(180deg); }
+.pin-nav { position:fixed; right:12px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:9px; z-index:85; }
+.pin-nav a { position:relative; width:24px; height:24px; display:grid; place-items:center; font:7px 'Space Grotesk',sans-serif; border:1px solid #6c7a5b50; border-radius:50%; background:#f6f1e4d9; color:#6a765d; }
+.pin-nav a:before { content:attr(data-pin-number); }
+.pin-nav a>span { position:absolute; right:30px; background:#f6f1e4; padding:6px 9px; white-space:nowrap; opacity:0; pointer-events:none; }
+.pin-nav a:hover>span,.pin-nav a:focus-visible>span { opacity:1; }
+.pin-nav a[aria-current] { color:#fff6e7; background:#31452f; }
+.pin-reveal { transform:var(--pin-shape,none); }
+.pin-motion .pin-reveal { transition:transform 1s cubic-bezier(.22,.8,.2,1),opacity .8s; }
+.pin-motion .pin-reveal:not(.is-visible) { opacity:0; transform:translateY(65px) rotate(5deg); }
+.life-memory-dialog { max-width:1000px; width:92vw; border:0; background:#f7f0e2; padding:16px; }
+.life-memory-dialog::backdrop { background:#1c2c22ed; }
+.life-memory-dialog>button { position:absolute; top:25px; right:25px; width:38px; height:38px; border:0; border-radius:50%; font-size:25px; cursor:pointer; }
+.life-memory-dialog img { width:100%; max-height:65dvh; display:block; object-fit:contain; }
+.life-memory-dialog h3 { font:500 30px 'Cormorant Garamond',Georgia,serif; margin:15px 0; }
+.life-memory-dialog p { font-size:12px; }
+@media(max-width:767px) {
+ .pin-intro { padding:20px 6vw 25px; }
+ .pin-intro .journal-name { font-size:16vw; margin:25px 0; }
+ .pin-hero-layout { grid-template-columns:1fr; gap:10px; }
+ .pin-hero-layout .journal-intro-copy { padding:5px 0 10px; }
+ .pin-hero-layout .journal-intro-copy h2 { font-size:43px; }
+ .pin-portrait { width:65%; max-width:290px; margin:20px 0 10px 10%; }
+ .pin-portrait-front img { height:330px; }
+ .pin-portrait-back strong { font-size:36px; }
+ .pin-portrait-front>span { font-size:20px; }
+ .pin-about { grid-template-columns:1fr .45fr; gap:25px 15px; padding:55px 6vw 60px; }
+ .pin-about .pin-side-label { grid-column:1/-1; padding:0; }
+ .pin-about-copy { grid-column:1/-1; }
+ .pin-about-copy h2 { font-size:39px; }
+ .pin-about-copy #bio,.pin-about-copy .bio-word { font-size:13px; }
+ .pin-about-photo { grid-column:2; margin:-10px 10px 0 -65px; }
+ .pin-about-photo img { height:190px; }
+ .pin-travel { grid-template-columns:1fr; padding:0 6vw 45px; }
+ .pin-travel-shot { margin:0 -3vw; width:calc(100% + 6vw); }
+ .pin-travel-shot img { height:330px; }
+ .pin-travel-shot .life-photo-title { font-size:23px; padding:15px; }
+ .pin-travel-copy { margin:-20px 0 0 4vw; padding:30px 25px; }
+ .pin-travel-copy h2 { font-size:43px; }
+ .pin-memory-controls { margin:25px 0 0; gap:8px; }
+ .pin-memory-controls button { width:30px; height:30px; }
+ .pin-memory-controls select { font-size:10px; }
+ .pin-music { grid-template-columns:1fr; gap:35px; padding:55px 7vw 65px; margin-top:20px; }
+ .pin-music-copy h2 { font-size:62px; }
+ .pin-music-copy p { font-size:12px; }
+ .pin-ticket-wrap { justify-self:center; width:75%; }
+ .pin-ticket { padding:25px 20px 0; }
+ .pin-ticket-title { font-size:36px; margin-top:30px; }
+ .pin-ticket-pull { width:calc(100% + 40px); margin:0 -20px; padding:20px; }
+ .pin-ticket-rip { margin:0 -20px; }
+ .pin-route { padding:55px 6vw 35px; }
+ .pin-route>h2 { font-size:47px; margin:25px 0 30px; }
+ .pin-career-strip { min-height:300px; }
+ .pin-career-card { padding:14px 10px; flex:.6; }
+ .pin-career-card[aria-pressed=true] { flex:3; }
+ .pin-career-card strong { font-size:23px; }
+ .pin-career-card:not([aria-pressed=true]) strong { font-size:20px; }
+ .life-job-number { font-size:6px; }
+ .life-job-mark { top:12px; right:10px; font-size:13px; }
+ .life-job-role { font-size:18px; }
+ .life-job-period { font-size:6px; line-height:1.8; }
+ .pin-route .route-records { grid-template-columns:1fr; gap:5px; }
+ .pin-route .life-role-summary { font-size:20px; }
+ .pin-future { margin:40px 7vw 50px; padding:30px 6vw; }
+ .pin-future h2 { font-size:37px; }
+ .pin-future li { gap:15px; }
+ .pin-future li p { font-size:12px; }
+ .pin-work { grid-template-columns:1fr; gap:40px; padding:25px 7vw 55px; }
+ .pin-work>div { grid-column:1; grid-row:1; }
+ .pin-work h2 { font-size:43px; }
+ .pin-disc-link { grid-column:1; grid-row:2; }
+ .pin-disc-link .mini-record { width:230px; height:230px; }
+ .pin-nav { right:5px; gap:7px; }
+ .pin-nav a { width:18px; height:18px; font-size:5px; }
+}
+@media(prefers-reduced-motion:reduce) { .pin-reveal,.pin-portrait-inner,.pin-career-card,.pin-disc-link .mini-record { transition:none!important; } }

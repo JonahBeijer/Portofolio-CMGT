@@ -220,11 +220,13 @@ body[data-page=resbeijer] .case-cover,body[data-page=animecollection] .case-cove
 #sliderPrev,#sliderNext { opacity: 1; }
 #sliderDotsContainer button { opacity: .4; }
 #sliderDotsContainer button[aria-current=true] { opacity: 1; }
-#videoModal { z-index: 200; background: #111018f5; }
-#videoModal.hidden { display: none!important; }
-#videoModal:not(.hidden) { display: block; }
-#videoModal video { aspect-ratio: 16/9; }
-#videoModal button { z-index: 201; }
+#videoModal { position: fixed; inset: 0; z-index: 200; background: #111018f5; padding: 70px 20px 20px; overflow-y: auto; }
+#videoModal.hidden,#videoModal[hidden] { display: none!important; }
+#videoModal:not(.hidden):not([hidden]) { display: flex; align-items: center; justify-content: center; }
+.video-dialog { position: relative; width: 100%; max-width: 1000px; }
+#videoModal video { display: block; width: 100%; max-height: calc(100dvh - 110px); background: #000; }
+#videoModal .video-close { position: absolute; right: 0; top: -55px; width: 44px; height: 44px; background: var(--paper); color: var(--ink); font-size: 32px; line-height: 1; z-index: 201; }
+.project-video-link { display: inline-flex; align-items: center; gap: 8px; }
 .site-footer { background: var(--ink); color: var(--paper); padding: 60px 5vw 0; overflow: hidden; }
 .footer-top { padding-bottom: 55px; }
 .footer-top>p { font-size: 12px; color: #b1b0ab; margin-bottom: 25px; }
@@ -426,3 +428,8 @@ body[data-page=resbeijer] .case-cover,body[data-page=animecollection] .case-cove
 /* Keyboard focus uses the same vertical journey as wheel and touch input. */
 @media(min-width:768px){.project-viewport{overflow:clip}}
 @media(prefers-reduced-motion:reduce){.journey-line path{stroke-dashoffset:0}}
+
+/* The disc's colour fills the viewport, then dissolves into the case study. */
+.cd-navigation-color { position: fixed; inset: 0; z-index: 600; pointer-events: all; visibility: visible; }
+html.cd-arriving body { visibility: hidden; }
+html.cd-arriving { background: var(--cd-arrival-color,var(--paper)); }

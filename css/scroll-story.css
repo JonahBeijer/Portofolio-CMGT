@@ -1,0 +1,195 @@
+/* One pinned viewport: native page scroll advances the story, not the composition. */
+.scroll-story { --story-paper:#f0ecdf; }
+.scroll-story .personal-home { overflow:visible; }
+.scroll-film { position:relative; height:960svh; }
+.scroll-stage { position:sticky; top:80px; height:calc(100svh - 80px); isolation:isolate; overflow:hidden; background:var(--story-paper); }
+.story-stop { position:absolute; left:0; width:1px; height:1px; scroll-margin-top:80px; pointer-events:none; }
+.scroll-stage .story-frame { position:absolute; inset:0; width:100%; height:100%; min-height:0; margin:0; padding:45px 7vw 65px; opacity:0; visibility:hidden; pointer-events:none; transform:none; overflow:hidden; will-change:opacity; }
+.scroll-stage .story-frame.is-current { pointer-events:auto; }
+.scroll-story .pin-reveal { opacity:1!important; transform:var(--pin-shape,none)!important; }
+.scroll-stage .pin-intro { display:flex; flex-direction:column; }
+.scroll-stage .journey-masthead { padding:0; }
+.scroll-stage .journal-name { font-size:clamp(65px,11vw,165px); margin:10px 0 0; }
+.scroll-stage .journal-topline { font-size:7px; }
+.scroll-stage .pin-hero-layout { display:block; flex:1; }
+.scroll-stage .pin-intro .journal-intro-copy { padding-top:45px; width:42%; max-width:470px; }
+.scroll-stage .pin-intro h2 { font-size:clamp(38px,4.5vw,68px); }
+.scroll-stage .pin-portrait { position:absolute; right:12vw; top:23%; width:min(27vw,335px); margin:0; }
+.scroll-stage .pin-portrait-front img { height:min(52svh,480px); object-fit:contain; background:#fffaf0; }
+.scroll-stage .pin-scroll { position:absolute; left:7vw; right:7vw; bottom:55px; margin:0; }
+.scroll-stage .pin-about { display:block; padding-top:8svh; }
+.scroll-stage .pin-about .pin-side-label { display:block; margin-bottom:30px; }
+.scroll-stage .pin-about-copy { max-width:44%; }
+.scroll-stage .pin-about-copy h2 { font-size:clamp(39px,4.5vw,66px); }
+.scroll-stage .pin-about-copy #bio,.scroll-stage .pin-about-copy .bio-word { font-size:13px; line-height:1.8; }
+.scroll-stage .personal-traits { margin-top:25px; padding-top:18px; }
+.scroll-stage .personal-traits li { padding:6px 10px; font-size:10px; }
+.scroll-stage .pin-about-photo { position:absolute; right:12vw; top:8%; height:73%; width:min(30vw,340px); margin:0; background:#fffaf0; padding:10px 10px 0; --pin-shape:rotate(4deg); }
+.scroll-stage .pin-about-photo img { height:calc(100% - 40px); width:100%; object-fit:contain; }
+.scroll-stage .pin-about-photo figcaption { height:40px; padding:10px 5px; }
+.scroll-stage .pin-travel { display:block; }
+.scroll-stage .pin-travel-copy { position:relative; transform:none; margin:7svh 0 0; background:transparent; padding:0; width:43%; max-width:480px; box-shadow:none; }
+.scroll-stage .pin-travel-copy:before { display:none; }
+.scroll-stage .pin-travel-copy h2 { font-size:clamp(43px,5.2vw,76px); }
+.scroll-stage .pin-travel-shot { position:absolute; right:10vw; top:5%; width:min(30vw,365px); height:79%; padding:10px 10px 0; margin:0; --pin-shape:rotate(-4deg); }
+.scroll-stage .pin-travel-shot img { height:calc(100% - 50px); aspect-ratio:9/16; object-fit:contain; object-position:center; }
+.scroll-stage .pin-travel-shot .life-photo-title { height:50px; padding:12px; font-size:25px; }
+.scroll-stage .pin-memory-controls { position:absolute; left:7vw; bottom:15%; width:36%; margin:0; }
+.scroll-stage .pin-music { display:block; background:#1e2b22; }
+.scroll-stage .pin-concert-shot { inset:auto 12vw auto auto; right:12vw; top:5%; width:min(31vw,365px); height:82%; padding:9px; background:#f3e8cf; transform:rotate(3deg); z-index:0; }
+.scroll-stage .pin-concert-shot img { object-fit:contain; opacity:1; height:100%; }
+.scroll-stage .pin-music-copy { position:relative; width:44%; margin-top:5svh; }
+.scroll-stage .pin-music-copy h2 { font-size:clamp(52px,6vw,90px); }
+.scroll-stage .pin-music-copy p { font-size:12px; }
+.scroll-stage .pin-music-copy .hobby-list { gap:8px 12px; font-size:9px; }
+.scroll-stage .pin-ticket-wrap { position:absolute; right:4vw; bottom:9%; width:215px; z-index:3; }
+.scroll-stage .pin-ticket { padding:18px 18px 0; }
+.scroll-stage .pin-ticket-title { font-size:29px; margin:22px 0 8px; }
+.scroll-stage .pin-ticket-place { font-size:21px; margin-bottom:15px; }
+.scroll-stage .pin-ticket-rip { margin:0 -18px; }
+.scroll-stage .pin-ticket-pull { margin:0 -18px; width:calc(100% + 36px); padding:15px 18px; gap:10px; }
+.scroll-stage .pin-ticket-controls { gap:5px; }
+.scroll-stage .pin-ticket-controls select { font-size:8px; }
+.scroll-stage .pin-ticket-controls button { width:25px; height:25px; }
+.scroll-stage .pin-barcode { height:22px; }
+.scroll-stage .pin-route { padding-top:30px; }
+.scroll-stage .pin-route>h2 { font-size:clamp(38px,4vw,60px); margin:15px 0 25px; }
+.scroll-stage .pin-career-strip { min-height:0; height:35svh; max-height:330px; }
+.scroll-stage .pin-career-card { padding:20px; }
+.scroll-stage .pin-career-card strong { font-size:clamp(26px,3vw,42px); }
+.scroll-stage .pin-route .route-records { margin-top:20px; gap:10px 5vw; }
+.scroll-stage .route-records article { padding:8px 0; }
+.scroll-stage .route-records h3 { font-size:15px; margin-bottom:7px; }
+.scroll-stage .route-records p,.scroll-stage .route-records li { font-size:10px; line-height:1.5; }
+.scroll-stage .life-job-link { padding:3px 0; }
+.scroll-stage .pin-route .life-role-summary { font-size:19px; margin:10px 0; }
+.scroll-stage .pin-route .journal-link { font-size:10px; margin-top:0; }
+.scroll-stage .pin-future { background:#e4d9b9; padding:10svh 15vw 70px; }
+.scroll-stage .pin-future:before { display:none; }
+.scroll-stage .pin-future h2 { font-size:clamp(45px,6vw,85px); }
+.scroll-stage .pin-future ol { max-width:650px; }
+.scroll-stage .pin-work { grid-template-columns:1fr 1fr; align-items:center; }
+.scroll-stage .pin-work h2 { font-size:clamp(46px,5.5vw,80px); }
+.scroll-stage .pin-work .mini-record { width:min(32vw,420px); height:min(32vw,420px); }
+.story-controls { position:absolute; left:7vw; right:7vw; bottom:16px; z-index:50; display:flex; align-items:center; gap:15px; border-top:1px solid #7a8b6633; padding-top:12px; color:#7c896b; }
+.story-controls>button { border:1px solid #8a997855; width:27px; height:27px; border-radius:50%; background:#f8f1e2e0; color:#344c30; cursor:pointer; }
+.story-controls>button:disabled { opacity:.25; }
+.story-location { font:8px 'Space Grotesk',sans-serif; }
+.story-hint { margin-left:auto; font:7px 'Space Grotesk',sans-serif; letter-spacing:.1em; }
+.scroll-story .pin-nav { top:50%; }
+.scroll-story .pin-nav a { border-color:#8b967a66; }
+@media(max-width:767px) {
+ .scroll-stage { top:64px; height:calc(100svh - 64px); }
+ .scroll-stage .story-frame { padding:22px 7vw 60px; }
+ .scroll-stage .journal-topline { font-size:5px; gap:10px; }
+ .scroll-stage .journal-name { font-size:16vw; margin:20px 0 0; }
+ .scroll-stage .pin-intro .journal-intro-copy { padding-top:15px; width:100%; max-width:none; }
+ .scroll-stage .pin-intro h2 { font-size:36px; margin:10px 0 15px; }
+ .scroll-stage .pin-intro .journal-intro-copy>p:not(.journal-role) { font-size:11px; max-width:78%; line-height:1.65; }
+ .scroll-stage .pin-intro .journal-link { font-size:10px; margin-top:0; }
+ .scroll-stage .pin-intro .journal-role { font-size:6px; margin-bottom:10px; }
+ .scroll-stage .pin-portrait { top:auto; bottom:70px; right:12vw; width:auto; height:35%; max-width:49%; }
+ .scroll-stage .pin-portrait-inner,.scroll-stage .pin-portrait-front { height:100%; }
+ .scroll-stage .pin-portrait-front { padding:6px 6px 0; }
+ .scroll-stage .pin-portrait-front img { height:calc(100% - 30px); width:auto; max-width:100%; aspect-ratio:9/16; }
+ .scroll-stage .pin-portrait-front>span { font-size:14px; height:30px; padding:7px 3px; }
+ .scroll-stage .pin-portrait-back { padding:15px; border-width:6px; }
+ .scroll-stage .pin-portrait-back strong { font-size:26px; }
+ .scroll-stage .pin-portrait-back>span { font-size:6px; }
+ .scroll-stage .pin-scroll { left:7vw; right:auto; bottom:75px; width:28%; font-size:8px; }
+ .scroll-stage .pin-about .pin-side-label { font-size:6px; margin-bottom:15px; }
+ .scroll-stage .pin-about-copy { max-width:100%; }
+ .scroll-stage .pin-about-copy h2 { font-size:35px; margin:8px 0 15px; }
+ .scroll-stage .pin-about-copy #bio,.scroll-stage .pin-about-copy .bio-word { font-size:11px; line-height:1.65; }
+ .scroll-stage .personal-traits { padding-top:12px; margin-top:12px; }
+ .scroll-stage .personal-traits ul { gap:5px; margin:8px 0; max-width:70%; }
+ .scroll-stage .personal-traits li { padding:4px 6px; font-size:8px; }
+ .scroll-stage .personal-traits h3 { font-size:9px; }
+ .scroll-stage .pin-about-photo { top:auto; bottom:55px; right:10vw; height:31%; width:auto; max-width:45%; padding:6px 6px 0; }
+ .scroll-stage .pin-about-photo img { height:calc(100% - 28px); width:auto; max-width:100%; aspect-ratio:9/16; }
+ .scroll-stage .pin-about-photo figcaption { font-size:12px; height:28px; padding:7px 3px; }
+ .scroll-stage .pin-travel-copy { margin:0; width:100%; max-width:none; }
+ .scroll-stage .pin-travel-copy h2 { font-size:40px; margin:10px 0 15px; }
+ .scroll-stage .pin-travel-copy p { font-size:11px; line-height:1.65; max-width:91%; }
+ .scroll-stage .pin-travel-copy .journal-role { font-size:6px; }
+ .scroll-stage .pin-travel-copy .journey-selected-location { font-size:22px; margin:10px 0; }
+ .scroll-stage .pin-travel-copy .journey-example { font-size:7px; margin:10px 0; max-width:70%; }
+ .scroll-stage .pin-travel-shot { top:auto; bottom:95px; right:10vw; height:39%; width:auto; max-width:55%; padding:6px 6px 0; }
+ .scroll-stage .pin-travel-shot img { width:auto; max-width:100%; height:calc(100% - 32px); }
+ .scroll-stage .pin-travel-shot .life-photo-title { font-size:17px; height:32px; padding:7px; }
+ .scroll-stage .pin-travel-shot small { left:12px; top:12px; font-size:4px; }
+ .scroll-stage .pin-memory-controls { left:7vw; right:7vw; width:auto; bottom:57px; gap:8px; }
+ .scroll-stage .pin-memory-controls select { font-size:9px; padding:7px; }
+ .scroll-stage .pin-memory-controls button { width:25px; height:25px; }
+ .scroll-stage .pin-music-copy { width:100%; margin-top:0; }
+ .scroll-stage .pin-music-copy h2 { font-size:45px; margin:8px 0 15px; }
+ .scroll-stage .pin-music-copy p { font-size:10px; line-height:1.6; max-width:91%; }
+ .scroll-stage .pin-music-copy .journal-role { font-size:6px; }
+ .scroll-stage .pin-music-copy .hobby-list { font-size:7px; max-width:100%; gap:5px 8px; margin-bottom:5px; }
+ .scroll-stage .pin-music-copy h3 { font-size:9px; margin:15px 0 8px; }
+ .scroll-stage .pin-music-copy .journey-selected-location { display:none; }
+ .scroll-stage .pin-concert-shot { top:auto; bottom:65px; right:10vw; width:auto; max-width:48%; height:38%; padding:6px; }
+ .scroll-stage .pin-concert-shot img { aspect-ratio:9/16; width:auto; height:100%; max-width:100%; }
+ .scroll-stage .pin-ticket-wrap { right:auto; left:7vw; bottom:60px; width:155px; }
+ .scroll-stage .pin-ticket { padding:12px 12px 0; }
+ .scroll-stage .pin-ticket-title { font-size:23px; margin:16px 0 5px; }
+ .scroll-stage .pin-ticket-place { font-size:16px; margin-bottom:8px; }
+ .scroll-stage .pin-ticket-top,.scroll-stage .pin-ticket>[data-life-text] { font-size:5px; }
+ .scroll-stage .pin-ticket-controls { margin:10px 0; gap:3px; }
+ .scroll-stage .pin-ticket-controls select { font-size:6px; padding:5px 0; }
+ .scroll-stage .pin-ticket-controls button { width:18px; height:18px; font-size:9px; }
+ .scroll-stage .pin-ticket-rip { margin:0 -12px; }
+ .scroll-stage .pin-ticket-pull { margin:0 -12px; width:calc(100% + 24px); padding:10px 12px; gap:6px; }
+ .scroll-stage .pin-ticket-pull>span { font-size:4.5px; }
+ .scroll-stage .pin-barcode { height:18px; }
+ .scroll-stage .pin-route { padding-top:20px; }
+ .scroll-stage .pin-route .pin-side-label { font-size:6px; }
+ .scroll-stage .pin-route>h2 { font-size:35px; margin:12px 0 18px; }
+ .scroll-stage .pin-career-strip { height:25svh; min-height:170px; }
+ .scroll-stage .pin-career-card { padding:12px 8px; }
+ .scroll-stage .pin-career-card strong { font-size:22px; }
+ .scroll-stage .pin-career-card:not([aria-pressed=true]) strong { font-size:18px; }
+ .scroll-stage .life-job-role { font-size:16px; }
+ .scroll-stage .life-job-period { font-size:5px; padding-top:10px; margin-top:12px; }
+ .scroll-stage .pin-route .route-records { margin-top:12px; gap:5px; }
+ .scroll-stage .route-records article { padding:5px 0; gap:10px; }
+ .scroll-stage .route-records h3 { font-size:12px; margin-bottom:5px; }
+ .scroll-stage .route-records p,.scroll-stage .route-records li { font-size:8px; line-height:1.5; }
+ .scroll-stage .life-job-link { padding:3px 0; }
+ .scroll-stage .pin-route .life-role-summary { font-size:15px; margin-top:8px; }
+ .scroll-stage .pin-route .journal-link { font-size:8px; padding:5px 0; margin-top:5px; }
+ .scroll-stage .pin-future { padding:10svh 8vw 60px; }
+ .scroll-stage .pin-future h2 { font-size:44px; }
+ .scroll-stage .pin-future li { padding:15px 0; }
+ .scroll-stage .pin-work { display:flex; flex-direction:column; justify-content:center; gap:35px; }
+ .scroll-stage .pin-work h2 { font-size:44px; margin:10px 0 20px; }
+ .scroll-stage .pin-work>div { width:100%; }
+ .scroll-stage .pin-work .mini-record { width:210px; height:210px; }
+ .story-controls { left:7vw; right:7vw; bottom:10px; padding-top:7px; gap:10px; }
+ .story-controls>button { width:24px; height:24px; font-size:11px; }
+ .story-location { font-size:7px; }
+ .story-hint { font-size:6px; }
+ .scroll-story .pin-nav { right:4px; }
+}
+@media(max-height:720px) and (min-width:768px) {
+ .scroll-stage .pin-intro .journal-intro-copy { padding-top:15px; }
+ .scroll-stage .pin-intro h2 { font-size:38px; }
+ .scroll-stage .pin-about-copy h2 { font-size:38px; }
+ .scroll-stage .pin-about-copy #bio,.scroll-stage .pin-about-copy .bio-word { font-size:11px; }
+ .scroll-stage .pin-route>h2 { margin:10px 0 15px; font-size:36px; }
+ .scroll-stage .pin-career-strip { height:30svh; }
+ .scroll-stage .route-records p,.scroll-stage .route-records li { font-size:9px; }
+}
+.scroll-story .pin-nav a>span { color:#45533b; }
+.scroll-stage .life-job-link { display:block; width:100%; }
+@media(max-width:767px) {
+ .scroll-stage .pin-about-photo { height:44%; }
+ .scroll-stage .pin-travel-shot { height:46%; }
+ .scroll-stage .pin-concert-shot { height:50%; }
+ .scroll-stage .route-records p,.scroll-stage .route-records li { font-size:9.5px; }
+}
+@media(max-width:767px) and (max-height:760px) {
+ .scroll-stage .pin-about-photo { height:33%; }
+ .scroll-stage .pin-travel-shot { height:38%; }
+ .scroll-stage .pin-concert-shot { height:40%; }
+}

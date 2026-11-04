@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title data-translate="portfolioTitle">Mijn Portfolio</title>
+        <link rel="icon" href="../../img/oog.png" type="image/png">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css?v=20261012-2">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script type="module" src="js/site.js"></script>
+    </head>
+    <body id="top" data-page="index" class="no-scroll-scenes">
+        <header class="site-header">
+            <a class="brand" href="index.html" aria-label="Jonah Beijer — Home">J/B<span class="brand-star" aria-hidden="true">✳</span>
+            </a>
+            <nav class="desktop-nav" aria-label="Navigatie">
+                <a class="nav-link" href="index.html" data-translate="navHome">Home</a>
+                <a class="nav-link" href="projecten.html" data-translate="navProjects">Projecten</a>
+                <a class="nav-link" href="programeertalen.html" data-translate="navLanguages">Programmeertalen</a>
+            </nav>
+            <div class="header-actions">
+                <label class="language-switch">
+                    <span>NL</span>
+                    <input type="checkbox" id="langToggle" aria-label="Switch to English">
+                    <span class="toggle-track"></span>
+                    <span>EN</span>
+                </label>
+                <button id="mobileMenuButton" class="menu-button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <div id="mobileMenu" class="mobile-menu" hidden>
+                <button id="closeMenuButton" class="menu-close" aria-label="Sluit menu">×</button>
+                <nav aria-label="Mobiele navigatie">
+                    <a href="index.html" data-translate="navHome">Home</a>
+                    <a href="projecten.html" data-translate="navProjects">Projecten</a>
+                    <a href="programeertalen.html" data-translate="navLanguages">Programmeertalen</a>
+                </nav>
+                <label class="language-switch">
+                    <span>NL</span>
+                    <input type="checkbox" id="mobileLangToggle" aria-label="Switch to English">
+                    <span class="toggle-track"></span>
+                    <span>EN</span>
+                </label>
+            </div>
+        </header>
+        <main class="home-main">
+            <section class="opening-scene" id="intro">
+                <div class="opening-stage">
+                    <div class="scene-grid" aria-hidden="true"></div>
+                    <p class="hero-kicker">
+                        <span class="live-dot"></span>CREATIVE MEDIA &amp; GAME TECHNOLOGIES<span>PORTFOLIO / JB</span>
+                    </p>
+                    <h1 class="hero-name">
+                        <span class="name-line name-one">JONAH</span>
+                        <span class="name-line name-two">BEIJER<span class="name-period">.</span>
+                        </span>
+                    </h1>
+                    <div class="orb-stage">
+                        <div class="orb-halo" aria-hidden="true"></div>
+                        <img class="hero-orb" src="../../img/pokeball-sculpture.png" alt="Pokéball">
+                        <span class="orb-star star-one" aria-hidden="true">✳</span>
+                        <span class="orb-star star-two" aria-hidden="true">✧</span>
+                        <span class="orb-caption">001 / READY TO EVOLVE</span>
+                    </div>
+                    <span class="hero-note">
+                        <span data-translate="storyPlayer">Developer. Altijd in ontwikkeling.</span>
+                        <span class="note-arrow">↗</span>
+                    </span>
+                    <div class="hero-stamp">
+                        <span>JONAH BEIJER</span>
+                        <img src="../../img/pokeball.png" alt="" width="24" height="24">
+                        <span>CMGT / DEVELOPER</span>
+                    </div>
+                    <div class="opening-bottom">
+                        <a href="#biography" class="scroll-cue">
+                            <span data-translate="storyDiscover">Ontdek mijn verhaal</span>
+                            <span>↓</span>
+                        </a>
+                        <span class="intro-index">SCROLL TO PLAY / 00—06</span>
+                        <span class="hero-locations">NL / EN</span>
+                    </div>
+                </div>
+            </section>
+            <section class="bio-scene" id="biography">
+                <div class="bio-heading">
+                    <span class="eyebrow">00 / INTRO</span>
+                    <h2 id="heading" data-translate="heading">Wie ben ik?</h2>
+                    <span class="bio-star" aria-hidden="true">✳</span>
+                </div>
+                <div class="bio-layout">
+                    <div>
+                        <p class="bio-text" id="bio">
+            Hoi, ik ben <strong> Jonah Beijer </strong>
+            Ik ben 22 jaar en een enthousiaste developer met een passie voor het bouwen van webapplicaties en apps. Ik ben altijd leergierig en sta open om mezelf verder te ontwikkelen, of dat nu betekent dat ik nieuwe technieken leer of bijspijker waar nodig. Ik kijk er enorm naar uit om tijdens mijn stage nieuwe ervaringen op te doen, mijn vaardigheden te verbeteren en te ontdekken wat het werkveld allemaal te bieden heeft..
+        </p>
+                        <a class="text-link" href="#chapter-1">
+                            <span data-translate="storyChapters">Mijn verhaal</span>
+                            <span>↘</span>
+                        </a>
+                    </div>
+                    <figure class="portrait-cutout">
+                        <img src="../assets/dcf119a38da59af2374d685e1a27043ef680cf9a/IMG_4026.JPEG" alt="Jonah Beijer" class="hero-portrait">
+                        <figcaption>JONAH BEIJER<br>CREATIVE MEDIA &amp; GAME TECHNOLOGIES</figcaption>
+                        <span class="portrait-pin" aria-hidden="true">✳</span>
+                        <img class="portrait-pokemon" src="https://img.pokemondb.net/sprites/black-white/anim/normal/mewtwo.gif" alt="Mewtwo">
+                    </figure>
+                </div>
+            </section>
+            <div class="story-sequence">
+                <section class="story-chapter scene-1" id="chapter-1" data-chapter="1">
+                    <div class="chapter-stage">
+                        <div class="scene-grid" aria-hidden="true"></div>
+                        <span class="scene-coordinate">JB / 01 — 05</span>
+                        <div class="chapter-heading">
+                            <span class="chapter-label" data-translate="storyChapters">Mijn verhaal</span>
+                            <h2 class="chapter-title">
+                                <i class="fas fa-user text-sm mr-2"></i>
+                                <span data-translate="traitsTitle">Eigenschappen</span>
+                            </h2>
+                        </div>
+                        <div class="chapter-layout">
+                            <div class="chapter-copy">
+                                <div class="chapter-content">
+                                    <ul class="space-y-2 text-sm">
+                                        <li id="trait1">Vriendelijk</li>
+                                        <li id="trait2">Leergierig</li>
+                                        <li id="trait3">Loyaal</li>
+                                        <li id="trait4">Eerlijk</li>
+                                        <li id="trait5">Meedenkend</li>
+                                        <li id="trait6">Open-minded</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="chapter-art">
+                                <svg class="journey-line" viewbox="0 0 500 500" aria-hidden="true">
+                                    <path d="M 40 320 C -30 80, 470 40, 390 260 S 60 480, 170 230 S 440 140, 460 430"></path>
+                                    <circle cx="460" cy="430" r="9"></circle>
+                                </svg>
+                                <span class="art-asterisk" aria-hidden="true">✳</span>
+                                <a class="pokemon-link" href="https://pokemondb.net/pokedex/deoxys" aria-label="Deoxys Pokédex">
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/deoxys-normal.gif" alt="Deoxys" class="scene-pokemon" loading="lazy">
+                                </a>
+                                <span class="art-caption">01 / <span data-translate="traitsTitle">
+
+                    Eigenschappen
+                </span>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="scene-number" aria-hidden="true">01</span>
+                        <div class="scene-bottom">
+                            <span data-translate="storyKeepScrolling">Blijf ontdekken</span>
+                            <span>↓</span>
+                            <span>JONAH BEIJER / CMGT</span>
+                        </div>
+                    </div>
+                </section>
+                <section class="story-chapter scene-2" id="chapter-2" data-chapter="2">
+                    <div class="chapter-stage">
+                        <div class="scene-grid" aria-hidden="true"></div>
+                        <span class="scene-coordinate">JB / 02 — 05</span>
+                        <div class="chapter-heading">
+                            <span class="chapter-label" data-translate="storyChapters">Mijn verhaal</span>
+                            <h2 class="chapter-title">
+                                <i class="fas fa-graduation-cap text-sm mr-2"></i>
+                                <span data-translate="educationTitle">Opleiding</span>
+                            </h2>
+                        </div>
+                        <div class="chapter-layout">
+                            <div class="chapter-copy">
+                                <div class="chapter-content">
+                                    <p class="text-sm" id="educationText">Hogeschool Rotterdam CMGT</p>
+                                </div>
+                            </div>
+                            <div class="chapter-art">
+                                <svg class="journey-line" viewbox="0 0 500 500" aria-hidden="true">
+                                    <path d="M 40 320 C -30 80, 470 40, 390 260 S 60 480, 170 230 S 440 140, 460 430"></path>
+                                    <circle cx="460" cy="430" r="9"></circle>
+                                </svg>
+                                <span class="art-asterisk" aria-hidden="true">✳</span>
+                                <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/ho-oh.gif" alt="Ho-oh" class="scene-pokemon" loading="lazy">
+                                <span class="art-caption">02 / <span data-translate="educationTitle">
+
+                    Opleiding
+                </span>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="scene-number" aria-hidden="true">02</span>
+                        <div class="scene-bottom">
+                            <span data-translate="storyKeepScrolling">Blijf ontdekken</span>
+                            <span>↓</span>
+                            <span>JONAH BEIJER / CMGT</span>
+                        </div>
+                    </div>
+                </section>
+                <section class="story-chapter scene-3" id="chapter-3" data-chapter="3">
+                    <div class="chapter-stage">
+                        <div class="scene-grid" aria-hidden="true"></div>
+                        <span class="scene-coordinate">JB / 03 — 05</span>
+                        <div class="chapter-heading">
+                            <span class="chapter-label" data-translate="storyChapters">Mijn verhaal</span>
+                            <h2 class="chapter-title">
+                                <i class="fas fa-briefcase text-sm mr-2"></i>
+                                <span data-translate="werkTitle">Werk</span>
+                            </h2>
+                        </div>
+                        <div class="chapter-layout">
+                            <div class="chapter-copy">
+                                <div class="chapter-content">
+                                    <ul class="space-y-2 text-sm">
+                                        <li data-translate="work1">
+                    </li>
+                                        <li data-translate="work2">
+                    </li>
+                                        <li data-translate="work3">
+                </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="chapter-art">
+                                <svg class="journey-line" viewbox="0 0 500 500" aria-hidden="true">
+                                    <path d="M 40 320 C -30 80, 470 40, 390 260 S 60 480, 170 230 S 440 140, 460 430"></path>
+                                    <circle cx="460" cy="430" r="9"></circle>
+                                </svg>
+                                <span class="art-asterisk" aria-hidden="true">✳</span>
+                                <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/groudon.gif" alt="groudon" class="scene-pokemon" loading="lazy">
+                                <span class="art-caption">03 / <span data-translate="werkTitle">
+
+                    Werk
+                </span>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="scene-number" aria-hidden="true">03</span>
+                        <div class="scene-bottom">
+                            <span data-translate="storyKeepScrolling">Blijf ontdekken</span>
+                            <span>↓</span>
+                            <span>JONAH BEIJER / CMGT</span>
+                        </div>
+                    </div>
+                </section>
+                <section class="story-chapter scene-4" id="chapter-4" data-chapter="4">
+                    <div class="chapter-stage">
+                        <div class="scene-grid" aria-hidden="true"></div>
+                        <span class="scene-coordinate">JB / 04 — 05</span>
+                        <div class="chapter-heading">
+                            <span class="chapter-label" data-translate="storyChapters">Mijn verhaal</span>
+                            <h2 class="chapter-title">
+                                <i class="fas fa-heart text-sm mr-2"></i>
+                                <span data-translate="hobbiesTitle">Hobby's</span>
+                            </h2>
+                        </div>
+                        <div class="chapter-layout">
+                            <div class="chapter-copy">
+                                <div class="chapter-content">
+                                    <ul class="space-y-2 text-sm">
+                                        <li id="hobby1">Anime kijken</li>
+                                        <li id="hobby2">Gamen</li>
+                                        <li id="hobby3">Raves</li>
+                                        <li id="hobby4">Chillen met mijn vrienden</li>
+                                        <li id="hobby5">Met mijn vriendin reizen</li>
+                                        <li id="hobby6">Aan mijn auto werken</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="chapter-art">
+                                <svg class="journey-line" viewbox="0 0 500 500" aria-hidden="true">
+                                    <path d="M 40 320 C -30 80, 470 40, 390 260 S 60 480, 170 230 S 440 140, 460 430"></path>
+                                    <circle cx="460" cy="430" r="9"></circle>
+                                </svg>
+                                <span class="art-asterisk" aria-hidden="true">✳</span>
+                                <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/lugia.gif" alt="Lugia" class="scene-pokemon" loading="lazy">
+                                <span class="art-caption">04 / <span data-translate="hobbiesTitle">
+
+                    Hobby's
+                </span>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="scene-number" aria-hidden="true">04</span>
+                        <div class="scene-bottom">
+                            <span data-translate="storyKeepScrolling">Blijf ontdekken</span>
+                            <span>↓</span>
+                            <span>JONAH BEIJER / CMGT</span>
+                        </div>
+                    </div>
+                </section>
+                <section class="story-chapter scene-5" id="chapter-5" data-chapter="5">
+                    <div class="chapter-stage">
+                        <div class="scene-grid" aria-hidden="true"></div>
+                        <span class="scene-coordinate">JB / 05 — 05</span>
+                        <div class="chapter-heading">
+                            <span class="chapter-label" data-translate="storyChapters">Mijn verhaal</span>
+                            <h2 class="chapter-title">
+                                <i class="fas fa-rocket text-sm mr-2"></i>
+                                <span data-translate="visionTitle">Toekomstvisie</span>
+                            </h2>
+                        </div>
+                        <div class="chapter-layout">
+                            <div class="chapter-copy">
+                                <div class="chapter-content">
+                                    <ul class="space-y-2 text-sm">
+                                        <li id="vision1">AI-integratie in webapps</li>
+                                        <li id="vision2">Progressive Web Apps</li>
+                                        <li id="vision3">3D web development</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="chapter-art">
+                                <svg class="journey-line" viewbox="0 0 500 500" aria-hidden="true">
+                                    <path d="M 40 320 C -30 80, 470 40, 390 260 S 60 480, 170 230 S 440 140, 460 430"></path>
+                                    <circle cx="460" cy="430" r="9"></circle>
+                                </svg>
+                                <span class="art-asterisk" aria-hidden="true">✳</span>
+                                <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/rayquaza.gif" alt="Rayquaza" class="scene-pokemon" loading="lazy">
+                                <span class="art-caption">05 / <span data-translate="visionTitle">
+
+                    Toekomstvisie
+                </span>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="scene-number" aria-hidden="true">05</span>
+                        <div class="scene-bottom">
+                            <span data-translate="storyKeepScrolling">Blijf ontdekken</span>
+                            <span>↓</span>
+                            <span>JONAH BEIJER / CMGT</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <section class="home-next">
+                <p class="eyebrow" data-translate="storyNext">Het volgende hoofdstuk</p>
+                <a href="projecten.html">
+                    <span data-translate="projectsTitle">Mijn Projecten</span>
+                    <span class="next-arrow">↗</span>
+                </a>
+                <div class="next-meta">
+                    <span>HTML / CSS / JAVASCRIPT / PHP / REACT / LARAVEL</span>
+                    <span data-translate="storyWork">Van eerste website tot mobiele apps.</span>
+                </div>
+                <img class="next-pokemon" src="https://img.pokemondb.net/sprites/black-white/anim/normal/tyranitar.gif" alt="Tyranitar">
+                <img class="next-pokemon next-pokemon-two" src="https://img.pokemondb.net/sprites/black-white/anim/normal/giratina-altered.gif" alt="Giratina">
+            </section>
+            <nav class="journey-nav" aria-label="Hoofdstukken">
+                <a href="#chapter-1">
+                    <span class="journey-tooltip" data-translate="traitsTitle"></span>
+                    <span class="journey-stop">01</span>
+                </a>
+                <a href="#chapter-2">
+                    <span class="journey-tooltip" data-translate="educationTitle"></span>
+                    <span class="journey-stop">02</span>
+                </a>
+                <a href="#chapter-3">
+                    <span class="journey-tooltip" data-translate="werkTitle"></span>
+                    <span class="journey-stop">03</span>
+                </a>
+                <a href="#chapter-4">
+                    <span class="journey-tooltip" data-translate="hobbiesTitle"></span>
+                    <span class="journey-stop">04</span>
+                </a>
+                <a href="#chapter-5">
+                    <span class="journey-tooltip" data-translate="visionTitle"></span>
+                    <span class="journey-stop">05</span>
+                </a>
+            </nav>
+        </main>
+        <footer class="site-footer">
+            <div class="footer-top">
+                <p data-translate="storyContact">Een idee? Laten we iets bouwen.</p>
+                <a href="mailto:jonahbeijer@gmail.com" class="contact-link">jonahbeijer@gmail.com <span>↗</span>
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <a class="brand" href="index.html">J/B<span class="brand-star" aria-hidden="true">✳</span>
+                </a>
+                <span>Jonah Beijer / CMGT</span>
+                <div class="socials">
+                    <a href="https://github.com/JonahBeijer" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                    <a href="https://www.linkedin.com/in/jonah-beijer/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                </div>
+                <a href="#top" data-translate="storyTop">Terug naar boven ↑</a>
+            </div>
+            <div class="footer-wordmark" aria-hidden="true">LET’S BUILD<span>↗</span>
+            </div>
+        </footer>
+    <script type="module" src="../../js/portfolio-versions.js?v=20261103-1"></script>
+</body>
+</html>

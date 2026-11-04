@@ -8,11 +8,12 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css?v=20261012-2">
         <script src="https://cdn.tailwindcss.com"></script>
-        <script type="module" src="js/site.js"></script>
-    </head>
+        <script type="module" blocking="render" src="js/site.js?v=20261103-handoff2"></script>
+    <script>try { const n = JSON.parse(sessionStorage.getItem('jb-cd-navigation')); if (n && n.direction === 'enter' && !n.handoff && location.pathname.endsWith('/' + n.page) && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.style.setProperty('--cd-arrival-color', n.color); document.documentElement.classList.add('cd-arriving'); setTimeout(() => document.documentElement.classList.remove('cd-arriving'), 4000); } } catch {}</script>
+    <link rel="stylesheet" href="css/brand.css?v=20261102-polish3"><link rel="stylesheet" href="css/cd-navigation.css?v=20261103-handoff2"></head>
     <body id="top" data-page="vintageapp" class="no-scroll-scenes">
         <header class="site-header">
-            <a class="brand" href="index.html" aria-label="Jonah Beijer — Home">J/B<span class="brand-star" aria-hidden="true">✳</span>
+            <a class="brand" href="index.html" aria-label="Jonah Beijer — Home">J/B
             </a>
             <nav class="desktop-nav" aria-label="Navigatie">
                 <a class="nav-link" href="index.html" data-translate="navHome">Home</a>
@@ -55,7 +56,7 @@
                     <img src="img/pokeball.png" width="44" height="44" alt="Pokéball">
                     <a href="#case-story" data-translate="storyExplore">Ontdek het project ↓</a>
                 </div>
-                <span class="case-hero-mark" aria-hidden="true">✳</span>
+                
                 <div class="case-cover">
                     <div class="cover-grid" aria-hidden="true"></div>
                     <img src="./img/vintageapp.PNG" alt="Vintage Store Finder">
@@ -69,6 +70,7 @@
                         <div class="map-preview flex justify-center">
                             <img src="./img/vintageapp.PNG" alt="App preview" class="w-[300px] h-auto object-cover " data-translate="vintageAppImageAlt" data-translate-type="alt">
                         </div>
+                        <div class="pt-4 flex gap-4 items-center"><a href="./img/vintageapp.MP4" class="project-video-link" data-video-trigger><i class="fas fa-circle-play" aria-hidden="true"></i><span data-translate="viewDemo">Bekijk demo</span></a></div>
                     </div>
                     <div class="case-narrative">
                         <div class="case-chapter" data-index="01">
@@ -114,12 +116,6 @@
                                 <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold lg:text-base">Google Maps API</span>
                             </div>
                         </div>
-                        <div class="case-chapter" data-index="04">
-                            <button onclick="openVideoModal()" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
-                                <i class="fas fa-circle-play"></i>
-                                <span>Demo</span>
-                            </button>
-                        </div>
                     </div>
                 </div>
                 <!-- Technische highlights -->
@@ -140,22 +136,13 @@
                     <a href="projecten.html" class="text-blue-500 hover:underline" data-translate="backLink">← Terug naar projecten</a>
                 </div>
             </div>
-            <div id="videoModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 transition-opacity duration-300">
-                <div class="relative w-full h-full flex items-center justify-center p-4">
-                    <!-- Close Button BUITEN de video container -->
-                    <button onclick="closeVideoModal()" class="absolute top-8 right-8 p-3 text-white hover:bg-white/20 rounded-full transition-all duration-200 z-50 group">
-                        <svg class="w-12 h-12 group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                    <!-- Video Container -->
-                    <div class="relative w-full max-w-4xl bg-black rounded-xl overflow-hidden shadow-2xl">
-                        <video controls class="w-full" id="demoVideo">
-                            <source src="./img/vintageapp.MP4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </source>
-                        </video>
-                    </div>
+            <div id="videoModal" class="hidden" hidden role="dialog" aria-modal="true" aria-label="Project demo">
+                <div class="video-dialog">
+                    <button type="button" class="video-close" onclick="closeVideoModal()" aria-label="Sluit demo / Close demo">×</button>
+                    <video controls preload="none" playsinline id="demoVideo">
+                        <source src="./img/vintageapp.MP4" type="video/mp4">
+                        <a href="./img/vintageapp.MP4">Open video</a>
+                    </video>
                 </div>
             </div>
         </main>
@@ -166,7 +153,7 @@
                 </a>
             </div>
             <div class="footer-bottom">
-                <a class="brand" href="index.html">J/B<span class="brand-star" aria-hidden="true">✳</span>
+                <a class="brand" href="index.html">J/B
                 </a>
                 <span>Jonah Beijer / CMGT</span>
                 <div class="socials">

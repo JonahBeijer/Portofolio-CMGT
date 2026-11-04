@@ -1,0 +1,87 @@
+/* Three experiences, one continuous scene. */
+.learning-notebook.toolkit-notes { max-width:none; padding:0; border:0; overflow:clip; }
+.learning-heading { position:relative; padding:90px 7vw 55px; margin:0; background:var(--paper); }
+.learning-heading:before { display:none; }
+.learning-heading h2 { max-width:1000px; margin:22px 0; font-size:clamp(48px,7.6vw,114px); line-height:.98; letter-spacing:-.075em; }
+.learning-heading>p { font-size:14px; color:var(--blue); }
+.experience-scroll-track { position:relative; height:300vh; }
+.experience-deck { --scene-bg:var(--light-blue); --scene-ink:var(--navy); --scene-line:var(--blue); position:sticky; top:78px; display:grid; grid-template-columns:1.1fr 1fr; grid-template-rows:1fr auto; gap:0 6vw; align-items:center; min-height:660px; height:calc(100svh - 78px); margin:0; padding:30px 7vw 0; overflow:hidden; color:var(--scene-ink); background:var(--scene-bg); transition:background .7s,color .7s; scroll-margin-top:78px; isolation:isolate; }
+.experience-deck[data-page="1"] { --scene-bg:var(--blue); --scene-ink:var(--paper); --scene-line:var(--light-blue); }
+.experience-deck[data-page="2"] { --scene-bg:var(--navy); --scene-ink:var(--paper); --scene-line:var(--light-blue); }
+.experience-art { position:relative; height:100%; min-height:420px; display:flex; flex-direction:column; justify-content:center; pointer-events:none; }
+.experience-big-number { position:absolute; left:-.06em; top:50%; transform:translateY(-56%); font:500 clamp(230px,33vw,520px)/.8 var(--heading-font); letter-spacing:-.13em; color:transparent; -webkit-text-stroke:1px var(--scene-line); opacity:.28; }
+.experience-art-word { position:relative; z-index:2; font:500 clamp(55px,7.2vw,110px)/.9 var(--heading-font); letter-spacing:-.08em; transform:rotate(-8deg); margin:10px 0 15px; }
+.experience-illustrations { position:relative; width:90%; height:250px; transform:rotate(-8deg); }
+.experience-drawing { position:absolute; inset:0; width:100%; height:100%; overflow:visible; fill:var(--scene-ink); transition:opacity .45s,transform .7s; opacity:0; transform:translateY(35px) rotate(10deg); }
+.experience-drawing path,.experience-drawing .draw-line { fill:none; stroke:var(--scene-ink); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
+.experience-drawing .draw-route { stroke:var(--scene-line); stroke-width:1; stroke-dasharray:5 7; }
+.experience-deck[data-page="0"] .drawing-code,.experience-deck[data-page="1"] .drawing-client,.experience-deck[data-page="2"] .drawing-team { opacity:1; transform:translateY(0) rotate(0); }
+.experience-art-caption { position:relative; font:9px var(--heading-font); letter-spacing:.13em; margin-top:15px; color:var(--scene-line); }
+.deck-paperwork { min-width:0; padding:25px 0; }
+.deck-panels { display:grid; position:relative; }
+.experience-card { position:relative; grid-area:1/1; align-self:stretch; display:flex; flex-direction:column; padding:0; margin:0; border:0; background:transparent; color:inherit; box-shadow:none; touch-action:pan-y; }
+.experience-ready .experience-card[aria-hidden=true] { visibility:hidden; pointer-events:none; }
+.experience-ready .experience-card.is-leaving { visibility:visible; pointer-events:none; z-index:4; }
+.experience-ready .experience-card[aria-hidden=false] { z-index:3; }
+.experience-card-top { display:flex; justify-content:space-between; gap:20px; padding-bottom:18px; border-bottom:1px solid currentColor; font:9px var(--heading-font); letter-spacing:.08em; opacity:.65; }
+.experience-card h3 { font:500 clamp(30px,3.5vw,53px)/1.06 var(--heading-font); letter-spacing:-.055em; margin:27px 0 23px; }
+.experience-card p { margin:0; font:400 clamp(13px,1.04vw,16px)/1.95 var(--body-font); }
+.experience-signature { display:none; }
+.deck-controls { display:flex; align-items:center; justify-content:end; gap:17px; margin-top:24px; }
+.deck-controls button { width:35px; height:35px; border:1px solid currentColor; border-radius:50%; background:transparent; color:inherit; font-size:18px; transition:background .3s,transform .3s; }
+.deck-controls button:hover:not(:disabled) { transform:rotate(-15deg); background:#dbe2ef33; }
+.deck-controls button:disabled { opacity:.2; cursor:default; }
+.deck-counter { margin-right:auto; font:10px var(--heading-font); }
+.deck-hint { font:8px/1.5 var(--heading-font); margin:12px 0 0; text-align:right; opacity:.6; }
+.experience-index { grid-column:1/-1; display:flex; align-items:stretch; gap:0; border-top:1px solid currentColor; padding:0; margin-top:12px; }
+.experience-index-label { display:none; }
+.experience-index button { position:relative; display:flex; align-items:center; gap:18px; flex:1; padding:23px 0; border:0; background:transparent; color:inherit; text-align:left; font:500 14px var(--heading-font); opacity:.45; transition:opacity .4s; }
+.experience-index button:before { content:''; position:absolute; height:3px; top:-2px; left:0; width:0; background:currentColor; transition:width .7s cubic-bezier(.2,.7,.2,1); }
+.experience-index button[aria-selected=true],.experience-index button:hover { opacity:1; }
+.experience-index button[aria-selected=true]:before { width:90%; }
+.experience-tab-number { font:10px var(--heading-font); }.experience-tab-arrow { margin-left:auto; margin-right:10%; font-size:22px; transform:rotate(45deg); transition:transform .45s; }.experience-index button[aria-selected=true] .experience-tab-arrow { transform:rotate(0); }
+.experience-deck :focus-visible { outline:2px solid currentColor; outline-offset:5px; }
+.learning-lessons { padding:90px 7vw; background:var(--paper); }
+.learning-lessons-heading { display:flex; justify-content:space-between; align-items:end; gap:25px; margin-bottom:45px; }
+.learning-lessons h3 { font:500 clamp(32px,4.5vw,64px)/1.05 var(--heading-font); letter-spacing:-.06em; margin:0; max-width:600px; }
+.learning-lessons-heading p { font:11px/1.7 var(--heading-font); color:var(--blue); max-width:220px; margin:0; }
+.learning-lessons ol { list-style:none; display:grid; grid-template-columns:repeat(4,1fr); margin:0; padding:0; }
+.learning-lessons li { min-width:0; border-left:1px solid var(--light-blue); }
+.learning-lessons li:last-child { border-right:1px solid var(--light-blue); }
+.learning-lessons button { position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:start; width:100%; height:100%; min-height:310px; gap:35px; padding:20px 24px 25px; text-align:left; color:var(--navy); background:transparent; transition:background .5s,color .5s,transform .5s; }
+.lesson-number { font:500 100px/.85 var(--heading-font); letter-spacing:-.09em; color:var(--blue); transition:transform .6s,color .4s; }
+.lesson-text { position:relative; font:500 clamp(17px,1.5vw,24px)/1.4 var(--heading-font); letter-spacing:-.035em; }
+.lesson-arrow { font-size:24px; align-self:end; margin-top:auto; transform:rotate(45deg); transition:transform .4s; }
+.learning-lessons button:hover,.learning-lessons button:focus-visible { background:var(--navy); color:var(--paper); transform:translateY(-12px); }
+.learning-lessons button:hover .lesson-number,.learning-lessons button:focus-visible .lesson-number { transform:translateX(8px) rotate(-8deg); color:var(--light-blue); }
+.learning-lessons button:hover .lesson-arrow { transform:rotate(0); }
+.learning-close { margin:0; padding:65px 13vw 85px; background:var(--light-blue); color:var(--navy); }
+.learning-close>span { font:10px var(--heading-font); letter-spacing:.1em; text-transform:uppercase; color:var(--blue); }
+.learning-close p { font:500 clamp(24px,3.4vw,49px)/1.35 var(--heading-font); letter-spacing:-.05em; margin:28px 0 0; }
+@media(max-width:1000px) { .experience-deck { gap:0 5vw; padding-left:5vw; padding-right:5vw; }.experience-art-word { font-size:7.7vw; }.experience-card p { font-size:13px; }.learning-lessons button { padding:18px; }.lesson-number { font-size:80px; } }
+@media(max-width:767px) {
+ .learning-heading { padding:65px 7vw 38px; }.learning-heading h2 { font-size:51px; }.learning-heading>p { font-size:12px; }
+ .experience-deck { top:70px; height:auto; min-height:calc(100svh - 70px); grid-template-columns:1fr; grid-template-rows:150px 1fr auto; padding:18px 7vw 0; scroll-margin-top:70px; }
+ .experience-art { min-height:0; height:150px; flex-direction:row; align-items:center; justify-content:space-between; }
+ .experience-big-number { font-size:165px; transform:translateY(-55%); left:-8px; }.experience-art-word { font-size:49px; margin:0; transform:rotate(-8deg); }.experience-illustrations { width:42%; height:125px; }.experience-art-caption { position:absolute; font-size:6px; bottom:0; left:0; margin:0; }
+ .deck-paperwork { padding:18px 0 13px; }.experience-card-top { font-size:7px; padding-bottom:12px; }.experience-card h3 { font-size:30px; margin:18px 0; }.experience-card p { font-size:12px; line-height:1.9; }
+ .deck-controls { margin-top:17px; }.deck-controls button { width:30px; height:30px; }.deck-counter { font-size:9px; }.deck-hint { font-size:7px; margin-top:7px; }
+ .experience-index { margin-top:0; }.experience-index button { gap:7px; font-size:9px; padding:18px 0; }.experience-tab-number { font-size:7px; }.experience-tab-arrow { font-size:16px; margin-right:6px; }
+ .learning-lessons { padding:60px 7vw; }.learning-lessons-heading { display:block; margin-bottom:30px; }.learning-lessons h3 { font-size:35px; }.learning-lessons-heading p { max-width:none; margin-top:18px; font-size:10px; }
+ .learning-lessons ol { grid-template-columns:repeat(2,1fr); row-gap:30px; }.learning-lessons li:nth-child(2) { border-right:1px solid var(--light-blue); }.learning-lessons button { min-height:265px; gap:25px; padding:15px; }.lesson-number { font-size:80px; }.lesson-text { font-size:17px; }
+ .learning-close { padding:45px 7vw 55px; }.learning-close p { font-size:27px; }
+}
+/* Short screens and reduced motion use the same scene without pinning it. */
+.experience-scroll-track.is-unpinned { height:auto; }.is-unpinned .experience-deck { position:relative; top:auto; height:auto; min-height:0; }
+@media(prefers-reduced-motion:reduce) { .experience-deck,.experience-deck *,.learning-lessons * { transition:none !important; } }
+
+/* A typographic entrance that belongs to the first experience scene. */
+.learning-heading { display:grid; grid-template-columns:1fr 1fr; gap:0 24px; padding:48px 7vw 34px; background:#fff; overflow:hidden; }
+.learning-heading .toolkit-notes-label { grid-column:1; align-self:end; font:9px var(--heading-font); letter-spacing:.12em; color:var(--navy); }
+.learning-type-stage { grid-column:1/-1; grid-row:2; position:relative; height:clamp(300px,31vw,465px); margin:18px 0 20px; }
+.learning-type-stage h2 { margin:0; max-width:none; font:500 clamp(48px,10vw,160px)/1.02 var(--heading-font); letter-spacing:-.06em; }
+.learning-type-stage.is-painted h2 { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+.learning-type-canvas { display:block; position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+.learning-heading>p { grid-column:2; grid-row:3; justify-self:end; max-width:290px; margin:0; font:11px/1.6 var(--body-font); color:var(--navy); }
+.learning-heading:after { content:'01 — 03'; grid-column:1; grid-row:3; align-self:end; font:10px var(--heading-font); letter-spacing:.1em; color:var(--blue); }
+@media(max-width:767px) { .learning-heading { padding:32px 6vw 26px; gap:0 16px; }.learning-type-stage { height:240px; margin:14px 0 20px; }.learning-heading>p { font-size:10px; max-width:180px; }.learning-heading .toolkit-notes-label { font-size:8px; } }

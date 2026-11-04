@@ -1,0 +1,62 @@
+/* Personal toolkit: an index, an open folder and links to real projects. */
+.toolkit-main { padding-top:80px; }
+.toolkit-hero { max-width:1440px; margin:0 auto; padding:45px 6vw 50px; }
+.toolkit-kicker { display:flex; justify-content:space-between; align-items:center; gap:20px; font:500 10px var(--heading-font); letter-spacing:.06em; }
+.toolkit-kicker a { color:var(--blue); border-bottom:1px solid var(--line); padding-bottom:5px; letter-spacing:0; }
+.toolkit-hero h1 { font:500 clamp(65px,10vw,150px)/1 var(--heading-font); letter-spacing:-.08em; margin:55px 0 38px; }
+.toolkit-hero-bottom { border-top:1px solid var(--line); padding-top:20px; display:flex; align-items:end; justify-content:space-between; gap:25px; }
+.toolkit-hero-bottom p { font-size:14px; margin:0; }
+.toolkit-total { display:flex; align-items:center; gap:15px; color:var(--blue); }
+.toolkit-total strong { font:500 42px/1 var(--heading-font); letter-spacing:-.08em; }.toolkit-total>span { font:10px/1.6 var(--heading-font); max-width:130px; }
+.toolkit-workbench { max-width:1440px; margin:0 auto; padding:35px 6vw 110px; display:grid; grid-template-columns:230px minmax(0,1fr); gap:25px; align-items:start; scroll-margin-top:25px; }
+.toolkit-tabs { padding-top:38px; display:grid; gap:8px; }
+.toolkit-tabs button { display:grid; grid-template-columns:25px 1fr 20px; gap:9px; align-items:baseline; background:transparent; color:var(--blue); text-align:left; padding:17px 10px 17px 0; border-bottom:1px solid var(--line); font:500 18px/1.3 var(--heading-font); transition:transform .3s,color .3s,background .3s; }
+.tool-tab-number,.tool-tab-count { font:10px var(--heading-font); }.tool-tab-count { text-align:right; opacity:.6; }
+.toolkit-tabs button[aria-selected=true] { background:var(--light-blue); color:var(--navy); transform:translateX(7px) rotate(-1deg); padding-left:10px; border-bottom-color:transparent; }
+.toolkit-tabs button:focus-visible { outline-offset:3px; }
+.toolkit-folder { position:relative; min-width:0; background:var(--light-blue); padding:20px 27px 28px; margin-top:18px; box-shadow:0 13px 30px #112d4e0b; }
+.toolkit-folder:before { content:''; position:absolute; top:-18px; left:0; width:43%; height:20px; background:var(--light-blue); clip-path:polygon(0 0,88% 0,100% 100%,0 100%); }
+.toolkit-folder-label { display:flex; justify-content:space-between; align-items:center; font:8px var(--heading-font); letter-spacing:.07em; border-bottom:1px solid #3f72af40; padding-bottom:15px; margin-bottom:25px; }
+.toolkit-workbench .skill-groups { display:block; padding:0; background:transparent; }
+.toolkit-workbench .skill-group { min-height:330px; padding:0 0 20px; border:0; background:transparent; color:var(--navy); overflow:visible; }
+.toolkit-workbench .skill-group[hidden] { display:none; }
+.toolkit-workbench .skill-group:before { display:none; }
+.toolkit-workbench .skill-group>div:first-child { margin-bottom:10px; padding-bottom:0; }
+.toolkit-workbench .skill-group h2 { font:500 clamp(27px,3vw,42px)/1.05 var(--heading-font); letter-spacing:-.065em; margin:0 0 22px; }
+.toolkit-workbench .skill-group .grid { grid-template-columns:1fr; gap:0; }
+.toolkit-workbench .skill-group .space-y-3>:not([hidden])~:not([hidden]) { margin-top:0; }
+.toolkit-workbench .skill-item { padding:14px 0; gap:14px; border-bottom:1px solid #3f72af33; }
+.toolkit-workbench .skill-item i { font-size:23px; width:30px; text-align:center; }.toolkit-workbench .skill-item p { font:500 17px var(--heading-font); }
+.toolkit-folder-signature { display:block; text-align:right; font:7px var(--heading-font); letter-spacing:.09em; margin-top:10px; opacity:.65; }
+.toolkit-example { margin-top:20px; padding-top:18px; border-top:1px solid #3f72af40; display:flex; justify-content:space-between; align-items:center; gap:15px; font:10px/1.5 var(--heading-font); color:var(--blue); }
+.toolkit-project-link { display:inline-flex; align-items:center; gap:14px; font:500 13px var(--heading-font); color:var(--navy); border-bottom:1px solid #3f72af40; padding-bottom:3px; }
+.toolkit-notes { border-top:1px solid var(--line); max-width:1440px; margin:0 auto; padding:75px 8vw 100px; }
+.toolkit-notes-label { font:10px var(--heading-font); letter-spacing:.08em; color:var(--blue); }
+.toolkit-notes h2 { font:500 clamp(40px,6vw,86px)/1.05 var(--heading-font); letter-spacing:-.065em; max-width:850px; margin:22px 0 30px; }
+.toolkit-learning-intro { max-width:800px; font-size:15px; line-height:1.95; margin-bottom:65px; }
+.field-notes { display:grid; grid-template-columns:1fr 1fr; gap:45px; align-items:start; margin-bottom:75px; }
+.field-note { padding:30px; background:var(--light-blue); transform:rotate(-1.5deg); box-shadow:0 7px 20px #112d4e0a; }
+.field-note:nth-child(2) { background:var(--paper); border:1px solid var(--line); transform:rotate(1.5deg); margin-top:50px; }
+.field-note-number { font:10px var(--heading-font); color:var(--blue); }
+.field-note h3 { font:500 28px/1.15 var(--heading-font); letter-spacing:-.05em; margin:30px 0 20px; }
+.field-note p { font-size:14px; line-height:1.9; margin:0; }
+.toolkit-learning-bottom { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:55px; }
+.insight-note { background:var(--navy); color:var(--paper); padding:30px; transform:rotate(-1deg); }
+.insight-note h3 { font:500 26px/1.2 var(--heading-font); letter-spacing:-.045em; margin:0 0 25px; }
+.insight-note ol { list-style:none; counter-reset:insights; padding:0; margin:0; }
+.insight-note li { display:grid; grid-template-columns:20px 1fr; gap:12px; border-top:1px solid #dbe2ef40; padding:14px 0; font-size:13px; line-height:1.65; counter-increment:insights; }
+.insight-note li:before { content:counter(insights,decimal-leading-zero); font:9px var(--heading-font); padding-top:5px; color:var(--light-blue); }
+.toolkit-conclusion { font:400 20px/1.8 var(--body-font); letter-spacing:-.015em; margin:0; }
+@media(max-width:1100px) { .toolkit-workbench { grid-template-columns:190px minmax(0,1fr); gap:20px; }.toolkit-tabs button { font-size:16px; }.toolkit-folder { padding:18px; } }
+@media(max-width:767px) {
+ .toolkit-main { padding-top:64px; }.toolkit-hero { padding:30px 7vw 25px; }.toolkit-kicker { font-size:8px; gap:10px; }.toolkit-hero h1 { font-size:clamp(51px,13vw,90px); margin:45px 0 30px; }
+ .toolkit-hero-bottom { align-items:center; gap:15px; }.toolkit-hero-bottom p { font-size:11px; max-width:130px; }.toolkit-total { gap:9px; }.toolkit-total strong { font-size:33px; }.toolkit-total>span { font-size:8px; max-width:85px; }
+ .toolkit-workbench { padding:15px 7vw 65px; grid-template-columns:minmax(0,1fr); gap:25px; }
+ .toolkit-tabs { padding:0 3px 10px; display:flex; overflow-x:auto; gap:12px; scrollbar-width:thin; scrollbar-color:var(--blue) var(--light-blue); }
+ .toolkit-tabs button { flex:0 0 164px; padding:15px 8px; font-size:15px; gap:7px; grid-template-columns:18px 1fr 15px; }.toolkit-tabs button[aria-selected=true] { transform:none; padding-left:8px; }
+ .toolkit-folder { min-height:420px; margin-top:9px; padding:20px; }.toolkit-workbench .skill-group { min-height:300px; }.toolkit-workbench .skill-group h2 { font-size:34px; }.toolkit-workbench .skill-item { padding:13px 0; }.toolkit-workbench .skill-item p { font-size:17px; }
+ .toolkit-notes { padding:45px 7vw 65px; }.toolkit-notes h2 { font-size:46px; }.toolkit-learning-intro { font-size:14px; line-height:1.9; margin-bottom:40px; }
+ .field-notes { grid-template-columns:1fr; gap:35px; margin-bottom:45px; }.field-note { padding:24px; }.field-note:nth-child(2) { margin-top:0; }.field-note h3 { font-size:26px; }.field-note p { font-size:14px; }
+ .toolkit-learning-bottom { grid-template-columns:1fr; gap:40px; }.insight-note { padding:25px; }.toolkit-conclusion { font-size:18px; }
+}
+@media(prefers-reduced-motion:reduce) { .toolkit-tabs button { transition:none; } }

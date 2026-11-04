@@ -1,0 +1,143 @@
+/* A single persistent stage carries the photographs, world and record through the story. */
+.unified-page { --journey-bg:#f3efe6; background:var(--journey-bg); transition:background-color .8s; }
+.unified-page[data-journey=about] { --journey-bg:#e4e6db; }
+.unified-page[data-journey=travel] { --journey-bg:#dce2d2; }
+.unified-page[data-journey=music] { --journey-bg:#d6cfbf; }
+.unified-page[data-journey=route] { --journey-bg:#ece4d5; }
+.unified-page[data-journey=future] { --journey-bg:#e5dfce; }
+.unified-page[data-journey=work] { --journey-bg:#dbb99b; }
+.unified-page .site-header { background:color-mix(in srgb,var(--journey-bg) 93%,transparent); transition:background .8s; }
+.journey-masthead { padding:28px 5vw 0; }
+.journey-masthead .journal-name { margin-bottom:10px; }
+.unified-journey { position:relative; display:grid; grid-template-columns:.88fr 1.12fr; gap:3vw; padding:0 5vw; align-items:start; }
+.journey-reading { grid-column:1; grid-row:1; min-width:0; position:relative; z-index:2; padding-bottom:10svh; }
+.journey-scene { min-height:100svh; display:flex; flex-direction:column; justify-content:center; padding:85px 4vw 85px 0; scroll-margin-top:90px; position:relative; }
+.journey-scene:after { content:''; position:absolute; left:-22px; top:0; bottom:0; width:1px; background:#78826b26; }
+.journey-chapter-number { display:block; font:9px 'Space Grotesk',sans-serif; color:#8e7257; letter-spacing:.12em; margin:0 0 35px; }
+.journey-scene h2 { margin:15px 0 25px; font-size:clamp(34px,4.1vw,63px); }
+.journey-scene>.journal-intro-copy { max-width:none; padding:0; }
+.journey-scene .journal-intro-copy h2 { font-size:clamp(34px,4.1vw,63px); }
+.journey-scene .journal-about-copy #bio,.journey-scene .journal-about-copy .bio-word { font-size:13px; }
+.journey-scene p { max-width:420px; font-size:13px; color:#606b58; }
+.journey-scene .journal-role { font-size:9px; }
+.journey-next { display:inline-flex; align-self:start; margin-top:35px; padding-bottom:7px; border-bottom:1px solid #797c6760; font:10px 'Space Grotesk',sans-serif; color:#8d5237; }
+.journey-example { font:8px/1.7 'Space Grotesk',sans-serif!important; color:#8c8572!important; margin-top:30px; }
+.journey-selected-location { display:inline-flex; align-self:start; font:italic 27px 'Cormorant Garamond',Georgia,serif!important; color:#8b5639!important; border-bottom:1px dashed #8b563960; padding:6px 0; margin:20px 0 0; }
+.journey-scene .route-records article { gap:16px; }
+.journey-scene .route-records p,.journey-scene .route-records li { font-size:12px; }
+.journey-scene>ol { list-style:none; padding:0; margin:10px 0; }
+.journey-scene>ol li { display:flex; align-items:center; gap:20px; border-bottom:1px solid #797c6740; padding:18px 0; }
+.journey-scene>ol li>span { color:#91603c; font-size:10px; }
+.journey-scene>ol p { flex:1; margin:0; }
+.unified-stage.journal-atlas { grid-column:2; grid-row:1; position:sticky; top:95px; height:calc(100svh - 115px); min-height:540px; margin:0; padding:0; background:transparent; align-self:start; z-index:3; }
+.journey-stage-header { display:flex; justify-content:space-between; align-items:center; padding:15px 8px; border-bottom:1px solid #75806b35; font:8px 'Space Grotesk',sans-serif; letter-spacing:.08em; }
+.journey-stage-number { color:#a96341; }
+.journey-visual { position:absolute; top:55px; left:0; right:0; bottom:55px; perspective:1300px; }
+.journey-visual .atlas-world { position:absolute; width:100%; top:0; left:0; padding:0; opacity:.11; transform:scale(.82) translateY(15px); transition:opacity .8s,transform 1s cubic-bezier(.22,.8,.2,1); pointer-events:none; }
+.journey-visual .atlas-globe { max-width:550px; }
+.journey-visual .atlas-globe-controls { position:absolute; top:10px; right:0; flex-direction:column; margin:0; }
+.journey-visual .atlas-globe-controls button { width:30px; height:30px; font-size:16px; }
+.journey-visual .atlas-help { margin-top:0; font-size:8px; max-width:none; }
+.journey-visual .atlas-map-credit { font-size:5px; }
+.journey-visual .memory-wall { position:absolute; width:100%; height:100%; top:0; left:0; opacity:0; pointer-events:none; transform:translateY(35px) scale(.85) rotate(-4deg); transition:transform 1s cubic-bezier(.22,.8,.2,1),opacity .6s; }
+.journey-visual .city-note { top:7%; height:60%; width:62%; }
+.journey-visual .concert-note { top:46%; right:0; height:42%; width:57%; }
+.journey-visual .journal-ticket { bottom:3%; width:200px; }
+.journey-visual .photo-note { pointer-events:inherit; }
+.journey-stage-portrait { position:absolute; width:65%; max-width:360px; top:3%; left:15%; margin:0; opacity:0; pointer-events:none; transform:translateY(45px) rotate(9deg) scale(.8); transition:transform 1s cubic-bezier(.22,.8,.2,1),opacity .6s; }
+.journey-stage-portrait img { height:clamp(310px,48svh,490px); }
+.journey-stage-record { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:40px; opacity:0; transform:translateY(30px) scale(.5) rotate(-30deg); transition:opacity .6s,transform 1s cubic-bezier(.22,.8,.2,1); pointer-events:none; }
+.journey-stage-record .mini-record { width:clamp(230px,27vw,390px); height:clamp(230px,27vw,390px); }
+.journey-stage-record .mini-record>span { top:21%; }
+.journey-stage-record>span { font:9px/1.8 'Space Grotesk',sans-serif; text-align:center; color:#755b46; }
+.unified-stage .atlas-memories { position:absolute; right:0; bottom:55px; width:245px; padding:0; opacity:0; transform:translateX(30px) rotate(4deg); transition:opacity .5s,transform .7s; pointer-events:none; }
+.unified-stage .atlas-selected { background:#faf5e8f5; box-shadow:0 10px 35px #20331f20; }
+.unified-stage .atlas-selected-image { height:115px; }
+.unified-stage .atlas-card-copy { padding:13px 16px; }
+.unified-stage .atlas-selected h3 { font-size:24px; margin:10px 0; }
+.unified-stage .atlas-selected-note { display:none; }
+.unified-stage .atlas-memory-controls { margin-top:8px; }
+.unified-stage .atlas-list { max-height:125px; margin-top:10px; background:#eef0e5ed; }
+.unified-stage .atlas-memory { padding:10px; }
+.unified-stage .atlas-memory strong { font-size:10px; }
+.unified-stage .atlas-memory small { font-size:7px; }
+.journey-stage-bottom { position:absolute; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 0; border-top:1px solid #75806b35; }
+.journey-stage-bottom .atlas-counts { font:6px 'Space Grotesk',sans-serif; max-width:160px; line-height:1.6; color:#7e826e; }
+.journey-stage-bottom .atlas-mode-switch { opacity:0; pointer-events:none; transform:translateY(5px); transition:opacity .4s,transform .4s; }
+.journey-stage-bottom .atlas-mode-switch button { padding:8px 12px; font-size:9px; }
+.unified-page[data-journey=intro] .memory-wall { opacity:1; transform:none; pointer-events:auto; }
+.unified-page[data-journey=about] .journey-stage-portrait,.unified-page[data-journey=route] .journey-stage-portrait { opacity:1; transform:rotate(-4deg) scale(1); }
+.unified-page[data-journey=route] .journey-stage-portrait { transform:rotate(3deg) scale(.83) translateY(20px); }
+.unified-page[data-journey=travel] .journey-visual .atlas-world,.unified-page[data-journey=music] .journey-visual .atlas-world { opacity:1; transform:scale(.92) translate(-9%,0); pointer-events:auto; }
+.unified-page[data-journey=music] .journey-visual .atlas-world { filter:sepia(.18); }
+.unified-page[data-journey=travel] .atlas-memories,.unified-page[data-journey=music] .atlas-memories { opacity:1; transform:translateX(0) rotate(-3deg); pointer-events:auto; }
+.unified-page[data-journey=travel] .atlas-mode-switch,.unified-page[data-journey=music] .atlas-mode-switch { opacity:1; transform:none; pointer-events:auto; }
+.unified-page[data-journey=work] .journey-stage-record,.unified-page[data-journey=future] .journey-stage-record { opacity:1; transform:scale(1) rotate(0); }
+.unified-page[data-journey=future] .journey-stage-record { transform:scale(.85) rotate(-8deg); }
+.unified-nav { position:fixed; left:50%; bottom:16px; transform:translateX(-50%); z-index:80; display:flex; gap:4px; border:1px solid #c1c7b58c; padding:6px 9px; border-radius:40px; background:#faf8f0ed; backdrop-filter:blur(14px); box-shadow:0 3px 20px #24362710; }
+.unified-nav a { display:flex; align-items:center; gap:7px; padding:9px 12px; font:9px 'Space Grotesk',sans-serif; color:#7d826e; border-radius:30px; white-space:nowrap; }
+.journey-nav-dot { width:4px; height:4px; background:#a8b09b; border-radius:50%; }
+.unified-nav a[aria-current] { background:#2d4032; color:#f3efe6; }
+.unified-nav a[aria-current] .journey-nav-dot { background:#efb17a; }
+.unified-page .personal-footnote { background:transparent; }
+.unified-page .hobby-list { line-height:1.8; }
+@media(max-width:767px) {
+ .journey-masthead { padding:22px 6vw 0; }
+ .journey-masthead .journal-name { margin:24px 0 15px; }
+ .unified-journey { display:block; padding:0 6vw; }
+ .unified-stage.journal-atlas { position:sticky; top:64px; height:43svh; min-height:300px; margin:0 -6vw; padding:0 6vw; background:var(--journey-bg); transition:background-color .8s; border-bottom:1px solid #8e9c7c33; z-index:6; }
+ .journey-stage-header { padding:8px 0; font-size:6px; }
+ .journey-visual { top:30px; bottom:30px; left:6vw; right:6vw; }
+ .journey-reading { padding-bottom:8svh; }
+ .journey-scene { min-height:75svh; padding:35px 0 80px; scroll-margin-top:calc(43svh + 85px); }
+ .journey-scene:after { left:-12px; }
+ .journey-scene h2,.journey-scene .journal-intro-copy h2 { font-size:38px; }
+ .journey-chapter-number { font-size:7px; margin-bottom:20px; }
+ .journey-scene p { font-size:12px; }
+ .journey-visual .memory-wall { height:100%; margin-top:0; }
+ .journey-visual .city-note { width:55%; height:85%; top:2%; left:3%; }
+ .journey-visual .concert-note { width:48%; height:65%; top:25%; right:2%; }
+ .journey-visual .photo-caption { height:30px; font-size:10px; }
+ .journey-visual .photo-note img { height:calc(100% - 30px); }
+ .journey-visual .journal-ticket { width:120px; padding:8px; bottom:0; left:40%; }
+ .journey-visual .journal-ticket strong { font-size:12px; margin:6px 0; }
+ .journey-visual .ticket-barcode { height:9px; margin-bottom:3px; }
+ .journey-stage-bottom { left:6vw; right:6vw; padding:6px 0; min-height:30px; }
+ .journey-stage-bottom .atlas-counts { font-size:5px; max-width:115px; }
+ .journey-stage-bottom .atlas-mode-switch { width:auto; padding:2px; }
+ .journey-stage-bottom .atlas-mode-switch button { padding:5px 8px; font-size:7px; }
+ .journey-stage-portrait { top:0; left:27%; width:45%; padding:6px 6px 0; }
+ .journey-stage-portrait img { height:calc(43svh - 125px); min-height:160px; }
+ .journey-stage-portrait figcaption { font-size:11px; padding:8px 3px; }
+ .journey-visual .atlas-world { width:85%; top:0; left:-6%; }
+ .journey-visual .atlas-globe { width:min(68vw,calc(43svh - 65px)); }
+ .journey-visual .atlas-globe-controls { right:7%; top:0; gap:6px; }
+ .journey-visual .atlas-globe-controls button { width:23px; height:23px; font-size:12px; }
+ .journey-visual .atlas-help,.journey-visual .atlas-map-credit { display:none; }
+ .unified-stage .atlas-memories { width:41%; right:5vw; bottom:45px; }
+ .unified-stage .atlas-selected-image { height:85px; }
+ .unified-stage .atlas-card-copy { padding:8px; }
+ .unified-stage .atlas-card-top { font-size:5px; }
+ .unified-stage .atlas-selected h3 { font-size:19px; margin:7px 0; }
+ .unified-stage .atlas-memory-controls { gap:5px; }
+ .unified-stage .atlas-memory-controls button { width:22px; height:22px; font-size:9px; }
+ .unified-stage .atlas-memory-controls>.atlas-open-memory { font-size:5px; width:auto; height:auto; }
+ .unified-stage .atlas-list { max-height:65px; margin-top:6px; }
+ .unified-stage .atlas-memory { gap:6px; padding:7px; }
+ .unified-stage .atlas-memory strong { font-size:8px; }
+ .unified-stage .atlas-memory small { display:none; }
+ .unified-stage .atlas-selected-example { font-size:5px; padding:3px; left:6px; top:6px; }
+ .journey-stage-record { gap:12px; }
+ .journey-stage-record .mini-record { width:190px; height:190px; align-self:center; }
+ .journey-stage-record>span { font-size:6px; }
+ .unified-nav { bottom:10px; width:94%; padding:5px; gap:1px; justify-content:space-around; }
+ .unified-nav a { font-size:6px; padding:8px 6px; gap:4px; }
+ .journey-nav-dot { width:3px; height:3px; }
+ .journey-scene .journal-role { font-size:7px; }
+ .journey-next { font-size:9px; }
+}
+@media(prefers-reduced-motion:reduce) { .unified-page,.unified-stage,.journey-visual>*,.unified-stage .atlas-memories,.journey-stage-bottom .atlas-mode-switch { transition:none!important; } }
+@media(min-width:768px) { .unified-nav { left:5vw; transform:none; max-width:43vw; padding:5px; gap:0; } .unified-nav a { padding:8px 9px; font-size:8px; } }
+.journey-visual .atlas-globe-controls,.journey-visual .atlas-help,.journey-visual .atlas-map-credit { visibility:hidden; }
+.unified-page[data-journey=travel] .atlas-globe-controls,.unified-page[data-journey=music] .atlas-globe-controls,.unified-page[data-journey=travel] .atlas-help,.unified-page[data-journey=music] .atlas-help,.unified-page[data-journey=travel] .atlas-map-credit,.unified-page[data-journey=music] .atlas-map-credit { visibility:visible; }
+@media(max-width:767px) { .journey-scene { justify-content:flex-start; min-height:85svh; } }

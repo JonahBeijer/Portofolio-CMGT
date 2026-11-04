@@ -88,7 +88,7 @@ export const projectsData = [
             title: "IFCC Events",
             page: "ifcc.html",
             descriptionKey: "projectCardDescIFCC",
-            image: "./img/ifcc.png",
+            image: "./img/ifcc-banner.webp",
             tags: ["React Native", "Expo", "Laravel"]
         },
 

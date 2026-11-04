@@ -1,0 +1,29 @@
+/* Colour arrives like a contact sheet passing through a photographic shutter. */
+.home-colour-motion .profile-opening,.home-colour-motion .profile-offline,.home-colour-motion .profile-occupation,.home-colour-motion .home-footer { position:relative; isolation:isolate; }
+.home-colour-motion .profile-opening { background:var(--paper); }
+.home-colour-motion .profile-offline { background:var(--blue); }
+.home-colour-motion .profile-occupation { background:var(--light-blue); }
+.home-colour-motion .home-footer { background:var(--navy); }
+.home-colour-motion .profile-opening:before,.home-colour-motion .profile-offline:before,.home-colour-motion .profile-offline:after,.home-colour-motion .profile-occupation:after { display:none; }
+.home-colour-field { position:absolute; inset:0 0 auto; height:100px; z-index:0; overflow:hidden; pointer-events:none; }
+.profile-opening>.home-colour-field { background:var(--navy); }
+.profile-offline>.home-colour-field { background:var(--paper); }
+.profile-occupation>.home-colour-field { background:var(--blue); }
+.home-footer>.home-colour-field { height:26px; background:var(--light-blue); }
+.home-colour-field span { position:absolute; top:0; bottom:0; left:calc(var(--band)*100%/var(--bands)); width:calc(100%/var(--bands) + 1px); background:var(--arrival-colour); transform:translateY(-101%); }
+.home-colour-motion .profile-opening>figure,.home-colour-motion .profile-opening>.profile-introduction,.home-colour-motion .profile-offline>.offline-list,.home-colour-motion .profile-offline>.offline-photos,.home-colour-motion .profile-occupation>.profile-work,.home-colour-motion .profile-occupation>.profile-study,.home-colour-motion .home-footer>.home-footer-contact,.home-colour-motion .home-footer>.home-footer-links { position:relative; z-index:1; }
+.home-colour-motion .profile-portrait.is-in-view { translate:0 var(--colour-drift,0px); }
+.home-colour-motion .offline-photos.is-in-view { translate:0 var(--colour-drift,0px); scale:var(--colour-photo-scale,1); }
+.home-colour-motion .profile-study.is-in-view { translate:0 var(--colour-drift,0px); }
+.home-colour-motion .profile-introduction h2:after { width:88px; height:4px; transform:none; }
+@media(prefers-reduced-motion:reduce) {
+ .home-colour-field span { transform:none; }
+ .home-colour-motion .profile-portrait.is-in-view,.home-colour-motion .offline-photos.is-in-view,.home-colour-motion .profile-study.is-in-view { translate:none; scale:1; }
+}
+
+/* Each chapter has a different colour gesture. */
+.home-colour-field[data-colour-transition=iris] span,.home-colour-field[data-colour-transition=fold] span { inset:0; width:100%; }
+.home-colour-field[data-colour-transition=panels] span { left:0; top:calc(var(--band)*100%/var(--bands)); bottom:auto; width:100%; height:calc(100%/var(--bands) + 1px); }
+.home-colour-field[data-colour-transition=fold] span { transform-origin:center; }
+
+@media(max-width:767px) { .home-colour-field { height:52px; }.home-footer>.home-colour-field { height:18px; } }

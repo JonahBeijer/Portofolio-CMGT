@@ -1,0 +1,37 @@
+Temporary example photography for the personal homepage. Replace with Jonah’s own travel and concert photographs.
+Image source: https://images.unsplash.com/photo-1516483638261-f4dbaf036963
+Concert image source: https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3
+
+Additional placeholder photographs for the mixed memory line:
+Friends: https://images.unsplash.com/photo-1529156069898-49953e39b3ac
+Sea: https://images.unsplash.com/photo-1507525428034-b723cf961d3e
+Street: https://images.unsplash.com/photo-1519608487953-e999c86e7455
+These are examples, not photographs of Jonah's own experiences.
+
+Additional photo-wall examples (not Jonah’s own memories):
+img/wall-example-trip-2.webp: https://images.unsplash.com/photo-1502602898657-3e91760cbb34
+img/wall-example-trip-3.webp: https://images.unsplash.com/photo-1513635269975-59663e0ac1ad
+img/wall-example-trip-4.webp: https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e
+img/wall-example-trip-5.webp: https://images.unsplash.com/photo-1518837695005-2083093ee35b
+img/wall-example-trip-6.webp: https://images.unsplash.com/photo-1464822759023-fed622ff2c3b
+img/wall-example-trip-7.webp: https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1
+img/wall-example-trip-8.webp: https://images.unsplash.com/photo-1500530855697-b586d89ba3ee
+img/wall-example-trip-9.webp: https://images.unsplash.com/photo-1519681393784-d120267933ba
+img/wall-example-trip-10.webp: https://images.unsplash.com/photo-1518391846015-55a9cc003b25
+img/wall-example-live-2.webp: https://images.unsplash.com/photo-1459749411175-04bf5292ceea
+img/wall-example-live-3.webp: https://images.unsplash.com/photo-1501386761578-eac5c94b800a
+img/wall-example-live-4.webp: https://images.unsplash.com/photo-1492684223066-81342ee5ff30
+img/wall-example-live-5.webp: https://images.unsplash.com/photo-1521337581100-8ca9a73a5f79
+img/wall-example-live-6.webp: https://images.unsplash.com/photo-1516450360452-9312f5e86fc7
+img/wall-example-live-7.webp: https://images.unsplash.com/photo-1478737270239-2f02b77fc618
+img/wall-example-live-8.webp: https://images.unsplash.com/photo-1516280440614-37939bbacd81
+img/wall-example-live-9.webp: https://images.unsplash.com/photo-1506157786151-b8491531f063
+img/wall-example-live-10.webp: https://images.unsplash.com/photo-1540039155733-5bb30b53aa14
+img/wall-example-loose-sunset.webp: https://images.unsplash.com/photo-1500534314209-a25ddb2bd429
+img/wall-example-loose-company.webp: https://images.unsplash.com/photo-1492144534655-ae79c964c9d7
+
+Hover examples for jobs and study; not Jonah’s actual workplaces or school:
+img/profile-example-market.webp: https://images.unsplash.com/photo-1542838132-92c53300491e
+img/profile-example-harbour.webp: https://images.unsplash.com/photo-1494412519320-aa613dfb7738
+img/profile-example-developer.webp: https://images.unsplash.com/photo-1498050108023-c5249f4df085
+img/profile-example-study.webp: https://images.unsplash.com/photo-1507842217343-583bb7270b66

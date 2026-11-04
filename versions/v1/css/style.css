@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
+
+
+h1,h2,h3,h4,p,span,li,a{
+    font-family: "Unica One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+
+    cursor: url("../../../cursor/HANDSCURSOR.cur"), auto;
+}
+a, button, .clickable {
+    cursor: url("../../../cursor/HANDSCURSOR 2.cur"), pointer;
+}
+
+.nav-link {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.nav-link .char {
+    display: inline-block;
+    transition:
+            color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #4b5563;
+}
+
+.nav-link:hover .char {
+    color: #0053ed !important;
+    transform: translateY(-0.15em);
+}
+
+/* Golf animatie */
+@keyframes charWave {
+    0% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-0.25em) rotate(2deg); }
+    50% { transform: translateY(0) rotate(0deg); }
+    75% { transform: translateY(0.15em) rotate(-2deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+.nav-link:hover .char:nth-child(odd) {
+    animation: charWave 0.8s ease infinite;
+}
+
+.nav-link:hover .char:nth-child(even) {
+    animation: charWave 0.8s ease 0.2s infinite;
+}
+
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.1;
+    filter: blur(2px);
+    transition: opacity 0.3s ease;
+}
+
+.shape:hover {
+    opacity: 0.3;
+}
+
+.circle {
+    border-radius: 50%;
+    background: rgba(79, 70, 229, 0.1);
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent transparent rgba(99, 102, 241, 0.1) transparent;
+}
+
+.square {
+    transform: rotate(45deg);
+}
+
+/* Mobile menu stijlen */
+#mobileMenu {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+#mobileMenu.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #4f46e5;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Z-index beheer */
+canvas.threejs { z-index: 0 !important; position: relative; }
+main { position: relative; z-index: 1; }
+#vanta-bg { position: relative; z-index: -1 !important; }
+
+/* style.css */
+.bg-customblue {
+    background-color: #0053ed;
+}
+.text-customblue{
+    color: #0053ed;
+}
+
+#videoModal {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: block !important; /* Voeg dit toe */
+}
+
+#videoModal.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#videoModal:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+video {
+    aspect-ratio: 16/9;
+}

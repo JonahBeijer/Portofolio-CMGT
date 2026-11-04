@@ -1,0 +1,124 @@
+/* A shelf of jewel cases. The discs, hinges and reflections are CSS geometry. */
+.cd-work { padding: 110px 4vw 0; background: #f4f3ee; }
+.cd-collection { --case-size: clamp(240px,28vw,380px); min-height: calc(100svh - 110px); }
+.cd-heading { display: flex; align-items: start; justify-content: space-between; gap: 25px; }
+.cd-heading .eyebrow { margin: 0 0 14px; font: 10px 'Space Grotesk',sans-serif; letter-spacing: .12em; }
+.cd-heading h1 { font: 400 clamp(32px,4.2vw,64px)/1.05 'Space Grotesk',sans-serif; letter-spacing: -.055em; margin: 0; }
+.cd-edition { text-align: right; font: 10px/1.9 'Space Grotesk',sans-serif; letter-spacing: .08em; }
+.cd-edition span { display: block; }
+.cd-edition .cd-position { font-size: 22px; letter-spacing: -.04em; color: var(--accent); }
+.cd-stage { position: relative; height: clamp(390px,55svh,670px); margin: 12px -4vw 0; overflow: hidden; isolation: isolate; }
+.cd-stage:before { content: ''; position: absolute; width: min(850px,90%); height: 55%; bottom: 9%; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse,#cbc9c080,transparent 65%); filter: blur(35px); z-index: -1; }
+.cd-shelf { display: grid; gap: 40px; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); padding: 50px; }
+.cd-album { display: block; width: var(--case-size); height: var(--case-size); position: relative; outline-offset: 12px; color: #191a1a; }
+.cd-ready .cd-shelf { position: absolute; inset: 0; padding: 0; perspective: 1600px; display: block; }
+.cd-ready .cd-album { position: absolute; left: calc(50% - var(--case-size)/2); top: calc(48% - var(--case-size)/2); transform: translateX(var(--cd-x)) translateZ(var(--cd-depth)) rotateY(var(--cd-angle)); transition: transform .75s cubic-bezier(.22,.8,.2,1),opacity .5s; transform-style: preserve-3d; }
+.cd-album:after { content: ''; position: absolute; left: 3%; width: 100%; height: 12px; bottom: -35px; background: #262e3260; border-radius: 50%; filter: blur(9px); transform: rotateX(65deg); pointer-events: none; }
+.cd-object { position: absolute; inset: 0; transform: rotateY(var(--cd-turn,0deg)); transform-style: preserve-3d; transition: transform .7s cubic-bezier(.22,.8,.2,1); }
+.is-turning .cd-object { transition: none; }
+.cd-front,.cd-back { position: absolute; inset: 0; padding: 7px 7px 7px 19px; border: 1px solid #aab7af; border-radius: 2px; background: linear-gradient(120deg,#ffffffb0,#ccd6cf60 30%,#ffffff90 65%,#a4b1aa70); backface-visibility: hidden; box-shadow: inset 0 0 0 2px #ffffffa0,inset -4px 0 0 #43524c45,3px 3px 2px #18272025; transform: translateZ(6px); }
+.cd-front:before { content: ''; position: absolute; left: 3px; top: 5px; bottom: 5px; width: 10px; background: repeating-linear-gradient(0deg,#24312d77 0 1px,#ffffff99 1px 3px); border-right: 1px solid #54685d88; }
+.cd-front:after { content: ''; position: absolute; inset: 0; background: linear-gradient(113deg,transparent 25%,#ffffff30 25.3%,transparent 43%,#ffffff1c 70%,transparent 70.3%); pointer-events: none; }
+.cd-cover { display: flex; flex-direction: column; height: 100%; padding: 19px; background: var(--album-color); position: relative; overflow: hidden; }
+.cd-cover-top { display: flex; justify-content: space-between; font: 8px 'Space Grotesk',sans-serif; letter-spacing: .12em; z-index: 1; }
+.cd-cover-art { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 18px 0; }
+.cd-cover-art img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 9px 7px #15221c30); user-select: none; pointer-events: none; }
+.cd-cover h2 { font: 600 clamp(20px,2.1vw,30px)/1 'Space Grotesk',sans-serif; letter-spacing: -.065em; margin: 0 0 10px; }
+.cd-cover-bottom { display: flex; justify-content: space-between; gap: 8px; font: 7px 'Space Grotesk',sans-serif; letter-spacing: .07em; text-transform: uppercase; }
+.cd-spine { position: absolute; inset: 0 auto 0 0; width: 12px; background: #66766b; transform: rotateY(-90deg) translateZ(6px); transform-origin: left; }
+.cd-back { transform: rotateY(180deg) translateZ(6px); background: #d9e0d8; padding: 24px; display: flex; flex-direction: column; }
+.cd-back h3 { font: 600 27px/1 'Space Grotesk',sans-serif; letter-spacing: -.05em; margin: 15px 0; }
+.cd-back .cd-description { font-size: 11px; line-height: 1.65; }
+.cd-tracklist { margin-top: auto; font: 9px/1.8 'Space Grotesk',sans-serif; text-transform: uppercase; border-top: 1px solid #253d3030; padding-top: 10px; }
+.cd-barcode { height: 22px; width: 65px; margin-top: 12px; background: repeating-linear-gradient(90deg,#25372c 0 1px,transparent 1px 3px,#25372c 3px 5px,transparent 5px 7px); }
+.cd-disc { position: absolute; inset: 4%; border-radius: 50%; background: repeating-radial-gradient(circle,transparent 0 2px,#ffffff40 2.5px 3px),conic-gradient(from 30deg,#bbc6cb,#fff 12%,#adc4cb 18%,#c9b7d3 22%,#eef0b3 28%,#c9d3d8 34%,#fff 48%,#aab7be 55%,#b6d4e2 63%,#edd3dd 69%,#e4edc1 75%,#b2bfc4 85%,#fff 92%,#bbc6cb); box-shadow: inset 0 0 0 1px #faffff,0 5px 18px #101b2020; transform: translateZ(-2px); transition: transform .7s cubic-bezier(.22,.8,.2,1); }
+.cd-disc:before { content: ''; position: absolute; inset: 31%; border: 1px solid #c9d1d5; border-radius: 50%; background: #dce1e6aa; box-shadow: 0 0 0 5px #edf2f566; }
+.cd-disc:after { content: ''; position: absolute; inset: 44%; border-radius: 50%; background: #f4f3ee; box-shadow: 0 0 0 1px #8e9a9f; }
+.is-selected .cd-disc { transform: translateX(21%) translateZ(-2px) rotate(25deg); }
+.cd-album.is-selected { cursor: grab; }
+.cd-album.is-turning { cursor: grabbing; }
+.cd-album { touch-action: pan-y; }
+.cd-meta { display: grid; grid-template-columns: 1fr minmax(200px,420px) 1fr; align-items: start; gap: 30px; border-top: 1px solid #17171a30; padding: 22px 0; }
+.cd-current-tags { margin: 0; font: 10px/1.7 'Space Grotesk',sans-serif; text-transform: uppercase; }
+.cd-current-description { font-size: 12px; line-height: 1.65; margin: 0; color: #62635d; }
+.cd-current-link { justify-self: end; font: 11px 'Space Grotesk',sans-serif; border-bottom: 1px solid var(--ink); padding: 0 0 6px; }
+.cd-current-link span:last-child { margin-left: 25px; color: var(--accent); }
+.cd-controls { display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; gap: 20px; padding: 13px 0 23px; }
+.cd-controls>button,.cd-flip { border: 1px solid #c8c8c0; background: transparent; color: var(--ink); border-radius: 50%; width: 42px; height: 42px; cursor: pointer; font-size: 20px; transition: background .2s,color .2s; }
+.cd-controls>button:hover,.cd-flip:hover { background: var(--ink); color: var(--paper); }
+.cd-controls>button:disabled { opacity: .25; cursor: default; }
+.cd-controls>button:last-child { justify-self: end; }
+.cd-help { text-align: center; font: 10px/1.8 'Space Grotesk',sans-serif; color: #60615a; }
+.cd-help p { margin: 0; }
+.cd-help p+p { color: #98998f; }
+.cd-flip { position: absolute; right: 4vw; bottom: 12px; z-index: 30; font-size: 23px; }
+.cd-catalogue { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; padding: 16px 0 35px; }
+.cd-catalogue>span { margin-right: 18px; font: 9px 'Space Grotesk',sans-serif; letter-spacing: .1em; }
+.cd-catalogue button { border: 0; border-radius: 0; background: transparent; width: 32px; height: 32px; cursor: pointer; font: 10px 'Space Grotesk',sans-serif; }
+.cd-catalogue button[aria-pressed=true] { background: var(--accent); color: white; }
+.cd-progress { height: 1px; background: #d7d7cd; }
+.cd-progress-fill { height: 100%; background: var(--accent); transition: width .5s; }
+.cd-collection:not(.cd-ready) .cd-stage { height: auto; overflow: visible; }
+.cd-collection:not(.cd-ready) .cd-disc,.cd-collection:not(.cd-ready) .cd-back { display: none; }
+.cd-collection:not(.cd-ready) .cd-controls,.cd-collection:not(.cd-ready) .cd-meta,.cd-collection:not(.cd-ready) .cd-catalogue,.cd-collection:not(.cd-ready) .cd-flip { display: none; }
+@media(max-width:767px) {
+ .cd-work { padding-top: 92px; }
+ .cd-collection { --case-size: min(66vw,310px); min-height: calc(100svh - 92px); }
+ .cd-heading h1 { font-size: clamp(29px,7vw,43px); }
+ .cd-edition { font-size: 7px; max-width: 90px; }
+ .cd-edition .cd-position { font-size: 17px; }
+ .cd-stage { height: max(330px,45svh); margin-top: 10px; }
+ .cd-cover { padding: 12px; }
+ .cd-cover-top { font-size: 6px; }
+ .cd-cover-art { padding: 12px 0; }
+ .cd-cover h2 { font-size: 22px; }
+ .cd-cover-bottom { font-size: 5px; }
+ .cd-meta { grid-template-columns: 1fr auto; gap: 10px; padding: 16px 0; }
+ .cd-current-description { grid-row: 2; grid-column: 1/-1; max-width: 100%; font-size: 11px; }
+ .cd-current-link { grid-column: 2; grid-row: 1; }
+ .cd-current-link span:last-child { margin-left: 8px; }
+ .cd-controls { gap: 8px; }
+ .cd-help { font-size: 8px; }
+ .cd-back { padding: 16px; }
+ .cd-back h3 { font-size: 20px; margin: 8px 0; }
+ .cd-back .cd-description { font-size: 9px; line-height: 1.45; }
+ .cd-tracklist { font-size: 7px; }
+ .cd-catalogue { gap: 3px; }
+ .cd-catalogue>span { width: 100%; text-align: center; margin: 0 0 5px; }
+ .cd-catalogue button { width: 27px; }
+}
+@media(prefers-reduced-motion:reduce) { .cd-ready .cd-album,.cd-object,.cd-disc,.cd-progress-fill { transition: none; } }
+
+/* The selected jewel case opens on its actual left hinge before navigation. */
+.cd-is-opening { overflow: hidden; }
+.cd-opening-layer { position: fixed; inset: 0; z-index: 500; perspective: 1600px; background: #f4f3ee00; pointer-events: all; }
+.cd-opening-case { position: absolute; transform-style: preserve-3d; }
+.cd-opening-case:after { content: ''; position: absolute; inset: auto -60% -40px -60%; height: 22px; background: #19251f35; filter: blur(17px); border-radius: 50%; transform: rotateX(65deg); }
+.cd-opening-tray { position: absolute; inset: 0; padding: 6%; border: 5px solid #a6b4ab; background: repeating-linear-gradient(0deg,#28352f,#28352f 2px,#303e36 3px); box-shadow: inset 0 0 0 2px #d3dfd0,6px 8px 18px #17231920; }
+.cd-opening-tray .cd-opening-disc { inset: 5%; transform: none; display: block; }
+.cd-opening-disc:after { background: #293a31; }
+.cd-disc-label { position: absolute; top: 17%; left: 12%; right: 12%; text-align: center; font: 600 clamp(14px,2.5vw,34px)/1.05 'Space Grotesk',sans-serif; letter-spacing: -.06em; color: #263a32; }
+.cd-disc-signature { position: absolute; bottom: 17%; left: 10%; right: 10%; text-align: center; font: 9px 'Space Grotesk',sans-serif; letter-spacing: .1em; color: #263a32; }
+.cd-opening-lid { position: absolute; inset: 0; transform-origin: left center; transform-style: preserve-3d; z-index: 2; }
+.cd-opening-lid .cd-front { transform: translateZ(2px); }
+.cd-lid-inside { position: absolute; inset: 0; background: var(--album-color); padding: 9%; border: 5px solid #a6b4ab; backface-visibility: hidden; transform: rotateY(180deg) translateZ(1px); display: flex; flex-direction: column; }
+.cd-inside-edition { font: 8px 'Space Grotesk',sans-serif; letter-spacing: .1em; padding-top: 12px; border-top: 2px solid var(--accent); }
+.cd-lid-inside h2 { margin: auto 0 15px; font: 500 clamp(18px,3vw,43px)/1.02 'Space Grotesk',sans-serif; letter-spacing: -.06em; }
+.cd-lid-inside p { font: 9px/1.7 'Space Grotesk',sans-serif; }
+.cd-inside-mark { font: 42px/1 'Space Grotesk',sans-serif; color: var(--accent); margin-top: auto; }
+@media(max-width:767px) {
+ .cd-opening-lid .cd-cover { padding: 9px; }
+ .cd-opening-lid .cd-cover h2 { font-size: 16px; }
+ .cd-opening-lid .cd-cover-top { font-size: 5px; }
+ .cd-opening-lid .cd-cover-bottom { font-size: 4px; }
+ .cd-inside-edition { font-size: 5px; padding-top: 5px; }
+ .cd-lid-inside h2 { font-size: 19px; margin-bottom: 8px; }
+ .cd-lid-inside p,.cd-disc-signature { font-size: 5px; }
+ .cd-inside-mark { font-size: 25px; }
+}
+
+/* Match the shelf camera and keep the hinge free throughout the opening. */
+.cd-opening-scene { position:absolute; perspective:1600px; overflow:visible; }
+.cd-opening-layer { perspective:none; }
+.cd-opening-lid .cd-front { transform:translateZ(6px); }
+.cd-album.is-opening-source { visibility:hidden; }

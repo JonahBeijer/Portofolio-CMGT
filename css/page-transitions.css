@@ -1,0 +1,19 @@
+/* A soft directional reveal between Home, Projects and Skills. */
+@view-transition { navigation:auto; }
+html[data-page-motion] { --page-direction:1; }
+html[data-page-motion=backward] { --page-direction:-1; }
+html[data-page-motion] .site-header { view-transition-name:site-navigation; }
+html[data-page-motion]::view-transition { background:#112d4e; }
+html[data-page-motion]::view-transition-group(root) { animation-duration:650ms; }
+html[data-page-motion]::view-transition-old(root) { animation:page-leave 650ms cubic-bezier(.22,1,.36,1) both; mix-blend-mode:normal; z-index:1; }
+html[data-page-motion]::view-transition-new(root) { animation:page-arrive 650ms cubic-bezier(.22,1,.36,1) both; mix-blend-mode:normal; z-index:2; }
+html[data-page-motion=backward]::view-transition-new(root) { animation-name:page-arrive-back; }
+html[data-page-motion]::view-transition-group(site-navigation) { z-index:3; animation-duration:650ms; }
+html[data-page-motion]::view-transition-old(site-navigation) { animation:page-nav-leave 200ms ease both; }
+html[data-page-motion]::view-transition-new(site-navigation) { animation:page-nav-arrive 300ms ease both; }
+@keyframes page-leave { to { transform:translateX(calc(var(--page-direction)*-6%)); opacity:.5; } }
+@keyframes page-arrive { from { clip-path:inset(0 0 0 100%); transform:translateX(5%); } to { clip-path:inset(0); transform:none; } }
+@keyframes page-arrive-back { from { clip-path:inset(0 100% 0 0); transform:translateX(-5%); } to { clip-path:inset(0); transform:none; } }
+@keyframes page-nav-leave { to { opacity:0; } }
+@keyframes page-nav-arrive { from { opacity:0; } to { opacity:1; } }
+@media(prefers-reduced-motion:reduce) { @view-transition { navigation:none; } }

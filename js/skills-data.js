@@ -19,7 +19,8 @@ export const skills = {
 
         backendFrameworks: [
             { name: 'Laravel', icon: 'fab fa-laravel text-red-600 text-2xl' },
-            { name: 'Filament', icon: 'fas fa-layer-group text-yellow-500 text-2xl' }
+            { name: 'Filament', icon: 'fas fa-layer-group text-yellow-500 text-2xl' },
+            { name: 'WordPress', icon: 'fab fa-wordpress text-blue-600 text-2xl' }
         ],
 
         databases: [
@@ -33,6 +34,7 @@ export const skills = {
         toolsServices: [
             { name: 'Git/GitHub', icon: 'fab fa-github text-gray-800 text-2xl' },
             { name: 'Stripe API', icon: 'fab fa-stripe text-indigo-500 text-2xl' },
-            { name: 'Azure OpenAI', icon: 'fas fa-robot text-blue-600 text-2xl' }
+            { name: 'Azure OpenAI', icon: 'fas fa-robot text-blue-600 text-2xl' },
+            { name: 'Herd', icon: 'fas fa-server text-red-500 text-2xl' }
         ]
     };
