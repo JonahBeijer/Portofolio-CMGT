@@ -1,4 +1,4 @@
-import './profile-notes.js?v=20261105-1';
+import './profile-notes.js?v=20261105-friends1';
 const stage=document.querySelector('.photo-wall-stage');
 const wrap=document.querySelector('.memory-scroll');
 const markup=stage.innerHTML;

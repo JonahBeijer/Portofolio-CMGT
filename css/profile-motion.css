@@ -53,3 +53,11 @@
 .study-card .career-photo img { aspect-ratio:445/449; }
 @media(max-width:1000px) { .profile-notes .study-card { padding-right:147px; }.study-card .career-photo { width:112px; } }
 @media(max-width:374px) { .profile-notes .study-card { padding-right:135px; }.study-card .career-photo { width:100px; }.profile-notes .study-card h3 { font-size:22px; } }
+/* This group photograph stays landscape instead of being cropped to a portrait print. */
+.home-profile .offline-print.is-landscape-print { width:115%; height:auto; left:-10%; top:16%; }
+.home-profile .offline-print.is-landscape-print img { display:block; width:100%; height:auto; aspect-ratio:640/427; object-fit:contain; }
+.offline-photos.is-swapped .offline-back.is-landscape-print { transform:translate(6%,8%) rotate(7deg); }
+@media(max-width:767px) {
+ .home-profile .offline-print.is-landscape-print { width:100%; left:0; top:20%; }
+ .offline-photos.is-swapped .offline-back.is-landscape-print { transform:translate(0,8%) rotate(7deg); }
+}
