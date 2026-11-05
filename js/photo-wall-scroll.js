@@ -1,5 +1,5 @@
-import { exampleImages } from './photo-wall-examples.js?v=20261105-groups4';
-import { photoCategories, categoryFor } from './photo-wall-categories.js?v=20261105-groups4';
+import { exampleImages } from './photo-wall-examples.js?v=20261105-intro5';
+import { photoCategories, categoryFor } from './photo-wall-categories.js?v=20261105-intro5';
 export async function initPhotoWall({ signal }) {
 const on=(target,event,listener,options={})=>target.addEventListener(event,listener,{...options,signal});
 const wrap=document.querySelector('.memory-scroll'),stage=document.querySelector('.photo-wall-stage'),wall=document.querySelector('.photo-wall');
@@ -17,6 +17,10 @@ if(signal.aborted)return;
 const dimensions=new Map(metadata.map(m=>[m.optimized,m.width/m.height]));
 const photos=[...new Set(exampleImages)].map(image=>({image,group:categoryFor(image),ratio:dimensions.get(image)||9/16}));
 const columns=Math.max(1,Math.ceil(photos.length/rows));
+// Reserve central grid positions for the four opening prints, so they shrink into the wall.
+const openingColumns=mobileRenderer?2:4,openingRows=mobileRenderer?2:1;
+const openingSlots=Array.from({length:Math.min(4,photos.length)},(_,i)=>(Math.floor((rows-openingRows)/2)+Math.floor(i/openingColumns))*columns+Math.floor((columns-openingColumns)/2)+i%openingColumns);
+const gridSlots=[...openingSlots,...Array.from({length:columns*rows},(_,i)=>i).filter(i=>!openingSlots.includes(i))];
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),lerp=(a,b,t)=>a+(b-a)*t,smooth=t=>t*t*(3-2*t);
 const language=()=>document.documentElement.lang==='en'?'en':'nl';
 const copy={nl:{about:'Over mij ↓',guide:'Scroll ↓ · kijk eens wat dichterbij',museumGuide:'Beweeg je muis over de foto’s',touchGuide:'Tik op een foto om dichterbij te kijken',mixed:'Mijn herinneringen',profileTitle:'Dit ben ik.',concerts:'Concerten bezoeken',profileNote:'Even voorstellen.',hobbyNote:'Als mijn laptop dicht is.',workNote:'Ook een deel van mij.',studyNote:'Nog lang niet uitgeleerd.',projectNote:'Van kijken naar maken.',pan:'Verschuif de fototafel',wall:'Mijn foto’s, gegroepeerd als een fototafel. Gebruik de pijltjestoetsen voor het vergrootglas.',categories:'Verzamelingen'},en:{about:'About me ↓',guide:'Scroll ↓ · take a closer look',museumGuide:'Move your mouse over the photographs',touchGuide:'Tap a photograph to take a closer look',mixed:'My memories',profileTitle:'This is me.',concerts:'Going to concerts',profileNote:'Nice to meet you.',hobbyNote:'When my laptop is closed.',workNote:'Part of me, too.',studyNote:'Still learning.',projectNote:'From looking to making.',pan:'Pan the photo table',wall:'My photographs, grouped as a photo table. Use the arrow keys to move the magnifying glass.',categories:'Collections'}};
@@ -171,14 +175,20 @@ function draw(now){
  const gridW=cellW*columns+gap*(columns-1),gridH=cellH*rows+gap*(rows-1),cx=w/2,cy=lerp(h*.5,h*.58,wallT),bx=boardX(w);
 
  if(!mobileRenderer&&baseWidth!==64){baseWidth=64;cards.forEach(({card})=>{card.style.width='64px';card.style.height='113.7778px';});}
+ const openingT=smooth(clamp(progress/.32));
+ const openingGap=12,openingWidth=(w-(openingColumns-1)*openingGap)/openingColumns,openingHeight=(h-(openingRows-1)*openingGap)/openingRows;
  const geometryChanged=paintedProgress!==progress||paintedPan!==pan;
  if(geometryChanged){
  screenPhotos=[];
- cards.forEach(({card,img},i)=>{const p=layoutData.positions[i],col=i%columns,row=Math.floor(i/columns),width=lerp(cellW,p.w*layoutData.scale*1.08,tableT),height=lerp(cellH,p.h*layoutData.scale*1.08,tableT);
-  const x=lerp(cx-gridW/2+col*(cellW+gap),bx+(p.x-p.w*.04)*layoutData.scale,tableT),y=lerp(cy-gridH/2+row*(cellH+gap)+Math.sin(col*1.8)*h*.1*(1-wallT),layoutData.top+(p.y-p.h*.04)*layoutData.scale,tableT);
+ cards.forEach(({card,img},i)=>{const p=layoutData.positions[i],slot=gridSlots[i],col=slot%columns,row=Math.floor(slot/columns);
+  let width=lerp(cellW,p.w*layoutData.scale*1.08,tableT),height=lerp(cellH,p.h*layoutData.scale*1.08,tableT);
+  let x=lerp(cx-gridW/2+col*(cellW+gap),bx+(p.x-p.w*.04)*layoutData.scale,tableT),y=lerp(cy-gridH/2+row*(cellH+gap)+Math.sin(col*1.8)*h*.1*(1-wallT),layoutData.top+(p.y-p.h*.04)*layoutData.scale,tableT);
+  const opacity=i<4?1:smooth(clamp((progress-.035)/.20));
+  if(i<4){width=lerp(openingWidth,Math.min(width,openingWidth),openingT);height=lerp(openingHeight,Math.min(height,openingHeight),openingT);x=lerp((i%openingColumns)*(openingWidth+openingGap),x,openingT);y=lerp(Math.floor(i/openingColumns)*(openingHeight+openingGap),y,openingT);}
+  if(!mobileRenderer){card.style.opacity=String(opacity);card.style.zIndex=String(i<4&&openingT<1?photos.length+i+1:i+1);}
   // Fixed-size wrappers keep movement composited; only the print's aspect changes during assembly.
-  const angle=lerp(0,p.angle,tableT);if(!mobileRenderer){card.style.transform=`translate3d(${x}px,${y}px,0) scale(${width/64}) rotate(${angle}deg)`;const cardHeight=(height*64/width).toFixed(3)+'px';if(cardHeights.get(card)!==cardHeight){card.style.height=cardHeight;cardHeights.set(card,cardHeight);}card.style.setProperty('--turn',(Math.sin(i*5.1)*1.8*(1-tableT))+'deg');}
-  screenPhotos.push({x,y,w:width,h:height,img,angle,turn:Math.sin(i*5.1)*1.8*(1-tableT)});
+  const angle=lerp(0,p.angle,tableT);if(!mobileRenderer){card.style.transform=`translate3d(${x}px,${y}px,0) scale(${width/64}) rotate(${angle}deg)`;const cardHeight=(height*64/width).toFixed(3)+'px';if(cardHeights.get(card)!==cardHeight){card.style.height=cardHeight;cardHeights.set(card,cardHeight);}card.style.setProperty('--turn',(Math.sin(i*5.1)*1.8*(1-tableT)*(i<4?openingT:1))+'deg');}
+  screenPhotos.push({x,y,w:width,h:height,img,angle,opacity,turn:Math.sin(i*5.1)*1.8*(1-tableT)*(i<4?openingT:1)});
  });
  if(mobileRenderer)paintBoard();
  screenLabels=layoutData.heads.map((head,i)=>{const x=bx+head.x*layoutData.scale,y=layoutData.top+head.y*layoutData.scale;labels[i].style.transform=`translate(${x}px,${y}px)`;labels[i].style.opacity=tableT;return{x,y,text:photoCategories[i][language()]};});
@@ -201,8 +211,8 @@ function paintBoard(){
  context.imageSmoothingEnabled=true;context.imageSmoothingQuality='low';
  for(const photo of screenPhotos){
   const {x,y,w,h,img}=photo,pad=Math.max(w,h)*.2;
-  if(x-pad>stageWidth||y-pad>stageHeight||x+w+pad<0||y+h+pad<0||!img.complete||!img.naturalWidth)continue;
-  context.save();context.translate(x,y);context.rotate((photo.angle+photo.turn)*Math.PI/180);
+  if(photo.opacity<=0||x-pad>stageWidth||y-pad>stageHeight||x+w+pad<0||y+h+pad<0||!img.complete||!img.naturalWidth)continue;
+  context.save();context.globalAlpha=photo.opacity;context.translate(x,y);context.rotate((photo.angle+photo.turn)*Math.PI/180);
   const border=1.5*w/64;
   context.fillStyle='#f9f7f7';context.fillRect(-border,-border,w+border*2,h+border*2);
   const fit=Math.max(w/img.naturalWidth,h/img.naturalHeight),sw=w/fit,sh=h/fit;

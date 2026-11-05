@@ -1,6 +1,10 @@
 // Webversies voor de fotowand en fototafel; de originelen blijven in img.
 // Opnieuw maken: node scripts/optimize-wall-photos.cjs (met sharp geïnstalleerd).
 export const exampleImages = [
+  "img/wall-photos/IMG_1602.webp",
+  "img/wall-photos/IMG_6163.webp",
+  "img/wall-photos/IMG_3270.webp",
+  "img/wall-photos/IMG_4182.webp",
   "img/wall-photos/1e4516a9-a683-439f-ac1e-c510d4e7db1f.webp",
   "img/wall-photos/6ce553da-e1b7-4b3f-87e8-70897fbbb0a2.webp",
   "img/wall-photos/8d5b5d58-541e-4392-8c7a-599fe96da98e.webp",
@@ -13,7 +17,6 @@ export const exampleImages = [
   "img/wall-photos/IMG_0601.webp",
   "img/wall-photos/IMG_0602.webp",
   "img/wall-photos/IMG_1294.webp",
-  "img/wall-photos/IMG_1602.webp",
   "img/wall-photos/IMG_1659.webp",
   "img/wall-photos/IMG_1924.webp",
   "img/wall-photos/IMG_2177.webp",
@@ -23,11 +26,9 @@ export const exampleImages = [
   "img/wall-photos/IMG_2854.webp",
   "img/wall-photos/IMG_2900.webp",
   "img/wall-photos/IMG_2929.webp",
-  "img/wall-photos/IMG_3270.webp",
   "img/wall-photos/IMG_3428.webp",
   "img/wall-photos/IMG_3873.webp",
   "img/wall-photos/IMG_4026.webp",
-  "img/wall-photos/IMG_4182.webp",
   "img/wall-photos/IMG_4492.webp",
   "img/wall-photos/IMG_5306.webp",
   "img/wall-photos/IMG_5472.webp",
@@ -35,7 +36,6 @@ export const exampleImages = [
   "img/wall-photos/IMG_5867.webp",
   "img/wall-photos/IMG_5886.webp",
   "img/wall-photos/IMG_5949.webp",
-  "img/wall-photos/IMG_6163.webp",
   "img/wall-photos/IMG_6193.webp",
   "img/wall-photos/IMG_7071.webp",
   "img/wall-photos/IMG_7313.webp",
