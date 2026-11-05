@@ -1,5 +1,5 @@
 import { exampleImages } from './photo-wall-examples.js?v=20261105-photos2';
-import { photoCategories, categoryFor } from './photo-wall-categories.js?v=20261105-photos2';
+import { photoCategories, categoryFor } from './photo-wall-categories.js?v=20261105-me2';
 export async function initPhotoWall({ signal }) {
 const on=(target,event,listener,options={})=>target.addEventListener(event,listener,{...options,signal});
 const wrap=document.querySelector('.memory-scroll'),stage=document.querySelector('.photo-wall-stage'),wall=document.querySelector('.photo-wall');
