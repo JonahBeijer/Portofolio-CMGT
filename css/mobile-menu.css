@@ -1,0 +1,52 @@
+/* A navy editorial index, revealed by a single blue shutter. */
+html.menu-open { overflow:hidden; overscroll-behavior:none; }
+body > .mobile-menu {
+    position:fixed; inset:0; z-index:300; height:100dvh; min-height:0;
+    display:flex; flex-direction:column; padding:0 7vw max(24px,env(safe-area-inset-bottom));
+    overflow:auto; overscroll-behavior:contain; touch-action:pan-y;
+    background:var(--navy); color:var(--paper); isolation:isolate;
+}
+body > .mobile-menu[hidden] { display:none; }
+.mobile-menu .menu-curtain { position:absolute; inset:0; background:var(--blue); transform:translateY(-101%); z-index:4; pointer-events:none; }
+.mobile-menu .menu-topline { min-height:88px; display:flex; align-items:center; gap:22px; padding-right:40px; flex-shrink:0; }
+.mobile-menu .menu-monogram { --text-font:var(--display-font); font-size:27px; letter-spacing:-.07em; }
+.mobile-menu .menu-edition { font-size:8px; letter-spacing:.08em; color:var(--light-blue); }
+.mobile-menu .menu-close { position:absolute; z-index:5; top:22px; right:calc(7vw - 8px); width:44px; height:44px; display:grid; place-items:center; padding:10px; border:1px solid #dbe2ef44; border-radius:50%; }
+.mobile-menu .menu-close span { position:absolute; width:19px; height:1px; background:var(--paper); transform:rotate(45deg); }
+.mobile-menu .menu-close span + span { transform:rotate(-45deg); }
+.mobile-menu .menu-close:focus-visible { outline:2px solid var(--light-blue); outline-offset:5px; }
+.mobile-menu nav { flex:1; justify-content:center; gap:0; margin:25px 0 30px; min-height:235px; }
+.mobile-menu nav a.has-nav-hover {
+    display:flex; width:100%; align-self:stretch; align-items:center; gap:13px;
+    margin:0; padding:22px 0; border-top:1px solid #dbe2ef33;
+    font-size:clamp(29px,9vw,54px); letter-spacing:-.04em;
+}
+.mobile-menu nav a.has-nav-hover:last-child { border-bottom:1px solid #dbe2ef33; font-size:clamp(17px,5vw,30px); }
+.mobile-menu nav a::before { content:attr(data-menu-index); position:static; flex-shrink:0; width:20px; inset:auto; height:auto; opacity:.6; transform:none; border-radius:0; background:transparent!important; font:9px/1 var(--body-font); letter-spacing:.06em; }
+.mobile-menu nav a::after { content:'↗'; position:static; margin-left:auto; flex-shrink:0; font:22px/1 var(--body-font); color:var(--blue); }
+.mobile-menu nav a[aria-current=page]::after { content:'●'; font-size:9px; color:var(--light-blue); }
+.mobile-menu nav .nav-label-window { height:1.3em; line-height:1.3; }
+.mobile-menu nav .nav-label-echo { color:var(--light-blue); }
+.mobile-menu nav a.has-nav-hover:is(:focus-visible,:active)::before { opacity:1; transform:none; }
+.mobile-menu > .language-switch { width:fit-content; gap:10px; margin:0 0 27px; font-size:10px; }
+.mobile-menu .menu-contact { flex-shrink:0; display:grid; gap:9px; padding-top:23px; border-top:1px solid #dbe2ef33; }
+.mobile-menu .menu-contact > span:first-child { font-size:10px; color:var(--light-blue); }
+.mobile-menu .menu-contact a { display:flex; justify-content:space-between; align-items:center; gap:8px; font-size:clamp(13px,3.8vw,18px); }
+.mobile-menu .menu-contact a span { color:var(--light-blue); font-size:20px; }
+.mobile-menu .menu-signature { font-size:8px; letter-spacing:.08em; color:#dbe2ef88; margin-top:20px; }
+.menu-button span { transition:transform .3s ease; }
+.menu-button[aria-expanded=true] span:first-child { transform:translateY(3.5px) rotate(45deg); }
+.menu-button[aria-expanded=true] span:last-child { transform:translateY(-3.5px) rotate(-45deg); }
+@media(max-height:600px) {
+    .mobile-menu .menu-topline { min-height:70px; }
+    .mobile-menu nav { margin:10px 0 20px; min-height:190px; }
+    .mobile-menu nav a.has-nav-hover { padding:13px 0; }
+    .mobile-menu > .language-switch { margin-bottom:15px; }
+    .mobile-menu .menu-contact { padding-top:14px; }
+    .mobile-menu .menu-signature { margin-top:5px; }
+}
+@media(prefers-reduced-motion:reduce) { .menu-button span { transition:none; } }
+/* Long translated labels wrap inside their row, including on a 320px screen. */
+.mobile-menu nav .nav-label-window { min-width:0; flex:1; }
+.mobile-menu nav a:last-child .nav-label-window { height:auto; }
+.mobile-menu nav a:last-child .nav-label-copy { white-space:normal; }

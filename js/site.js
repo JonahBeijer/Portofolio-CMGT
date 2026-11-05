@@ -1,3 +1,4 @@
+import { initMobileMenu } from './mobile-menu.js?v=20261105-menu1';
 import { initNavigationHover } from './navigation-hover.js?v=20261105-1';
 import { initBioDecode } from './bio-decode.js?v=20261105-perf2';
 import './portfolio-versions.js?v=20261104-routes1';
@@ -10,27 +11,7 @@ if(document.querySelector('.case-main')) {
     await Promise.all([document.fonts.load('400 48px "Misto"'),document.fonts.load('400 16px "Manrope"')]).catch(()=>{});
 }
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const menu = document.getElementById('mobileMenu');
-const menuButton = document.getElementById('mobileMenuButton');
-let menuWasOpen = false;
-function closeMenu() {
-    menu.hidden = true;
-    document.body.classList.remove('menu-open');
-    menuButton.setAttribute('aria-expanded', 'false');
-    if (menuWasOpen) menuButton.focus();
-    menuWasOpen = false;
-}
-function openMenu() {
-    menu.hidden = false;
-    document.body.classList.add('menu-open');
-    menuButton.setAttribute('aria-expanded', 'true');
-    menuWasOpen = true;
-    document.getElementById('closeMenuButton').focus();
-}
-menuButton.addEventListener('click', () => menu.hidden ? openMenu() : closeMenu());
-document.getElementById('closeMenuButton').addEventListener('click', closeMenu);
-menu.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
-window.addEventListener('resize', () => { if (innerWidth >= 768 && !menu.hidden) closeMenu(); });
+const { menu, menuButton, closeMenu } = initMobileMenu(reducedMotion);
 document.addEventListener('keydown', event => {
     if (event.key === 'Escape') { closeMenu(); window.closeVideoModal?.(); }
     const overlay = !menu.hidden ? menu : document.querySelector('#videoModal:not(.hidden)');
