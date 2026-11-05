@@ -10,6 +10,7 @@ export function initMobileBrowserColour() {
         theme.dataset.mobileTheme = ''; document.head.append(theme);
     }
     let frame = 0, timer = 0, lastColour = '';
+    const footer = document.querySelector('.site-footer');
     const fallback = document.body.dataset.page === 'projecten' ? '#f9f7f7' : '#112d4e';
     function update() {
         frame = 0;
@@ -22,7 +23,11 @@ export function initMobileBrowserColour() {
             const viewport = window.visualViewport;
             const x = Math.max(0, Math.min(innerWidth - 1, (viewport?.offsetLeft || 0) + (viewport?.width || innerWidth) / 2));
             const y = Math.max(0, Math.min(innerHeight - 1, (viewport?.offsetTop || 0) + (viewport?.height || innerHeight) - 2));
-            let element = document.elementFromPoint(x, y);
+            // Prefer the actual footer surface when it reaches the visible bottom.
+            // This avoids selecting a small child decoration instead of its background.
+            const footerBounds = footer?.getBoundingClientRect();
+            let element = footerBounds && footerBounds.top <= y && footerBounds.bottom >= y
+                ? footer : document.elementFromPoint(x, y);
             while (element && element !== document.body && element !== root) {
                 const background = getComputedStyle(element).backgroundColor;
                 // Ignore transparent surfaces so the actual painted ancestor wins.
@@ -37,9 +42,10 @@ export function initMobileBrowserColour() {
     }
     function request(immediate = false) {
         if (immediate) { clearTimeout(timer); timer = 0; if (!frame) frame = requestAnimationFrame(update); }
-        else if (!timer && !frame) timer = setTimeout(() => { timer = 0; frame = requestAnimationFrame(update); }, 100);
+        else if (!timer && !frame) timer = setTimeout(() => { timer = 0; frame = requestAnimationFrame(update); }, 50);
     }
     addEventListener('scroll', () => request(), { passive:true });
+    addEventListener('scrollend', () => request(true), { passive:true });
     addEventListener('resize', () => request(true));
     addEventListener('pageshow', () => request(true));
     addEventListener('load', () => request(true), { once:true });
@@ -50,5 +56,8 @@ export function initMobileBrowserColour() {
     new ResizeObserver(() => request(true)).observe(document.body);
     document.fonts.ready.then(() => request(true));
     addEventListener('pagehide', () => { clearTimeout(timer); cancelAnimationFrame(frame); timer = frame = 0; });
+    // Footer crossings should update before a delayed scroll sample, also while
+    // Safari expands or collapses its bottom toolbar.
+    if (footer) new IntersectionObserver(() => request(true), { threshold:[0, .01, 1] }).observe(footer);
     request(true);
 }

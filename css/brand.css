@@ -209,3 +209,9 @@ body[data-page=projecten] .cd-heading { min-height:var(--cd-heading-height,0px);
  body,body.memory-page { background:var(--mobile-edge-color); overscroll-behavior-y:none; }
  body>main:not(.cd-work) { background:var(--paper,#f9f7f7); }
 }
+
+/* Give Safari a viewport-attached bottom surface to extend beneath its toolbar.
+   Keep this separate from the real footer, and below the mobile menu. */
+@media(max-width:767px) {
+ body::after { content:''; position:fixed; left:0; right:0; bottom:0; height:8px; z-index:299; background:var(--mobile-edge-color); pointer-events:none; }
+}
