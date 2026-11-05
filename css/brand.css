@@ -215,3 +215,7 @@ body[data-page=projecten] .cd-heading { min-height:var(--cd-heading-height,0px);
 @media(max-width:767px) {
  body::after { content:''; position:fixed; left:0; right:0; bottom:0; height:8px; z-index:299; background:var(--mobile-edge-color); pointer-events:none; }
 }
+
+/* The same outlined monogram is used in the browser tab and navigation. */
+.brand>img,.menu-monogram>img { display:block; width:44px; height:44px; flex-shrink:0; }
+@media(max-width:767px) { .brand>img { width:38px; height:38px; } }
