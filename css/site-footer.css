@@ -1,5 +1,5 @@
 /* A shared, quiet sign-off for every current page except Projects. */
-.site-footer.portfolio-footer { position:relative; display:flex; align-items:center; justify-content:space-between; gap:32px; margin:0; padding:42px 7vw; background:transparent; color:inherit; border:0; overflow:hidden; }
+.site-footer.portfolio-footer { position:relative; display:flex; align-items:center; justify-content:space-between; gap:32px; margin:0; padding:42px 7vw; background:var(--navy); color:var(--paper); border:0; overflow:hidden; }
 .portfolio-footer::before,.portfolio-footer::after { content:none; }
 .portfolio-footer-contact { display:flex; flex-direction:column; gap:9px; min-width:0; }
 .portfolio-footer-contact>a { font-size:clamp(18px,1.7vw,25px); line-height:1.4; font-weight:500; letter-spacing:-.025em; overflow-wrap:anywhere; }
@@ -10,10 +10,3 @@
 @media(max-width:700px) { .site-footer.portfolio-footer { align-items:flex-start; flex-direction:column; gap:24px; padding:32px 6vw; }.portfolio-footer-links { gap:16px 24px; font-size:12px; } }
 @media(prefers-reduced-motion:reduce) { .portfolio-footer a { transition:none; } }
 .portfolio-footer-contact { max-width:100%; }
-
-/* The page supplies the surface; every footer stays transparent. */
-body:has(> .portfolio-footer) { background:var(--footer-surface,var(--paper)); color:var(--footer-ink,var(--navy)); }
-body[data-page=index] { --footer-surface:var(--light-blue); }
-body[data-page=programeertalen] { --footer-surface:var(--navy); --footer-ink:var(--paper); }
-.portfolio-footer a:hover { color:inherit; }
-.portfolio-footer a:focus-visible { outline-color:currentColor; }

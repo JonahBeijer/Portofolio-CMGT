@@ -23,9 +23,9 @@ export function initMobileBrowserColour() {
             const x = Math.max(0, Math.min(innerWidth - 1, (viewport?.offsetLeft || 0) + (viewport?.width || innerWidth) / 2));
             const y = Math.max(0, Math.min(innerHeight - 1, (viewport?.offsetTop || 0) + (viewport?.height || innerHeight) - 2));
             let element = document.elementFromPoint(x, y);
-            while (element && element !== root) {
+            while (element && element !== document.body && element !== root) {
                 const background = getComputedStyle(element).backgroundColor;
-                // The stable page canvas also supplies transparent footer and overscroll colours.
+                // Ignore transparent surfaces so the actual painted ancestor wins.
                 if (/^rgb\(/.test(background)) { colour = background; break; }
                 element = element.parentElement;
             }

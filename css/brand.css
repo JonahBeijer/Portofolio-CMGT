@@ -206,6 +206,6 @@ body[data-page=projecten] .cd-heading { min-height:var(--cd-heading-height,0px);
  html { --mobile-edge-color:#112d4e; background:var(--mobile-edge-color); overscroll-behavior-y:none; }
  html:has(body[data-page=projecten]) { --mobile-edge-color:#f9f7f7; }
  html.menu-open:has(body) { --mobile-edge-color:#112d4e; }
- body,body.memory-page { background:var(--footer-surface,var(--paper)); overscroll-behavior-y:none; }
+ body,body.memory-page { background:var(--mobile-edge-color); overscroll-behavior-y:none; }
  body>main:not(.cd-work) { background:var(--paper,#f9f7f7); }
 }

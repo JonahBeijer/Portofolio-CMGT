@@ -1,4 +1,4 @@
-import { initMobileBrowserColour } from './mobile-browser-colour.js?v=20261105-transparent1';
+import { initMobileBrowserColour } from './mobile-browser-colour.js?v=20261105-album2';
 import { initMobileMenu } from './mobile-menu.js?v=20261105-album2';
 import { initNavigationHover } from './navigation-hover.js?v=20261105-1';
 import { initBioDecode } from './bio-decode.js?v=20261105-perf2';
