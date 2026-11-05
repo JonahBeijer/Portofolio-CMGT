@@ -13,15 +13,10 @@ async function mount(){
  stage.classList.remove('is-photo-table','is-wall-visible');
  delete stage.dataset.progress;delete stage.dataset.table;
  wrap.style.removeProperty('height');
- stage.classList.toggle('is-mobile-photos',narrow.matches);
- wrap.classList.toggle('is-mobile-photos',narrow.matches);
- if(narrow.matches){
-  const {initMobilePhotoWall}=await import('./photo-wall-mobile.js?v=20261105-album1');
-  if(!current.signal.aborted)initMobilePhotoWall({stage,signal:current.signal});
- }else{
-  const {initDesktopPhotoWall}=await import('./photo-wall-desktop.js?v=20261105-album1');
-  if(!current.signal.aborted)await initDesktopPhotoWall({signal:current.signal});
- }
+ stage.classList.remove('is-mobile-photos');
+ wrap.classList.remove('is-mobile-photos');
+ const {initPhotoWall}=await import('./photo-wall-scroll.js?v=20261105-scroll2');
+ if(!current.signal.aborted)await initPhotoWall({signal:current.signal});
 }
 narrow.addEventListener('change',mount);
 mount();
