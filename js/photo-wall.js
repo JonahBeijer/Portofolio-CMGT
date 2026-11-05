@@ -10,18 +10,21 @@ const photos=Array.from({length:columns*rows},(_,i)=>{const image=exampleImages[
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),lerp=(a,b,t)=>a+(b-a)*t,smooth=t=>t*t*(3-2*t);
 const language=()=>document.documentElement.lang==='en'?'en':'nl';
 const copy={nl:{about:'Over mij ↓',guide:'Scroll ↓ · kijk eens wat dichterbij',museumGuide:'Beweeg je muis over de foto’s',touchGuide:'Tik of sleep met het vergrootglas',mixed:'Mijn herinneringen',profileTitle:'Dit ben ik.',concerts:'Concerten bezoeken',profileNote:'Even voorstellen.',hobbyNote:'Als mijn laptop dicht is.',workNote:'Ook een deel van mij.',studyNote:'Nog lang niet uitgeleerd.',projectNote:'Van kijken naar maken.',pan:'Verschuif de fototafel',wall:'Mijn foto’s, gegroepeerd als een fototafel. Gebruik de pijltjestoetsen voor het vergrootglas.',categories:'Verzamelingen'},en:{about:'About me ↓',guide:'Scroll ↓ · take a closer look',museumGuide:'Move your mouse over the photographs',touchGuide:'Tap or drag the magnifying glass',mixed:'My memories',profileTitle:'This is me.',concerts:'Going to concerts',profileNote:'Nice to meet you.',hobbyNote:'When my laptop is closed.',workNote:'Part of me, too.',studyNote:'Still learning.',projectNote:'From looking to making.',pan:'Pan the photo table',wall:'My photographs, grouped as a photo table. Use the arrow keys to move the magnifying glass.',categories:'Collections'}};
-const cards=photos.map((photo,i)=>{const card=document.createElement('figure');card.className='photo-wall-card';card.dataset.slot=i+1;card.dataset.category=photo.group;const print=document.createElement('div');print.className='photo-wall-print';const img=document.createElement('img');img.src=photo.image;img.width=640;img.height=Math.round(640/photo.ratio);img.draggable=false;img.decoding='async';print.append(img);card.append(print);wall.append(card);return{card,img};});
-const labels=photoCategories.map(group=>{const h=document.createElement('h2');h.className='photo-table-label';h.dataset.category=group.id;wall.append(h);return h;});
+const cards=photos.map((photo,i)=>{const card=document.createElement('figure');card.className='photo-wall-card';card.dataset.slot=i+1;card.dataset.category=photo.group;const print=document.createElement('div');print.className='photo-wall-print';const img=document.createElement('img');const picture=document.createElement('picture'),source=document.createElement('source');source.media='(max-width:767px), (prefers-reduced-motion:reduce)';source.srcset=photo.image.replace('wall-photos/','wall-photos/mobile/');picture.append(source,img);img.src=photo.image;img.width=640;img.height=Math.round(640/photo.ratio);img.draggable=false;img.decoding='async';print.append(picture);card.append(print);wall.append(card);return{card,img};});
+const labels=photoCategories.map(group=>{const h=document.createElement('h2');h.className='photo-table-label';h.dataset.category=group.id;stage.append(h);return h;});
 const nav=document.createElement('nav');nav.className='photo-table-nav';nav.setAttribute('aria-label','Verzamelingen');
 const buttons=photoCategories.map((group,i)=>{const b=document.createElement('button');b.type='button';b.dataset.photoCategory=group.id;b.addEventListener('click',()=>focusGroup(i));nav.append(b);return b;});stage.append(nav);
 const glass=document.createElement('div');glass.className='photo-table-lens';glass.setAttribute('aria-hidden','true');
 const canvas=document.createElement('canvas');glass.append(canvas);stage.append(glass);const ctx=canvas.getContext('2d',{alpha:false});
 let origin=0,distance=innerHeight*2.6,endHold=innerHeight*.7,target=0,progress=0,raf=0,lastFrame=0,visible=true,pan=0,panTarget=0,selectedGroup=0;
 let layoutData=null,screenPhotos=[],screenLabels=[],baseWidth=0,lensSize=0,dpr=1,drag=null;
+let stageWidth=0,stageHeight=0,paintedProgress=-1,paintedPan=-1,layoutFrame=0;
+const cardHeights=new Map();
+cards.forEach(({card},i)=>{card.style.opacity='1';card.style.zIndex=String(i+1);card.style.setProperty('--print-scale','1');});
 const lens={x:0,y:0,targetX:0,targetY:0,active:false,touch:false};
 wall.tabIndex=0;wall.setAttribute('role','group');
-function request(){if(!raf)raf=requestAnimationFrame(draw);}
-function measure(){target=clamp((scrollY-origin)/distance);if(target<.72)lens.active=false;if(visible)request();}
+function request(){if(visible&&!document.hidden&&!raf)raf=requestAnimationFrame(draw);}
+function measure(){const next=clamp((scrollY-origin)/distance);const changed=next!==target;target=next;if(visible)bar.style.transform=`scaleX(${clamp((scrollY-origin)/(distance+endHold))})`;if(target<.72)lens.active=false;if(changed||progress!==target)request();}
 function makeLayout(w,h){
  if(w>=768)return makeDesktopLayout(w,h);
  const mobile=w<768,groupW=mobile?255:340,cols=4,tileGap=mobile?14:18,tileW=(groupW-(cols-1)*tileGap)/cols;
@@ -64,7 +67,15 @@ function makeDesktopLayout(w,h){
  best.groups.forEach((group,g)=>{const anchor=best.anchors[g];heads.push({x:anchor.x,y:anchor.y,w:group.width,group:g});for(const p of group.local)positions[p.index]={...p,x:p.x+anchor.x,y:p.y+anchor.y};});
  return{positions,heads,scale:best.scale,width:best.width*best.scale,height:best.height*best.scale,groupW:best.groups[0].width*best.scale,top,overflow:0,mobile:false};
 }
-function layout(){origin=wrap.getBoundingClientRect().top+scrollY-parseFloat(getComputedStyle(stage).top);distance=innerHeight*2.6;endHold=innerHeight*.7;wrap.style.height=stage.offsetHeight+distance+endHold+'px';layoutData=makeLayout(stage.clientWidth,stage.clientHeight);measure();}
+function layout(){
+ layoutFrame=0;const w=stage.clientWidth,h=stage.clientHeight;
+ origin=wrap.getBoundingClientRect().top+scrollY-parseFloat(getComputedStyle(stage).top);
+ // svh is stable while the mobile address bar expands/collapses.
+ distance=h*2.6;endHold=h*.7;wrap.style.height=h+distance+endHold+'px';
+ if(w!==stageWidth||h!==stageHeight||!layoutData){stageWidth=w;stageHeight=h;layoutData=makeLayout(w,h);paintedProgress=-1;}
+ measure();request();
+}
+function requestLayout(){if(!layoutFrame)layoutFrame=requestAnimationFrame(layout);}
 function boardX(w){return layoutData.overflow?w*.05-pan*layoutData.overflow:(w-layoutData.width)/2;}
 function focusGroup(i){selectedGroup=i;const w=stage.clientWidth;panTarget=layoutData.overflow?clamp(((layoutData.heads[i].x+layoutData.heads[i].w/2)*layoutData.scale-w*.45)/layoutData.overflow):0;buttons.forEach((b,j)=>b.setAttribute('aria-pressed',String(i===j)));if(!layoutData.mobile){lens.targetX=(w-layoutData.width)/2+(layoutData.heads[i].x+layoutData.heads[i].w/2)*layoutData.scale;lens.targetY=layoutData.top+(layoutData.heads[i].y+100)*layoutData.scale;lens.active=true;}request();}
 function placeLens(x,y){const r=lensSize/2;const w=stage.clientWidth,h=stage.clientHeight;lens.targetX=clamp(x,12,w-12);lens.targetY=clamp(y,layoutData.top-5,h-65);if(!lens.active){lens.x=lens.targetX;lens.y=lens.targetY;}lens.active=true;request();}
@@ -73,20 +84,26 @@ function draw(now){
  progress=reduced.matches?target:lerp(progress,target,1-Math.exp(-dt*9));if(Math.abs(progress-target)<.0002)progress=target;
  pan=reduced.matches?panTarget:lerp(pan,panTarget,1-Math.exp(-dt*12));if(Math.abs(pan-panTarget)<.0002)pan=panTarget;
  lens.x=reduced.matches?lens.targetX:lerp(lens.x,lens.targetX,1-Math.exp(-dt*22));lens.y=reduced.matches?lens.targetY:lerp(lens.y,lens.targetY,1-Math.exp(-dt*22));
- const w=stage.clientWidth,h=stage.clientHeight,mobile=layoutData.mobile,wallT=smooth(clamp(progress/.62)),tableT=smooth(clamp((progress-.55)/.45));
+ const w=stageWidth,h=stageHeight,mobile=layoutData.mobile,wallT=smooth(clamp(progress/.62)),tableT=smooth(clamp((progress-.55)/.45));
  const gap=lerp(12,mobile?8:12,wallT),endCellH=Math.min(h*.65/5.25,mobile?110:(w*.91-gap*9)/10*16/9),cellW=lerp(Math.max(w/4.2,h*.24),endCellH*9/16,wallT),cellH=cellW*16/9;
  const gridW=cellW*10+gap*9,gridH=cellH*5+gap*4,cx=w/2,cy=lerp(h*.5,h*.58,wallT),bx=boardX(w);
 
  if(baseWidth!==64){baseWidth=64;cards.forEach(({card})=>{card.style.width='64px';card.style.height='113.7778px';});}
+ const geometryChanged=paintedProgress!==progress||paintedPan!==pan;
+ if(geometryChanged){
  screenPhotos=[];
  cards.forEach(({card,img},i)=>{const p=layoutData.positions[i],col=i%columns,row=Math.floor(i/columns),width=lerp(cellW,p.w*layoutData.scale*1.08,tableT),height=lerp(cellH,p.h*layoutData.scale*1.08,tableT);
   const x=lerp(cx-gridW/2+col*(cellW+gap),bx+(p.x-p.w*.04)*layoutData.scale,tableT),y=lerp(cy-gridH/2+row*(cellH+gap)+Math.sin(col*1.8)*h*.1*(1-wallT),layoutData.top+(p.y-p.h*.04)*layoutData.scale,tableT);
   // Fixed-size wrappers keep movement composited; only the print's aspect changes during assembly.
-  const angle=lerp(0,p.angle,tableT);card.style.transform=`translate3d(${x}px,${y}px,0) scale(${width/64}) rotate(${angle}deg)`;card.style.height=(height*64/width)+'px';card.style.opacity='1';card.style.zIndex=String(i+1);card.style.setProperty('--turn',(Math.sin(i*5.1)*1.8*(1-tableT))+'deg');card.style.setProperty('--print-scale','1');img.style.filter=`grayscale(${tableT}) brightness(${1-tableT*.46})`;
+  const angle=lerp(0,p.angle,tableT);card.style.transform=`translate3d(${x}px,${y}px,0) scale(${width/64}) rotate(${angle}deg)`;const cardHeight=(height*64/width).toFixed(3)+'px';if(cardHeights.get(card)!==cardHeight){card.style.height=cardHeight;cardHeights.set(card,cardHeight);}card.style.setProperty('--turn',(Math.sin(i*5.1)*1.8*(1-tableT))+'deg');
   screenPhotos.push({x,y,w:width,h:height,img,angle});
  });
- screenLabels=layoutData.heads.map((head,i)=>{const x=bx+head.x*layoutData.scale,y=layoutData.top+head.y*layoutData.scale;labels[i].textContent=photoCategories[i][language()];labels[i].style.transform=`translate(${x}px,${y}px)`;labels[i].style.opacity=tableT;return{x,y,text:photoCategories[i][language()]};});
+ screenLabels=layoutData.heads.map((head,i)=>{const x=bx+head.x*layoutData.scale,y=layoutData.top+head.y*layoutData.scale;labels[i].style.transform=`translate(${x}px,${y}px)`;labels[i].style.opacity=tableT;return{x,y,text:photoCategories[i][language()]};});
  shade.style.opacity=1-wallT;stage.style.backgroundColor='#112d4e';stage.style.color='#f9f7f7';heading.style.color='inherit';heading.style.transform='translateY(-50%)';heading.style.fontSize=lerp(Math.min(mobile?w*.19:w*.11,175),mobile?42:56,wallT)+'px';heading.style.top=lerp(mobile?43:50,14,wallT)+'%';
+ // One shared filter, outside the separate colour magnifier canvas.
+ wall.style.filter=`grayscale(${tableT}) brightness(${1-tableT*.46})`;
+ paintedProgress=progress;paintedPan=pan;
+ }
  bar.style.transform=`scaleX(${clamp((scrollY-origin)/(distance+endHold))})`;stage.dataset.progress=progress.toFixed(3);stage.dataset.table=tableT.toFixed(3);wall.dataset.pan=pan.toFixed(3);stage.classList.toggle('is-photo-table',tableT>.6);
  panControl.hidden=!(mobile&&progress>.78&&layoutData.overflow>0);panControl.value=pan;nav.classList.toggle('is-ready',progress>.78);
  const newSize=mobile?168:244;if(lensSize!==newSize||dpr!==Math.min(devicePixelRatio||1,2)){lensSize=newSize;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(lensSize*dpr);canvas.height=Math.round(lensSize*dpr);glass.style.width=glass.style.height=lensSize+'px';}
@@ -95,7 +112,7 @@ function draw(now){
  if(visible&&(progress!==target||pan!==panTarget||Math.abs(lens.x-lens.targetX)>.15||Math.abs(lens.y-lens.targetY)>.15))request();
 }
 function paintLens(){
- const r=lensSize/2,zoom=2.82;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.fillStyle='#112d4e';ctx.fillRect(0,0,lensSize,lensSize);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+ const r=lensSize/2,zoom=2.82;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.fillStyle='#112d4e';ctx.fillRect(0,0,lensSize,lensSize);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality=layoutData.mobile?'low':'high';
  for(const photo of screenPhotos){const x=r+(photo.x-lens.x)*zoom,y=r+(photo.y-lens.y)*zoom,w=photo.w*zoom,h=photo.h*zoom,pad=Math.max(w,h)*.16;if(x-pad>lensSize||y-pad>lensSize||x+w+pad<0||y+h+pad<0||!photo.img.complete||!photo.img.naturalWidth)continue;ctx.save();ctx.translate(x,y);ctx.rotate(photo.angle*Math.PI/180);ctx.fillStyle='#f9f7f7';const border=1.5*zoom;ctx.fillRect(-border,-border,w+2*border,h+2*border);const fit=Math.max(w/photo.img.naturalWidth,h/photo.img.naturalHeight),sw=w/fit,sh=h/fit;ctx.drawImage(photo.img,(photo.img.naturalWidth-sw)/2,(photo.img.naturalHeight-sh)/2,sw,sh,0,0,w,h);ctx.restore();}
  ctx.fillStyle='#f9f7f7';ctx.font='600 '+((layoutData.mobile?18:21)*zoom)+'px "Manrope", sans-serif';for(const label of screenLabels){const x=r+(label.x-lens.x)*zoom,y=r+(label.y+18-lens.y)*zoom;if(y>-10&&y<lensSize+30)ctx.fillText(label.text,x,y);}
 }
@@ -107,6 +124,9 @@ for(const event of ['pointerup','pointercancel','lostpointercapture'])wall.addEv
 wall.addEventListener('pointerleave',()=>{if(!lens.touch){lens.active=false;request();}});
 wall.addEventListener('keydown',e=>{const moves={ArrowLeft:[-28,0],ArrowRight:[28,0],ArrowUp:[0,-28],ArrowDown:[0,28]};if(progress<.78)return;if(moves[e.key]){e.preventDefault();placeLens((lens.active?lens.targetX:stage.clientWidth/2)+moves[e.key][0],(lens.active?lens.targetY:layoutData.top+120)+moves[e.key][1]);}if(e.key==='Escape'){lens.active=false;request();}});
 panControl.addEventListener('input',()=>{panTarget=Number(panControl.value);const center=panTarget*layoutData.overflow+stage.clientWidth*.45;selectedGroup=layoutData.heads.reduce((best,head,i)=>Math.abs((head.x+head.w/2)*layoutData.scale-center)<Math.abs((layoutData.heads[best].x+layoutData.heads[best].w/2)*layoutData.scale-center)?i:best,0);buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===selectedGroup)));request();});
-function translate(){const c=copy[language()];document.querySelectorAll('[data-memory-ui]').forEach(el=>{if(c[el.dataset.memoryUi])el.textContent=c[el.dataset.memoryUi];});wall.setAttribute('aria-label',c.wall);panControl.setAttribute('aria-label',c.pan);nav.setAttribute('aria-label',c.categories);buttons.forEach((b,i)=>{b.textContent=photoCategories[i][language()];b.setAttribute('aria-pressed',String(i===selectedGroup));});cards.forEach(({img},i)=>img.alt=(language()==='en'?'Personal photograph ':'Persoonlijke foto ')+(i+1));request();}
-new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;stage.classList.toggle('is-wall-visible',visible);if(!visible){lens.active=false;glass.classList.remove('is-active');document.body.classList.remove('is-photo-magnifying');}else request();}).observe(stage);
-window.addEventListener('scroll',measure,{passive:true});window.addEventListener('resize',layout);window.addEventListener('load',layout);reduced.addEventListener('change',measure);document.addEventListener('languageChanged',translate);translate();layout();
+function translate(){const c=copy[language()];paintedProgress=-1;labels.forEach((label,i)=>label.textContent=photoCategories[i][language()]);document.querySelectorAll('[data-memory-ui]').forEach(el=>{if(c[el.dataset.memoryUi])el.textContent=c[el.dataset.memoryUi];});wall.setAttribute('aria-label',c.wall);panControl.setAttribute('aria-label',c.pan);nav.setAttribute('aria-label',c.categories);buttons.forEach((b,i)=>{b.textContent=photoCategories[i][language()];b.setAttribute('aria-pressed',String(i===selectedGroup));});cards.forEach(({img},i)=>img.alt=(language()==='en'?'Personal photograph ':'Persoonlijke foto ')+(i+1));request();}
+new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;stage.classList.toggle('is-wall-visible',visible);if(!visible){cancelAnimationFrame(raf);raf=0;lastFrame=0;lens.active=false;glass.classList.remove('is-active');document.body.classList.remove('is-photo-magnifying');}else{lastFrame=0;measure();request();}}).observe(stage);
+window.addEventListener('scroll',measure,{passive:true});new ResizeObserver(requestLayout).observe(stage);window.addEventListener('load',requestLayout);reduced.addEventListener('change',()=>{measure();request();});document.addEventListener('languageChanged',translate);translate();layout();
+
+document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else{lastFrame=0;measure();request();}});
+cards.forEach(({img})=>img.addEventListener('load',()=>{if(lens.active)request();}));

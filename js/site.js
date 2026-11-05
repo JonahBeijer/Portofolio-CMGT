@@ -1,5 +1,5 @@
 import { initNavigationHover } from './navigation-hover.js?v=20261105-1';
-import { initBioDecode } from './bio-decode.js?v=20261104-1';
+import { initBioDecode } from './bio-decode.js?v=20261105-perf2';
 import './portfolio-versions.js?v=20261104-routes1';
 import './cd-navigation.js?v=20261104-routes1';
 import { currentLanguage, setLanguage, translations } from '../language.js?v=20261105-teamwork1';
@@ -106,7 +106,10 @@ function measureGallery() {
 function updateScroll() {
     scrollPending = false;
     const range = document.documentElement.scrollHeight - innerHeight;
-    document.documentElement.style.setProperty('--scroll-progress', range > 0 ? clamp(scrollY / range) : 0);
+    document.querySelector('.site-header')?.style.setProperty('--header-progress', range > 0 ? clamp(scrollY / range) : 0);
+    // These legacy decorative scenes are desktop-only; mobile uses native scrolling.
+    if (innerWidth < 768) return;
+    document.querySelector('main')?.style.setProperty('--scroll-progress', range > 0 ? clamp(scrollY / range) : 0);
     if (opening && !reducedMotion.matches) {
         const rect = opening.getBoundingClientRect();
         const progress = clamp((80 - rect.top) / Math.max(1, opening.offsetHeight - (innerHeight - 80)));

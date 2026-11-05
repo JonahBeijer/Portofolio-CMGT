@@ -1,7 +1,7 @@
 // A single left-to-right decode pass, with the real text preserved for assistive technology.
 export function initBioDecode() {
     const bio = document.querySelector('#bio[data-bio-decode]');
-    if (!bio || !('IntersectionObserver' in window)) return;
+    if (!bio || !('IntersectionObserver' in window) || matchMedia('(pointer:coarse), (max-width:767px)').matches) return;
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     const played = new Set();
     let frame = 0, savedHTML = null, generation = 0;

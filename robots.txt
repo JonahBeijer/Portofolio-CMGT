@@ -3,3 +3,15 @@ Allow: /
 Disallow: /versions/
 
 Sitemap: https://www.jonahbeijer.nl/sitemap.xml
+
+# Keep these personal photographs on the site, outside Google image results.
+User-agent: Googlebot-Image
+Disallow: /versions/
+Disallow: /img/IMG_0454.PNG
+Disallow: /img/work-photos/IMG_0454.webp
+Disallow: /img/IMG_6192.jpeg
+Disallow: /img/5b3101c2-059b-4608-bc8a-2034e1c0846d.JPG
+Disallow: /img/digiwedo-sfeer-2.1.jpg
+Disallow: /img/work-photos/digiwedo-sfeer-2.1.webp
+Disallow: /img/IMG_4493.jpeg
+Disallow: /img/work-photos/IMG_4493.webp

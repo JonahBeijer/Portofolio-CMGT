@@ -5,6 +5,7 @@ sharp.cache({memory:24,files:0,items:32});sharp.concurrency(2);
 const root=path.resolve(__dirname,'..');process.chdir(root);
 const listFile='js/photo-wall-examples.js',list=JSON.parse(fs.readFileSync(listFile,'utf8').match(/export const exampleImages\s*=\s*(\[[\s\S]*?\]);/)[1]);
 const folder='img/wall-photos',manifestFile=folder+'/manifest.json';fs.mkdirSync(folder,{recursive:true});
+fs.mkdirSync(folder+'/mobile',{recursive:true});
 const previous=fs.existsSync(manifestFile)?JSON.parse(fs.readFileSync(manifestFile,'utf8')):[];
 const originals=list.map(file=>previous.find(item=>item.optimized===file)?.original||file);
 (async()=>{const manifest=[];for(const original of originals){
@@ -13,6 +14,8 @@ const originals=list.map(file=>previous.find(item=>item.optimized===file)?.origi
  let pipeline=sharp(original,{animated});if(!animated)pipeline=pipeline.rotate();
  pipeline=pipeline.resize({width:640,height:1138,fit:'inside',withoutEnlargement:true});
  await pipeline.webp({quality:78,effort:4,...(animated?{loop:metadata.loop||0,delay:metadata.delay}:{})}).toFile(optimized);
+ // A still avoids continuous GIF decoding on touch devices and respects reduced motion.
+ await sharp(original).rotate().resize({width:320,height:569,fit:'inside',withoutEnlargement:true}).webp({quality:74,effort:4}).toFile(folder+'/mobile/'+path.basename(optimized));
  const result=await sharp(optimized,{animated}).metadata();
  manifest.push({original,optimized,width:result.width,height:result.pageHeight||result.height,frames:result.pages||1,originalBytes:fs.statSync(original).size,optimizedBytes:fs.statSync(optimized).size,originalPixels:metadata.width*metadata.height*(metadata.pages||1),optimizedPixels:result.width*result.height});
  }

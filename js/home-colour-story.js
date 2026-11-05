@@ -1,6 +1,6 @@
 // Keep the internal colour changes, with clean edges at the photo wall and footer.
 const colourHome=document.querySelector('.home-profile');
-if(colourHome){
+if(colourHome&&!matchMedia('(pointer:coarse), (max-width:767px)').matches){
  const reduced=matchMedia('(prefers-reduced-motion:reduce)'),root=document.documentElement;
  const clamp=n=>Math.max(0,Math.min(1,n)),ease=n=>n*n*(3-2*n);
  const scenes=[['.profile-offline','var(--blue)','iris',1],['.profile-occupation','var(--light-blue)','panels',2]].map(([selector,colour,type,count])=>{

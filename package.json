@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-cmgt",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i css/tailwind-input.css -o css/utilities.css --minify",
+    "build": "npm run build:css && node scripts/build-clean-pages.cjs"
+  },
+  "devDependencies": { "tailwindcss": "3.4.17" }
+}

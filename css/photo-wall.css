@@ -39,3 +39,7 @@
 .wall-pan::-webkit-slider-thumb { appearance:none; width:8px; height:8px; border-radius:50%; background:#6f7855; margin-top:-3.5px; }
 .wall-pan::-moz-range-track { height:1px; background:#838a6a66; }
 .wall-pan::-moz-range-thumb { width:8px; height:8px; border:0; border-radius:50%; background:#6f7855; }
+
+/* Bound the shared filter surface to the visible table. */
+.photo-wall { contain:layout paint; }
+.photo-wall-print picture { display:contents; }

@@ -22,7 +22,7 @@ button { border: 0; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
 .eyebrow { font: 500 10px 'Space Grotesk',sans-serif; text-transform: uppercase; letter-spacing: .12em; }
 .site-header { height: 80px; position: fixed; inset: 0 0 auto; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0 4vw; background: rgba(237,236,231,.92); backdrop-filter: blur(12px); border-bottom: 1px solid #17171a1c; }
-.site-header:after { content: ''; position: absolute; bottom: -1px; left: 0; height: 2px; width: calc(var(--scroll-progress)*100%); background: var(--accent); }
+.site-header:after { content: ''; position: absolute; bottom: -1px; left: 0; height: 2px; width:100%; transform:scaleX(var(--header-progress,0)); transform-origin:left; background: var(--accent); }
 .brand { display: inline-flex; align-items: center; gap: 7px; font: 700 25px 'Space Grotesk',sans-serif; letter-spacing: -2px; }
 .brand-star { color: var(--accent); font-size: 23px; margin-left: 2px; }
 .desktop-nav { display: flex; gap: 32px; }
@@ -432,3 +432,8 @@ body[data-page=resbeijer] .case-cover,body[data-page=animecollection] .case-cove
 .cd-navigation-color { position: fixed; inset: 0; z-index: 600; pointer-events: all; visibility: visible; }
 html.cd-arriving body { visibility: hidden; }
 html.cd-arriving { background: var(--cd-arrival-color,var(--paper)); }
+
+@media(pointer:coarse), (max-width:767px) {
+ .site-header { backdrop-filter:none; -webkit-backdrop-filter:none; background:#f9f7f7; }
+ .case-cover img { transform:rotate(-4deg); }
+}
