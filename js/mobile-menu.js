@@ -21,7 +21,7 @@ export function initMobileMenu(reduced) {
     menu.prepend(curtain, topline);
     const footer = document.createElement('div');
     footer.className = 'menu-contact';
-    footer.innerHTML = '<span data-menu-copy="contact"></span><a href="mailto:jonahbeijer@gmail.com">jonahbeijer@gmail.com <span aria-hidden="true">↗</span></a><span class="menu-signature">Jonah Beijer — Portfolio</span>';
+    footer.innerHTML = '<span data-menu-copy="contact"></span><a href="mailto:jonahbeijer@gmail.com">jonahbeijer@gmail.com <svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M6 6h12v12"></path></svg></a><span class="menu-signature">Jonah Beijer — Portfolio</span>';
     menu.append(footer);
     closeButton.textContent = '';
     closeButton.append(document.createElement('span'), document.createElement('span'));

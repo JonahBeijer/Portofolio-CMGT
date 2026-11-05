@@ -7,10 +7,10 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css?v=20261105-perf2">
         <link rel="stylesheet" href="css/utilities.css?v=20261105-static1">
-        <script type="module" blocking="render" src="js/site.js?v=20261105-menu1"></script>
-        <link rel="stylesheet" href="css/ifcc.css?v=20261030">
+        <script type="module" blocking="render" src="js/site.js?v=20261105-menu2"></script>
+        <link rel="stylesheet" href="css/ifcc.css?v=20261105-links1">
     <script>try { const n = JSON.parse(sessionStorage.getItem('jb-cd-navigation')); if (n && n.direction === 'enter' && !n.handoff && location.pathname.endsWith('/' + n.page) && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.style.setProperty('--cd-arrival-color', n.color); document.documentElement.classList.add('cd-arriving'); setTimeout(() => document.documentElement.classList.remove('cd-arriving'), 4000); } } catch {}</script>
-    <link rel="stylesheet" href="css/brand.css?v=20261102-polish3"><link rel="stylesheet" href="css/cd-navigation.css?v=20261103-handoff2"><link rel="stylesheet" href="css/project-story.css?v=20261104-3"><script type="module" src="js/project-story.js?v=20261104-3"></script><link rel="stylesheet" href="css/ui-arrows.css?v=20261104-1"><script defer src="js/ui-arrows.js?v=20261104-1"></script>
+    <link rel="stylesheet" href="css/brand.css?v=20261105-menu2"><link rel="stylesheet" href="css/cd-navigation.css?v=20261103-handoff2"><link rel="stylesheet" href="css/project-story.css?v=20261104-3"><script type="module" src="js/project-story.js?v=20261104-3"></script><link rel="stylesheet" href="css/ui-arrows.css?v=20261104-1"><script defer src="js/ui-arrows.js?v=20261104-1"></script>
 <meta name="description" content="Bekijk IFCC Events, een project van Jonah Beijer. Ontdek de functionaliteiten, gebruikte technologieën, beelden en projectlinks.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://www.jonahbeijer.nl/ifcc.html">
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://www.jonahbeijer.nl/ifcc.html">
 <meta property="og:image" content="https://www.jonahbeijer.nl/img/ifcc-banner.webp">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="css/navigation-hover.css?v=20261105-2"><link rel="stylesheet" href="css/typography.css?v=20261105-refine3"><link rel="preload" href="fonts/Misto.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="fonts/Manrope.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="css/site-footer.css?v=20261105-2"><link rel="stylesheet" href="css/mobile-menu.css?v=20261105-menu1"></head>
+<link rel="stylesheet" href="css/navigation-hover.css?v=20261105-2"><link rel="stylesheet" href="css/typography.css?v=20261105-refine3"><link rel="preload" href="fonts/Misto.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="fonts/Manrope.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="css/site-footer.css?v=20261105-2"><link rel="stylesheet" href="css/mobile-menu.css?v=20261105-menu2"></head>
     <body id="top" data-page="ifcc" class="no-scroll-scenes">
         <header class="site-header">
             <a class="brand" href="home/" aria-label="Jonah Beijer — Home">J/B
@@ -80,6 +80,7 @@
  <div class="ifcc-store-links">
  <a href="https://apps.apple.com/nl/app/ifcc-events/id6754977474" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple" aria-hidden="true"></i><span data-translate="ifccAppStoreLink">App Store</span><span aria-hidden="true">↗</span></a>
  <a href="https://play.google.com/store/apps/details?id=com.digiwedo.ifccevents" target="_blank" rel="noopener noreferrer"><i class="fab fa-google-play" aria-hidden="true"></i><span data-translate="ifccPlayStoreLink">Google Play</span><span aria-hidden="true">↗</span></a>
+ <a href="https://www.figma.com/design/SzwZezMW1KineKC3QtM5ye/IFFC-App-Design?node-id=0-1&amp;t=sjElwft3TTUC7pXp-1" target="_blank" rel="noopener noreferrer"><i class="fab fa-figma" aria-hidden="true"></i><span>Figma design</span><span aria-hidden="true">↗</span></a>
  </div></div>
  <!-- RECHTERKANT (Info) -->
                     <div class="case-narrative">
@@ -114,39 +115,7 @@
                                     </div>
                                 </div></details>
                             </div>
-                        <div class="mt-6">
-                    <h4 class="font-semibold mb-4" data-translate="ifccBackendTitle">Ontwikkeling: Backend (Filament)</h4>
-                    <div class="grid gap-4 case-disclosures">
-                        <details class="case-disclosure" name="highlight-group-1"><summary><span data-translate="ifccBackendCard1Title">API &amp; Databeheer</span></summary><div class="case-disclosure-body">
-
-                            <p class="text-sm text-gray-600" data-translate="ifccBackendCard1Desc">Opbouw van resources voor artikelen, sprekers en presentaties. Gegevens worden via een beveiligde REST API ontsloten naar de app.</p>
-                        </div></details>
-                        <details class="case-disclosure" name="highlight-group-1"><summary><span data-translate="ifccBackendCard2Title">Auth &amp; Rechten</span></summary><div class="case-disclosure-body">
-
-                            <p class="text-sm text-gray-600" data-translate="ifccBackendCard2Desc">Toegangsbeheer via QR-codes (Laravel Sanctum) en Spatie Permission voor rollen zoals Admin, Editor en Officer.</p>
-                        </div></details>
-                        <details class="case-disclosure" name="highlight-group-1"><summary><span data-translate="ifccBackendCard3Title">Page-Maker &amp; Kaarten</span></summary><div class="case-disclosure-body">
-
-                            <p class="text-sm text-gray-600" data-translate="ifccBackendCard3Desc">Complexe pagina's en dynamische menu's opbouwen via datablokken, plus een tool om afbeeldingen om te zetten in interactieve 2D-kaarten.</p>
-                        </div></details>
-                    </div>
-                </div><div class="mt-6">
-                    <h4 class="font-semibold mb-4" data-translate="ifccFrontendTitle">Ontwikkeling: Frontend (Expo)</h4>
-                    <div class="grid gap-4 case-disclosures">
-                        <details class="case-disclosure" name="highlight-group-2"><summary><span data-translate="ifccFrontendCard1Title">Dynamische Interface</span></summary><div class="case-disclosure-body">
-
-                            <p class="text-sm text-gray-600" data-translate="ifccFrontendCard1Desc">De app genereert schermen op basis van dynamische componenten (headings, afbeeldingen, paragrafen) uit de API.</p>
-                        </div></details>
-                        <details class="case-disclosure" name="highlight-group-2"><summary><span data-translate="ifccFrontendCard2Title">Offline Caching</span></summary><div class="case-disclosure-body">
-
-                            <p class="text-sm text-gray-600" data-translate="ifccFrontendCard2Desc">Met stale-while-revalidate logica blijft eerder ingeladen content ook zonder stabiele internetverbinding soepel werken.</p>
-                        </div></details>
-                        <details class="case-disclosure" name="highlight-group-2"><summary><span data-translate="ifccFrontendCard3Title">Navigatie &amp; QR</span></summary><div class="case-disclosure-body">
-
-                            <p class="text-sm text-gray-600" data-translate="ifccFrontendCard3Desc">Interactieve plattegronden voor oriëntatie en een QR-scanner om afgeschermde meetings of sprekersinformatie te openen.</p>
-                        </div></details>
-                    </div>
-                </div></div>
+                        </div>
                         <!-- Technologieën -->
                         <div class="case-chapter" data-index="03">
                             <h3 class="text-xl font-medium text-blue-500 mb-3 xl:text-2xl" data-translate="ifccTechnologiesTitle">Technologieën</h3>
@@ -158,23 +127,9 @@
                                 <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">App/Play Store</span>
                             </div>
                         </div>
-                        <!-- Links -->
-                        <div class="case-chapter" data-index="04">
-                            <a href="https://github.com/DIGIWEDO/ifcc-app-portal" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i>
-                                <span data-translate="ifccBackendGithub">Backend GitHub</span>
-                            </a>
-                            <a href="https://github.com/DIGIWEDO/ifcc-event-app" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i>
-                                <span data-translate="ifccExpoGithub">Expo GitHub</span>
-                            </a>
-                        </div>
+
                     </div>
                 </div>
-                <!-- Backend / Filament -->
-
-                <!-- Frontend / Expo -->
-
                 <!-- Store & Design -->
                 <div class="case-highlights reveal">
                     <h3 class="text-xl font-semibold text-blue-600 mb-4" data-translate="ifccStoreDesignTitle">Publicatie &amp; Design</h3>
@@ -182,7 +137,7 @@
                         <div class="bg-gray-50 p-4 rounded-lg">
                             <h4 class="font-medium mb-2" data-translate="ifccDesignCard1Title">Iteratief Ontwerp</h4>
                             <p class="text-sm text-gray-600 mb-2" data-translate="ifccDesignCard1Desc">Ontworpen in nauw overleg met Digital Designers via meerdere feedbackrondes voor optimale UX/UI.</p>
-                            <a href="https://www.figma.com/design/SzwZezMW1KineKC3QtM5ye/IFFC-App-Design?node-id=0-1&amp;t=sjElwft3TTUC7pXp-1" target="_blank" class="text-blue-500 hover:underline break-all text-sm" data-translate="ifccDesignCard1Link" rel="noopener noreferrer">Bekijk het Figma Ontwerp</a>
+
                         </div>
                         <div class="bg-gray-50 p-4 rounded-lg">
                             <h4 class="font-medium mb-2" data-translate="ifccStoreCard2Title">App Store &amp; Play Store</h4>

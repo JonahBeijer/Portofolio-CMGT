@@ -200,3 +200,10 @@ body[data-page] .case-cover { background:var(--project-color,var(--navy)); }
 /* Keep shelf space independent of the selected project's text length. */
 body[data-page=projecten] .cd-meta { min-height:var(--cd-meta-height,0px); }
 body[data-page=projecten] .cd-heading { min-height:var(--cd-heading-height,0px); }
+
+/* Match the mobile overscroll canvas to the footer, including Safari's bounce. */
+@media(max-width:767px) {
+ html { background:#112d4e; overscroll-behavior-y:none; }
+ body,body.memory-page { background:#112d4e; overscroll-behavior-y:none; }
+ body>main:not(.cd-work) { background:var(--paper,#f9f7f7); }
+}
