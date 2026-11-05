@@ -73,3 +73,30 @@
 .stack-footer .orbit-to-notes { grid-column:2; margin:0; }
 .stack-footer .stack-reset { grid-column:3; justify-self:end; }
 @media(max-width:600px) { .stack-footer { grid-template-columns:1fr; gap:16px; }.stack-footer .orbit-to-notes { grid-column:1; justify-self:center; }.stack-footer .stack-reset { grid-column:1; } }
+/* One complete viewport below the fixed navigation, at every screen height. */
+body[data-page=programeertalen] { --toolkit-header-height:80px; }
+body[data-page=programeertalen] .toolkit-main { padding-top:var(--toolkit-header-height); }
+.stack-console { display:grid; grid-template-rows:auto minmax(0,1fr) auto auto; height:calc(100svh - var(--toolkit-header-height,80px)); min-height:0; padding:clamp(12px,2.5svh,24px) 6vw clamp(14px,2.5svh,24px); row-gap:clamp(8px,1.4svh,14px); box-sizing:border-box; }
+.stack-console .stack-filters { margin:0; }
+.stack-console .stack-workspace { height:auto; min-height:0; margin:0 -3vw; }
+.stack-console .stack-bottomline { width:min(100%,560px); margin:0 auto; }
+.stack-console .stack-footer { margin:0; gap:12px; }
+.stack-console .stack-module { width:clamp(74px,13svh,110px); height:clamp(74px,13svh,110px); }
+.stack-console.is-overview .stack-workspace { height:auto; min-height:0; margin:0; overflow:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#dbe2ef80 transparent; }
+.stack-console.is-overview .stack-board { min-height:100%; align-content:center; padding:18px 8px 34px; }
+@media(max-width:767px) {
+ body[data-page=programeertalen] { --toolkit-header-height:64px; }
+ .stack-console .stack-workspace { margin:0 -6vw; }
+ .stack-console .stack-module { width:clamp(60px,10svh,76px); height:clamp(60px,10svh,76px); }
+ .stack-console .stack-footer { grid-template-columns:minmax(0,1fr) auto; gap:10px; align-items:center; }
+ .stack-console .stack-footer .orbit-to-notes { grid-column:1; justify-self:start; padding:8px 0; max-width:180px; line-height:1.5; }
+ .stack-console .stack-footer .stack-reset { grid-column:2; grid-row:1; }
+ .stack-console.is-overview .stack-board { align-content:start; }
+}
+@media(max-height:650px) {
+ .stack-console .stack-filters button { padding:6px 0; }
+ .stack-console .stack-footer .stack-reset { padding:8px 12px; }
+ .stack-console .stack-bottomline { gap:14px; }
+ .stack-console .orbit-name { font-size:clamp(34px,8vw,100px); }
+ .stack-console .orbit-caption { gap:6px; }
+}

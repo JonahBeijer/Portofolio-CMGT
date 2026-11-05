@@ -74,3 +74,22 @@
  .home-profile .profile-occupation { padding-bottom:115px; }
  .home-profile .profile-occupation:after { height:32px; }
 }
+/* A small typographic roll for the traits, with the same blue as the biography decode. */
+.home-profile .profile-traits li { position:relative; min-width:0; padding:5px 0 8px; outline:none; }
+.home-profile .profile-traits li::before { transition:transform .5s cubic-bezier(.22,1,.36,1),border-radius .4s; }
+.home-profile .profile-traits li::after { content:''; position:absolute; left:16px; right:0; bottom:0; height:1px; background:var(--blue); opacity:.65; transform:scaleX(0); transform-origin:left; transition:transform .55s cubic-bezier(.22,1,.36,1); }
+.trait-roll { position:relative; display:block; min-width:0; overflow:visible; clip-path:inset(0 -14px 0 -1px); height:1.4em; line-height:1.4; }
+.trait-line { display:block; white-space:nowrap; transform:translateY(0); transition:transform .55s cubic-bezier(.22,1,.36,1),opacity .4s; }
+.trait-echo { position:absolute; left:0; top:100%; color:var(--blue); opacity:.4; }
+.home-profile .profile-traits li:is(:focus-visible,.is-trait-active) .trait-line { transform:translate(4px,-100%); }
+.home-profile .profile-traits li:is(:focus-visible,.is-trait-active) .trait-echo { opacity:1; }
+.home-profile .profile-traits li:is(:focus-visible,.is-trait-active)::after { transform:scaleX(1); }
+.home-profile .profile-traits li:is(:focus-visible,.is-trait-active)::before { transform:translateX(2px) rotate(90deg) scaleX(1.8); border-radius:1px; }
+.home-profile .profile-traits li:focus-visible { outline:1px solid #3f72af66; outline-offset:5px; border-radius:3px; }
+@media(hover:hover) and (pointer:fine) {
+ .home-profile .profile-traits li:hover .trait-line { transform:translate(4px,-100%); }
+ .home-profile .profile-traits li:hover .trait-echo { opacity:1; }
+ .home-profile .profile-traits li:hover::after { transform:scaleX(1); }
+ .home-profile .profile-traits li:hover::before { transform:translateX(2px) rotate(90deg) scaleX(1.8); border-radius:1px; }
+}
+@media(prefers-reduced-motion:reduce) { .home-profile .profile-traits li::before,.home-profile .profile-traits li::after,.trait-line { transition:none; } }

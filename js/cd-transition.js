@@ -57,7 +57,7 @@ export async function playCDTransition({album,stage,project,index,returning=fals
  reader.append(iframe,wash);layer.append(reader);
  let timer;
  const readerReady=new Promise(resolve=>{const finish=value=>{clearTimeout(timer);resolve(value);};iframe.addEventListener('load',async()=>{try{const header=iframe.contentDocument.querySelector('.site-header');if(header){header.style.backdropFilter='none';header.style.position='absolute';header.style.top=(returning?readerScroll:0)+'px';}await iframe.contentDocument.fonts.ready;iframe.contentWindow.scrollTo({top:returning?readerScroll:0,left:0,behavior:'instant'});await new Promise(resolve=>requestAnimationFrame(resolve));finish(true);}catch{finish(false);}},{once:true});iframe.addEventListener('error',()=>finish(false),{once:true});timer=setTimeout(()=>finish(false),6000);});
- iframe.src=new URL(project.page,location.href).href;
+ iframe.src=new URL(project.page,document.baseURI).href;
  const help=document.querySelector('.cd-help');if(help){const r=help.getBoundingClientRect(),caption=document.createElement('div');caption.className='cd-transition-caption';caption.textContent=document.documentElement.lang==='en'?(returning?'Returning to the collection':'Opening the project'):(returning?'Terug naar de collectie':'Project openen');Object.assign(caption.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px'});layer.append(caption);}
  document.body.classList.add('cd-is-opening');album.classList.add('is-opening-source');
  const neighbours=[...document.querySelectorAll('.cd-album')].filter(el=>el!==album).map(el=>({el,base:getComputedStyle(el).transform}));

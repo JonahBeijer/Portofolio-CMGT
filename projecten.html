@@ -2,26 +2,38 @@
 <html lang="nl">
     <head>
         <meta charset="UTF-8">
-        <script src="js/page-transitions.js?v=20261103-1"></script>
+<script data-clean-redirect>location.replace(new URL("projects/",location.href).href+location.search+location.hash);</script>
+        <script src="js/page-transitions.js?v=20261104-routes1"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Projecten — Jonah Beijer</title>
+        <title>Projects Jonah Beijer</title>
         <link rel="icon" href="./img/oog.png" type="image/png">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css?v=20261012-2">
+        <link rel="stylesheet" href="css/style.css?v=20261105-fonts1">
         <script src="https://cdn.tailwindcss.com"></script>
-        <script type="module" blocking="render" src="js/site.js?v=20261103-pages1"></script>
+        <script type="module" blocking="render" src="js/site.js?v=20261105-teamwork1"></script>
         <link rel="stylesheet" href="css/cd-gallery.css?v=20261102-polish1">
-        <script type="module" src="js/cd-gallery.js?v=20261103-peek1"></script>
+        <script type="module" src="js/cd-gallery.js?v=20261105-teamwork1"></script>
     <script>try { const n = JSON.parse(sessionStorage.getItem('jb-cd-navigation')); if (n && n.direction === 'return' && Date.now()-(n.createdAt||0)<20000 && n.from?.endsWith('/'+n.page) && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.style.setProperty('--cd-arrival-color', n.color); document.documentElement.classList.add('cd-arriving'); setTimeout(() => document.documentElement.classList.remove('cd-arriving'), 4000); } } catch {}</script>
-    <link rel="stylesheet" href="css/brand.css?v=20261102-polish3"><link rel="stylesheet" href="css/cd-transition.css?v=20261103-peek2"><link rel="stylesheet" href="css/cd-navigation.css?v=20261103-covers1"><link rel="stylesheet" href="css/page-transitions.css?v=20261103-1"></head>
+    <link rel="stylesheet" href="css/brand.css?v=20261102-polish3"><link rel="stylesheet" href="css/cd-transition.css?v=20261103-peek2"><link rel="stylesheet" href="css/cd-navigation.css?v=20261103-covers1"><link rel="stylesheet" href="css/page-transitions.css?v=20261103-1"><link rel="stylesheet" href="css/ui-arrows.css?v=20261104-1"><script defer src="js/ui-arrows.js?v=20261104-1"></script>
+<meta name="description" content="Ontdek de projecten van Jonah Beijer: websites, mobiele apps en games, met screenshots, demo’s, broncode en technische highlights.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://www.jonahbeijer.nl/projects/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jonah Beijer">
+<meta property="og:title" content="Projects Jonah Beijer">
+<meta property="og:description" content="Ontdek de projecten van Jonah Beijer: websites, mobiele apps en games, met screenshots, demo’s, broncode en technische highlights.">
+<meta property="og:url" content="https://www.jonahbeijer.nl/projects/">
+<meta property="og:image" content="https://www.jonahbeijer.nl/img/wall-photos/IMG_4026.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="css/navigation-hover.css?v=20261105-2"><link rel="stylesheet" href="css/typography.css?v=20261105-refine3"><link rel="preload" href="fonts/Misto.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="fonts/Manrope.woff2" as="font" type="font/woff2" crossorigin></head>
     <body id="top" data-page="projecten" class="no-scroll-scenes">
         <header class="site-header">
-            <a class="brand" href="index.html" aria-label="Jonah Beijer — Home">J/B
+            <a class="brand" href="home/" aria-label="Jonah Beijer — Home">J/B
             </a>
             <nav class="desktop-nav" aria-label="Navigatie">
-                <a class="nav-link" href="index.html" data-translate="navHome">Home</a>
-                <a class="nav-link" href="projecten.html" data-translate="navProjects">Projecten</a>
-                <a class="nav-link" href="programeertalen.html" data-translate="navLanguages">Programmeertalen</a>
+                <a class="nav-link" href="home/" data-translate="navHome">Home</a>
+                <a class="nav-link" href="projects/" data-translate="navProjects">Projecten</a>
+                <a class="nav-link" href="programming-languages/" data-translate="navLanguages">Programmeertalen</a>
             </nav>
             <div class="header-actions">
                 <label class="language-switch">
@@ -38,9 +50,9 @@
             <div id="mobileMenu" class="mobile-menu" hidden>
                 <button id="closeMenuButton" class="menu-close" aria-label="Sluit menu">×</button>
                 <nav aria-label="Mobiele navigatie">
-                    <a href="index.html" data-translate="navHome">Home</a>
-                    <a href="projecten.html" data-translate="navProjects">Projecten</a>
-                    <a href="programeertalen.html" data-translate="navLanguages">Programmeertalen</a>
+                    <a href="home/" data-translate="navHome">Home</a>
+                    <a href="projects/" data-translate="navProjects">Projecten</a>
+                    <a href="programming-languages/" data-translate="navLanguages">Programmeertalen</a>
                 </nav>
                 <label class="language-switch">
                     <span>NL</span>
@@ -51,7 +63,7 @@
             </div>
         </header>
         <main class="cd-work"><section class="cd-collection" aria-label="Project collection">
- <div class="cd-heading"><div><p class="eyebrow" data-cd-text="collection">De projectcollectie</p><h1 class="cd-current-title">Projects</h1></div><div class="cd-edition"><span data-cd-text="edition">DIGITALE COLLECTIE</span><span>JONAH BEIJER / CMGT</span><span class="cd-position">01 / 11</span></div></div>
+ <div class="cd-heading"><div><h1 class="cd-current-title">Projects</h1></div><div class="cd-edition"><span class="cd-position">01 / 11</span></div></div>
  <div class="cd-stage"><div class="cd-shelf"><a class="cd-album" href="Gamemaniac.html" style="--album-color:#112d4e" aria-label="Gamemaniac">
  <div class="cd-object"><div class="cd-disc" aria-hidden="true"></div><div class="cd-spine" aria-hidden="true"></div>
  <div class="cd-front"><div class="cd-cover"><div class="cd-cover-art"><img src="./img/gamemaniac.png" alt="Gamemaniac" draggable="false"></div><h2>Gamemaniac</h2><span class="cd-volume">VOL. 01</span></div></div>

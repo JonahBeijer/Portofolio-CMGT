@@ -1,3 +1,4 @@
+const isProjects=path=>/\/(?:projecten\.html|projects\/?)$/.test(path);
 // Transition requests are single-use. Merely visiting a detail page does not arm a return.
 const key='jb-cd-navigation',reduced=matchMedia('(prefers-reduced-motion:reduce)');
 function read(){try{return JSON.parse(sessionStorage.getItem(key));}catch{return null;}}
@@ -10,7 +11,7 @@ let leaving=false;
 async function arrive(){
  if(preview){document.documentElement.classList.remove('cd-arriving');return;}
  const state=read();
- if(location.pathname.endsWith('/projecten.html'))return;
+ if(isProjects(location.pathname))return;
  if(!matches(state)){clear();document.documentElement.classList.remove('cd-arriving');return;}
  const incoming=state.direction==='enter'&&Date.now()-(state.createdAt||0)<20000;
  write({...state,direction:'detail'});
@@ -24,8 +25,8 @@ document.addEventListener('click',async event=>{
  const link=event.target.closest('a[href]');if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target==='_blank'||link.hasAttribute('download'))return;
  const target=new URL(link.href,location.href),state=read();
  if(target.origin!==location.origin||target.pathname===location.pathname)return;
- if(location.pathname.endsWith('/projecten.html')&&state?.direction==='enter'&&target.pathname.endsWith('/'+state.page))return;
- if(!matches(state)||!target.pathname.endsWith('/projecten.html')){clear();return;}
+ if(isProjects(location.pathname)&&state?.direction==='enter'&&target.pathname.endsWith('/'+state.page))return;
+ if(!matches(state)||!isProjects(target.pathname)){clear();return;}
  event.preventDefault();if(leaving)return;leaving=true;
  write({...state,direction:'return',from:location.pathname,createdAt:Date.now(),readerScroll:scrollY});
  if(!state.handoff&&!reduced.matches&&Element.prototype.animate){const layer=colorLayer(state.color);await layer.animate([{opacity:0},{opacity:1}],{duration:280,easing:'ease-in',fill:'forwards'}).finished.catch(()=>{});}

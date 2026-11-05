@@ -1,0 +1,21 @@
+@font-face { font-family:'Aalto'; src:url('../fonts/Aalto.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+:root { --display-font:'Aalto','Space Grotesk',sans-serif; }
+.memory-wordmark,.cd-heading .cd-current-title,.home-profile .profile-introduction h2,.home-profile .offline-list h3,.home-profile .profile-occupation h2,.home-profile .study-card h3,.case-main .case-hero h1,.case-main .case-chapter h2,.case-main .case-chapter h3,.case-main .case-highlights>h3,.orbit-name,.learning-type-stage h2,.experience-art-word,.learning-lessons-heading h3,.footer-wordmark { font-family:var(--display-font); font-weight:400; font-synthesis:none; letter-spacing:-.025em; }
+.home-profile .profile-introduction h2 { font-size:clamp(54px,6vw,88px); line-height:1.08; }
+.case-main .case-chapter h2,.case-main .case-chapter h3 { font-size:clamp(25px,2.55vw,40px); line-height:1.18; overflow-wrap:anywhere; }
+.case-main .case-hero h1 { overflow-wrap:anywhere; line-height:1.08; }
+.orbit-name { font-size:clamp(40px,7vw,115px); max-width:92%; }
+@media(max-width:767px) {
+ .home-profile .profile-introduction h2 { font-size:clamp(42px,10.5vw,65px); }
+ .case-main .case-chapter h2,.case-main .case-chapter h3 { font-size:27px; }
+ .orbit-name { font-size:clamp(28px,7.7vw,60px); }
+}
+/* Aalto throughout the current portfolio, including body copy and interface labels. */
+:root,body,body.memory-page { --display-font:'Aalto',sans-serif; --heading-font:'Aalto',sans-serif; --body-font:'Aalto',sans-serif; }
+body,body :not(.fa):not(.fas):not(.far):not(.fab):not(.fal):not(.fad):not([class*="fa-"]) { font-family:'Aalto',sans-serif!important; font-synthesis:none; }
+body :not(.fa):not(.fas):not(.far):not(.fab):not(.fal):not(.fad):not([class*="fa-"])::before,body :not(.fa):not(.fas):not(.far):not(.fab):not(.fal):not(.fad):not([class*="fa-"])::after { font-family:'Aalto',sans-serif!important; }
+body p,body li,.contact-link { overflow-wrap:anywhere; }
+.contact-link { max-width:100%; }
+.home-profile .profile-traits li { font-size:clamp(13px,1.4vw,20px); }
+.mobile-menu nav a.has-nav-hover { font-size:clamp(17px,4.7vw,28px); }
+@media(max-width:767px) { .home-profile .profile-traits li { font-size:clamp(13px,3.4vw,16px); } }

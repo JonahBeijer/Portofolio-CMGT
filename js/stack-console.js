@@ -9,7 +9,7 @@ let visible=modules.map((_,i)=>i),active=0,position=0,target=0,overview=false,fr
 const wrap=(n,total)=>((n%total)+total)%total;
 const locale=()=>copy[document.documentElement.lang==='en'?'en':'nl'];
 function render(){
- const w=board.clientWidth,h=board.clientHeight,rx=w*(small.matches?.405:.40),ry=h*(small.matches?.34:.32),n=visible.length;
+ const w=board.clientWidth,h=board.clientHeight,rx=w*(small.matches?.405:.40),ry=Math.min(h*(small.matches?.34:.32),Math.max(0,h/2-(modules[0]?.offsetHeight||110)*.54-14)),n=visible.length;
  modules.forEach((m,i)=>{
   const slot=visible.indexOf(i),shown=slot!==-1;m.hidden=!shown;if(!shown)return;
   m.classList.toggle('is-selected',i===active);m.setAttribute('aria-pressed',String(i===active));

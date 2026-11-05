@@ -10,7 +10,7 @@ export const translations = {
         backLink: "Terug naar projecten",
 
         heading: "Wie ben ik?",
-        bio: `Ik ben <strong>Jonah Beijer</strong>, 22 jaar. Ik studeer Creative Media & Game Technologies aan Hogeschool Rotterdam en maak websites en apps. Sinds 2026 werk ik als developer bij DIGIWEDO. Daarnaast werk ik bij Stena Line. Ik leer graag nieuwe technieken en wil beter worden in wat ik maak.`,
+        bio: `Hi, ik ben Jonah Beijer. Ik ben 22 jaar en een enthousiaste developer met een sterke passie voor het bouwen van webapplicaties en apps. Ik wil mezelf blijven ontwikkelen, of dat nu betekent dat ik nieuwe vaardigheden leer of bestaande verbeter. Ik kijk erg uit naar wat mijn stage te bieden heeft en alles wat ik onderweg kan leren.`,
 
         navbarTitle: "Mijn Portfolio",
         homeLink: "Home",
@@ -74,7 +74,7 @@ export const translations = {
         jojosPopsLocationDescription: "De exacte locatie van een evenement wordt pas na de ingestelde reveal-tijd beschikbaar gemaakt.",
         jojosPopsNotificationsDescription: "Firebase Cloud Messaging wordt gebruikt voor systeemnotificaties en uitnodigingen.",
         jojosPopsFriendsDescription: "Gebruikers, vriendschappen, evenementen en uitnodigingen zijn centraal met elkaar verbonden.",
-        jojosPopsFeaturesTitle: "Belangrijkste functies",
+        jojosPopsFeaturesTitle: "Highlights",
         jojosPopsTechnologiesTitle: "Technologieën",
         jojosPopsTechnicalHighlightsTitle: "Technische highlights",
         jojosPopsLocationSecurityTitle: "Beveiligde locatievrijgave",
@@ -96,7 +96,7 @@ export const translations = {
         educationText: "Hogeschool Rotterdam Creative media & Game technologies",
         vintageAppTitle: "Vintage Store Finder",
         vintageAbout: "Een mobiele app ontwikkeld met React Native en Expo die vintage liefhebbers helpt bij het vinden van unieke tweedehands winkels. De app toont real-time openingsuren, locaties en laat gebruikers hun favoriete winkels opslaan.",
-        featuresTitle: "Belangrijkste functies",
+        featuresTitle: "Highlights",
         liveLocationsTitle: "Live Locaties",
         liveLocationsDesc: "Toont alle vintage winkels in de buurt op een interactieve kaart",
         favoritesTitle: "Favorieten",
@@ -227,9 +227,9 @@ export const translations = {
         experienceTitle: "Ervaring & Leerpunten",
         experienceIntro: "Tijdens mijn opleiding CMGT heb ik veel waardevolle ervaring opgedaan, zowel op technisch gebied als in het samenwerken met echte opdrachtgevers. Eén van de belangrijkste dingen die ik heb geleerd, is hoe je werkt volgens professionele standaarden zoals het OTAP-model (Ontwikkeling, Test, Acceptatie en Productie), de OWASP-richtlijnen voor veiligheid, en de WCAG-criteria om websites toegankelijk te maken voor iedereen, ook voor mensen met een beperking.",
         experienceSub1: "Praktijkervaring met Opdrachtgevers",
-        experienceText1: "Wat deze ervaringen extra bijzonder maakte, was dat we niet alleen theoretisch aan de slag gingen, maar ook praktijkervaring opdeden met echte opdrachtgevers. Zo werkte ik aan een project waarbij mijn vader de klant was. Dit gaf me een hele andere kijk op het contact met een opdrachtgever: je moet helder communiceren, verwachtingen afstemmen en professioneel blijven, ook als het om iemand gaat die je persoonlijk kent.",
+        experienceText1: "Sinds ik bij DIGIWEDO werk, heb ik veel geleerd over samenwerken met klanten. Vooral het project voor IFCC, een grote klant van DIGIWEDO, heeft me daarin veel ervaring opgeleverd. Ik heb geleerd hoe belangrijk het is om goed te luisteren, duidelijk te communiceren en verwachtingen op elkaar af te stemmen. Daardoor leer ik steeds beter hoe ik de wensen en feedback van een klant kan vertalen naar een werkende app.",
         experienceSub2: "Samenwerking & Teamwork",
-        experienceText2: "Daarnaast hebben we als groep een project gedaan voor Open Hiring, waarbij we een website ontwikkelden. Wat dit project speciaal maakte, was dat we begeleiding kregen van IO Digital. Zij hielpen ons bij het vormgeven van de website, gaven advies over hoe je professioneel te werk gaat en voorzagen ons regelmatig van waardevolle feedback.",
+        experienceText2: "Tijdens een groepsproject voor Open Hiring ontwikkelden we een website met begeleiding van IO Digital. Hun feedback op het ontwerp en onze aanpak hielp ons om beter als team samen te werken. Bij DIGIWEDO bouw ik daarop voort door samen te werken met klanten, een ontwerper en collega’s. Ik leer hoe belangrijk het is om ideeën op elkaar af te stemmen, feedback te bespreken en samen oplossingen te vinden die aansluiten bij de wensen van de klant en technisch goed werken.",
         insightsTitle: "Belangrijkste inzichten:",
         insight1: "Techniek en ontwerp zijn maar een deel van het werk",
         insight2: "Samenwerking en communicatie zijn cruciaal",
@@ -245,7 +245,7 @@ export const translations = {
         ifccAboutList1: "Filament CMS voor content- en kanaalbeheer",
         ifccAboutList2: "Dynamische Expo app met offline caching",
         ifccAboutList3: "Gepubliceerd in de App Store & Play Store",
-        ifccFeaturesTitle: "Kernonderdelen",
+        ifccFeaturesTitle: "Highlights",
         ifccDatabaseTitle: "Backend & API",
         ifccDatabaseDesc: "Centraal beheer van alle data.",
         ifccMobileTitle: "Mobiele App",
@@ -297,7 +297,7 @@ export const translations = {
         backLink: "Back to projects",
 
         heading: "Who am i?",
-        bio: `I’m <strong>Jonah Beijer</strong>, 22. I study Creative Media & Game Technologies at Rotterdam University of Applied Sciences and build websites and apps. I’ve worked as a developer at DIGIWEDO since 2026, and I also work at Stena Line. I like learning new technologies and getting better at what I make.`,
+        bio: `Hi, I’m Jonah Beijer I’m 22 years old and an enthusiastic developer with a strong passion for building web applications and apps. I’m always eager to learn and grow, whether that means picking up new skills or improving existing ones. I'm really looking forward to what my internship has to offer and everything I can learn from it along the way.`,
 
         navbarTitle: "My Portfolio",
         homeLink: "Home",
@@ -357,7 +357,7 @@ export const translations = {
         educationText: "Rotterdam University Creative media & Game technologies",
         vintageAppTitle: "Vintage Store Finder",
         vintageAbout: "A mobile app developed with React Native and Expo that helps vintage lovers find unique thrift stores. The app shows real-time opening hours, locations, and allows users to save their favorite stores.",
-        featuresTitle: "Key Features",
+        featuresTitle: "Highlights",
         liveLocationsTitle: "Live Locations",
         liveLocationsDesc: "Displays all nearby vintage stores on an interactive map",
         favoritesTitle: "Favorites",
@@ -489,9 +489,9 @@ export const translations = {
         experienceTitle: "Experience & Learnings",
         experienceIntro: "During my CMGT studies, I gained valuable experience both in technical areas and in collaborating with real clients. One of the most important things I learned is how to work according to professional standards like the OTAP model (Development, Test, Acceptance, Production), OWASP security guidelines, and WCAG criteria to make websites accessible for everyone, including people with disabilities.",
         experienceSub1: "Practical Experience with Clients",
-        experienceText1: "What made these experiences particularly special was that we didn't just work theoretically, but also gained practical experience with real clients. For example, I worked on a project where my father was the client. This gave me a completely different perspective on client communication: you need to communicate clearly, align expectations, and remain professional, even when dealing with someone you know personally.",
+        experienceText1: "Since joining DIGIWEDO, I've learned a lot about working with clients. Working on the IFCC project, for one of DIGIWEDO's major clients, has been especially valuable. It has taught me to listen carefully, communicate clearly and align expectations. I'm learning how to turn a client's needs and feedback into an app that works for them.",
         experienceSub2: "Collaboration & Teamwork",
-        experienceText2: "Additionally, we worked on a group project for Open Hiring where we developed a website. What made this project special was the guidance we received from IO Digital. They helped us design the website, advised us on professional workflows, and provided regular valuable feedback.",
+        experienceText2: "During a group project for Open Hiring, we developed a website with guidance from IO Digital. Their feedback on the design and our approach helped us work better as a team. At DIGIWEDO, I build on that experience by working with clients, a designer and colleagues. I'm learning to align ideas, discuss feedback and find solutions that meet the client's needs and work well technically.",
         insightsTitle: "Key Insights:",
         insight1: "Technology and design are only part of the work",
         insight2: "Collaboration and communication are crucial",
@@ -508,7 +508,7 @@ export const translations = {
         jojosPopsLocationDescription: "The exact location of an event only becomes available after the configured reveal time.",
         jojosPopsNotificationsDescription: "Firebase Cloud Messaging is used for system notifications and invitations.",
         jojosPopsFriendsDescription: "Users can manage friendships and receive invitations to events.",
-        jojosPopsFeaturesTitle: "Key Features",
+        jojosPopsFeaturesTitle: "Highlights",
         jojosPopsTechnologiesTitle: "Technologies",
         jojosPopsTechnicalHighlightsTitle: "Technical Highlights",
         jojosPopsLocationSecurityTitle: "Secure Location Release",
@@ -535,7 +535,7 @@ export const translations = {
         ifccAboutList1: "Filament CMS for content and channel management",
         ifccAboutList2: "Dynamic Expo app with offline caching",
         ifccAboutList3: "Published on the App Store & Play Store",
-        ifccFeaturesTitle: "Core Features",
+        ifccFeaturesTitle: "Highlights",
         ifccDatabaseTitle: "Backend & API",
         ifccDatabaseDesc: "Central management of all data.",
         ifccMobileTitle: "Mobile App",
@@ -639,8 +639,9 @@ export function setLanguage(lang) {
         if (el && t[id] !== undefined) el.textContent = t[id];
     });
     try { localStorage.setItem('language', currentLanguage); } catch {}
-    const title = document.body.dataset.page === 'index' ? t.portfolioTitle : document.querySelector('main h1')?.textContent.trim().replace(/\s+/g, ' ') || t.portfolioTitle;
-    document.title = `${title} — Jonah Beijer`;
+    const pageTitles = { index: t.portfolioTitle, projecten: 'Projects', programeertalen: 'Programming Languages' };
+    const title = pageTitles[document.body.dataset.page] || document.querySelector('main h1')?.textContent.trim().replace(/\s+/g, ' ') || t.portfolioTitle;
+    document.title = `${title} Jonah Beijer`;
     document.dispatchEvent(new CustomEvent('languageChanged', { detail: currentLanguage }));
 }
 

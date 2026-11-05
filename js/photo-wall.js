@@ -1,6 +1,6 @@
 import { exampleImages } from './photo-wall-examples.js?v=20261103-optimized1';
-import { photoCategories, categoryFor } from './photo-wall-categories.js?v=20261103-1';
-import './profile-notes.js?v=20261103-home-details1';
+import { photoCategories, categoryFor } from './photo-wall-categories.js?v=20261105-1';
+import './profile-notes.js?v=20261105-1';
 const wrap=document.querySelector('.memory-scroll'),stage=document.querySelector('.photo-wall-stage'),wall=document.querySelector('.photo-wall');
 const shade=stage.querySelector('.photo-wall-shade'),heading=stage.querySelector('h1'),bar=stage.querySelector('.photo-wall-progress span'),panControl=stage.querySelector('.wall-pan');
 const reduced=matchMedia('(prefers-reduced-motion:reduce)'),columns=10,rows=5;
@@ -16,7 +16,7 @@ const nav=document.createElement('nav');nav.className='photo-table-nav';nav.setA
 const buttons=photoCategories.map((group,i)=>{const b=document.createElement('button');b.type='button';b.dataset.photoCategory=group.id;b.addEventListener('click',()=>focusGroup(i));nav.append(b);return b;});stage.append(nav);
 const glass=document.createElement('div');glass.className='photo-table-lens';glass.setAttribute('aria-hidden','true');
 const canvas=document.createElement('canvas');glass.append(canvas);stage.append(glass);const ctx=canvas.getContext('2d',{alpha:false});
-let origin=0,distance=innerHeight*2.6,target=0,progress=0,raf=0,lastFrame=0,visible=true,pan=0,panTarget=0,selectedGroup=0;
+let origin=0,distance=innerHeight*2.6,endHold=innerHeight*.7,target=0,progress=0,raf=0,lastFrame=0,visible=true,pan=0,panTarget=0,selectedGroup=0;
 let layoutData=null,screenPhotos=[],screenLabels=[],baseWidth=0,lensSize=0,dpr=1,drag=null;
 const lens={x:0,y:0,targetX:0,targetY:0,active:false,touch:false};
 wall.tabIndex=0;wall.setAttribute('role','group');
@@ -64,7 +64,7 @@ function makeDesktopLayout(w,h){
  best.groups.forEach((group,g)=>{const anchor=best.anchors[g];heads.push({x:anchor.x,y:anchor.y,w:group.width,group:g});for(const p of group.local)positions[p.index]={...p,x:p.x+anchor.x,y:p.y+anchor.y};});
  return{positions,heads,scale:best.scale,width:best.width*best.scale,height:best.height*best.scale,groupW:best.groups[0].width*best.scale,top,overflow:0,mobile:false};
 }
-function layout(){origin=wrap.getBoundingClientRect().top+scrollY-parseFloat(getComputedStyle(stage).top);distance=innerHeight*2.6;wrap.style.height=stage.offsetHeight+distance+'px';layoutData=makeLayout(stage.clientWidth,stage.clientHeight);measure();}
+function layout(){origin=wrap.getBoundingClientRect().top+scrollY-parseFloat(getComputedStyle(stage).top);distance=innerHeight*2.6;endHold=innerHeight*.7;wrap.style.height=stage.offsetHeight+distance+endHold+'px';layoutData=makeLayout(stage.clientWidth,stage.clientHeight);measure();}
 function boardX(w){return layoutData.overflow?w*.05-pan*layoutData.overflow:(w-layoutData.width)/2;}
 function focusGroup(i){selectedGroup=i;const w=stage.clientWidth;panTarget=layoutData.overflow?clamp(((layoutData.heads[i].x+layoutData.heads[i].w/2)*layoutData.scale-w*.45)/layoutData.overflow):0;buttons.forEach((b,j)=>b.setAttribute('aria-pressed',String(i===j)));if(!layoutData.mobile){lens.targetX=(w-layoutData.width)/2+(layoutData.heads[i].x+layoutData.heads[i].w/2)*layoutData.scale;lens.targetY=layoutData.top+(layoutData.heads[i].y+100)*layoutData.scale;lens.active=true;}request();}
 function placeLens(x,y){const r=lensSize/2;const w=stage.clientWidth,h=stage.clientHeight;lens.targetX=clamp(x,12,w-12);lens.targetY=clamp(y,layoutData.top-5,h-65);if(!lens.active){lens.x=lens.targetX;lens.y=lens.targetY;}lens.active=true;request();}
@@ -87,7 +87,7 @@ function draw(now){
  });
  screenLabels=layoutData.heads.map((head,i)=>{const x=bx+head.x*layoutData.scale,y=layoutData.top+head.y*layoutData.scale;labels[i].textContent=photoCategories[i][language()];labels[i].style.transform=`translate(${x}px,${y}px)`;labels[i].style.opacity=tableT;return{x,y,text:photoCategories[i][language()]};});
  shade.style.opacity=1-wallT;stage.style.backgroundColor='#112d4e';stage.style.color='#f9f7f7';heading.style.color='inherit';heading.style.transform='translateY(-50%)';heading.style.fontSize=lerp(Math.min(mobile?w*.19:w*.11,175),mobile?42:56,wallT)+'px';heading.style.top=lerp(mobile?43:50,14,wallT)+'%';
- bar.style.transform=`scaleX(${progress})`;stage.dataset.progress=progress.toFixed(3);stage.dataset.table=tableT.toFixed(3);wall.dataset.pan=pan.toFixed(3);stage.classList.toggle('is-photo-table',tableT>.6);
+ bar.style.transform=`scaleX(${clamp((scrollY-origin)/(distance+endHold))})`;stage.dataset.progress=progress.toFixed(3);stage.dataset.table=tableT.toFixed(3);wall.dataset.pan=pan.toFixed(3);stage.classList.toggle('is-photo-table',tableT>.6);
  panControl.hidden=!(mobile&&progress>.78&&layoutData.overflow>0);panControl.value=pan;nav.classList.toggle('is-ready',progress>.78);
  const newSize=mobile?168:244;if(lensSize!==newSize||dpr!==Math.min(devicePixelRatio||1,2)){lensSize=newSize;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(lensSize*dpr);canvas.height=Math.round(lensSize*dpr);glass.style.width=glass.style.height=lensSize+'px';}
  const showLens=lens.active&&progress>.78&&visible;glass.classList.toggle('is-active',showLens);document.body.classList.toggle('is-photo-magnifying',showLens);const displayX=lens.touch?clamp(lens.x,lensSize/2+8,w-lensSize/2-8):lens.x,displayY=lens.touch?clamp(lens.y,lensSize/2+8,h-lensSize/2-55):lens.y;glass.style.transform=`translate3d(${displayX-lensSize/2}px,${displayY-lensSize/2}px,0)`;
@@ -97,7 +97,7 @@ function draw(now){
 function paintLens(){
  const r=lensSize/2,zoom=2.82;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.fillStyle='#112d4e';ctx.fillRect(0,0,lensSize,lensSize);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
  for(const photo of screenPhotos){const x=r+(photo.x-lens.x)*zoom,y=r+(photo.y-lens.y)*zoom,w=photo.w*zoom,h=photo.h*zoom,pad=Math.max(w,h)*.16;if(x-pad>lensSize||y-pad>lensSize||x+w+pad<0||y+h+pad<0||!photo.img.complete||!photo.img.naturalWidth)continue;ctx.save();ctx.translate(x,y);ctx.rotate(photo.angle*Math.PI/180);ctx.fillStyle='#f9f7f7';const border=1.5*zoom;ctx.fillRect(-border,-border,w+2*border,h+2*border);const fit=Math.max(w/photo.img.naturalWidth,h/photo.img.naturalHeight),sw=w/fit,sh=h/fit;ctx.drawImage(photo.img,(photo.img.naturalWidth-sw)/2,(photo.img.naturalHeight-sh)/2,sw,sh,0,0,w,h);ctx.restore();}
- ctx.fillStyle='#f9f7f7';ctx.font='500 '+((layoutData.mobile?18:21)*zoom)+'px "Space Grotesk", sans-serif';for(const label of screenLabels){const x=r+(label.x-lens.x)*zoom,y=r+(label.y+18-lens.y)*zoom;if(y>-10&&y<lensSize+30)ctx.fillText(label.text,x,y);}
+ ctx.fillStyle='#f9f7f7';ctx.font='600 '+((layoutData.mobile?18:21)*zoom)+'px "Manrope", sans-serif';for(const label of screenLabels){const x=r+(label.x-lens.x)*zoom,y=r+(label.y+18-lens.y)*zoom;if(y>-10&&y<lensSize+30)ctx.fillText(label.text,x,y);}
 }
 wall.addEventListener('pointermove',e=>{if(progress<.78)return;const r=stage.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;if(e.pointerType==='touch')lens.touch=true;if(y<layoutData.top-10||y>stage.clientHeight-65){if(!lens.touch){lens.active=false;request();}return;}placeLens(x,y);});
 wall.addEventListener('pointerdown',e=>{if(progress<.78||e.button!==0)return;lens.touch=e.pointerType==='touch';const r=stage.getBoundingClientRect();placeLens(e.clientX-r.left,e.clientY-r.top);drag={id:e.pointerId,x:e.clientX,y:e.clientY,active:false};});

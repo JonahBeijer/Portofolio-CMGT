@@ -1,0 +1,12 @@
+/* A shared, quiet sign-off for every current page except Projects. */
+.site-footer.portfolio-footer { position:relative; display:flex; align-items:center; justify-content:space-between; gap:32px; margin:0; padding:42px 7vw; background:var(--navy); color:var(--paper); border:0; overflow:hidden; }
+.portfolio-footer::before,.portfolio-footer::after { content:none; }
+.portfolio-footer-contact { display:flex; flex-direction:column; gap:9px; min-width:0; }
+.portfolio-footer-contact>a { font-size:clamp(18px,1.7vw,25px); line-height:1.4; font-weight:500; letter-spacing:-.025em; overflow-wrap:anywhere; }
+.portfolio-footer-links { display:flex; flex-wrap:wrap; align-items:center; gap:18px 28px; font-size:13px; line-height:1.5; }
+.portfolio-footer a { text-underline-offset:5px; text-decoration-thickness:1px; transition:color .2s; }
+.portfolio-footer a:hover { text-decoration:underline; }
+.portfolio-footer a:focus-visible { outline:2px solid var(--light-blue); outline-offset:6px; }
+@media(max-width:700px) { .site-footer.portfolio-footer { align-items:flex-start; flex-direction:column; gap:24px; padding:32px 6vw; }.portfolio-footer-links { gap:16px 24px; font-size:12px; } }
+@media(prefers-reduced-motion:reduce) { .portfolio-footer a { transition:none; } }
+.portfolio-footer-contact { max-width:100%; }

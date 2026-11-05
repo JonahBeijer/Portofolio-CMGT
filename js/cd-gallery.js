@@ -1,6 +1,6 @@
-import { playCDTransition } from './cd-transition.js?v=20261103-covers1';
+import { playCDTransition } from './cd-transition.js?v=20261104-routes1';
 import { projectsData } from './projects-data.js';
-import { translations } from '../language.js';
+import { translations } from '../language.js?v=20261105-teamwork1';
 
 const collection = document.querySelector('.cd-collection');
 const stage = document.querySelector('.cd-stage');
@@ -162,11 +162,11 @@ async function openProject(event,returning=false,transitionState=null){
         const result=await playCDTransition({album,stage,project,index:selected,returning,entryAngle:transitionState?.spinAngle,readerScroll:transitionState?.readerScroll||0,onReady:()=>document.documentElement.classList.remove('cd-arriving')});transitionCleanup=result.cleanup;
         if(!returning){
             try{sessionStorage.setItem(navigationKey,JSON.stringify({index:selected,page:project.page,color:album.style.getPropertyValue('--album-color'),direction:'enter',createdAt:Date.now(),handoff:result.handoff,spinAngle:result.angle}));}catch{}
-            location.assign(project.page);
+            location.assign(new URL(project.page,document.baseURI).href);
         }else{opening=false;transitionCleanup=null;queuePeek();}
     }catch(error){
         transitionCleanup?.();transitionCleanup=null;opening=false;document.documentElement.classList.remove('cd-arriving');
-        if(!returning)location.assign(project.page);
+        if(!returning)location.assign(new URL(project.page,document.baseURI).href);
     }
 }
 

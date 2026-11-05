@@ -3,7 +3,7 @@
  if(window!==window.top)return;
  const root=document.documentElement,reduced=matchMedia('(prefers-reduced-motion:reduce)');
  const routes=['index.html','projecten.html','programeertalen.html'];
- function route(url){try{const u=new URL(url,location.href);if(u.origin!==location.origin)return -1;return routes.indexOf(u.pathname.split('/').pop()||'index.html');}catch{return -1;}}
+ function route(url){try{const u=new URL(url,location.href);if(u.origin!==location.origin)return -1;const name=u.pathname.replace(/\/$/,'').split('/').pop()||'index.html';return ({home:0,projects:1,'programming-languages':2})[name]??routes.indexOf(name);}catch{return -1;}}
  function apply(from,to,transition){
   delete root.dataset.pageMotion;
   const a=route(from),b=route(to);if(!transition||reduced.matches||a<0||b<0||a===b)return;

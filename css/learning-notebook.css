@@ -85,3 +85,5 @@
 .learning-heading>p { grid-column:2; grid-row:3; justify-self:end; max-width:290px; margin:0; font:11px/1.6 var(--body-font); color:var(--navy); }
 .learning-heading:after { content:'01 — 03'; grid-column:1; grid-row:3; align-self:end; font:10px var(--heading-font); letter-spacing:.1em; color:var(--blue); }
 @media(max-width:767px) { .learning-heading { padding:32px 6vw 26px; gap:0 16px; }.learning-type-stage { height:240px; margin:14px 0 20px; }.learning-heading>p { font-size:10px; max-width:180px; }.learning-heading .toolkit-notes-label { font-size:8px; } }
+/* Let the animated title stand on its own without the removed captions. */
+.learning-heading::after { content:none; }

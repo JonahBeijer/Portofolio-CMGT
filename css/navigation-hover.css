@@ -1,0 +1,24 @@
+/* A shared typographic hover across the current portfolio pages. */
+.desktop-nav .has-nav-hover,.mobile-menu nav a.has-nav-hover { position:relative; isolation:isolate; display:inline-flex; align-items:center; text-decoration:none; }
+.desktop-nav .has-nav-hover { padding:10px 12px; margin-inline:-12px; }
+.has-nav-hover::before { content:''; position:absolute; inset:0; border-radius:7px; background:var(--navy); opacity:0; transform:scale(.85,.65); z-index:-1; transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .3s,background .3s; }
+.nav-label-window { position:relative; display:block; height:1.4em; line-height:1.4; clip-path:inset(0 -5px); }
+.nav-label-copy { display:block; white-space:nowrap; transition:transform .5s cubic-bezier(.22,1,.36,1); }
+.nav-label-echo { position:absolute; left:0; top:100%; color:var(--paper); }
+.desktop-nav .has-nav-hover[aria-current=page]::before { opacity:1; transform:scale(1); background:#dbe2ef80; }
+.desktop-nav .has-nav-hover[aria-current=page]::after { left:12px; right:12px; bottom:4px; }
+.has-nav-hover:is(:focus-visible,:active)::before { opacity:1; transform:scale(1); background:var(--navy); }
+.has-nav-hover:is(:focus-visible,:active) .nav-label-copy { transform:translateY(-100%); }
+.has-nav-hover:focus-visible { outline:2px solid var(--blue); outline-offset:4px; border-radius:7px; }
+.mobile-menu nav a.has-nav-hover { align-self:flex-start; padding:8px 10px; margin-left:-10px; }
+.mobile-menu .has-nav-hover::before { background:var(--paper); }
+.mobile-menu .has-nav-hover:is(:focus-visible,:active)::before { background:var(--paper); }
+.mobile-menu .nav-label-echo { color:var(--navy); }
+@media(hover:hover) {
+ .has-nav-hover:hover::before { opacity:1; transform:scale(1); background:var(--navy); }
+ .has-nav-hover:hover .nav-label-copy { transform:translateY(-100%); }
+ .mobile-menu .has-nav-hover:hover::before { background:var(--paper); }
+}
+@media(prefers-reduced-motion:reduce) { .has-nav-hover::before,.nav-label-copy { transition:none; } }
+/* The active-page selector must also switch the pill behind its white hover label. */
+.desktop-nav .has-nav-hover[aria-current=page]:is(:hover,:focus-visible,:active)::before { background:var(--navy); opacity:1; transform:scale(1); }

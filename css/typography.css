@@ -1,0 +1,37 @@
+/* Misto carries the identity; Manrope keeps reading and small controls comfortable. */
+@font-face { font-family:'Misto'; src:url('../fonts/Misto.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Manrope'; src:url('../fonts/Manrope.woff2') format('woff2'); font-weight:400 700; font-style:normal; font-display:swap; }
+:root,body,body.memory-page { --display-font:'Misto',sans-serif; --heading-font:'Misto',sans-serif; --body-font:'Manrope',sans-serif; --text-font:var(--body-font); }
+body,body :not(.fa):not(.fas):not(.far):not(.fab):not(.fal):not(.fad):not([class*="fa-"]) { font-family:var(--text-font)!important; }
+body :not(.fa):not(.fas):not(.far):not(.fab):not(.fal):not(.fad):not([class*="fa-"])::before,body :not(.fa):not(.fas):not(.far):not(.fab):not(.fal):not(.fad):not([class*="fa-"])::after { font-family:var(--text-font)!important; }
+h1,h2,h3,h4,.brand,.desktop-nav .nav-link,.mobile-menu nav a,.orbit-name,.experience-art-word,.experience-big-number,.footer-wordmark,.contact-link,.cd-position,.case-chapter-rail button,.case-disclosure summary { --text-font:var(--display-font); font-weight:400; font-synthesis:none; }
+.case-main .case-chapter::before { font-family:var(--display-font)!important; }
+.memory-wordmark,.cd-heading .cd-current-title,.home-profile .profile-introduction h2,.home-profile .offline-list h3,.home-profile .profile-occupation h2,.home-profile .study-card h3,.case-main .case-hero h1,.case-main .case-chapter h2,.case-main .case-chapter h3,.orbit-name,.learning-type-stage h2,.experience-art-word,.footer-wordmark { letter-spacing:-.025em; }
+.home-profile .profile-introduction h2 { font-size:clamp(54px,6vw,88px); line-height:1.08; }
+.case-main .case-chapter h2,.case-main .case-chapter h3 { font-size:clamp(25px,2.55vw,40px); line-height:1.18; overflow-wrap:anywhere; }
+.case-main .case-hero h1 { overflow-wrap:anywhere; line-height:1.08; }
+.orbit-name { font-size:clamp(40px,7vw,115px); max-width:92%; }
+body p,body li,.contact-link { overflow-wrap:anywhere; }
+.contact-link { max-width:100%; }
+.home-profile .profile-traits li { font-size:clamp(16px,1.45vw,21px); font-style:normal; }
+.mobile-menu nav a.has-nav-hover { font-size:clamp(17px,4.7vw,28px); }
+.home-profile #bio,.case-main .case-chapter p,.case-main .case-disclosure-body p { letter-spacing:0; line-height:1.85; }
+@media(max-width:767px) {
+ .home-profile .profile-introduction h2 { font-size:clamp(42px,10.5vw,65px); }
+ .case-main .case-chapter h2,.case-main .case-chapter h3 { font-size:27px; }
+ .orbit-name { font-size:clamp(28px,7.7vw,60px); }
+ .home-profile .profile-traits li { font-size:18px; }
+}
+/* Small headings and descriptive labels need a reading face rather than display lettering. */
+.home-profile .profile-character h3 { --text-font:var(--body-font); font-size:16px; line-height:1.4; font-weight:600; text-transform:none; letter-spacing:0; color:var(--navy); margin-bottom:16px; }
+.home-profile .profile-traits li { --text-font:var(--body-font); font-size:clamp(18px,1.55vw,22px); line-height:1.4; }
+.home-profile .profile-work h4,.case-feature-list h4,.case-disclosure summary,.case-highlight-group h4,.photo-table-label { --text-font:var(--body-font); font-weight:600; letter-spacing:-.02em; }
+.case-disclosure summary { font-size:clamp(19px,1.55vw,23px); }
+.desktop-nav .nav-link { font-size:12px; }
+.photo-table-label { font-weight:600; }
+@media(max-width:767px) { .home-profile .profile-traits li { font-size:18px; }.home-profile .profile-character h3 { font-size:16px; } }
+/* Refined display accents and a shorter education card. */
+.home-profile .profile-character h3 { --text-font:var(--display-font); font-size:22px; font-weight:400; line-height:1.4; letter-spacing:0; }
+.portfolio-footer-contact>a { --text-font:var(--display-font); font-weight:400; font-synthesis:none; line-height:1.5; }
+.profile-notes .study-card { min-height:285px; padding-bottom:16px; }
+@media(max-width:767px) { .home-profile .profile-character h3 { font-size:20px; } }

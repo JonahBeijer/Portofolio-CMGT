@@ -1,11 +1,13 @@
-import './portfolio-versions.js?v=20261103-1';
-import './cd-navigation.js?v=20261103-reference1';
-import { currentLanguage, setLanguage, translations } from '../language.js';
+import { initNavigationHover } from './navigation-hover.js?v=20261105-1';
+import { initBioDecode } from './bio-decode.js?v=20261104-1';
+import './portfolio-versions.js?v=20261104-routes1';
+import './cd-navigation.js?v=20261104-routes1';
+import { currentLanguage, setLanguage, translations } from '../language.js?v=20261105-teamwork1';
 
 // The CD preview has already loaded these fonts. Wait for the same faces before
 // the browser replaces that snapshot with the real project document.
 if(document.querySelector('.case-main')) {
-    await Promise.all([document.fonts.load('500 48px "Space Grotesk"'),document.fonts.load('400 16px "DM Sans"')]).catch(()=>{});
+    await Promise.all([document.fonts.load('400 48px "Misto"'),document.fonts.load('400 16px "Manrope"')]).catch(()=>{});
 }
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const menu = document.getElementById('mobileMenu');
@@ -44,7 +46,7 @@ for (const id of ['langToggle', 'mobileLangToggle']) {
 document.body.classList.remove('no-scroll-scenes');
 const page = document.body.dataset.page;
 for (const link of document.querySelectorAll('.desktop-nav a,.mobile-menu nav a')) {
-    if (link.getAttribute('href') === `${page}.html`) link.setAttribute('aria-current', 'page');
+    if (link.getAttribute('href') === ({index:'home/',projecten:'projects/',programeertalen:'programming-languages/'}[page] || `${page}.html`)) link.setAttribute('aria-current', 'page');
 }
 
 // Content stays available if animation support is absent or reduced motion is requested.
@@ -78,7 +80,7 @@ const clamp = value => Math.min(1, Math.max(0, value));
 const desktopScenes = () => innerWidth >= 768 && !reducedMotion.matches;
 function prepareBio() {
     const bio = document.getElementById('bio');
-    if (!bio) return;
+    if (!bio || bio.hasAttribute('data-bio-decode')) return;
     for (const word of bio.querySelectorAll('.bio-word')) word.replaceWith(document.createTextNode(word.textContent));
     bio.normalize();
     if (reducedMotion.matches) { bioWords = []; return; }
@@ -263,6 +265,8 @@ if (page === 'programeertalen' && !document.querySelector('.stack-console')) {
     }
 }
 setLanguage(currentLanguage);
+initBioDecode();
+initNavigationHover();
 for (const image of document.querySelectorAll('.scene-pokemon,.portrait-pokemon,.next-pokemon')) {
     // Preserve the original Pokémon sprites; keep the local Pokéball as an offline fallback.
     image.addEventListener('error', () => { image.src = 'img/pokeball.png'; }, { once: true });

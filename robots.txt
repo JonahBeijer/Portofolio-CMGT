@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /versions/
+
+Sitemap: https://www.jonahbeijer.nl/sitemap.xml
