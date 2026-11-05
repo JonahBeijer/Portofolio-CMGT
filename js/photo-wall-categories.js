@@ -9,11 +9,8 @@ export const photoCategories = [
       "IMG_1659",
       "IMG_1924",
       "IMG_2177",
-      "IMG_2257",
       "IMG_2929",
-      "IMG_4026",
       "IMG_4182",
-      "IMG_4492",
       "IMG_5306",
       "IMG_5472",
       "IMG_5867",
@@ -31,7 +28,6 @@ export const photoCategories = [
       "IMG_0602",
       "IMG_2837",
       "IMG_2854",
-      "IMG_5840",
       "IMG_7071",
       "IMG_7313",
       "IMG_7314",
@@ -60,7 +56,8 @@ export const photoCategories = [
       "IMG_3428",
       "IMG_3873",
       "IMG_5949",
-      "IMG_9076"
+      "IMG_9076",
+      "IMG_5840"
     ]
   },
   {
@@ -72,7 +69,9 @@ export const photoCategories = [
       "WhatsApp-Image-2026-11-05-at-09.14.27",
       "IMG_2900",
       "IMG_7671",
-      "IMG_8892"
+      "IMG_8892",
+      "IMG_2257",
+      "IMG_4492"
     ]
   },
   {
@@ -85,7 +84,8 @@ export const photoCategories = [
       "WhatsApp-Image-2026-11-05-at-09.14.26",
       "WhatsApp-Image-2026-11-05-at-09.14.26-1",
       "IMG_9185",
-      "IMG_0152"
+      "IMG_0152",
+      "IMG_4026"
     ]
   }
 ];
