@@ -581,5 +581,27 @@
     "optimizedBytes": 66024,
     "originalPixels": 1920000,
     "optimizedPixels": 545920
+  },
+  {
+    "original": "img/IMG_6011.jpeg",
+    "optimized": "img/wall-photos/IMG_6011.webp",
+    "width": 640,
+    "height": 853,
+    "frames": 1,
+    "originalBytes": 3093399,
+    "optimizedBytes": 71580,
+    "originalPixels": 12192768,
+    "optimizedPixels": 545920
+  },
+  {
+    "original": "img/IMG_7484.jpg",
+    "optimized": "img/wall-photos/IMG_7484.webp",
+    "width": 640,
+    "height": 1100,
+    "frames": 1,
+    "originalBytes": 704379,
+    "optimizedBytes": 120438,
+    "originalPixels": 2352870,
+    "optimizedPixels": 704000
   }
 ]

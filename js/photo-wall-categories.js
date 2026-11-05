@@ -16,7 +16,8 @@ export const photoCategories = [
       "IMG_5867",
       "IMG_5886",
       "IMG_6163",
-      "IMG_6193"
+      "IMG_6193",
+      "IMG_6011"
     ]
   },
   {
@@ -71,7 +72,8 @@ export const photoCategories = [
       "IMG_7671",
       "IMG_8892",
       "IMG_2257",
-      "IMG_4492"
+      "IMG_4492",
+      "IMG_7484"
     ]
   },
   {

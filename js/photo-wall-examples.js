@@ -53,5 +53,7 @@ export const exampleImages = [
   "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.26.webp",
   "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.27-1.webp",
   "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.27-2.webp",
-  "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.27.webp"
+  "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.27.webp",
+  "img/wall-photos/IMG_6011.webp",
+  "img/wall-photos/IMG_7484.webp"
 ];
