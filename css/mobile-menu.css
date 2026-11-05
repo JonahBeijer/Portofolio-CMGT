@@ -35,7 +35,7 @@ body > .mobile-menu[hidden] { display:none; }
 .mobile-menu nav .nav-label-echo { color:var(--light-blue); }
 .mobile-menu nav a.has-nav-hover:is(:focus-visible,:active)::before { opacity:1; transform:none; }
 .mobile-menu > .language-switch { width:fit-content; gap:10px; margin:0 0 27px; font-size:10px; }
-.mobile-menu .menu-contact { flex-shrink:0; display:grid; gap:9px; padding-top:23px; border-top:1px solid #dbe2ef33; }
+.mobile-menu .menu-contact { background:var(--navy); color:var(--paper); flex-shrink:0; display:grid; gap:9px; padding-top:23px; border-top:1px solid #dbe2ef33; }
 .mobile-menu .menu-contact > span:first-child { font-size:10px; color:var(--light-blue); }
 .mobile-menu .menu-contact a { display:flex; justify-content:space-between; align-items:center; gap:8px; font-size:clamp(13px,3.8vw,18px); }
 .mobile-menu .menu-contact a svg.ui-arrow { color:var(--light-blue); width:20px; height:20px; }
