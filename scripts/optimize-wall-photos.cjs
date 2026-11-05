@@ -10,7 +10,8 @@ const previous=fs.existsSync(manifestFile)?JSON.parse(fs.readFileSync(manifestFi
 const originals=list.map(file=>previous.find(item=>item.optimized===file)?.original||file);
 (async()=>{const manifest=[];for(const original of originals){
  const metadata=await sharp(original).metadata(),animated=(metadata.pages||1)>1;
- const optimized=folder+'/'+path.basename(original,path.extname(original))+'.webp';
+ const stem=path.basename(original,path.extname(original)).replace(/[^a-zA-Z0-9._-]+/g,'-').replace(/^-+|-+$/g,'');
+ const optimized=folder+'/'+stem+'.webp';
  let pipeline=sharp(original,{animated});if(!animated)pipeline=pipeline.rotate();
  pipeline=pipeline.resize({width:640,height:1138,fit:'inside',withoutEnlargement:true});
  await pipeline.webp({quality:78,effort:4,...(animated?{loop:metadata.loop||0,delay:metadata.delay}:{})}).toFile(optimized);

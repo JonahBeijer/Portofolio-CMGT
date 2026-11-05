@@ -1,11 +1,11 @@
-import { exampleImages } from './photo-wall-examples.js?v=20261103-optimized1';
-import { photoCategories, categoryFor } from './photo-wall-categories.js?v=20261105-me1';
+import { exampleImages } from './photo-wall-examples.js?v=20261105-photos2';
+import { photoCategories, categoryFor } from './photo-wall-categories.js?v=20261105-photos2';
 export async function initPhotoWall({ signal }) {
 const on=(target,event,listener,options={})=>target.addEventListener(event,listener,{...options,signal});
 const wrap=document.querySelector('.memory-scroll'),stage=document.querySelector('.photo-wall-stage'),wall=document.querySelector('.photo-wall');
 const shade=stage.querySelector('.photo-wall-shade'),heading=stage.querySelector('h1'),bar=stage.querySelector('.photo-wall-progress span'),panControl=stage.querySelector('.wall-pan');
-const reduced=matchMedia('(prefers-reduced-motion:reduce)'),columns=10,rows=5;
-// Mobile paints a single bounded canvas instead of animating 50 DOM layers.
+const reduced=matchMedia('(prefers-reduced-motion:reduce)'),rows=5;
+// Mobile paints one bounded canvas rather than one composited layer per photograph.
 const mobileRenderer=matchMedia('(max-width:767px)').matches;
 const boardCanvas=mobileRenderer?document.createElement('canvas'):null;
 const boardContext=boardCanvas?.getContext('2d');
@@ -15,7 +15,8 @@ stage.dataset.renderer=mobileRenderer?'canvas':'dom';
 let metadata=[];try{metadata=await fetch('img/wall-photos/manifest.json',{signal}).then(r=>r.json());}catch{}
 if(signal.aborted)return;
 const dimensions=new Map(metadata.map(m=>[m.optimized,m.width/m.height]));
-const photos=Array.from({length:columns*rows},(_,i)=>{const image=exampleImages[i%exampleImages.length];return{image,group:categoryFor(image),ratio:dimensions.get(image)||9/16};});
+const photos=[...new Set(exampleImages)].map(image=>({image,group:categoryFor(image),ratio:dimensions.get(image)||9/16}));
+const columns=Math.max(1,Math.ceil(photos.length/rows));
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),lerp=(a,b,t)=>a+(b-a)*t,smooth=t=>t*t*(3-2*t);
 const language=()=>document.documentElement.lang==='en'?'en':'nl';
 const copy={nl:{about:'Over mij ↓',guide:'Scroll ↓ · kijk eens wat dichterbij',museumGuide:'Beweeg je muis over de foto’s',touchGuide:'Tik op een foto om dichterbij te kijken',mixed:'Mijn herinneringen',profileTitle:'Dit ben ik.',concerts:'Concerten bezoeken',profileNote:'Even voorstellen.',hobbyNote:'Als mijn laptop dicht is.',workNote:'Ook een deel van mij.',studyNote:'Nog lang niet uitgeleerd.',projectNote:'Van kijken naar maken.',pan:'Verschuif de fototafel',wall:'Mijn foto’s, gegroepeerd als een fototafel. Gebruik de pijltjestoetsen voor het vergrootglas.',categories:'Verzamelingen'},en:{about:'About me ↓',guide:'Scroll ↓ · take a closer look',museumGuide:'Move your mouse over the photographs',touchGuide:'Tap a photograph to take a closer look',mixed:'My memories',profileTitle:'This is me.',concerts:'Going to concerts',profileNote:'Nice to meet you.',hobbyNote:'When my laptop is closed.',workNote:'Part of me, too.',studyNote:'Still learning.',projectNote:'From looking to making.',pan:'Pan the photo table',wall:'My photographs, grouped as a photo table. Use the arrow keys to move the magnifying glass.',categories:'Collections'}};
@@ -166,8 +167,8 @@ function draw(now){
  pan=reduced.matches?panTarget:lerp(pan,panTarget,1-Math.exp(-dt*12));if(Math.abs(pan-panTarget)<.0002)pan=panTarget;
  lens.x=reduced.matches?lens.targetX:lerp(lens.x,lens.targetX,1-Math.exp(-dt*22));lens.y=reduced.matches?lens.targetY:lerp(lens.y,lens.targetY,1-Math.exp(-dt*22));
  const w=stageWidth,h=stageHeight,mobile=layoutData.mobile,wallT=smooth(clamp(progress/.62)),tableT=smooth(clamp((progress-.55)/.45));
- const gap=lerp(12,mobile?8:12,wallT),endCellH=Math.min(h*.65/5.25,mobile?110:(w*.91-gap*9)/10*16/9),cellW=lerp(Math.max(w/4.2,h*.24),endCellH*9/16,wallT),cellH=cellW*16/9;
- const gridW=cellW*10+gap*9,gridH=cellH*5+gap*4,cx=w/2,cy=lerp(h*.5,h*.58,wallT),bx=boardX(w);
+ const gap=lerp(12,mobile?8:12,wallT),endCellH=Math.min(h*.65/(rows+.25),mobile?110:(w*.91-gap*(columns-1))/columns*16/9),cellW=lerp(Math.max(w/4.2,h*.24),endCellH*9/16,wallT),cellH=cellW*16/9;
+ const gridW=cellW*columns+gap*(columns-1),gridH=cellH*rows+gap*(rows-1),cx=w/2,cy=lerp(h*.5,h*.58,wallT),bx=boardX(w);
 
  if(!mobileRenderer&&baseWidth!==64){baseWidth=64;cards.forEach(({card})=>{card.style.width='64px';card.style.height='113.7778px';});}
  const geometryChanged=paintedProgress!==progress||paintedPan!==pan;

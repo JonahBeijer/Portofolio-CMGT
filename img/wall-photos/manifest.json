@@ -504,5 +504,82 @@
     "optimizedBytes": 86728,
     "originalPixels": 12192768,
     "optimizedPixels": 545920
+  },
+  {
+    "original": "img/WhatsApp Image 2026-11-05 at 09.14.23.jpeg",
+    "optimized": "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.23.webp",
+    "width": 640,
+    "height": 853,
+    "frames": 1,
+    "originalBytes": 140329,
+    "optimizedBytes": 33728,
+    "originalPixels": 1920000,
+    "optimizedPixels": 545920
+  },
+  {
+    "original": "img/WhatsApp Image 2026-11-05 at 09.14.25.jpeg",
+    "optimized": "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.25.webp",
+    "width": 640,
+    "height": 1072,
+    "frames": 1,
+    "originalBytes": 196200,
+    "optimizedBytes": 77146,
+    "originalPixels": 1528000,
+    "optimizedPixels": 686080
+  },
+  {
+    "original": "img/WhatsApp Image 2026-11-05 at 09.14.26 (1).jpeg",
+    "optimized": "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.26-1.webp",
+    "width": 640,
+    "height": 853,
+    "frames": 1,
+    "originalBytes": 263828,
+    "optimizedBytes": 74758,
+    "originalPixels": 1920000,
+    "optimizedPixels": 545920
+  },
+  {
+    "original": "img/WhatsApp Image 2026-11-05 at 09.14.26.jpeg",
+    "optimized": "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.26.webp",
+    "width": 640,
+    "height": 853,
+    "frames": 1,
+    "originalBytes": 117391,
+    "optimizedBytes": 24700,
+    "originalPixels": 1920000,
+    "optimizedPixels": 545920
+  },
+  {
+    "original": "img/WhatsApp Image 2026-11-05 at 09.14.27 (1).jpeg",
+    "optimized": "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.27-1.webp",
+    "width": 640,
+    "height": 853,
+    "frames": 1,
+    "originalBytes": 144944,
+    "optimizedBytes": 34122,
+    "originalPixels": 1920000,
+    "optimizedPixels": 545920
+  },
+  {
+    "original": "img/WhatsApp Image 2026-11-05 at 09.14.27 (2).jpeg",
+    "optimized": "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.27-2.webp",
+    "width": 640,
+    "height": 853,
+    "frames": 1,
+    "originalBytes": 145043,
+    "optimizedBytes": 37144,
+    "originalPixels": 1920000,
+    "optimizedPixels": 545920
+  },
+  {
+    "original": "img/WhatsApp Image 2026-11-05 at 09.14.27.jpeg",
+    "optimized": "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.27.webp",
+    "width": 640,
+    "height": 853,
+    "frames": 1,
+    "originalBytes": 236259,
+    "optimizedBytes": 66024,
+    "originalPixels": 1920000,
+    "optimizedPixels": 545920
   }
 ]

@@ -46,5 +46,12 @@ export const exampleImages = [
   "img/wall-photos/IMG_7715.webp",
   "img/wall-photos/IMG_8892.webp",
   "img/wall-photos/IMG_9076.webp",
-  "img/wall-photos/IMG_9185.webp"
+  "img/wall-photos/IMG_9185.webp",
+  "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.23.webp",
+  "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.25.webp",
+  "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.26-1.webp",
+  "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.26.webp",
+  "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.27-1.webp",
+  "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.27-2.webp",
+  "img/wall-photos/WhatsApp-Image-2026-11-05-at-09.14.27.webp"
 ];
