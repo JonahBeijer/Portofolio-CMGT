@@ -1,4 +1,5 @@
-import { initMobileMenu } from './mobile-menu.js?v=20261105-colours1';
+import { initMobileBrowserColour } from './mobile-browser-colour.js?v=20261105-album2';
+import { initMobileMenu } from './mobile-menu.js?v=20261105-album2';
 import { initNavigationHover } from './navigation-hover.js?v=20261105-1';
 import { initBioDecode } from './bio-decode.js?v=20261105-perf2';
 import './portfolio-versions.js?v=20261104-routes1';
@@ -11,6 +12,7 @@ if(document.querySelector('.case-main')) {
     await Promise.all([document.fonts.load('400 48px "Misto"'),document.fonts.load('400 16px "Manrope"')]).catch(()=>{});
 }
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+initMobileBrowserColour();
 const { menu, menuButton, closeMenu } = initMobileMenu(reducedMotion);
 document.addEventListener('keydown', event => {
     if (event.key === 'Escape') { closeMenu(); window.closeVideoModal?.(); }

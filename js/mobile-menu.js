@@ -4,17 +4,6 @@ export function initMobileMenu(reduced) {
     const menuButton = document.getElementById('mobileMenuButton');
     const closeButton = document.getElementById('closeMenuButton');
     const nav = menu.querySelector('nav');
-    // Give Safari/Chrome the same edge colour as the page or its open menu.
-    const pageTheme = document.body.dataset.page === 'projecten' ? '#f9f7f7' : '#112d4e';
-    let mobileTheme = document.querySelector('meta[name="theme-color"][data-mobile-theme]');
-    if (!mobileTheme) {
-        mobileTheme = document.createElement('meta');
-        mobileTheme.name = 'theme-color';
-        mobileTheme.media = '(max-width: 767px)';
-        mobileTheme.dataset.mobileTheme = '';
-        document.head.append(mobileTheme);
-    }
-    mobileTheme.content = pageTheme;
     let phase = 'closed', generation = 0, animations = [], background = [];
     document.body.append(menu);
     menu.setAttribute('role', 'dialog');
@@ -58,14 +47,12 @@ export function initMobileMenu(reduced) {
         background = [...document.body.children].filter(el => el.matches('header,main,footer')).map(el => ({ el, inert: el.inert }));
         background.forEach(({ el }) => { el.inert = true; });
         document.documentElement.classList.add('menu-open');
-        mobileTheme.content = '#112d4e';
         document.body.classList.add('menu-open');
     }
     function unlock() {
         background.forEach(({ el, inert }) => { el.inert = inert; });
         background = [];
         document.documentElement.classList.remove('menu-open');
-        mobileTheme.content = pageTheme;
         document.body.classList.remove('menu-open');
     }
     async function openMenu() {
