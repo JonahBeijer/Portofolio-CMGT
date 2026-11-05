@@ -18,13 +18,40 @@ const dimensions=new Map(metadata.map(m=>[m.optimized,m.width/m.height]));
 const photos=Array.from({length:columns*rows},(_,i)=>{const image=exampleImages[i%exampleImages.length];return{image,group:categoryFor(image),ratio:dimensions.get(image)||9/16};});
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),lerp=(a,b,t)=>a+(b-a)*t,smooth=t=>t*t*(3-2*t);
 const language=()=>document.documentElement.lang==='en'?'en':'nl';
-const copy={nl:{about:'Over mij ↓',guide:'Scroll ↓ · kijk eens wat dichterbij',museumGuide:'Beweeg je muis over de foto’s',touchGuide:'Tik of sleep met het vergrootglas',mixed:'Mijn herinneringen',profileTitle:'Dit ben ik.',concerts:'Concerten bezoeken',profileNote:'Even voorstellen.',hobbyNote:'Als mijn laptop dicht is.',workNote:'Ook een deel van mij.',studyNote:'Nog lang niet uitgeleerd.',projectNote:'Van kijken naar maken.',pan:'Verschuif de fototafel',wall:'Mijn foto’s, gegroepeerd als een fototafel. Gebruik de pijltjestoetsen voor het vergrootglas.',categories:'Verzamelingen'},en:{about:'About me ↓',guide:'Scroll ↓ · take a closer look',museumGuide:'Move your mouse over the photographs',touchGuide:'Tap or drag the magnifying glass',mixed:'My memories',profileTitle:'This is me.',concerts:'Going to concerts',profileNote:'Nice to meet you.',hobbyNote:'When my laptop is closed.',workNote:'Part of me, too.',studyNote:'Still learning.',projectNote:'From looking to making.',pan:'Pan the photo table',wall:'My photographs, grouped as a photo table. Use the arrow keys to move the magnifying glass.',categories:'Collections'}};
+const copy={nl:{about:'Over mij ↓',guide:'Scroll ↓ · kijk eens wat dichterbij',museumGuide:'Beweeg je muis over de foto’s',touchGuide:'Tik op een foto om dichterbij te kijken',mixed:'Mijn herinneringen',profileTitle:'Dit ben ik.',concerts:'Concerten bezoeken',profileNote:'Even voorstellen.',hobbyNote:'Als mijn laptop dicht is.',workNote:'Ook een deel van mij.',studyNote:'Nog lang niet uitgeleerd.',projectNote:'Van kijken naar maken.',pan:'Verschuif de fototafel',wall:'Mijn foto’s, gegroepeerd als een fototafel. Gebruik de pijltjestoetsen voor het vergrootglas.',categories:'Verzamelingen'},en:{about:'About me ↓',guide:'Scroll ↓ · take a closer look',museumGuide:'Move your mouse over the photographs',touchGuide:'Tap a photograph to take a closer look',mixed:'My memories',profileTitle:'This is me.',concerts:'Going to concerts',profileNote:'Nice to meet you.',hobbyNote:'When my laptop is closed.',workNote:'Part of me, too.',studyNote:'Still learning.',projectNote:'From looking to making.',pan:'Pan the photo table',wall:'My photographs, grouped as a photo table. Use the arrow keys to move the magnifying glass.',categories:'Collections'}};
 const cards=photos.map((photo,i)=>{const card=document.createElement('figure');card.className='photo-wall-card';card.dataset.slot=i+1;card.dataset.category=photo.group;const print=document.createElement('div');print.className='photo-wall-print';const img=document.createElement('img');const picture=document.createElement('picture'),source=document.createElement('source');source.media='(max-width:767px), (prefers-reduced-motion:reduce)';source.srcset=photo.image.replace('wall-photos/','wall-photos/mobile/');picture.append(source,img);img.src=mobileRenderer?photo.image.replace('wall-photos/','wall-photos/mobile/'):photo.image;img.width=640;img.height=Math.round(640/photo.ratio);img.draggable=false;img.decoding='async';print.append(picture);card.append(print);if(!mobileRenderer)wall.append(card);return{card,img};});
 const labels=photoCategories.map(group=>{const h=document.createElement('h2');h.className='photo-table-label';h.dataset.category=group.id;stage.append(h);return h;});
 const nav=document.createElement('nav');nav.className='photo-table-nav';nav.setAttribute('aria-label','Verzamelingen');
 const buttons=photoCategories.map((group,i)=>{const b=document.createElement('button');b.type='button';b.dataset.photoCategory=group.id;on(b,'click',()=>focusGroup(i));nav.append(b);return b;});stage.append(nav);
 const glass=document.createElement('div');glass.className='photo-table-lens';glass.setAttribute('aria-hidden','true');
 const canvas=document.createElement('canvas');glass.append(canvas);stage.append(glass);const ctx=canvas.getContext('2d',{alpha:false});
+// A stationary print keeps the photograph clear of the user's finger on mobile.
+const detail=document.createElement('section');detail.className='photo-print-detail';detail.hidden=true;
+detail.setAttribute('aria-label','Foto bekijken');
+detail.innerHTML=`<button class="photo-print-close" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button><figure><img alt=""><figcaption aria-live="polite"></figcaption></figure><div class="photo-print-controls"><button type="button" data-step="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7M7 12h14"/></svg></button><span class="photo-print-count"></span><button type="button" data-step="1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7M3 12h14"/></svg></button></div>`;
+const inspect=document.createElement('button');inspect.type='button';inspect.className='photo-print-open';inspect.hidden=true;
+if(mobileRenderer)stage.append(detail,inspect);
+const detailImage=detail.querySelector('img'),detailCaption=detail.querySelector('figcaption'),detailCount=detail.querySelector('.photo-print-count'),detailClose=detail.querySelector('.photo-print-close');
+let detailIndex=-1;
+const groupMembers=()=>photos.map((photo,i)=>photo.group===photos[detailIndex]?.group&&photos.findIndex(item=>item.image===photo.image)===i?i:-1).filter(i=>i>=0);
+function openPrint(i,focus=false){
+ i=photos.findIndex(photo=>photo.image===photos[i].image);detailIndex=i;const members=groupMembers(),photo=photos[i],group=photoCategories.find(group=>group.id===photo.group);
+ detail.hidden=false;stage.classList.add('is-print-open');
+ positionPrint();
+ // Load the larger original only for the selected print, preserving the light initial wall.
+ detailImage.src=photo.image;detailImage.alt=cards[i].img.alt;
+ detailCaption.textContent=group[language()];detailCount.textContent=`${members.indexOf(i)+1} / ${members.length}`;
+ if(focus)detailClose.focus({preventScroll:true});
+}
+function positionPrint(){const headerBottom=document.querySelector('.site-header')?.getBoundingClientRect().bottom||0;detail.style.top=Math.max(0,headerBottom-stage.getBoundingClientRect().top)+'px';}
+function closePrint(restore=false){detail.hidden=true;detailIndex=-1;stage.classList.remove('is-print-open');if(restore)inspect.focus({preventScroll:true});}
+on(detailClose,'click',()=>closePrint(true));
+on(window,'wheel',()=>{if(detailIndex>=0)closePrint();},{passive:true});
+on(detail,'touchmove',()=>closePrint(),{passive:true});
+on(inspect,'click',()=>openPrint(photos.findIndex(photo=>photo.group===photoCategories[selectedGroup].id),true));
+function stepPrint(step){const members=groupMembers();openPrint(members[(members.indexOf(detailIndex)+step+members.length)%members.length]);}
+detail.querySelectorAll('[data-step]').forEach(button=>on(button,'click',()=>stepPrint(Number(button.dataset.step))));
+on(detail,'keydown',event=>{if(event.key==='Escape'){event.preventDefault();closePrint(true);}if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();stepPrint(event.key==='ArrowLeft'?-1:1);}});
 let origin=0,distance=innerHeight*2.6,endHold=innerHeight*.7,target=0,progress=0,raf=0,lastFrame=0,visible=true,pan=0,panTarget=0,selectedGroup=0;
 let layoutData=null,screenPhotos=[],screenLabels=[],baseWidth=0,lensSize=0,dpr=1,drag=null;
 let stageWidth=0,stageHeight=0,paintedProgress=-1,paintedPan=-1,layoutFrame=0;
@@ -33,7 +60,7 @@ if(!mobileRenderer)cards.forEach(({card},i)=>{card.style.opacity='1';card.style.
 const lens={x:0,y:0,targetX:0,targetY:0,active:false,touch:false};
 wall.tabIndex=0;wall.setAttribute('role','group');
 function request(){if(visible&&!document.hidden&&!raf)raf=requestAnimationFrame(draw);}
-function measure(){const next=clamp((scrollY-origin)/distance);const changed=next!==target;target=next;if(visible)bar.style.transform=`scaleX(${clamp((scrollY-origin)/(distance+endHold))})`;if(target<.72)lens.active=false;if(changed||progress!==target)request();}
+function measure(){const next=clamp((scrollY-origin)/distance);const changed=next!==target;target=next;if(visible)bar.style.transform=`scaleX(${clamp((scrollY-origin)/(distance+endHold))})`;if(target<.72)lens.active=false;if(detailIndex>=0){if(target<.9||stage.getBoundingClientRect().bottom<180)closePrint();else positionPrint();}if(changed||progress!==target)request();}
 function makeLayout(w,h){
  if(w>=768)return makeDesktopLayout(w,h);
  const mobile=w<768,groupW=mobile?255:340,cols=4,tileGap=mobile?14:18,tileW=(groupW-(cols-1)*tileGap)/cols;
@@ -111,13 +138,13 @@ function draw(now){
  screenLabels=layoutData.heads.map((head,i)=>{const x=bx+head.x*layoutData.scale,y=layoutData.top+head.y*layoutData.scale;labels[i].style.transform=`translate(${x}px,${y}px)`;labels[i].style.opacity=tableT;return{x,y,text:photoCategories[i][language()]};});
  shade.style.opacity=1-wallT;stage.style.backgroundColor='#112d4e';stage.style.color='#f9f7f7';heading.style.color='inherit';heading.style.transform='translateY(-50%)';heading.style.fontSize=lerp(Math.min(mobile?w*.19:w*.11,175),mobile?42:56,wallT)+'px';heading.style.top=lerp(mobile?43:50,14,wallT)+'%';
  // One shared filter, outside the separate colour magnifier canvas.
- wall.style.filter=`grayscale(${tableT}) brightness(${1-tableT*.46})`;
+ wall.style.filter=mobileRenderer?'none':`grayscale(${tableT}) brightness(${1-tableT*.46})`;
  paintedProgress=progress;paintedPan=pan;
  }
  bar.style.transform=`scaleX(${clamp((scrollY-origin)/(distance+endHold))})`;stage.dataset.progress=progress.toFixed(3);stage.dataset.table=tableT.toFixed(3);wall.dataset.pan=pan.toFixed(3);stage.classList.toggle('is-photo-table',tableT>.6);
  panControl.hidden=!(mobile&&progress>.78&&layoutData.overflow>0);panControl.value=pan;nav.classList.toggle('is-ready',progress>.78);
  const newSize=mobile?168:244;if(lensSize!==newSize||dpr!==Math.min(devicePixelRatio||1,2)){lensSize=newSize;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(lensSize*dpr);canvas.height=Math.round(lensSize*dpr);glass.style.width=glass.style.height=lensSize+'px';}
- const showLens=lens.active&&progress>.78&&visible;glass.classList.toggle('is-active',showLens);document.body.classList.toggle('is-photo-magnifying',showLens);const displayX=lens.touch?clamp(lens.x,lensSize/2+8,w-lensSize/2-8):lens.x,displayY=lens.touch?clamp(lens.y,lensSize/2+8,h-lensSize/2-55):lens.y;glass.style.transform=`translate3d(${displayX-lensSize/2}px,${displayY-lensSize/2}px,0)`;
+ inspect.hidden=!(mobileRenderer&&progress>.92);const showLens=!mobileRenderer&&lens.active&&progress>.78&&visible;glass.classList.toggle('is-active',showLens);document.body.classList.toggle('is-photo-magnifying',showLens);const displayX=lens.touch?clamp(lens.x,lensSize/2+8,w-lensSize/2-8):lens.x,displayY=lens.touch?clamp(lens.y,lensSize/2+8,h-lensSize/2-55):lens.y;glass.style.transform=`translate3d(${displayX-lensSize/2}px,${displayY-lensSize/2}px,0)`;
  if(showLens)paintLens();
  if(visible&&(progress!==target||pan!==panTarget||Math.abs(lens.x-lens.targetX)>.15||Math.abs(lens.y-lens.targetY)>.15))request();
 }
@@ -145,12 +172,13 @@ function paintLens(){
 function pointerPosition(event){const bounds=stage.getBoundingClientRect();return{x:event.clientX-bounds.left,y:event.clientY-bounds.top};}
 on(wall,'pointerdown',event=>{
  if(progress<.78||event.button!==0)return;
+ if(mobileRenderer){drag={id:event.pointerId,x:event.clientX,y:event.clientY,active:false};return;}
  lens.touch=event.pointerType==='touch';
  const p=pointerPosition(event);placeLens(p.x,p.y);
  drag={id:event.pointerId,x:event.clientX,y:event.clientY,active:false};
 });
 on(wall,'pointermove',event=>{
- if(progress<.78)return;
+ if(progress<.78||mobileRenderer)return;
  if(drag&&drag.id===event.pointerId){
   const dx=Math.abs(event.clientX-drag.x),dy=Math.abs(event.clientY-drag.y);
   if(!drag.active&&dy>8&&dy>dx){drag=null;if(event.pointerType==='touch'){lens.active=false;request();}return;}
@@ -160,12 +188,20 @@ on(wall,'pointermove',event=>{
  if(p.y<layoutData.top-10||p.y>stageHeight-65){if(!lens.touch){lens.active=false;request();}return;}
  placeLens(p.x,p.y);
 });
-function release(event){if(event.type==='lostpointercapture'&&event.target!==wall)return;drag=null;if(event.type==='pointercancel'){lens.active=false;request();}}
+function release(event){
+ if(mobileRenderer&&event.type==='pointerup'&&drag?.id===event.pointerId&&Math.hypot(event.clientX-drag.x,event.clientY-drag.y)<10&&progress>.92){
+  const point=pointerPosition(event);let nearest=-1,distance=Infinity;
+  screenPhotos.forEach((photo,i)=>{const dx=Math.max(photo.x-point.x,0,point.x-photo.x-photo.w),dy=Math.max(photo.y-point.y,0,point.y-photo.y-photo.h),d=Math.hypot(dx,dy);if(d<distance){distance=d;nearest=i;}});
+  if(nearest>=0&&distance<22)openPrint(nearest,true);
+ }
+ if(event.type==='lostpointercapture'&&event.target!==wall)return;drag=null;if(event.type==='pointercancel'){lens.active=false;request();}}
 for(const event of ['pointerup','pointercancel','lostpointercapture'])on(wall,event,release);
 on(wall,'pointerleave',()=>{if(!lens.touch){lens.active=false;request();}});
-on(wall,'keydown',e=>{const moves={ArrowLeft:[-28,0],ArrowRight:[28,0],ArrowUp:[0,-28],ArrowDown:[0,28]};if(progress<.78)return;if(moves[e.key]){e.preventDefault();placeLens((lens.active?lens.targetX:stage.clientWidth/2)+moves[e.key][0],(lens.active?lens.targetY:layoutData.top+120)+moves[e.key][1]);}if(e.key==='Escape'){lens.active=false;request();}});
+on(wall,'keydown',e=>{const moves={ArrowLeft:[-28,0],ArrowRight:[28,0],ArrowUp:[0,-28],ArrowDown:[0,28]};if(progress<.78)return;if(mobileRenderer){if(e.key==='Enter'||e.key===' '){e.preventDefault();inspect.click();}return;}if(moves[e.key]){e.preventDefault();placeLens((lens.active?lens.targetX:stage.clientWidth/2)+moves[e.key][0],(lens.active?lens.targetY:layoutData.top+120)+moves[e.key][1]);}if(e.key==='Escape'){lens.active=false;request();}});
 on(panControl,'input',()=>{panTarget=Number(panControl.value);const center=panTarget*layoutData.overflow+stage.clientWidth*.45;selectedGroup=layoutData.heads.reduce((best,head,i)=>Math.abs((head.x+head.w/2)*layoutData.scale-center)<Math.abs((layoutData.heads[best].x+layoutData.heads[best].w/2)*layoutData.scale-center)?i:best,0);buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===selectedGroup)));request();});
-function translate(){const c=copy[language()];boardCanvas?.setAttribute('aria-label',c.wall);paintedProgress=-1;labels.forEach((label,i)=>label.textContent=photoCategories[i][language()]);document.querySelectorAll('[data-memory-ui]').forEach(el=>{if(c[el.dataset.memoryUi])el.textContent=c[el.dataset.memoryUi];});wall.setAttribute('aria-label',c.wall);panControl.setAttribute('aria-label',c.pan);nav.setAttribute('aria-label',c.categories);buttons.forEach((b,i)=>{b.textContent=photoCategories[i][language()];b.setAttribute('aria-pressed',String(i===selectedGroup));});cards.forEach(({img},i)=>img.alt=(language()==='en'?'Personal photograph ':'Persoonlijke foto ')+(i+1));request();}
+function translate(){const c=copy[language()];
+const english=language()==='en';inspect.textContent=english?'Explore the photographs':'Bekijk de foto’s';detail.setAttribute('aria-label',english?'Photograph detail':'Foto bekijken');detailClose.setAttribute('aria-label',english?'Back to the wall':'Terug naar de wand');detail.querySelector('[data-step="-1"]').setAttribute('aria-label',english?'Previous photograph':'Vorige foto');detail.querySelector('[data-step="1"]').setAttribute('aria-label',english?'Next photograph':'Volgende foto');if(detailIndex>=0)openPrint(detailIndex);
+boardCanvas?.setAttribute('aria-label',mobileRenderer?c.touchGuide:c.wall);paintedProgress=-1;labels.forEach((label,i)=>label.textContent=photoCategories[i][language()]);document.querySelectorAll('[data-memory-ui]').forEach(el=>{if(c[el.dataset.memoryUi])el.textContent=c[el.dataset.memoryUi];});wall.setAttribute('aria-label',mobileRenderer?(english?'Photo table. Tap a photograph or press Enter to open it.':'Fototafel. Tik op een foto of druk op Enter om deze te openen.'):c.wall);panControl.setAttribute('aria-label',c.pan);nav.setAttribute('aria-label',c.categories);buttons.forEach((b,i)=>{b.textContent=photoCategories[i][language()];b.setAttribute('aria-pressed',String(i===selectedGroup));});cards.forEach(({img},i)=>img.alt=(language()==='en'?'Personal photograph ':'Persoonlijke foto ')+(i+1));request();}
 const visibilityObserver=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;stage.classList.toggle('is-wall-visible',visible);if(!visible){cancelAnimationFrame(raf);raf=0;lastFrame=0;lens.active=false;glass.classList.remove('is-active');document.body.classList.remove('is-photo-magnifying');}else{lastFrame=0;measure();request();}});visibilityObserver.observe(stage);
 on(window,'scroll',measure,{passive:true});const sizeObserver=new ResizeObserver(requestLayout);sizeObserver.observe(stage);on(window,'load',requestLayout);on(reduced,'change',()=>{measure();request();});on(document,'languageChanged',translate);translate();layout();
 

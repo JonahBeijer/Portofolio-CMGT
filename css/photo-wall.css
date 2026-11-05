@@ -46,3 +46,24 @@
 
 /* A single bounded bitmap preserves the scroll composition on small screens. */
 .photo-wall-canvas { position:absolute; inset:0; display:block; width:100%; height:100%; pointer-events:none; }
+
+/* Open a single print without making a touch gesture compete with page scrolling. */
+.photo-print-detail[hidden],.photo-print-open[hidden] { display:none; }
+@media(max-width:767px) {
+ .photo-wall-stage.is-photo-table .photo-wall { cursor:pointer; }
+ .photo-wall-stage .photo-table-nav button { min-height:44px; }
+ .photo-print-open { position:absolute; z-index:6; bottom:78px; left:50%; transform:translateX(-50%); min-height:44px; padding:0 18px; border:1px solid #dbe2ef66; border-radius:24px; background:#112d4e; color:#f9f7f7; font:11px var(--heading-font); white-space:nowrap; }
+ .photo-print-detail { position:absolute; inset:0; z-index:7; display:grid; grid-template-rows:minmax(0,1fr) 56px; padding:76px 7vw 32px; background:#112d4e; color:#f9f7f7; touch-action:pan-y; }
+ .photo-print-detail figure { min-height:0; margin:0; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:18px; animation:photo-print-reveal .28s cubic-bezier(.2,.7,.3,1) both; }
+ .photo-print-detail img { display:block; max-width:100%; max-height:calc(100% - 42px); width:auto; height:auto; object-fit:contain; border:5px solid #f9f7f7; border-bottom-width:16px; box-sizing:border-box; box-shadow:0 12px 32px #0003; }
+ .photo-print-detail figcaption { font:16px var(--heading-font); letter-spacing:-.03em; }
+ .photo-print-detail button { display:grid; place-items:center; width:48px; height:48px; flex-shrink:0; border:1px solid #dbe2ef55; border-radius:50%; background:transparent; color:inherit; }
+ .photo-print-detail svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+ .photo-print-close { position:absolute; right:7vw; top:20px; }
+ .photo-print-controls { display:flex; align-items:center; justify-content:center; gap:28px; }
+ .photo-print-count { min-width:56px; text-align:center; font:11px var(--heading-font); font-variant-numeric:tabular-nums; color:#dbe2ef; }
+ .photo-print-detail button:focus-visible,.photo-print-open:focus-visible { outline:2px solid #f9f7f7; outline-offset:4px; }
+ .is-print-open .photo-table-nav,.is-print-open .wall-pan,.is-print-open .photo-print-open { visibility:hidden; }
+ @keyframes photo-print-reveal { from { opacity:0; transform:translateY(12px) rotate(-2deg); } to { opacity:1; transform:translateY(0) rotate(0); } }
+}
+@media(prefers-reduced-motion:reduce) { .photo-print-detail figure { animation:none; } }
