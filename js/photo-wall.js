@@ -15,7 +15,7 @@ async function mount(){
  wrap.style.removeProperty('height');
  stage.classList.remove('is-mobile-photos');
  wrap.classList.remove('is-mobile-photos');
- const {initPhotoWall}=await import('./photo-wall-scroll.js?v=20261105-intro5');
+ const {initPhotoWall}=await import('./photo-wall-scroll.js?v=20261105-themefont1');
  if(!current.signal.aborted)await initPhotoWall({signal:current.signal});
 }
 narrow.addEventListener('change',mount);

@@ -223,7 +223,7 @@ function paintBoard(){
 function paintLens(){
  const r=lensSize/2,zoom=2.82;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.fillStyle='#112d4e';ctx.fillRect(0,0,lensSize,lensSize);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality=layoutData.mobile?'low':'high';
  for(const photo of screenPhotos){const x=r+(photo.x-lens.x)*zoom,y=r+(photo.y-lens.y)*zoom,w=photo.w*zoom,h=photo.h*zoom,pad=Math.max(w,h)*.16;if(x-pad>lensSize||y-pad>lensSize||x+w+pad<0||y+h+pad<0||!photo.img.complete||!photo.img.naturalWidth)continue;ctx.save();ctx.translate(x,y);ctx.rotate(photo.angle*Math.PI/180);ctx.fillStyle='#f9f7f7';const border=1.5*zoom;ctx.fillRect(-border,-border,w+2*border,h+2*border);const fit=Math.max(w/photo.img.naturalWidth,h/photo.img.naturalHeight),sw=w/fit,sh=h/fit;ctx.drawImage(photo.img,(photo.img.naturalWidth-sw)/2,(photo.img.naturalHeight-sh)/2,sw,sh,0,0,w,h);ctx.restore();}
- ctx.fillStyle='#f9f7f7';ctx.font='600 '+((layoutData.mobile?18:21)*zoom)+'px "Manrope", sans-serif';for(const label of screenLabels){const x=r+(label.x-lens.x)*zoom,y=r+(label.y+18-lens.y)*zoom;if(y>-10&&y<lensSize+30)ctx.fillText(label.text,x,y);}
+ ctx.fillStyle='#f9f7f7';ctx.font='400 '+((layoutData.mobile?18:21)*zoom)+'px "Misto", sans-serif';for(const label of screenLabels){const x=r+(label.x-lens.x)*zoom,y=r+(label.y+18-lens.y)*zoom;if(y>-10&&y<lensSize+30)ctx.fillText(label.text,x,y);}
 }
 function pointerPosition(event){const bounds=stage.getBoundingClientRect();return{x:event.clientX-bounds.left,y:event.clientY-bounds.top};}
 on(wall,'pointerdown',event=>{

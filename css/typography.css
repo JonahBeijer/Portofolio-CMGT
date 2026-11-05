@@ -25,10 +25,10 @@ body p,body li,.contact-link { overflow-wrap:anywhere; }
 /* Small headings and descriptive labels need a reading face rather than display lettering. */
 .home-profile .profile-character h3 { --text-font:var(--body-font); font-size:16px; line-height:1.4; font-weight:600; text-transform:none; letter-spacing:0; color:var(--navy); margin-bottom:16px; }
 .home-profile .profile-traits li { --text-font:var(--body-font); font-size:clamp(18px,1.55vw,22px); line-height:1.4; }
-.home-profile .profile-work h4,.case-feature-list h4,.case-disclosure summary,.case-highlight-group h4,.photo-table-label { --text-font:var(--body-font); font-weight:600; letter-spacing:-.02em; }
+.home-profile .profile-work h4,.case-feature-list h4,.case-disclosure summary,.case-highlight-group h4 { --text-font:var(--body-font); font-weight:600; letter-spacing:-.02em; }
 .case-disclosure summary { font-size:clamp(19px,1.55vw,23px); }
 .desktop-nav .nav-link { font-size:12px; }
-.photo-table-label { font-weight:600; }
+.photo-table-label,.photo-table-nav button,.photo-print-detail figcaption { --text-font:var(--display-font); font-weight:400; font-synthesis:none; }
 @media(max-width:767px) { .home-profile .profile-traits li { font-size:18px; }.home-profile .profile-character h3 { font-size:16px; } }
 /* Refined display accents and a shorter education card. */
 .home-profile .profile-character h3 { --text-font:var(--display-font); font-size:22px; font-weight:400; line-height:1.4; letter-spacing:0; }
