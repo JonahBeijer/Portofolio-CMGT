@@ -4,8 +4,14 @@ Disallow: /versions/
 
 Sitemap: https://www.jonahbeijer.nl/sitemap.xml
 
-# Only this portrait may appear in Google Images; all other images are excluded.
+# Keep photos out of Google Images except this portrait; allow site icons for Search.
 User-agent: Googlebot-Image
 Disallow: /
 Allow: /img/wall-photos/IMG_4026.webp$
 Allow: /img/wall-photos/mobile/IMG_4026.webp$
+
+# Site icons must be crawlable to appear beside Google Search results.
+Allow: /favicon.ico
+Allow: /img/favicon.svg
+Allow: /img/favicon-32.png
+Allow: /img/apple-touch-icon.png
