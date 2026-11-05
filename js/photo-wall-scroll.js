@@ -1,5 +1,5 @@
 import { exampleImages } from './photo-wall-examples.js?v=20261103-optimized1';
-import { photoCategories, categoryFor } from './photo-wall-categories.js?v=20261105-1';
+import { photoCategories, categoryFor } from './photo-wall-categories.js?v=20261105-me1';
 export async function initPhotoWall({ signal }) {
 const on=(target,event,listener,options={})=>target.addEventListener(event,listener,{...options,signal});
 const wrap=document.querySelector('.memory-scroll'),stage=document.querySelector('.photo-wall-stage'),wall=document.querySelector('.photo-wall');
@@ -110,7 +110,7 @@ function makeLayout(w,h){
   members.forEach((photo,n)=>{const col=heights.indexOf(Math.min(...heights)),width=tileW*(.86+noise(photo.i,3)*.2),height=width/clamp(photo.ratio,.48,1.8),x=col*(tileW+tileGap)+(noise(photo.i,4)-.5)*9,y=heights[col];local.push({index:photo.i,x,y,w:width,h:height,angle:(noise(photo.i,5)-.5)*9});heights[col]+=height+tileGap+noise(photo.i,6)*14;});
   groups.push({local,height:Math.max(...heights)});
  });
- const anchors=mobile?groups.map((_,g)=>({x:g*(groupW+65),y:[55,0,105,30][g]})):[{x:0,y:15},{x:groupW+105,y:135},{x:groupW*2+225,y:0},{x:groupW*1.48+105,y:Math.max(groups[1].height+190,groups[2].height+65)}];
+ const anchors=mobile?groups.map((_,g)=>({x:g*(groupW+65),y:[55,0,105,30][g%4]})):[{x:0,y:15},{x:groupW+105,y:135},{x:groupW*2+225,y:0},{x:groupW*1.48+105,y:Math.max(groups[1].height+190,groups[2].height+65)}];
  let worldW=0,worldH=0;
  groups.forEach((group,g)=>{const anchor=anchors[g];heads.push({x:anchor.x,y:anchor.y,w:groupW,group:g});for(const p of group.local)positions[p.index]={...p,x:p.x+anchor.x,y:p.y+anchor.y};worldW=Math.max(worldW,anchor.x+groupW+12);worldH=Math.max(worldH,anchor.y+group.height+12);});
  const top=Math.max(mobile?250:170,h*(mobile?.32:.27)),availableH=Math.max(60,Math.min(h*.62,h-top-85));
@@ -123,21 +123,27 @@ function makeDesktopLayout(w,h){
  const noise=(i,seed)=>{const n=Math.sin(i*127.1+seed*311.7)*43758.5453;return n-Math.floor(n);};
  const top=Math.max(150,h*.20),availableW=w*.89,availableH=Math.max(80,h-top-55),cache=photoCategories.map((group,g)=>{
   const members=photos.map((p,i)=>({...p,i})).filter(p=>p.group===group.id),choices=[];
-  for(let cols=2;cols<=7;cols++){
+  for(let cols=Math.min(2,members.length);cols<=Math.min(7,members.length);cols++){
    const heights=Array.from({length:cols},(_,c)=>.8+noise(c,g+1)*.35),local=[];
    for(const photo of members){const col=heights.indexOf(Math.min(...heights)),width=.88+noise(photo.i,3)*.16,height=width/clamp(photo.ratio,.48,1.8),x=.12+col*1.18+(noise(photo.i,4)-.5)*.10,y=heights[col];local.push({index:photo.i,x,y,w:width,h:height,angle:(noise(photo.i,5)-.5)*9});heights[col]+=height+.18+noise(photo.i,6)*.12;}
    choices.push({local,width:cols*1.18-.18+.24,height:Math.max(...heights)+.12});
   }return choices;
  });
  let best=null;
- for(const a of cache[0])for(const b of cache[1])for(const c of cache[2])for(const d of cache[3]){
-  const groups=[a,b,c,d],gap=.85;
-  const layouts=[
-   [{x:0,y:.35},{x:a.width+gap,y:1.05},{x:a.width+b.width+gap*2,y:0},{x:a.width+b.width+c.width+gap*3,y:.75}],
-   [{x:0,y:.3},{x:a.width+gap,y:.75},{x:a.width+Math.max(b.width,d.width)+gap*2,y:0},{x:a.width+gap+.3,y:.75+b.height+gap}]
-  ];
-  for(const anchors of layouts){const width=Math.max(...groups.map((g,i)=>anchors[i].x+g.width)),height=Math.max(...groups.map((g,i)=>anchors[i].y+g.height)),scale=Math.min(availableW/width,availableH/height);if(!best||scale>best.scale)best={groups,anchors,width,height,scale};}
+ // Pack any number of themes in one or two rows, choosing a shared print size.
+ function evaluate(groups){
+  const gap=.85;
+  const pack=(row,startY=0)=>{let x=0;return row.map((group,i)=>{const anchor={x,y:startY+(i%2)*.35};x+=group.width+gap;return anchor;});};
+  const layouts=[pack(groups)];
+  for(let split=1;split<groups.length;split++){
+   const first=groups.slice(0,split),second=groups.slice(split);
+   const anchors=pack(first),nextY=Math.max(...first.map((group,i)=>anchors[i].y+group.height))+gap;
+   layouts.push([...anchors,...pack(second,nextY)]);
+  }
+  for(const anchors of layouts){const width=Math.max(...groups.map((g,i)=>anchors[i].x+g.width)),height=Math.max(...groups.map((g,i)=>anchors[i].y+g.height)),scale=Math.min(availableW/width,availableH/height);if(!best||scale>best.scale)best={groups:[...groups],anchors,width,height,scale};}
  }
+ function choose(index,groups){if(index===cache.length){evaluate(groups);return;}for(const choice of cache[index])choose(index+1,[...groups,choice]);}
+ choose(0,[]);
  const positions=[],heads=[];
  best.groups.forEach((group,g)=>{const anchor=best.anchors[g];heads.push({x:anchor.x,y:anchor.y,w:group.width,group:g});for(const p of group.local)positions[p.index]={...p,x:p.x+anchor.x,y:p.y+anchor.y};});
  return{positions,heads,scale:best.scale,width:best.width*best.scale,height:best.height*best.scale,groupW:best.groups[0].width*best.scale,top,overflow:0,mobile:false};
