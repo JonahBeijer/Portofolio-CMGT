@@ -1,5 +1,5 @@
 import { initMobileBrowserColour } from './mobile-browser-colour.js?v=20261105-edge2';
-import { initMobileMenu } from './mobile-menu.js?v=20261105-jb2';
+import { initMobileMenu } from './mobile-menu.js?v=20261105-jb3';
 import { initNavigationHover } from './navigation-hover.js?v=20261105-1';
 import { initBioDecode } from './bio-decode.js?v=20261105-perf2';
 import './portfolio-versions.js?v=20261104-routes1';

@@ -17,7 +17,7 @@ export function initMobileMenu(reduced) {
     const topline = document.createElement('div');
     topline.className = 'menu-topline';
     topline.setAttribute('aria-hidden', 'true');
-    topline.innerHTML = '<span class="menu-monogram"><img src="img/favicon.svg?v=20261105-jb2" width="44" height="44" alt="Jonah Beijer"></span><span class="menu-edition">Portfolio / <span data-menu-copy="navigation"></span></span>';
+    topline.innerHTML = '<span class="menu-monogram"><img src="img/logo-white.svg?v=20261105-jb3" width="44" height="44" alt="Jonah Beijer"></span><span class="menu-edition">Portfolio / <span data-menu-copy="navigation"></span></span>';
     menu.prepend(curtain, topline);
     const footer = document.createElement('div');
     footer.className = 'menu-contact';
