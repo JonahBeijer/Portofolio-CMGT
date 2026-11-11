@@ -339,7 +339,7 @@ export const translations = {
         trait2: "Curious",
         trait3: "Loyal",
         trait4: "Honest",
-        trait5: "thoughtful",
+        trait5: "Thoughtful",
         trait6: "Open-minded",
         visionTitle: "Future Vision",
         vision1: "AI integration in web apps",
